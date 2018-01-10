@@ -26,14 +26,14 @@ def get_data_dir():
         raise StandardError("SCRATCH environment variable is undefined")
     base_file = "%s/DWR" % scratch
     if os.path.isdir(base_file):
-        return base.file
+        return base_file
     raise StandardError("Scratch directory %s does not exist")
 
 def get_data_file_name(variable,year,month):
     """Return the name of the file containing data for the
        requested variable, at the specified time."""
     base_dir=get_data_dir()
-    name="%s/%04d/%s/%02d.txt" % (base_dir,
+    name="%s/%04d/%02d/%s.txt" % (base_dir,
                                   year,month,variable)
     return name
 
@@ -46,17 +46,19 @@ def get_obs_1file(variable,year,month):
     o=pandas.read_table(of_name,sep='\s+',
                        header=None,
                        encoding="ascii",
-                       names=['year','month','day','hour','Latitude','Longitude','value'],
+                       names=['year','month','day','hour','minute',
+                              'latitude','longitude',
+                              'value',
+                              'name'],
                        converters={'year': int, 'month': int, 'day' : int,
-                                   'hour': float,'Latitude': float,'Longitude': float,
-                                   'Value': float},
+                                   'hour': int, 'minute': int,
+                                   'latitude': float,'longitude': float,
+                                   'value': float,
+                                   'name': str},
                        na_values=['NA'],
                        comment=None)
-    # Separate the hour and minute
-    o.assign('minute',o.hour%100)
-    o.hour=int(o.hour/100)
     # Add the datetime
-    o.assign('datetime',pandas.to_datetime(o[['year','month','day','hour','minute']]))
+    o=o.assign(dtm=pandas.to_datetime(o[['year','month','day','hour','minute']]))
     return o
  
 def get_obs(start,end,variable):
@@ -65,10 +67,18 @@ def get_obs(start,end,variable):
     ct=start
     while(ct<end):
         o=get_obs_1file(variable,ct.year,ct.month)
-        o2=o[(datetime>=start) & (dtm<end)]
+        o2=o[(o.dtm>=start) & (o.dtm<end)]
         if(result is None):
             result=o2
         else:
             result=pandas.concat([result,o2])
-        ct=ct+datetime.timedelta(months=1)
+        ct=add_one_month(ct)
     return result
+
+# Want to move a datetime to the next month
+#  don't care about preserving the day of month
+def add_one_month(dt0):
+    dt1 = dt0.replace(days=1)
+    dt2 = dt1 + timedelta(days=32)
+    dt3 = dt2.replace(days=1)
+    return dt3
