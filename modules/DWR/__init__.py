@@ -15,5 +15,11 @@ A package for handling DWR data from the weatherrescue.org.
 
 """
 
-from load import *
+import os
+import virtualtime # fixes datetime to work pre-1900
+import datetime
+import numpy
+import pandas
 
+from load import *
+from plot import *

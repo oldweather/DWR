@@ -78,7 +78,7 @@ def get_obs(start,end,variable):
 # Want to move a datetime to the next month
 #  don't care about preserving the day of month
 def add_one_month(dt0):
-    dt1 = dt0.replace(days=1)
-    dt2 = dt1 + timedelta(days=32)
-    dt3 = dt2.replace(days=1)
+    dt1 = dt0.replace(day=1)
+    dt2 = dt1 + datetime.timedelta(days=32)
+    dt3 = dt2.replace(day=1)
     return dt3
