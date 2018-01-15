@@ -22,4 +22,3 @@ import numpy
 import pandas
 
 from load import *
-from plot import *

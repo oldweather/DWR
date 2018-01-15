@@ -27,7 +27,7 @@ def get_data_dir():
     base_file = "%s/DWR" % scratch
     if os.path.isdir(base_file):
         return base_file
-    raise StandardError("Scratch directory %s does not exist")
+    raise StandardError("Scratch directory %s does not exist" % scratch)
 
 def get_data_file_name(variable,year,month):
     """Return the name of the file containing data for the

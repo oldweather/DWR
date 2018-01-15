@@ -40,7 +40,7 @@ canvas=FigureCanvas(fig)
 
 # UK-centred projection
 projection=ccrs.RotatedPole(pole_longitude=177.5, pole_latitude=35.5)
-scale=15
+scale=20
 extent=[scale*-1*math.sqrt(2),scale*math.sqrt(2),scale*-1,scale]
 
 # Single plot filling the figure
@@ -83,9 +83,13 @@ for m in prmsl.coord('member').points:
 # Add the ensemble mean - with labels
 prmsl_m=prmsl.collapsed('member', iris.analysis.MEAN)
 prmsl_m.data=prmsl_m.data/100 # To hPa
+prmsl_s=prmsl.collapsed('member', iris.analysis.STD_DEV)
+prmsl_s.data=prmsl_s.data/100
+# Mask out mean where uncertainties large
+prmsl_m.data[numpy.where(prmsl_s.data>3)]=numpy.nan
 CS=wm.plot_contour(ax_20C,prmsl_m,
                    levels=numpy.arange(870,1050,10),
-                   colors='blue',
+                   colors='black',
                    label=True,
                    linewidths=2)
 
