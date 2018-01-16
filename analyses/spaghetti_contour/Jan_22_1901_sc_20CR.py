@@ -93,7 +93,6 @@ CS=wm.plot_contour(ax_20C,prmsl_m,
                    label=True,
                    linewidths=2)
 
-# 20CR2c observations
 wm.plot_label(ax_20C,'%04d-%02d-%02d:%02d' % (year,month,day,hour),
                      facecolor=fig.get_facecolor())
 # Output as png
