@@ -117,7 +117,7 @@ prmsl_m.data[numpy.where(prmsl_s.data>3)]=numpy.nan
 CS=wm.plot_contour(ax_20C,prmsl_m,
                    levels=numpy.arange(870,1050,10),
                    colors='black',
-                   label=True,
+                   label=False,
                    linewidths=2)
 
 # 20CR2c observations
@@ -156,7 +156,7 @@ prmsl_m.data[numpy.where(prmsl_s.data>3)]=numpy.nan
 CS=wm.plot_contour(ax_C2C,prmsl_m,
                    levels=numpy.arange(870,1050,10),
                    colors='black',
-                   label=True,
+                   label=False,
                    linewidths=2)
 
 wm.plot_label(ax_C2C,'CERA20C',
