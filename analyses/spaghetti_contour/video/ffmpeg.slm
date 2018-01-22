@@ -12,4 +12,4 @@ rm compare_contours.mp4
 #  These usually come from disc problems in the creation step.
 find compare_contours/*.png -type f -empty -delete
 
-ffmpeg -r 24 -pattern_type glob -i compare_contours/\*.png -c:v libx264 -threads 16 -preset slow -tune animation -profile:v high -level 4.2 -pix_fmt yuv420p -crf 25 -c:a copy compare_contours.mp4
+ffmpeg -r 24 -pattern_type glob -i compare_contours/\*1903\*.png -c:v libx264 -threads 16 -preset slow -tune animation -profile:v high -level 4.2 -pix_fmt yuv420p -crf 25 -c:a copy compare_contours.mp4
