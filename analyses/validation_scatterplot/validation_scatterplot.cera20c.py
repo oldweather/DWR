@@ -119,4 +119,4 @@ for y in range(0,len(stations)):
                             zorder=0.5))
 
 # Output as png
-fig.savefig('DWR_v_20CR_%04d%02d%02d%02d.cera20c.png' % (year,month,day,hour))
+fig.savefig('DWR_v_CERA_%04d%02d%02d%02d.png' % (year,month,day,hour))
