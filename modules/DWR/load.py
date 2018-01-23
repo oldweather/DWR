@@ -82,3 +82,35 @@ def add_one_month(dt0):
     dt2 = dt1 + datetime.timedelta(days=32)
     dt3 = dt2.replace(day=1)
     return dt3
+
+# Get the observation at the station interpolated to the desired time
+def at_station_and_time(obs,station,dte):
+    at_station=obs.loc[obs['name']==station]
+    if at_station.empty:
+        raise StandardError('No data for station %s' % station)
+    at_station=at_station.sort_values(by='dtm',ascending=True)
+    hit=at_station.loc[at_station['dtm']==dte]
+    if not hit.empty:
+        return hit['value'].values[0]
+    before=at_station.loc[at_station['dtm']<dte]
+    if before.empty:
+        raise StandardError('No data for station %s before %s' % (station,
+                     dte.strftime("%Y-%m-%d:%H:%M")))
+    before=before.iloc[-1] # last row
+    after=at_station.loc[at_station['dtm']>dte]
+    if after.empty:
+        raise StandardError('No data for station %s after %s' % (station,
+                     dte.strftime("%Y-%m-%d:%H:%M")))
+    after=after.iloc[0] # first row
+    weight=((dte-before['dtm']).total_seconds()/
+           (after['dtm']-before['dtm']).total_seconds())
+    return after['value']*weight+before['value']*(1-weight)
+
+# Get the position of a named station
+def get_station_location(obs,station):
+    at_station=obs.loc[obs['name']==station]
+    if at_station.empty:
+        raise StandardError('No data for station %s' % station)
+    result={'latitude': at_station['latitude'].values[0],
+            'longitude':at_station['longitude'].values[0]}
+    return result

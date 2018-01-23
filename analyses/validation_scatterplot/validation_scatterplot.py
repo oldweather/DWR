@@ -34,39 +34,6 @@ obs=obs.sort_values(by='latitude',ascending=True)
 # Get the list of stations - preserving order
 stations=collections.OrderedDict.fromkeys(obs.loc[:,'name']).keys()
 
-# Get the observation at the station interpolated to the desired time
-#  when this works - move it to the DWR module.
-def dwr_at_station_and_time(obs,station,dte):
-    at_station=obs.loc[obs['name']==station]
-    if at_station.empty:
-        raise StandardError('No data for station %s' % station)
-    at_station=at_station.sort_values(by='dtm',ascending=True)
-    hit=at_station.loc[at_station['dtm']==dte]
-    if not hit.empty:
-        return hit['value'].values[0]
-    before=at_station.loc[at_station['dtm']<dte]
-    if before.empty:
-        raise StandardError('No data for station %s before %s' % (station,
-                     dte.strftime("%Y-%m-%d:%H:%M")))
-    before=before.iloc[-1] # last row
-    after=at_station.loc[at_station['dtm']>dte]
-    if after.empty:
-        raise StandardError('No data for station %s after %s' % (station,
-                     dte.strftime("%Y-%m-%d:%H:%M")))
-    after=after.iloc[0] # first row
-    weight=((dte-before['dtm']).total_seconds()/
-           (after['dtm']-before['dtm']).total_seconds())
-    return after['value']*weight+before['value']*(1-weight)
-
-# Get the position of a named station
-def get_station_location(obs,station):
-    at_station=obs.loc[obs['name']==station]
-    if at_station.empty:
-        raise StandardError('No data for station %s' % station)
-    result={'latitude': at_station['latitude'].values[0],
-            'longitude':at_station['longitude'].values[0]}
-    return result
-
 # Portrait page
 fig=Figure(figsize=(22/math.sqrt(2),22),  # Width, Height (inches)
            dpi=100,
@@ -80,7 +47,7 @@ canvas=FigureCanvas(fig)
 font = {'family' : 'sans-serif',
         'sans-serif' : 'Arial',
         'weight' : 'normal',
-        'size'   : 16}
+        'size'   : 18}
 matplotlib.rc('font', **font)
 
 # pressure range
@@ -97,7 +64,8 @@ ax.set_xlabel('MSLP (hPa)')
 ax.set_ylim([1,len(stations)+1])
 y_locations=[x+0.5 for x in range(1,len(stations)+1)]
 ax.yaxis.set_major_locator(matplotlib.ticker.FixedLocator(y_locations))
-ax.yaxis.set_major_formatter(matplotlib.ticker.FixedFormatter((stations)))
+ax.yaxis.set_major_formatter(matplotlib.ticker.FixedFormatter(
+                              [DWR.pretty_name(s) for s in stations]))
 ax.set_xlabel('MSLP (hPa)')
 
 # Custom grid spacing
@@ -113,7 +81,7 @@ for y in range(0,len(stations)):
 interpolated={}
 for station in stations:
     try:
-        interpolated[station]=dwr_at_station_and_time(obs,station,dte)
+        interpolated[station]=DWR.at_station_and_time(obs,station,dte)
     except StandardError:
         interpolated[station]=None
 
@@ -139,7 +107,7 @@ interpolator = iris.analysis.Linear().interpolator(prmsl,
                                                    ['latitude', 'longitude'])
 for y in range(0,len(stations)):
     station=stations[y]
-    latlon=get_station_location(obs,station)
+    latlon=DWR.get_station_location(obs,station)
     ensemble=interpolator([latlon['latitude'],latlon['longitude']])
     for m in range(0,len(ensemble.data)):
         ax.add_patch(Circle((ensemble.data[m]/100,
