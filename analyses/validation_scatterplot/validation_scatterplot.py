@@ -4,15 +4,17 @@ import math
 import datetime
 import numpy
 import collections
+import random
 
-#import iris
-#import iris.analysis
+import iris
+import iris.analysis
 
 import matplotlib
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
+from matplotlib.patches import Circle
 
-#import Meteorographica.data.twcr as twcr
+import Meteorographica.data.twcr as twcr
 
 import DWR
 
@@ -24,8 +26,8 @@ hour=18
 dte=datetime.datetime(year,month,day,hour)
 
 # Get the DWR observations within +- 6 hours
-obs=DWR.get_obs(dte-datetime.timedelta(hours=6.1),
-                dte+datetime.timedelta(hours=6.1),
+obs=DWR.get_obs(dte-datetime.timedelta(hours=12.1),
+                dte+datetime.timedelta(hours=12.1),
                 'prmsl')
 # sort them from north to south
 obs=obs.sort_values(by='latitude',ascending=True)
@@ -56,6 +58,15 @@ def dwr_at_station_and_time(obs,station,dte):
            (after['dtm']-before['dtm']).total_seconds())
     return after['value']*weight+before['value']*(1-weight)
 
+# Get the position of a named station
+def get_station_location(obs,station):
+    at_station=obs.loc[obs['name']==station]
+    if at_station.empty:
+        raise StandardError('No data for station %s' % station)
+    result={'latitude': at_station['latitude'].values[0],
+            'longitude':at_station['longitude'].values[0]}
+    return result
+
 # Portrait page
 fig=Figure(figsize=(22/math.sqrt(2),22),  # Width, Height (inches)
            dpi=100,
@@ -73,7 +84,7 @@ font = {'family' : 'sans-serif',
 matplotlib.rc('font', **font)
 
 # pressure range
-extent=[955,1045]
+extent=[945,1045]
 
 # Single plot filling the figure
 ax=fig.add_axes([0.15,0.05,0.84,0.94])
@@ -90,9 +101,9 @@ ax.yaxis.set_major_formatter(matplotlib.ticker.FixedFormatter((stations)))
 ax.set_xlabel('MSLP (hPa)')
 
 # Custom grid spacing
-for y in range(0,len(stations)+1):
+for y in range(0,len(stations)):
     ax.add_line(matplotlib.lines.Line2D(
-            xdata=(extent[0],extent[1]), ydata=(y+0.5,y+0.5),
+            xdata=(extent[0],extent[1]), ydata=(y+1.5,y+1.5),
             linestyle='solid',
             linewidth=0.2,
             color=(0.5,0.5,0.5,1),
@@ -115,13 +126,29 @@ for y in range(0,len(stations)):
     ax.add_line(matplotlib.lines.Line2D(
             xdata=(mslp,mslp), ydata=(y+1.1,y+1.9),
             linestyle='solid',
-            linewidth=2,
-            color=(0,0,0,1),
+            linewidth=4,
+            color=(1,0,0,1),
             zorder=1))
     
 # load the reanalysis pressures 
-#prmsl=twcr.get_slice_at_hour('prmsl',year,month,day,hour,
-#                             version='3.5.1',type='ensemble')
+prmsl=twcr.get_slice_at_hour('prmsl',year,month,day,hour,
+                             version='3.5.1',type='ensemble')
+
+# for each station, plot the reanalysis ensemble at that station
+interpolator = iris.analysis.Linear().interpolator(prmsl, 
+                                                   ['latitude', 'longitude'])
+for y in range(0,len(stations)):
+    station=stations[y]
+    latlon=get_station_location(obs,station)
+    ensemble=interpolator([latlon['latitude'],latlon['longitude']])
+    for m in range(0,len(ensemble.data)):
+        ax.add_patch(Circle((ensemble.data[m]/100,
+                             random.uniform(y+1.1,y+1.9)),
+                            radius=0.05,
+                            facecolor='blue',
+                            edgecolor='blue',
+                            alpha=0.5,
+                            zorder=0.5))
 
 # Output as png
 fig.savefig('DWR_v_20CR_%04d%02d%02d%02d.png' % (year,month,day,hour))
