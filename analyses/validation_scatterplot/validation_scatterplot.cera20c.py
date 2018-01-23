@@ -1,4 +1,4 @@
-# DWR observations and 20CR2c ensemble
+# DWR observations and CERA20C ensemble
 
 import math
 import datetime
@@ -14,7 +14,7 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 from matplotlib.patches import Circle
 
-import Meteorographica.data.twcr as twcr
+import Meteorographica.data.cera20c as cera20c
 
 import DWR
 
@@ -131,8 +131,7 @@ for y in range(0,len(stations)):
             zorder=1))
     
 # load the reanalysis pressures 
-prmsl=twcr.get_slice_at_hour('prmsl',year,month,day,hour,
-                             version='3.5.1',type='ensemble')
+prmsl=cera20c.get_slice_at_hour('prmsl',year,month,day,hour)
 
 # for each station, plot the reanalysis ensemble at that station
 interpolator = iris.analysis.Linear().interpolator(prmsl, 
@@ -144,11 +143,11 @@ for y in range(0,len(stations)):
     for m in range(0,len(ensemble.data)):
         ax.add_patch(Circle((ensemble.data[m]/100,
                              random.uniform(y+1.25,y+1.75)),
-                            radius=0.05,
+                            radius=0.1,
                             facecolor='blue',
                             edgecolor='blue',
                             alpha=0.5,
                             zorder=0.5))
 
 # Output as png
-fig.savefig('DWR_v_20CR_%04d%02d%02d%02d.png' % (year,month,day,hour))
+fig.savefig('DWR_v_20CR_%04d%02d%02d%02d.cera20c.png' % (year,month,day,hour))
