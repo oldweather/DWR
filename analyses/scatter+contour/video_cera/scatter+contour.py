@@ -1,6 +1,9 @@
-# UK region weather plot 
-# 20CR pressures and validation against DWR
+#!/bin/env python
 
+# UK region weather plot 
+# CERA20C pressures and validation against DWR
+
+import os
 import math
 import datetime
 import numpy
@@ -19,19 +22,46 @@ import cartopy
 import cartopy.crs as ccrs
 
 import Meteorographica.weathermap as wm
-import Meteorographica.data.twcr as twcr
+import Meteorographica.data.cera20c as cera20c
 
 import DWR
+# Get the datetime to plot from commandline arguments
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("--year", help="Year",
+                    type=int,required=True)
+parser.add_argument("--month", help="Integer month",
+                    type=int,required=True)
+parser.add_argument("--day", help="Day of month",
+                    type=int,required=True)
+parser.add_argument("--hour", help="Time of day (0 to 23.99)",
+                    type=float,required=True)
+parser.add_argument("--opdir", help="Directory for output files",
+                    default="%s/images/DWR/scatter+contour.cera" % os.getenv('SCRATCH'),
+                    type=str,required=False)
+args = parser.parse_args()
+if not os.path.isdir(args.opdir):
+    os.makedirs(args.opdir)
  
-# Date to show 
-year=1901
-month=1
-day=22
-hour=18
-dte=datetime.datetime(year,month,day,hour)
+dte=datetime.datetime(args.year,args.month,args.day,
+                      int(args.hour),int(args.hour%1*60))
 
-# Landscape page
-fig=Figure(figsize=(22,22/math.sqrt(2)),  # Width, Height (inches)
+# Get the station list and order
+obs_month=DWR.get_obs(datetime.datetime(1903,10,1,1),
+                datetime.datetime(1903,10,31,23),
+                'prmsl')
+# sort them from north to south
+obs_month=obs_month.sort_values(by='latitude',ascending=True)
+# Get the list of stations - preserving order
+stations=collections.OrderedDict.fromkeys(obs_month.loc[:,'name']).keys()
+# Get the locations for all the stations
+latlon={}
+for station in stations:
+    latlon[station]=DWR.get_station_location(obs_month,station)
+
+# HD video size 1920x1080
+aspect=16.0/9.0
+fig=Figure(figsize=(10.8*aspect,10.8),  # Width, Height (inches)
            dpi=100,
            facecolor=(0.88,0.88,0.88,1),
            edgecolor=None,
@@ -43,13 +73,13 @@ canvas=FigureCanvas(fig)
 font = {'family' : 'sans-serif',
         'sans-serif' : 'Arial',
         'weight' : 'normal',
-        'size'   : 16}
+        'size'   : 14}
 matplotlib.rc('font', **font)
 
 # UK-centred projection
 projection=ccrs.RotatedPole(pole_longitude=177.5, pole_latitude=35.5)
 scale=20
-extent=[scale*-1,scale,scale*-1*math.sqrt(2),scale*math.sqrt(2)]
+extent=[scale*-1*aspect/2-5,scale*aspect/2-5,scale*-1,scale]
 
 # Contour plot on the left
 ax_map=fig.add_axes([0.01,0.01,0.485,0.98],projection=projection)
@@ -61,40 +91,31 @@ ax_map.background_patch.set_facecolor((0.88,0.88,0.88,1))
 wm.add_grid(ax_map)
 land_img_20C=ax_map.background_img(name='GreyT', resolution='low')
 
+# Mark all the stations used in the month - empty circle
+wm.plot_obs(ax_map,obs_month,lat_label='latitude',
+            lon_label='longitude',radius=0.15,facecolor=(1,0,0,0))
+
 # Get the DWR observations within +- 15 hours
 obs=DWR.get_obs(dte-datetime.timedelta(hours=15.1),
                 dte+datetime.timedelta(hours=15.1),
                 'prmsl')
-# sort them from north to south
-obs=obs.sort_values(by='latitude',ascending=True)
-# Get the list of stations - preserving order
-stations=collections.OrderedDict.fromkeys(obs.loc[:,'name']).keys()
 
+# Mark all the stations used in this day - filled circle
 wm.plot_obs(ax_map,obs,lat_label='latitude',
             lon_label='longitude',radius=0.15,facecolor='red')
 
-# Add the observations from 20CR
-obs_t=twcr.get_obs(dte-datetime.timedelta(hours=24),dte,'3.5.1')
-# Filter to those assimilated and near the UK
-obs_s=obs_t.loc[(obs_t['Assimilation.indicator']==1) &
-              ((obs_t['Latitude']>0) & (obs_t['Latitude']<90)) &
-              ((obs_t['Longitude']>240) | (obs_t['Longitude']<100))].copy()
-wm.plot_obs(ax_map,obs_s,radius=0.15)
-
 # load the pressures
-prmsl=twcr.get_slice_at_hour('prmsl',year,month,day,hour,
-                             version='3.5.1',type='ensemble')
+prmsl=cera20c.get_slice_at_hour('prmsl',args.year,args.month,args.day,args.hour)
 
 # For each ensemble member, make a contour plot
 for m in prmsl.coord('member').points:
-#for m in range(1, 10):   # Same number as CERA
     prmsl_e=prmsl.extract(iris.Constraint(member=m))
     prmsl_e.data=prmsl_e.data/100 # To hPa
     CS=wm.plot_contour(ax_map,prmsl_e,
                    levels=numpy.arange(870,1050,10),
                    colors='blue',
                    label=False,
-                   linewidths=0.1)
+                   linewidths=0.3)
 
 # Add the ensemble mean - with labels
 prmsl_m=prmsl.collapsed('member', iris.analysis.MEAN)
@@ -110,20 +131,19 @@ CS=wm.plot_contour(ax_map,prmsl_m,
                    linewidths=2)
 
 # Label with the date
-wm.plot_label(ax_map,'%04d-%02d-%02d:%02d' % (year,month,day,hour),
+wm.plot_label(ax_map,'%04d-%02d-%02d:%02d' % (args.year,args.month,args.day,int(args.hour)),
                      facecolor=fig.get_facecolor(),
                      x_fraction=0.02,
                      horizontalalignment='left')
 
 # Validation scatterplot on the right
-ax_scp=fig.add_axes([0.6,0.04,0.39,0.95])
+ax_scp=fig.add_axes([0.6,0.03,0.39,0.96])
 
 # pressure range
 extent=[945,1045]
 
 # x-axis
 ax_scp.set_xlim(extent)
-ax_scp.set_xlabel('MSLP (hPa)')
 
 # y-axis
 ax_scp.set_ylim([1,len(stations)+1])
@@ -131,7 +151,6 @@ y_locations=[x+0.5 for x in range(1,len(stations)+1)]
 ax_scp.yaxis.set_major_locator(matplotlib.ticker.FixedLocator(y_locations))
 ax_scp.yaxis.set_major_formatter(matplotlib.ticker.FixedFormatter(
                               [DWR.pretty_name(s) for s in stations]))
-ax_scp.set_xlabel('MSLP (hPa)')
 
 # Custom grid spacing
 for y in range(0,len(stations)):
@@ -168,17 +187,16 @@ interpolator = iris.analysis.Linear().interpolator(prmsl,
                                                    ['latitude', 'longitude'])
 for y in range(0,len(stations)):
     station=stations[y]
-    latlon=DWR.get_station_location(obs,station)
-    ensemble=interpolator([latlon['latitude'],latlon['longitude']])
+    ensemble=interpolator([latlon[station]['latitude'],
+                           latlon[station]['longitude']])
     for m in range(0,len(ensemble.data)):
         ax_scp.add_patch(Circle((ensemble.data[m]/100,
-                            random.uniform(y+1.25,y+1.75)),
+                                (y+1.25+m*1.0/(2*len(ensemble.data)))),
                             radius=0.1,
                             facecolor='blue',
                             edgecolor='blue',
                             alpha=0.5,
                             zorder=0.5))
-
 
 # Join each station name to its location on the map
 # Need another axes, filling the whole fig
@@ -187,23 +205,23 @@ ax_full.patch.set_alpha(0.0)  # Transparent background
 
 # Map location of a station in ax_full coordinates
 def pos_left(obs,stations,idx):
-    latlon=DWR.get_station_location(obs,stations[idx])
+    station=stations[idx]
     rp=ax_map.projection.transform_points(ccrs.PlateCarree(),
-                                          numpy.asarray(latlon['longitude']),
-                                          numpy.asarray(latlon['latitude']))
+                              numpy.asarray(latlon[station]['longitude']),
+                              numpy.asarray(latlon[station]['latitude']))
     new_lon=rp[:,0]
     new_lat=rp[:,1]
 
     result={}
-    result['x']=0.01+0.485*((new_lon-(scale*-1))/(scale*2))
-    result['y']=0.01+0.98*((new_lat-(scale*math.sqrt(2)*-1))/(scale*2*math.sqrt(2)))
+    result['x']=0.01+0.485*((new_lon-(scale*-1*aspect/2)+5)/(scale*2*aspect/2))
+    result['y']=0.01+0.98*((new_lat-(scale*-1))/(scale*2))
     return result
 
 # Label location of a station in ax_full coordinates
 def pos_right(obs,stations,idx):
     result={}
     result['x']=0.51
-    result['y']=0.04+(0.95/len(stations))*(idx+0.5)
+    result['y']=0.03+(0.96/len(stations))*(idx+0.5)
     return result
 
 for i in range(0,len(stations)):
@@ -225,5 +243,8 @@ for i in range(0,len(stations)):
             zorder=1))
 
 # Output as png
-fig.savefig('Scatter+contour_%04d%02d%02d%02d.png' % 
-                                      (year,month,day,hour))
+fig.savefig('%s/Scatter+contour_%04d%02d%02d%02d%02d.png' % 
+                                      (args.opdir,args.year,
+                                       args.month,args.day,
+                                      int(args.hour),
+                                      int(args.hour%1*60)))
