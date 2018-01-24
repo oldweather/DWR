@@ -14,7 +14,7 @@ if not os.path.isdir(opdir):
     os.makedirs(opdir)
 
 start_day=datetime.datetime(1903, 10, 2, 0)
-end_day  =datetime.datetime(1903, 10, 31, 18)
+end_day  =datetime.datetime(1903, 10, 31, 15)
 
 # Function to check if the job is already done for this timepoint
 def is_done(year,month,day,hour):

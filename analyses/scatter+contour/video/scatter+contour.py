@@ -47,13 +47,17 @@ dte=datetime.datetime(args.year,args.month,args.day,
                       int(args.hour),int(args.hour%1*60))
 
 # Get the station list and order
-obs=DWR.get_obs(datetime.datetime(1903,10,1,1),
+obs_month=DWR.get_obs(datetime.datetime(1903,10,1,1),
                 datetime.datetime(1903,10,31,23),
                 'prmsl')
 # sort them from north to south
-obs=obs.sort_values(by='latitude',ascending=True)
+obs_month=obs_month.sort_values(by='latitude',ascending=True)
 # Get the list of stations - preserving order
-stations=collections.OrderedDict.fromkeys(obs.loc[:,'name']).keys()
+stations=collections.OrderedDict.fromkeys(obs_month.loc[:,'name']).keys()
+# Get the locations for all the stations
+latlon={}
+for station in stations:
+    latlon[station]=DWR.get_station_location(obs_month,station)
 
 # HD video size 1920x1080
 aspect=16.0/9.0
@@ -87,11 +91,16 @@ ax_map.background_patch.set_facecolor((0.88,0.88,0.88,1))
 wm.add_grid(ax_map)
 land_img_20C=ax_map.background_img(name='GreyT', resolution='low')
 
-# Get the DWR observations within +- 12 hours
-obs=DWR.get_obs(dte-datetime.timedelta(hours=12.1),
-                dte+datetime.timedelta(hours=12.1),
+# Mark all the stations used in the month - empty circle
+wm.plot_obs(ax_map,obs_month,lat_label='latitude',
+            lon_label='longitude',radius=0.15,facecolor=(1,0,0,0))
+
+# Get the DWR observations within +- 15 hours
+obs=DWR.get_obs(dte-datetime.timedelta(hours=15.1),
+                dte+datetime.timedelta(hours=15.1),
                 'prmsl')
 
+# Mark all the stations used in this day - filled circle
 wm.plot_obs(ax_map,obs,lat_label='latitude',
             lon_label='longitude',radius=0.15,facecolor='red')
 
@@ -108,15 +117,15 @@ prmsl=twcr.get_slice_at_hour('prmsl',args.year,args.month,args.day,args.hour,
                              version='3.5.1',type='ensemble')
 
 # For each ensemble member, make a contour plot
-#for m in prmsl.coord('member').points:
-for m in range(1, 10):   # Same number as CERA
+for m in prmsl.coord('member').points:
+#for m in range(1, 10):   # Same number as CERA
     prmsl_e=prmsl.extract(iris.Constraint(member=m))
     prmsl_e.data=prmsl_e.data/100 # To hPa
     CS=wm.plot_contour(ax_map,prmsl_e,
                    levels=numpy.arange(870,1050,10),
                    colors='blue',
                    label=False,
-                   linewidths=0.3)
+                   linewidths=0.1)
 
 # Add the ensemble mean - with labels
 prmsl_m=prmsl.collapsed('member', iris.analysis.MEAN)
@@ -188,8 +197,8 @@ interpolator = iris.analysis.Linear().interpolator(prmsl,
                                                    ['latitude', 'longitude'])
 for y in range(0,len(stations)):
     station=stations[y]
-    latlon=DWR.get_station_location(obs,station)
-    ensemble=interpolator([latlon['latitude'],latlon['longitude']])
+    ensemble=interpolator([latlon[station]['latitude'],
+                           latlon[station]['longitude']])
     for m in range(0,len(ensemble.data)):
         ax_scp.add_patch(Circle((ensemble.data[m]/100,
                                 (y+1.25+m*1.0/(2*len(ensemble.data)))),
@@ -199,7 +208,6 @@ for y in range(0,len(stations)):
                             alpha=0.5,
                             zorder=0.5))
 
-
 # Join each station name to its location on the map
 # Need another axes, filling the whole fig
 ax_full=fig.add_axes([0,0,1,1])
@@ -207,10 +215,10 @@ ax_full.patch.set_alpha(0.0)  # Transparent background
 
 # Map location of a station in ax_full coordinates
 def pos_left(obs,stations,idx):
-    latlon=DWR.get_station_location(obs,stations[idx])
+    station=stations[idx]
     rp=ax_map.projection.transform_points(ccrs.PlateCarree(),
-                                          numpy.asarray(latlon['longitude']),
-                                          numpy.asarray(latlon['latitude']))
+                              numpy.asarray(latlon[station]['longitude']),
+                              numpy.asarray(latlon[station]['latitude']))
     new_lon=rp[:,0]
     new_lat=rp[:,1]
 
