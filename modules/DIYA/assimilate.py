@@ -60,11 +60,11 @@ def build_X_matrix_from_cube(cube,latitudes,longitudes):
 # Given a target cube, a constraints cube, and a set of 
 #  observations, make a constrained cube.
 def constrain_cube(target,constraints,obs,obs_error=0):
-    X=build_X_matrix_from_cube(constraints,obs.latitudes,
-                                           obs.longitudes)
+    X=build_X_matrix_from_cube(constraints,obs.latitude,
+                                           obs.longitude)
     Y=mll_order(target)
     # Make a different set of perturbed obs for each ensemble member
-    perturbed_obs=numpy.zero([X.shape[0],len(obs.latitudes)])
+    perturbed_obs=numpy.zero([X.shape[0],len(obs.latitude)])
     for member in range(0,X.shape[0]):
         perturbed_obs[member,:]=obs.values+numpy.random.normal(
                                    loc=0,scale=obs_error,
@@ -80,7 +80,7 @@ def constrain_cube(target,constraints,obs,obs_error=0):
                       warm_start=False, 
                       positive=False, 
                       random_state=None, 
-                      selection=’cyclic’)
+                      selection='cyclic')
     for lat_i in range(0,Y.data.shape[1]):
         for lon_i in range(0,Y.data.shape[2]):
             y=Y[:,lat_i,lon_i]
