@@ -72,18 +72,33 @@ obs=obs.sort_values(by='latitude',ascending=True)
 stations=collections.OrderedDict.fromkeys(obs.loc[:,'name']).keys()
 
 # List of stations to assimilate
-to_assimilate=stations#['FORTWILLIAM']
+to_assimilate=stations[::2]
 obs_assimilate=obs[obs.name.isin(to_assimilate)]
 obs_assimilate.value=obs_assimilate.value*100 # to Pa
 
-wm.plot_obs(ax_map,obs,lat_label='latitude',
-            lon_label='longitude',radius=0.15,facecolor='red')
-
+if len(to_assimilate)>0:
+   wm.plot_obs(ax_map,obs_assimilate,lat_label='latitude',
+               lon_label='longitude',radius=0.15,facecolor='yellow')
+if len(to_assimilate)<len(stations):
+   obs_left=obs[~obs.name.isin(to_assimilate)]
+   wm.plot_obs(ax_map,obs_left,lat_label='latitude',
+               lon_label='longitude',radius=0.15,facecolor='black')
+   
 # load the pressures
 prmsl=cera20c.get_slice_at_hour('prmsl',year,month,day,hour)
 
+# Pre-assimilation contour plot
+for m in range(1, 10):   # Same number as CERA
+    prmsl_e=prmsl.extract(iris.Constraint(member=m))
+    prmsl_e.data=prmsl_e.data/100 # To hPa
+    CS=wm.plot_contour(ax_map,prmsl_e,
+                   levels=numpy.arange(870,1050,10),
+                   colors='red',
+                   label=False,
+                   linewidths=0.2)
+
 # Assimilate the selected obs
-prmsl2=DIYA.constrain_cube(prmsl,prmsl,obs=obs_assimilate,obs_error=5)
+prmsl2=DIYA.constrain_cube(prmsl,prmsl,obs=obs_assimilate,obs_error=25)
 
 # For each ensemble member, make a contour plot
 #for m in prmsl.coord('member').points:
@@ -99,7 +114,7 @@ for m in range(1, 10):   # Same number as CERA
 # Add the ensemble mean - with labels
 prmsl_m=prmsl2.collapsed('member', iris.analysis.MEAN)
 prmsl_m.data=prmsl_m.data/100 # To hPa
-prmsl_s=prmsl.collapsed('member', iris.analysis.STD_DEV)
+prmsl_s=prmsl2.collapsed('member', iris.analysis.STD_DEV)
 prmsl_s.data=prmsl_s.data/100
 # Mask out mean where uncertainties large
 prmsl_m.data[numpy.where(prmsl_s.data>3)]=numpy.nan
@@ -142,28 +157,33 @@ for y in range(0,len(stations)):
             color=(0.5,0.5,0.5,1),
             zorder=0))
 
-# Get a pressure interpolated to the selected time for each station
-interpolated={}
-for station in stations:
-    try:
-        interpolated[station]=DWR.at_station_and_time(obs,station,dte)
-    except StandardError:
-        interpolated[station]=None
-
 # Plot the station pressures
 for y in range(0,len(stations)):
     station=stations[y]
-    if interpolated[station] is None:
-        continue
-    mslp=interpolated[station]
+    mslp=obs[obs.name==station].value.values[0]
     ax_scp.add_line(matplotlib.lines.Line2D(
             xdata=(mslp,mslp), ydata=(y+1.25,y+1.75),
             linestyle='solid',
-            linewidth=4,
-            color=(1,0,0,1),
+            linewidth=3,
+            color=(0,0,0,1),
             zorder=1))
     
 # for each station, plot the reanalysis ensemble at that station
+# both before and after assimilation
+interpolator = iris.analysis.Linear().interpolator(prmsl, 
+                                                   ['latitude', 'longitude'])
+for y in range(0,len(stations)):
+    station=stations[y]
+    latlon=DWR.get_station_location(obs,station)
+    ensemble=interpolator([latlon['latitude'],latlon['longitude']])
+    for m in range(0,len(ensemble.data)):
+        ax_scp.add_patch(Circle((ensemble.data[m]/100,
+                            random.uniform(y+1.25,y+1.75)),
+                            radius=0.1,
+                            facecolor='red',
+                            edgecolor='red',
+                            alpha=0.5,
+                            zorder=0.5))
 interpolator = iris.analysis.Linear().interpolator(prmsl2, 
                                                    ['latitude', 'longitude'])
 for y in range(0,len(stations)):
@@ -209,11 +229,13 @@ def pos_right(obs,stations,idx):
 for i in range(0,len(stations)):
     p_left=pos_left(obs,stations,i)
     p_right=pos_right(obs,stations,i)
+    pcol='black'
+    if stations[i] in to_assimilate: pcol='yellow'
     ax_full.add_patch(Circle((p_right['x'],
                               p_right['y']),
-                             radius=0.001,
-                             facecolor=(1,0,0,1),
-                             edgecolor=(0,0,0,1),
+                             radius=0.003,
+                             facecolor=pcol,
+                             edgecolor='black',
                              alpha=1,
                              zorder=1))
     ax_full.add_line(matplotlib.lines.Line2D(
@@ -221,7 +243,7 @@ for i in range(0,len(stations)):
             ydata=(p_left['y'],p_right['y']),
             linestyle='solid',
             linewidth=0.2,
-            color=(1,0,0,0.5),
+            color=(0,0,0,0.5),
             zorder=1))
 
 # Output as png
