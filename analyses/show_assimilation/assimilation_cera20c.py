@@ -64,7 +64,7 @@ land_img_20C=ax_map.background_img(name='GreyT', resolution='low')
 
 # Get the DWR observations within +- 0.5 hours
 obs=DWR.get_obs(dte-datetime.timedelta(hours=0.5),
-                dte+datetime.timedelta(hours=12.1),
+                dte+datetime.timedelta(hours=0.5),
                 'prmsl')
 # sort them from north to south
 obs=obs.sort_values(by='latitude',ascending=True)
@@ -72,7 +72,9 @@ obs=obs.sort_values(by='latitude',ascending=True)
 stations=collections.OrderedDict.fromkeys(obs.loc[:,'name']).keys()
 
 # List of stations to assimilate
-to_assimilate=['FORTWILLIAM']
+to_assimilate=stations#['FORTWILLIAM']
+obs_assimilate=obs[obs.name.isin(to_assimilate)]
+obs_assimilate.value=obs_assimilate.value*100 # to Pa
 
 wm.plot_obs(ax_map,obs,lat_label='latitude',
             lon_label='longitude',radius=0.15,facecolor='red')
@@ -81,12 +83,12 @@ wm.plot_obs(ax_map,obs,lat_label='latitude',
 prmsl=cera20c.get_slice_at_hour('prmsl',year,month,day,hour)
 
 # Assimilate the selected obs
-prmsl2=DIYA.constrain_cube(prmsl,prmsl,obs=obs[obs.name.isin(to_assimilate)])
+prmsl2=DIYA.constrain_cube(prmsl,prmsl,obs=obs_assimilate,obs_error=5)
 
 # For each ensemble member, make a contour plot
 #for m in prmsl.coord('member').points:
 for m in range(1, 10):   # Same number as CERA
-    prmsl_e=prmsl.extract(iris.Constraint(member=m))
+    prmsl_e=prmsl2.extract(iris.Constraint(member=m))
     prmsl_e.data=prmsl_e.data/100 # To hPa
     CS=wm.plot_contour(ax_map,prmsl_e,
                    levels=numpy.arange(870,1050,10),
@@ -95,7 +97,7 @@ for m in range(1, 10):   # Same number as CERA
                    linewidths=0.3)
 
 # Add the ensemble mean - with labels
-prmsl_m=prmsl.collapsed('member', iris.analysis.MEAN)
+prmsl_m=prmsl2.collapsed('member', iris.analysis.MEAN)
 prmsl_m.data=prmsl_m.data/100 # To hPa
 prmsl_s=prmsl.collapsed('member', iris.analysis.STD_DEV)
 prmsl_s.data=prmsl_s.data/100
@@ -162,7 +164,7 @@ for y in range(0,len(stations)):
             zorder=1))
     
 # for each station, plot the reanalysis ensemble at that station
-interpolator = iris.analysis.Linear().interpolator(prmsl, 
+interpolator = iris.analysis.Linear().interpolator(prmsl2, 
                                                    ['latitude', 'longitude'])
 for y in range(0,len(stations)):
     station=stations[y]
@@ -223,5 +225,4 @@ for i in range(0,len(stations)):
             zorder=1))
 
 # Output as png
-fig.savefig('Assimilated.cera20c.png' % 
-                                      (year,month,day,hour))
+fig.savefig('Assimilated.cera20c.png')
