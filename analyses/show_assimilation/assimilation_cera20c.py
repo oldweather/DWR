@@ -24,12 +24,14 @@ import Meteorographica.data.cera20c as cera20c
 import DWR
 import DIYA
  
-# Date to show - Heroy hurricane
-year=1901
-month=1
-day=22
+# Date to show
+year=1903
+month=10
+day=11
 hour=18
 dte=datetime.datetime(year,month,day,hour)
+
+obs_error=5
 
 # Landscape page
 fig=Figure(figsize=(22,22/math.sqrt(2)),  # Width, Height (inches)
@@ -98,7 +100,7 @@ for m in range(1, 10):   # Same number as CERA
                    linewidths=0.2)
 
 # Assimilate the selected obs
-prmsl2=DIYA.constrain_cube(prmsl,prmsl,obs=obs_assimilate,obs_error=25)
+prmsl2=DIYA.constrain_cube(prmsl,prmsl,obs=obs_assimilate,obs_error=obs_error)
 
 # For each ensemble member, make a contour plot
 #for m in prmsl.coord('member').points:

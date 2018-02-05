@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/usr/bin/env python
 
 # UK region weather plot 
 # Effect of assimilation on CERA20C
@@ -32,6 +32,8 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("--count", help="Year",
                     type=float,required=True)
+parser.add_argument("--err", help="Observational error",
+                    type=float,default=25)
 parser.add_argument("--opdir", help="Directory for output files",
                     default="%s/images/DWR/assimilate.cera" % os.getenv('SCRATCH'))
 args = parser.parse_args()
@@ -87,34 +89,64 @@ obs=obs.sort_values(by='latitude',ascending=True)
 # Get the list of stations - preserving order
 stations=collections.OrderedDict.fromkeys(obs.loc[:,'name']).keys()
 
+# Mix up the latitudes evenly for assimilation order
+stations_assim_order=[]
+step=int(len(stations)/3)
+current=0
+while len(stations_assim_order)<len(stations):
+    current=current+step
+    if current>=len(stations):
+        current = current-len(stations)
+        step=int(step/2)+1
+        if current>step: current=current-step
+    while stations[current] in stations_assim_order:
+        current=current+1
+        if current>=len(stations):
+            current=0
+            step=int(step/2)+1
+    stations_assim_order.append(stations[current])
+
 # load the pressures
 prmsl=cera20c.get_slice_at_hour('prmsl',year,month,day,hour)
 
-# List of stations to assimilate
-if int(args.count)==0:
+# Assimilate args.count stations producing prmsl1
+#  fractional args.count interprets linearly.
+prmsl2=None
+to_assimilate=None
+if int(args.count)<1:
+    to_assimilate=()
     prmsl2=prmsl
-    to_assimilate=stations[0]
+elif args.count>=len(stations):
+    args.count=len(stations)
+    to_assimilate=stations
+    obs_assimilate=obs
+    obs_assimilate.value=obs_assimilate.value*100 # to Pa
+    prmsl2=DIYA.constrain_cube(prmsl,prmsl,obs=obs_assimilate,obs_error=args.err)
 else:
-    to_assimilate=stations[:int(args.count):1]
+    to_assimilate=stations_assim_order[:int(args.count):1]
     obs_assimilate=obs[obs.name.isin(to_assimilate)]
     obs_assimilate.value=obs_assimilate.value*100 # to Pa
-    prmsl2=DIYA.constrain_cube(prmsl,prmsl,obs=obs_assimilate,obs_error=25)
-prmsl3=prmsl2
-if args.count>int(args.count): 
-    to_assimilate=stations[:int(args.count)+1:1]
+    prmsl2=DIYA.constrain_cube(prmsl,prmsl,obs=obs_assimilate,obs_error=args.err)
+    
+if args.count>0 and args.count>int(args.count): 
+    to_assimilate=stations_assim_order[:int(args.count)+1:1]
     obs_assimilate=obs[obs.name.isin(to_assimilate)]
     obs_assimilate.value=obs_assimilate.value*100 # to Pa
-    prmsl3=DIYA.constrain_cube(prmsl,prmsl,obs=obs_assimilate,obs_error=25)
+    prmsl3=DIYA.constrain_cube(prmsl,prmsl,obs=obs_assimilate,obs_error=args.err)
     frac=args.count-int(args.count)
     prmsl2.data=prmsl2.data*(1-frac)+prmsl3.data*frac
 
 if len(to_assimilate)>0:
-   wm.plot_obs(ax_map,obs_assimilate,lat_label='latitude',
-               lon_label='longitude',radius=0.15,facecolor='yellow')
+    wm.plot_obs(ax_map,obs_assimilate,lat_label='latitude',
+                lon_label='longitude',radius=0.15,facecolor='yellow')
 if len(to_assimilate)<len(stations):
-   obs_left=obs[~obs.name.isin(to_assimilate)]
-   wm.plot_obs(ax_map,obs_left,lat_label='latitude',
-               lon_label='longitude',radius=0.15,facecolor='black')
+    obs_left=obs[~obs.name.isin(to_assimilate)]
+    wm.plot_obs(ax_map,obs_left,lat_label='latitude',
+                lon_label='longitude',radius=0.15,facecolor='black')
+if args.count>0 and args.count+1<len(stations):
+    obs_inprog=obs[obs.name==stations_assim_order[int(args.count)]]
+    wm.plot_obs(ax_map,obs_inprog,lat_label='latitude',
+                lon_label='longitude',radius=0.15,facecolor='red')
    
 # Pre-assimilation contour plot
 for m in range(1, 10):   # Same number as CERA
@@ -158,7 +190,7 @@ wm.plot_label(ax_map,'%04d-%02d-%02d:%02d' % (year,month,day,hour),
                      horizontalalignment='left')
 
 # Validation scatterplot on the right
-ax_scp=fig.add_axes([0.6,0.04,0.39,0.95])
+ax_scp=fig.add_axes([0.6,0.03,0.39,0.96])
 
 # pressure range
 extent=[945,1045]
@@ -242,15 +274,15 @@ def pos_left(obs,stations,idx):
     new_lat=rp[:,1]
 
     result={}
-    result['x']=0.01+0.485*((new_lon-(scale*-1))/(scale*2))
-    result['y']=0.01+0.98*((new_lat-(scale*math.sqrt(2)*-1))/(scale*2*math.sqrt(2)))
+    result['x']=0.01+0.485*((new_lon-(scale*-1*aspect/2)+5)/(scale*2*aspect/2))
+    result['y']=0.01+0.98*((new_lat-(scale*-1))/(scale*2))
     return result
 
 # Label location of a station in ax_full coordinates
 def pos_right(obs,stations,idx):
     result={}
     result['x']=0.51
-    result['y']=0.04+(0.95/len(stations))*(idx+0.5)
+    result['y']=0.03+(0.96/len(stations))*(idx+0.5)
     return result
 
 for i in range(0,len(stations)):
@@ -258,6 +290,9 @@ for i in range(0,len(stations)):
     p_right=pos_right(obs,stations,i)
     pcol='black'
     if stations[i] in to_assimilate: pcol='yellow'
+    if args.count>0 and int(args.count)+1<len(stations):
+       if stations[i]==stations_assim_order[int(args.count)]:
+           pcol='red'
     ax_full.add_patch(Circle((p_right['x'],
                               p_right['y']),
                              radius=0.003,

@@ -17,12 +17,13 @@ Functions to do EnKF-type data assimilation
 from sklearn.linear_model import ElasticNet
 import iris
 import numpy
+import copy
 
 # Control the order of the vector dimensions of a cube, so the 
 #  numpy array of data has the expected shape.
 def cube_order_dimensions(cube,dims_list):
-    crds=cube.coords()
     crds2=cube.coords()
+    crds=copy.deepcopy(crds2)
     # Keep only the vector dimensions
     for crdi in range(0,len(crds2)):
         if len(crds2[crdi].points)==1: crds.remove(crds2[crdi])
