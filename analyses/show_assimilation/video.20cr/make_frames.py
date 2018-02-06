@@ -15,7 +15,7 @@ if not os.path.isdir(opdir):
 
 # Function to check if the job is already done for this timepoint
 def is_done(count):
-    op_file_name="%s/images/DWR/assimilate.cera/Assimilated.cera20c.%02d.%03d.png" % (
+    op_file_name="%s/images/DWR/assimilate.20CRv3/Assimilated.20CRv3.%02d.%03d.png" % (
                  os.getenv('SCRATCH'),int(count),int((count-int(count))*100))
     if os.path.isfile(op_file_name):
         return True
@@ -29,18 +29,18 @@ while count<37.1:
     while max_new_jobs>0 and count<37.1:
         f=open("multirun.slm","w+")
         f.write('#!/bin/ksh -l\n')
-        f.write('#SBATCH --output=%s/slurm_output/as_frame_%d.out\n' %
+        f.write('#SBATCH --output=%s/slurm_output/as_20cr_frame_%d.out\n' %
                    (os.getenv('SCRATCH'),count))
         f.write('#SBATCH --qos=normal\n')
         f.write('#SBATCH --ntasks=4\n')
         f.write('#SBATCH --ntasks-per-core=1\n')
         f.write('#SBATCH --mem=40000\n')
-        f.write('#SBATCH --time=10\n')
+        f.write('#SBATCH --time=20\n')
         jcount=0
         for fraction in (0,0.025,0.05,0.075):
             if is_done(count+fraction):
                 continue
-            cmd="./assimilation_cera20c.py --count=%f &\n" % (
+            cmd="./assimilation_20cr.py --count=%f &\n" % (
                    count+fraction)
             f.write(cmd)
             jcount=jcount+1

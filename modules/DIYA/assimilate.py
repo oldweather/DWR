@@ -60,7 +60,8 @@ def build_X_matrix_from_cube(cube,latitudes,longitudes):
 
 # Given a target cube, a constraints cube, and a set of 
 #  observations, make a constrained cube.
-def constrain_cube(target,constraints,obs,obs_error=0.1,random_state=None):
+def constrain_cube(target,constraints,obs,obs_error=0.1,random_state=None,
+                   lat_range=(-90,90),lon_range=(-180,360)):
     X=build_X_matrix_from_cube(constraints,obs.latitude,
                                            obs.longitude)
     Y=cube_order_dimensions(target,('member','latitude','longitude'))
@@ -83,8 +84,15 @@ def constrain_cube(target,constraints,obs,obs_error=0.1,random_state=None):
                       positive=False, 
                       random_state=random_state, 
                       selection='cyclic')
+    grid_lats=Y.coord('latitude').points
+    grid_lons=Y.coord('longitude').points
     for lat_i in range(0,Y.data.shape[1]):
+        if grid_lats[lat_i]<lat_range[0] or grid_lats[lat_i]>lat_range[1]: continue
         for lon_i in range(0,Y.data.shape[2]):
+            if lon_range[0]<lon_range[1]:
+                if grid_lons[lon_i]<lon_range[0] or grid_lons[lon_i]>lon_range[1]: continue
+            else:  # longitude wrap-around
+                if grid_lons[lon_i]<lon_range[0] and grid_lons[lon_i]>lon_range[1]: continue
             y=Y[:,lat_i,lon_i].data
             Y.data[:,lat_i,lon_i]=constrain_point(y,X,model,perturbed_obs)
     return Y

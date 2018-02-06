@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # UK region weather plot 
-# Effect of assimilation on CERA20C
+# Effect of assimilation on 20CRv3
 
 import os
 import math
@@ -22,7 +22,7 @@ import cartopy
 import cartopy.crs as ccrs
 
 import Meteorographica.weathermap as wm
-import Meteorographica.data.cera20c as cera20c
+import Meteorographica.data.twcr as twcr
 
 import DWR
 import DIYA
@@ -35,7 +35,7 @@ parser.add_argument("--count", help="Year",
 parser.add_argument("--err", help="Observational error",
                     type=float,default=25)
 parser.add_argument("--opdir", help="Directory for output files",
-                    default="%s/images/DWR/assimilate.cera" % os.getenv('SCRATCH'))
+                    default="%s/images/DWR/assimilate.20CRv3" % os.getenv('SCRATCH'))
 args = parser.parse_args()
 if not os.path.isdir(args.opdir):
     os.makedirs(args.opdir)
@@ -109,7 +109,8 @@ while len(stations_assim_order)<len(stations):
 # Actually, lets just go north to south.
 stations_assim_order=stations[::-1]
 # load the pressures
-prmsl=cera20c.get_slice_at_hour('prmsl',year,month,day,hour)
+prmsl=twcr.get_slice_at_hour('prmsl',year,month,day,hour,
+                               version='4.5.1',type='ensemble')
 
 # Assimilate args.count stations producing prmsl1
 #  fractional args.count interprets linearly.
@@ -125,14 +126,14 @@ elif args.count>=len(stations):
     obs_assimilate.value=obs_assimilate.value*100 # to Pa
     prmsl2=DIYA.constrain_cube(prmsl,prmsl,obs=obs_assimilate,
                                obs_error=args.err,random_state=RANDOM_SEED,
-                               lat_range=(20,85),lon_range=(300,30))
+                               lat_range=(20,85),lon_range=(300,40))
 else:
     to_assimilate=stations_assim_order[:int(args.count):1]
     obs_assimilate=obs[obs.name.isin(to_assimilate)]
     obs_assimilate.value=obs_assimilate.value*100 # to Pa
     prmsl2=DIYA.constrain_cube(prmsl,prmsl,obs=obs_assimilate,
                                obs_error=args.err,random_state=RANDOM_SEED,
-                               lat_range=(20,85),lon_range=(300,30))
+                               lat_range=(20,85),lon_range=(300,40))
     
 if args.count>0 and args.count>int(args.count): 
     to_assimilate=stations_assim_order[:int(args.count)+1:1]
@@ -140,7 +141,7 @@ if args.count>0 and args.count>int(args.count):
     obs_assimilate.value=obs_assimilate.value*100 # to Pa
     prmsl3=DIYA.constrain_cube(prmsl,prmsl,obs=obs_assimilate,
                                obs_error=args.err,random_state=RANDOM_SEED,
-                               lat_range=(20,85),lon_range=(300,30))
+                               lat_range=(20,85),lon_range=(300,40))
     frac=args.count-int(args.count)
     prmsl2.data=prmsl2.data*(1-frac)+prmsl3.data*frac
 
@@ -156,27 +157,18 @@ if args.count>0 and args.count+1<len(stations):
     wm.plot_obs(ax_map,obs_inprog,lat_label='latitude',
                 lon_label='longitude',radius=0.15,facecolor='red')
    
-# Pre-assimilation contour plot
-for m in range(1, 10):   # Same number as CERA
-    prmsl_e=prmsl.extract(iris.Constraint(member=m))
-    prmsl_e.data=prmsl_e.data/100 # To hPa
-    CS=wm.plot_contour(ax_map,prmsl_e,
-                   levels=numpy.arange(870,1050,10),
-                   colors='red',
-                   label=False,
-                   linewidths=0.1)
 
 
 # For each ensemble member, make a contour plot
 #for m in prmsl.coord('member').points:
-for m in range(1, 10):   # Same number as CERA
+for m in range(1, 80): 
     prmsl_e=prmsl2.extract(iris.Constraint(member=m))
     prmsl_e.data=prmsl_e.data/100 # To hPa
     CS=wm.plot_contour(ax_map,prmsl_e,
                    levels=numpy.arange(870,1050,10),
                    colors='blue',
                    label=False,
-                   linewidths=0.3)
+                   linewidths=0.08)
 
 # Add the ensemble mean - with labels
 prmsl_m=prmsl2.collapsed('member', iris.analysis.MEAN)
@@ -245,7 +237,7 @@ for y in range(0,len(stations)):
     for m in range(0,len(ensemble.data)):
         ax_scp.add_patch(Circle((ensemble.data[m]/100,
                             (y+1.25+m*1.0/(2*len(ensemble.data)))),
-                            radius=0.1,
+                            radius=0.075,
                             facecolor='red',
                             edgecolor='red',
                             alpha=0.5,
@@ -259,7 +251,7 @@ for y in range(0,len(stations)):
     for m in range(0,len(ensemble.data)):
         ax_scp.add_patch(Circle((ensemble.data[m]/100,
                             (y+1.25+m*1.0/(2*len(ensemble.data)))),
-                            radius=0.1,
+                            radius=0.075,
                             facecolor='blue',
                             edgecolor='blue',
                             alpha=0.5,
@@ -316,5 +308,5 @@ for i in range(0,len(stations)):
             zorder=1))
 
 # Output as png
-fig.savefig('%s/Assimilated.cera20c.%02d.%03d.png' % (args.opdir,
+fig.savefig('%s/Assimilated.20CRv3.%02d.%03d.png' % (args.opdir,
                            int(args.count),int((args.count-int(args.count))*100)))
