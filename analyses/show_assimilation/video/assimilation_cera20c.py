@@ -40,7 +40,6 @@ args = parser.parse_args()
 if not os.path.isdir(args.opdir):
     os.makedirs(args.opdir)
 
- 
 # Date to show - Heroy hurricane
 year=1901
 month=1
@@ -197,7 +196,7 @@ extent=[945,1045]
 
 # x-axis
 ax_scp.set_xlim(extent)
-ax_scp.set_xlabel('MSLP (hPa)')
+ax_scp.set_xlabel('')
 
 # y-axis
 ax_scp.set_ylim([1,len(stations)+1])

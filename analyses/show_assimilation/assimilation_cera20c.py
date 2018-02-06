@@ -25,13 +25,15 @@ import DWR
 import DIYA
  
 # Date to show
-year=1903
-month=10
-day=11
+year=1901
+month=01
+day=22
 hour=18
 dte=datetime.datetime(year,month,day,hour)
 
-obs_error=5
+obs_error=25
+
+RANDOM_SEED = 5
 
 # Landscape page
 fig=Figure(figsize=(22,22/math.sqrt(2)),  # Width, Height (inches)
@@ -100,7 +102,8 @@ for m in range(1, 10):   # Same number as CERA
                    linewidths=0.2)
 
 # Assimilate the selected obs
-prmsl2=DIYA.constrain_cube(prmsl,prmsl,obs=obs_assimilate,obs_error=obs_error)
+prmsl2=DIYA.constrain_cube(prmsl,prmsl,obs=obs_assimilate,obs_error=obs_error,
+                           random_state=RANDOM_SEED)
 
 # For each ensemble member, make a contour plot
 #for m in prmsl.coord('member').points:
@@ -180,7 +183,7 @@ for y in range(0,len(stations)):
     ensemble=interpolator([latlon['latitude'],latlon['longitude']])
     for m in range(0,len(ensemble.data)):
         ax_scp.add_patch(Circle((ensemble.data[m]/100,
-                            random.uniform(y+1.25,y+1.75)),
+                            (y+1.25+m*1.0/(2*len(ensemble.data)))),
                             radius=0.1,
                             facecolor='red',
                             edgecolor='red',
@@ -194,7 +197,7 @@ for y in range(0,len(stations)):
     ensemble=interpolator([latlon['latitude'],latlon['longitude']])
     for m in range(0,len(ensemble.data)):
         ax_scp.add_patch(Circle((ensemble.data[m]/100,
-                            random.uniform(y+1.25,y+1.75)),
+                            (y+1.25+m*1.0/(2*len(ensemble.data)))),
                             radius=0.1,
                             facecolor='blue',
                             edgecolor='blue',

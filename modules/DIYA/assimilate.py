@@ -15,6 +15,7 @@ Functions to do EnKF-type data assimilation
 """
 
 from sklearn.linear_model import ElasticNet
+from sklearn.utils import check_random_state
 import iris
 import numpy
 import copy
@@ -59,14 +60,15 @@ def build_X_matrix_from_cube(cube,latitudes,longitudes):
 
 # Given a target cube, a constraints cube, and a set of 
 #  observations, make a constrained cube.
-def constrain_cube(target,constraints,obs,obs_error=0.1):
+def constrain_cube(target,constraints,obs,obs_error=0.1,random_state=None):
     X=build_X_matrix_from_cube(constraints,obs.latitude,
                                            obs.longitude)
     Y=cube_order_dimensions(target,('member','latitude','longitude'))
     # Make a different set of perturbed obs for each ensemble member
     perturbed_obs=numpy.zeros([X.shape[0],len(obs.latitude)])
+    random_state = check_random_state(random_state)
     for member in range(0,X.shape[0]):
-        perturbed_obs[member,:]=obs.value+numpy.random.normal(
+        perturbed_obs[member,:]=obs.value+random_state.normal(
                                    loc=0,scale=obs_error,
                                    size=perturbed_obs.shape[1])
     # Use the same model at each grid point
@@ -79,7 +81,7 @@ def constrain_cube(target,constraints,obs,obs_error=0.1):
                       tol=0.0001, 
                       warm_start=False, 
                       positive=False, 
-                      random_state=None, 
+                      random_state=random_state, 
                       selection='cyclic')
     for lat_i in range(0,Y.data.shape[1]):
         for lon_i in range(0,Y.data.shape[2]):
