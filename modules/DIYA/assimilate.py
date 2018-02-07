@@ -14,34 +14,11 @@
 Functions to do EnKF-type data assimilation
 """
 
-from sklearn.linear_model import ElasticNet
-from sklearn.utils import check_random_state
 import iris
 import numpy
-import copy
-
-# Control the order of the vector dimensions of a cube, so the 
-#  numpy array of data has the expected shape.
-def cube_order_dimensions(cube,dims_list):
-    crds2=cube.coords()
-    crds=copy.deepcopy(crds2)
-    # Keep only the vector dimensions
-    for crdi in range(0,len(crds2)):
-        if len(crds2[crdi].points)==1: crds.remove(crds2[crdi])
-    if len(crds)!=len(dims_list):
-        raise StandardError("Cube has %d vector dimensions and %d were specified" %
-                             (len(crds),len(dims_list)))
-    odr=range(0,len(dims_list))
-    for dim_i in range(0,len(dims_list)):
-        try:
-            odr[dim_i]=[index for index in range(len(crds)) 
-                      if crds[index].long_name==dims_list[dim_i]][0]
-        except IndexError:
-            raise StandardError("Cube does not have vector dimension %s" %
-                                 dims_list[dim_i])
-    result=cube.copy()
-    result.transpose(new_order=odr)
-    return result
+from sklearn.linear_model import ElasticNet
+from sklearn.utils import check_random_state
+from Meteorographica.utils import cube_order_dimensions
 
 # X-matrix for the model is a numpy array of dimension
 #  (n.ensemble.members,n.stations)
