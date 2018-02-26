@@ -21,7 +21,7 @@ import Meteorographica.data.cera20c as cera20c
 
 import DWR
  
-# Date to show - Heroy hurricane
+# Date to show
 year=1903
 month=10
 day=22
