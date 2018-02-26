@@ -6,7 +6,8 @@ import datetime
 
 import matplotlib
 
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.backends.backend_agg \
+           import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 
 import cartopy
@@ -63,8 +64,10 @@ wm.plot_label(ax_20C,'Observations in 20CR 2c',
 obs=twcr.get_obs(dte-datetime.timedelta(hours=24),dte,'3.5.1')
 # Filter to those assimilated and near the UK
 obs_s=obs.loc[(obs['Assimilation.indicator']==1) &
-              ((obs['Latitude']>0) & (obs['Latitude']<90)) &
-              ((obs['Longitude']>240) | (obs['Longitude']<100))].copy()
+              ((obs['Latitude']>0) & 
+                  (obs['Latitude']<90)) &
+              ((obs['Longitude']>240) | 
+                 (obs['Longitude']<100))].copy()
 wm.plot_obs(ax_20C,obs_s,radius=0.15)
 
 # DWR data
