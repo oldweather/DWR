@@ -1,4 +1,4 @@
-# DWR observations and 20CR2c ensemble
+# DWR observations and 20CR2c ensemble at station locations
 
 import math
 import datetime
@@ -25,7 +25,7 @@ day=22
 hour=18
 dte=datetime.datetime(year,month,day,hour)
 
-# Get the DWR observations within +- 6 hours
+# Get the DWR observations within +- 12 hours
 obs=DWR.get_obs(dte-datetime.timedelta(hours=12.1),
                 dte+datetime.timedelta(hours=12.1),
                 'prmsl')
