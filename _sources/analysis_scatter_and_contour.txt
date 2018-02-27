@@ -7,7 +7,7 @@ Visualising uncertainty: spaghetti contours & DWR data
     <center>
     <table><tr><td>
     <a href="https://github.com/oldweather/DWR/raw/master/analyses/scatter%2Bcontour/Scatter%2Bcontour_1901012218.png"><img src="https://github.com/oldweather/DWR/raw/master/analyses/scatter%2Bcontour/Scatter%2Bcontour_1901012218.png"></a></td></tr>
-    <tr><td>MSLP spaghetti-contour plot for 20CR2c (left), and comparison with DWR obs at the station locations (right) for January 22nd, 1901 (at 6pm). . (<a href='analysis_scatter_and_contour_20CR2c.html'>source</a>)</td></tr>
+    <tr><td>MSLP spaghetti-contour plot for 20CR2c (left), and comparison with DWR obs at the station locations (right) for January 22nd, 1901 (at 6pm). (<a href='analysis_scatter_and_contour_20CR2c.html'>source</a>)</td></tr>
     </table>
     </center>
 
