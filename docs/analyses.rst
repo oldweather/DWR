@@ -9,4 +9,7 @@ This appendix is just a list of all the analysis scripts produced for this proje
 
    analysis_compare_coverage 
    analysis_spaghetti_contour
+   analysis_ensemble_at_station
+   analysis_scatter_and_contour
+
 

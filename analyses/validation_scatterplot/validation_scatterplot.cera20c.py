@@ -10,7 +10,8 @@ import iris
 import iris.analysis
 
 import matplotlib
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.backends.backend_agg import \
+                 FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 from matplotlib.patches import Circle
 
@@ -64,9 +65,11 @@ ax.set_xlabel('MSLP (hPa)')
 # y-axis
 ax.set_ylim([1,len(stations)+1])
 y_locations=[x+0.5 for x in range(1,len(stations)+1)]
-ax.yaxis.set_major_locator(matplotlib.ticker.FixedLocator(y_locations))
-ax.yaxis.set_major_formatter(matplotlib.ticker.FixedFormatter(
-                         [DWR.pretty_name(s) for s in stations]))
+ax.yaxis.set_major_locator(
+            matplotlib.ticker.FixedLocator(y_locations))
+ax.yaxis.set_major_formatter(
+            matplotlib.ticker.FixedFormatter(
+                 [DWR.pretty_name(s) for s in stations]))
 ax.set_xlabel('MSLP (hPa)')
 
 # Custom grid spacing
@@ -82,7 +85,8 @@ for y in range(0,len(stations)):
 interpolated={}
 for station in stations:
     try:
-        interpolated[station]=DWR.at_station_and_time(obs,station,dte)
+        interpolated[station]=DWR.at_station_and_time(
+                                       obs,station,dte)
     except StandardError:
         interpolated[station]=None
 
@@ -104,11 +108,12 @@ prmsl=cera20c.get_slice_at_hour('prmsl',year,month,day,hour)
 
 # for each station, plot the reanalysis ensemble at that station
 interpolator = iris.analysis.Linear().interpolator(prmsl, 
-                                                   ['latitude', 'longitude'])
+                                 ['latitude', 'longitude'])
 for y in range(0,len(stations)):
     station=stations[y]
     latlon=DWR.get_station_location(obs,station)
-    ensemble=interpolator([latlon['latitude'],latlon['longitude']])
+    ensemble=interpolator([latlon['latitude'],
+                           latlon['longitude']])
     for m in range(0,len(ensemble.data)):
         ax.add_patch(Circle((ensemble.data[m]/100,
                              random.uniform(y+1.25,y+1.75)),
@@ -119,4 +124,5 @@ for y in range(0,len(stations)):
                             zorder=0.5))
 
 # Output as png
-fig.savefig('DWR_v_CERA_%04d%02d%02d%02d.png' % (year,month,day,hour))
+fig.savefig('DWR_v_CERA_%04d%02d%02d%02d.png' % 
+                           (year,month,day,hour))
