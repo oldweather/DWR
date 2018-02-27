@@ -1,4 +1,3 @@
-`Raise issue or make comment? <https://github.com/oldweather/DWR/issues/new?label=index>`_
 
 Improving reanalysis with the Daily Weather Reports
 ===================================================
@@ -15,7 +14,6 @@ Improving reanalysis with the Daily Weather Reports
    :maxdepth: 2
 
    DWR
-   data_from_weatherrescue 
 
 .. toctree::
    :maxdepth: 1
