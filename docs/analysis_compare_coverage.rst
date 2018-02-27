@@ -1,4 +1,3 @@
-`Raise issue or make comment? <https://github.com/oldweather/DWR/issues/new?label=analysis.compare_coverage>`_
 
 Compare DWR and reanalysis obs. coverage
 ========================================
@@ -15,7 +14,7 @@ Collect the data (observations from 20CR2c):
 .. code-block:: python
 
     import Meteorographica.data.twcr as twcr
-    twcr.fetch_data_for_year('observations,1901,version='3.5.1')
+    twcr.fetch_data_for_year('observations',1901,version='3.5.1')
 
 Script to make the figure:
 

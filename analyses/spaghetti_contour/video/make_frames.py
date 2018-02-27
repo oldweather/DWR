@@ -18,8 +18,11 @@ end_day  =datetime.datetime(1903, 10, 31, 18)
 
 # Function to check if the job is already done for this timepoint
 def is_done(year,month,day,hour):
-    op_file_name="%s/images/DWR/compare_contours/Compare_mslp_%04d%02d%02d%02d%02d.png" % (
-                 os.getenv('SCRATCH'),year,month,day,int(hour),int(hour%1*60))
+    op_file_name=("%s/images/DWR/compare_contours/" +
+                  "Compare_mslp_%04d%02d%02d%02d%02d.png") % (
+                            os.getenv('SCRATCH'),
+                            year,month,day,int(hour),
+                                        int(hour%1*60))
     if os.path.isfile(op_file_name):
         return True
     return False
@@ -46,7 +49,8 @@ while current_day<=end_day:
             if is_done(current_day.year,current_day.month,
                            current_day.day,current_day.hour+fraction):
                 continue
-            cmd="./compare_contours.py --year=%d --month=%d --day=%d --hour=%f &\n" % (
+            cmd=("./compare_contours.py --year=%d --month=%d" +
+                " --day=%d --hour=%f &\n") % (
                    current_day.year,current_day.month,
                    current_day.day,current_day.hour+fraction)
             f.write(cmd)

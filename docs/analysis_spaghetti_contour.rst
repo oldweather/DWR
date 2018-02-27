@@ -1,4 +1,3 @@
-`Raise issue or make comment? <https://github.com/oldweather/DWR/issues/new?label=analysis.spaghetti_contour>`_
 
 Visualising uncertainty: spaghetti contours
 ===========================================
@@ -6,11 +5,19 @@ Visualising uncertainty: spaghetti contours
 .. raw:: html
 
     <center>
-    <a href="https://github.com/oldweather/DWR/raw/master/analyses/spaghetti_contour/Compare_mslp_1903102218.png"><img src="https://github.com/oldweather/DWR/raw/master/analyses/spaghetti_contour/Compare_mslp_1903102218.png" width="740"></a>
-    <p>Ensemble MSLP contours for 20CR2c (left), and CERA20C(right)</p>
+    <table><tr><td>
+    <a href="https://github.com/oldweather/DWR/raw/master/analyses/spaghetti_contour/Compare_mslp_1903102218.png"><img src="https://github.com/oldweather/DWR/raw/master/analyses/spaghetti_contour/Compare_mslp_1903102218.png"></a></td></tr>
+    <tr><td>MSLP Contours for 20CR2c (left), and CERA20C (right) for October 22nd, 1903 (at 6pm). Blue lines are contours from each of 10 ensemble members, black lines the contours of the ensemble mean (only shown where the ensemble spread is less than 3hPa). Yellow dots are observations asssimilated by 20CR, red dots are new observations now available from DWR (not assimilated in the reanalyses). (<a href='analysis_spaghetti_contour_20CRvCERA.html'>source</a>)</td></tr>
+    </table>
     </center>
+
+Spaghetti-contour plots are a useful way to show both a weather variable (here mean-sea-level-pressure, MSLP) and the uncertainty in that field (the spread across an ensemble). In regions where the ensemble spread is small, the contours cluster together, in regions where the ensemble spread is large, the contours diverge.
 
 .. toctree::
    :maxdepth: 2
 
    analysis_spaghetti_contour_20CR2c
+   analysis_spaghetti_contour_CERA20C
+   analysis_spaghetti_contour_20CRvCERA
+   analysis_spaghetti_contour_20CRvCERA_video
+

@@ -9,7 +9,8 @@ import iris
 import iris.analysis
 
 import matplotlib
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.backends.backend_agg import \
+                FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 
 import cartopy
@@ -57,8 +58,10 @@ land_img_20C=ax_20C.background_img(name='GreyT', resolution='low')
 obs=twcr.get_obs(dte-datetime.timedelta(hours=24),dte,'3.5.1')
 # Filter to those assimilated and near the UK
 obs_s=obs.loc[(obs['Assimilation.indicator']==1) &
-              ((obs['Latitude']>0) & (obs['Latitude']<90)) &
-              ((obs['Longitude']>240) | (obs['Longitude']<100))].copy()
+              ((obs['Latitude']>0) & 
+                  (obs['Latitude']<90)) &
+              ((obs['Longitude']>240) | 
+                  (obs['Longitude']<100))].copy()
 wm.plot_obs(ax_20C,obs_s,radius=0.15)
 
 # load the pressures
@@ -88,7 +91,9 @@ CS=wm.plot_contour(ax_20C,prmsl_m,
                    label=True,
                    linewidths=2)
 
-wm.plot_label(ax_20C,'%04d-%02d-%02d:%02d' % (year,month,day,hour),
-                     facecolor=fig.get_facecolor())
+wm.plot_label(ax_20C,
+              '%04d-%02d-%02d:%02d' % (year,month,day,hour),
+              facecolor=fig.get_facecolor())
 # Output as png
-fig.savefig('Spaghetti_prmsl_%04d%02d%02d%02d.png' % (year,month,day,hour))
+fig.savefig('Spaghetti_prmsl_%04d%02d%02d%02d.png' % 
+                               (year,month,day,hour))

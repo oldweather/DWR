@@ -9,7 +9,8 @@ import iris
 import iris.analysis
 
 import matplotlib
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.backends.backend_agg import \
+             FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 
 import cartopy
@@ -69,8 +70,10 @@ wm.plot_obs(ax_20C,obs,lat_label='latitude',
 obs=twcr.get_obs(dte-datetime.timedelta(hours=24),dte,'3.5.1')
 # Filter to those assimilated and near the UK
 obs_s=obs.loc[(obs['Assimilation.indicator']==1) &
-              ((obs['Latitude']>0) & (obs['Latitude']<90)) &
-              ((obs['Longitude']>240) | (obs['Longitude']<100))].copy()
+              ((obs['Latitude']>0) & 
+                 (obs['Latitude']<90)) &
+              ((obs['Longitude']>240) | 
+                 (obs['Longitude']<100))].copy()
 wm.plot_obs(ax_20C,obs_s,radius=0.15)
 
 # load the pressures
@@ -144,11 +147,12 @@ wm.plot_label(ax_C2C,'CERA20C',
                      x_fraction=0.02,
                      horizontalalignment='left')
 
-wm.plot_label(ax_C2C,'%04d-%02d-%02d:%02d' % (year,month,day,hour),
-                     facecolor=fig.get_facecolor(),
-                     x_fraction=0.98,
-                     horizontalalignment='right')
+wm.plot_label(ax_C2C,
+              '%04d-%02d-%02d:%02d' % (year,month,day,hour),
+              facecolor=fig.get_facecolor(),
+              x_fraction=0.98,
+              horizontalalignment='right')
 
 # Output as png
 fig.savefig('Compare_mslp_%04d%02d%02d%02d.png' % 
-                                      (year,month,day,hour))
+                                  (year,month,day,hour))

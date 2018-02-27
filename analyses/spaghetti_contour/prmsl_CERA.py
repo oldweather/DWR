@@ -9,7 +9,8 @@ import iris
 import iris.analysis
 
 import matplotlib
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.backends.backend_agg import \
+               FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 
 import cartopy
@@ -79,7 +80,9 @@ CS=wm.plot_contour(ax_20C,prmsl_m,
                    label=True,
                    linewidths=2)
 
-wm.plot_label(ax_20C,'%04d-%02d-%02d:%02d' % (year,month,day,hour),
-                     facecolor=fig.get_facecolor())
+wm.plot_label(ax_20C,
+              '%04d-%02d-%02d:%02d' % (year,month,day,hour),
+              facecolor=fig.get_facecolor())
 # Output as png
-fig.savefig('Spaghetti_prmsl_%04d%02d%02d%02d_cera.png' % (year,month,day,hour))
+fig.savefig('Spaghetti_prmsl_%04d%02d%02d%02d_cera.png' % 
+                                    (year,month,day,hour))

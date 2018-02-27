@@ -13,7 +13,8 @@ import iris
 import iris.analysis
 
 import matplotlib
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.backends.backend_agg import \
+                     FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 
 import cartopy
@@ -37,7 +38,8 @@ parser.add_argument("--day", help="Day of month",
 parser.add_argument("--hour", help="Time of day (0 to 23.99)",
                     type=float,required=True)
 parser.add_argument("--opdir", help="Directory for output files",
-                    default="%s/images/DWR/compare_contours" % os.getenv('SCRATCH'),
+                    default="%s/images/DWR/compare_contours" % \
+                                           os.getenv('SCRATCH'),
                     type=str,required=False)
 args = parser.parse_args()
 if not os.path.isdir(args.opdir):
@@ -88,13 +90,17 @@ wm.plot_obs(ax_20C,obs,lat_label='latitude',
 obs=twcr.get_obs(dte-datetime.timedelta(hours=24),dte,'3.5.1')
 # Filter to those assimilated and near the UK
 obs_s=obs.loc[(obs['Assimilation.indicator']==1) &
-              ((obs['Latitude']>0) & (obs['Latitude']<90)) &
-              ((obs['Longitude']>240) | (obs['Longitude']<100))].copy()
+              ((obs['Latitude']>0) & 
+                  (obs['Latitude']<90)) &
+              ((obs['Longitude']>240) | 
+               (obs['Longitude']<100))].copy()
 wm.plot_obs(ax_20C,obs_s,radius=0.15)
 
 # load the pressures
-prmsl=twcr.get_slice_at_hour('prmsl',args.year,args.month,args.day,
-                             args.hour,version='3.5.1',type='ensemble')
+prmsl=twcr.get_slice_at_hour('prmsl',
+                             args.year,args.month,
+                             args.day,args.hour,
+                             version='3.5.1',type='ensemble')
 
 # For each ensemble member, make a contour plot
 #for m in prmsl.coord('member').points:
@@ -164,8 +170,9 @@ wm.plot_label(ax_C2C,'CERA20C',
                      x_fraction=0.02,
                      horizontalalignment='left')
 
-wm.plot_label(ax_C2C,'%04d-%02d-%02d:%02d' % (args.year,args.month,
-                                              args.day,int(args.hour)),
+wm.plot_label(ax_C2C,'%04d-%02d-%02d:%02d' % 
+                          (args.year,args.month,
+                           args.day,int(args.hour)),
                      facecolor=fig.get_facecolor(),
                      x_fraction=0.98,
                      horizontalalignment='right')
