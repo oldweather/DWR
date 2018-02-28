@@ -8,28 +8,29 @@
     
     <title>Compare DWR and 20CR2c reanalysis ensemble at station locations &#8212; Improving reanalysis with the Daily Weather Reports</title>
     
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '../../',
         VERSION:     '0.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="Improving reanalysis with the Daily Weather Reports" href="index.html" />
-    <link rel="up" title="Compare DWR and reanalysis ensemble at station locations" href="analysis_ensemble_at_station.html" />
-    <link rel="prev" title="Compare DWR and reanalysis ensemble at station locations" href="analysis_ensemble_at_station.html" />
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="top" title="Improving reanalysis with the Daily Weather Reports" href="../../index.html" />
+    <link rel="up" title="Compare DWR and reanalysis ensemble at station locations" href="ensemble_at_station.html" />
+    <link rel="next" title="Compare DWR and CERA20C reanalysis ensemble at station locations" href="ensemble_at_station_CERA20C.html" />
+    <link rel="prev" title="Compare DWR and reanalysis ensemble at station locations" href="ensemble_at_station.html" />
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
@@ -43,7 +44,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p><a class="reference external" href="analysis_ensemble_at_station.html">Ensemble_comparison main page</a></p>
+  <p><a class="reference external" href="ensemble_at_station.html">Ensemble comparison main page</a></p>
 <div class="section" id="compare-dwr-and-20cr2c-reanalysis-ensemble-at-station-locations">
 <h1>Compare DWR and 20CR2c reanalysis ensemble at station locations<a class="headerlink" href="#compare-dwr-and-20cr2c-reanalysis-ensemble-at-station-locations" title="Permalink to this headline">¶</a></h1>
 <center>
@@ -51,7 +52,7 @@
 <a href="https://github.com/oldweather/DWR/raw/master/analyses/validation_scatterplot/DWR_v_20CR_1901012218.png"><img src="https://github.com/oldweather/DWR/raw/master/analyses/validation_scatterplot/DWR_v_20CR_1901012218.png"></a></td></tr>
 <tr><td>MSLP as observed at each DWR station (red line), as reconstructed by the 20CR2c ensemble at the station location (blue dots) for January 22nd, 1901 (at 6pm).</td></tr>
 </table>
-</center><p>Collect the data (prmsl ensemble from 20CR2c):</p>
+</center><p>Collect the data (prmsl ensemble from 20CR2c for 1901):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Meteorographica.data.twcr</span> <span class="kn">as</span> <span class="nn">twcr</span>
 <span class="n">twcr</span><span class="o">.</span><span class="n">fetch_data_for_year</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span><span class="mi">1901</span><span class="p">,</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;3.5.1&#39;</span><span class="p">)</span>
 </pre></div>
@@ -194,7 +195,7 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Daily Weather Reports</a></h1>
+<h1 class="logo"><a href="../../index.html">Daily Weather Reports</a></h1>
 
 
 
@@ -212,19 +213,20 @@
 
 <h3>Navigation</h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="DWR.html">The Daily Weather Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../DWR.html">The Daily Weather Reports</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="analyses.html">Appendix: Analyses of the DWR data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../analyses.html">Appendix: Analyses of the DWR data</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-  <li><a href="analyses.html">Appendix: Analyses of the DWR data</a><ul>
-  <li><a href="analysis_ensemble_at_station.html">Compare DWR and reanalysis ensemble at station locations</a><ul>
-      <li>Previous: <a href="analysis_ensemble_at_station.html" title="previous chapter">Compare DWR and reanalysis ensemble at station locations</a></li>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../analyses.html">Appendix: Analyses of the DWR data</a><ul>
+  <li><a href="ensemble_at_station.html">Compare DWR and reanalysis ensemble at station locations</a><ul>
+      <li>Previous: <a href="ensemble_at_station.html" title="previous chapter">Compare DWR and reanalysis ensemble at station locations</a></li>
+      <li>Next: <a href="ensemble_at_station_CERA20C.html" title="next chapter">Compare DWR and CERA20C reanalysis ensemble at station locations</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
@@ -232,7 +234,7 @@
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
+    <form class="search" action="../../search.html" method="get">
       <div><input type="text" name="q" /></div>
       <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
@@ -248,7 +250,7 @@
       
       
       |
-      <a href="_sources/analysis_ensemble_at_station_20CR2c.txt"
+      <a href="../../_sources/analyses/validation_scatterplot/ensemble_at_station_20CR2c.txt"
           rel="nofollow">Page source</a>
     </div>
 

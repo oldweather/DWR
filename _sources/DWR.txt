@@ -22,4 +22,4 @@ The reports are on paper, and to use them in science we need them as a digitised
 .. toctree::
    :maxdepth: 2
 
-   data_from_weatherrescue 
+   data/data_from_weatherrescue 

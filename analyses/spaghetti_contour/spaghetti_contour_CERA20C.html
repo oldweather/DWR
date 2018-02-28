@@ -8,28 +8,29 @@
     
     <title>Spaghetti contours: CERA20C &#8212; Improving reanalysis with the Daily Weather Reports</title>
     
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '../../',
         VERSION:     '0.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="Improving reanalysis with the Daily Weather Reports" href="index.html" />
-    <link rel="up" title="Visualising uncertainty: spaghetti contours" href="analysis_spaghetti_contour.html" />
-    <link rel="prev" title="Spaghetti contours: 20CR2c" href="analysis_spaghetti_contour_20CR2c.html" />
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="top" title="Improving reanalysis with the Daily Weather Reports" href="../../index.html" />
+    <link rel="up" title="Visualising uncertainty: spaghetti contours" href="spaghetti_contour.html" />
+    <link rel="next" title="Spaghetti contours: 20CRvCERA" href="spaghetti_contour_20CRvCERA.html" />
+    <link rel="prev" title="Spaghetti contours: 20CR2c" href="spaghetti_contour_20CR2c.html" />
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
@@ -43,7 +44,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p><a class="reference external" href="analysis_spaghetti_contour.html">Spaghetti contours main page</a></p>
+  <p><a class="reference external" href="spaghetti_contour.html">Spaghetti contours main page</a></p>
 <div class="section" id="spaghetti-contours-cera20c">
 <h1>Spaghetti contours: CERA20C<a class="headerlink" href="#spaghetti-contours-cera20c" title="Permalink to this headline">¶</a></h1>
 <center>
@@ -51,7 +52,7 @@
 <a href="https://github.com/oldweather/DWR/raw/master/analyses/spaghetti_contour/Spaghetti_prmsl_1903102218_cera.png"><img src="https://github.com/oldweather/DWR/raw/master/analyses/spaghetti_contour/Spaghetti_prmsl_1903102218_cera.png""></a></td></tr>
 <tr><td> MSLP Contours for CERA20C for October 22nd, 1903 (at 6pm). Blue lines are contours from each of ensemble member, black lines the contours of the ensemble mean (only shown where the ensemble spread is less than 3hPa).</td></tr>
 </table>
-</center><p>Collect the data (prmsl ensemble from CERA20C):</p>
+</center><p>Collect the data (prmsl ensemble from CERA20C for October 1903):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Meteorographica.data.cera20c</span> <span class="kn">as</span> <span class="nn">cera20c</span>
 <span class="n">cera20c</span><span class="o">.</span><span class="n">fetch_data_for_month</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span><span class="mi">1903</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
@@ -155,7 +156,7 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Daily Weather Reports</a></h1>
+<h1 class="logo"><a href="../../index.html">Daily Weather Reports</a></h1>
 
 
 
@@ -173,20 +174,20 @@
 
 <h3>Navigation</h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="DWR.html">The Daily Weather Reports</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_from_weatherrescue.html">New observations from weatherescue.org</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../DWR.html">The Daily Weather Reports</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="analyses.html">Appendix: Analyses of the DWR data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../analyses.html">Appendix: Analyses of the DWR data</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-  <li><a href="analyses.html">Appendix: Analyses of the DWR data</a><ul>
-  <li><a href="analysis_spaghetti_contour.html">Visualising uncertainty: spaghetti contours</a><ul>
-      <li>Previous: <a href="analysis_spaghetti_contour_20CR2c.html" title="previous chapter">Spaghetti contours: 20CR2c</a></li>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../analyses.html">Appendix: Analyses of the DWR data</a><ul>
+  <li><a href="spaghetti_contour.html">Visualising uncertainty: spaghetti contours</a><ul>
+      <li>Previous: <a href="spaghetti_contour_20CR2c.html" title="previous chapter">Spaghetti contours: 20CR2c</a></li>
+      <li>Next: <a href="spaghetti_contour_20CRvCERA.html" title="next chapter">Spaghetti contours: 20CRvCERA</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
@@ -194,7 +195,7 @@
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
+    <form class="search" action="../../search.html" method="get">
       <div><input type="text" name="q" /></div>
       <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
@@ -210,7 +211,7 @@
       
       
       |
-      <a href="_sources/analysis_spaghetti_contour_CERA20C.txt"
+      <a href="../../_sources/analyses/spaghetti_contour/spaghetti_contour_CERA20C.txt"
           rel="nofollow">Page source</a>
     </div>
 
