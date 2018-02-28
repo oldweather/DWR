@@ -16,9 +16,9 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+sys.path.insert(0, os.path.abspath('./modules'))
 
 # -- General configuration ------------------------------------------------
 
@@ -34,6 +34,7 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
+    'sphinx.ext.napoleon'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -134,7 +135,8 @@ html_theme_options = {
     'github_user': 'oldweather',
     'github_repo': 'DWR',
     'show_powered_by': 'false',
-    'sidebar_collapse': 'true'
+    'sidebar_collapse': 'false',
+    'page_width': '980px'
 }
 
 # Add any paths that contain custom themes here, relative to this directory.

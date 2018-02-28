@@ -26,6 +26,19 @@ custom_names={'SUMBURGHHEAD'  : 'Sumburgh Head',
               'PORTADELGADA'  : 'Ponta Delgada'}
 
 def pretty_name(name):
+    """Convert station names from DATAFORMAT to Print Format.
+
+    The station names included in the DWR data files are in all caps
+    and contain no spaces. This function maps them to a readable
+    format - so FORTWILLIAM becomes 'Fort William'. 
+
+    Args:
+        name (str): Name as in data file (e.g. 'CAPGRISNEZ')
+
+    Returns:
+        str: Name in readable format (e.g. 'Cap Gris-Nez')
+
+    """
     name=name.upper()
     if name in custom_names:
         return custom_names[name]
