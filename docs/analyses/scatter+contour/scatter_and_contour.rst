@@ -18,4 +18,6 @@ This combines a `spaghetti-contour plot <../spaghetti_contour/spaghetti_contour.
 
    scatter_and_contour_20CR2c
    scatter_and_contour_CERA20C
+   scatter_and_contour_20CR2c_video
+   scatter_and_contour_CERA20C_video
 
