@@ -1,4 +1,4 @@
-`Spaghetti contours main page <analysis_spaghetti_contour.html>`_
+`Spaghetti contours main page <spaghetti_contour.html>`_
 
 Spaghetti contours: 20CR2c
 ==========================
@@ -12,7 +12,7 @@ Spaghetti contours: 20CR2c
     </table>
     </center>
 
-Collect the data (prmsl ensemble and observations from 20CR2c):
+Collect the data (prmsl ensemble and observations from 20CR2c for 1903):
 
 .. code-block:: python
 
@@ -22,5 +22,5 @@ Collect the data (prmsl ensemble and observations from 20CR2c):
 
 Script to make the figure:
 
-.. literalinclude:: ../analyses/spaghetti_contour/prmsl_20CR.py
+.. literalinclude:: ../../../analyses/spaghetti_contour/prmsl_20CR.py
 

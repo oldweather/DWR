@@ -1,4 +1,4 @@
-`Spaghetti contours main page <analysis_spaghetti_contour.html>`_
+`Spaghetti contours main page <spaghetti_contour.html>`_
 
 Spaghetti contours: CERA20C
 ===========================
@@ -12,7 +12,7 @@ Spaghetti contours: CERA20C
     </table>
     </center>
 
-Collect the data (prmsl ensemble from CERA20C):
+Collect the data (prmsl ensemble from CERA20C for October 1903):
 
 .. code-block:: python
 
@@ -21,5 +21,5 @@ Collect the data (prmsl ensemble from CERA20C):
 
 Script to make the figure:
 
-.. literalinclude:: ../analyses/spaghetti_contour/prmsl_CERA.py
+.. literalinclude:: ../../../analyses/spaghetti_contour/prmsl_CERA.py
 

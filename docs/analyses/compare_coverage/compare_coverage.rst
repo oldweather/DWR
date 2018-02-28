@@ -9,7 +9,7 @@ Compare DWR and reanalysis obs. coverage
     <p>Obs coverage in 20CR2c (left), and in DWR (right)</p>
     </center>
 
-Collect the data (observations from 20CR2c):
+Collect the data (observations from 20CR2c for 1901):
 
 .. code-block:: python
 
@@ -18,4 +18,4 @@ Collect the data (observations from 20CR2c):
 
 Script to make the figure:
 
-.. literalinclude:: ../analyses/compare_coverage/Jan_1901_sbs.py
+.. literalinclude:: ../../../analyses/compare_coverage/Jan_1901_sbs.py

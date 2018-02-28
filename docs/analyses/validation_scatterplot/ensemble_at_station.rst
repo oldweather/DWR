@@ -7,7 +7,7 @@ Compare DWR and reanalysis ensemble at station locations
     <center>
     <table><tr><td>
     <a href="https://github.com/oldweather/DWR/raw/master/analyses/validation_scatterplot/DWR_v_20CR_1901012218.png"><img src="https://github.com/oldweather/DWR/raw/master/analyses/validation_scatterplot/DWR_v_20CR_1901012218.png"></a></td></tr>
-    <tr><td>MSLP as observed at each DWR station (red line), as reconstructed by the 20CR2c ensemble at the station location (blue dots) for January 22nd, 1901 (at 6pm). (<a href='analysis_ensemble_at_station_20CR2c.html'>source</a>)</td></tr>
+    <tr><td>MSLP as observed at each DWR station (red line), as reconstructed by the 20CR2c ensemble at the station location (blue dots) for January 22nd, 1901 (at 6pm). (<a href='ensemble_at_station_20CR2c.html'>source</a>)</td></tr>
     </table>
     </center>
 
@@ -16,5 +16,5 @@ Ideally the reanalysis ensemble pressures would cluster closely around the obser
 .. toctree::
    :maxdepth: 2
 
-   analysis_ensemble_at_station_20CR2c
-   analysis_ensemble_at_station_CERA20C
+   ensemble_at_station_20CR2c
+   ensemble_at_station_CERA20C

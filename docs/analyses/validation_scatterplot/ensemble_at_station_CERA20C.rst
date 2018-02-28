@@ -1,4 +1,4 @@
-`Ensemble_comparison main page <analysis_ensemble_at_station.html>`_
+`Ensemble comparison main page <ensemble_at_station.html>`_
 
 Compare DWR and CERA20C reanalysis ensemble at station locations
 ================================================================
@@ -12,7 +12,7 @@ Compare DWR and CERA20C reanalysis ensemble at station locations
     </table>
     </center>
 
-Collect the data (prmsl ensemble from CERA20C):
+Collect the data (prmsl ensemble from CERA20C for January 1901):
 
 .. code-block:: python
 
@@ -21,4 +21,4 @@ Collect the data (prmsl ensemble from CERA20C):
 
 Script to make the figure:
 
-.. literalinclude:: ../analyses/validation_scatterplot/validation_scatterplot.cera20c.py
+.. literalinclude:: ../../../analyses/validation_scatterplot/validation_scatterplot.cera20c.py

@@ -1,4 +1,4 @@
-`Scatter-and-contour main page <analysis_scatter_and_contour.html>`_
+`Scatter-and-contour main page <scatter_and_contour.html>`_
 
 Visualising uncertainty: 20CR2c spaghetti contours & DWR data
 =============================================================
@@ -21,5 +21,5 @@ Collect the reanalysis data (prmsl ensemble from 20CR2c for 1901):
 
 Script to make the figure:
 
-.. literalinclude:: ../analyses/scatter+contour/scatter+contour.py
+.. literalinclude:: ../../../analyses/scatter+contour/scatter+contour.py
 

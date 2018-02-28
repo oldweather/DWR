@@ -18,5 +18,5 @@ Improving reanalysis with the Daily Weather Reports
 .. toctree::
    :maxdepth: 1
 
-   analyses
+   analyses/analyses
 

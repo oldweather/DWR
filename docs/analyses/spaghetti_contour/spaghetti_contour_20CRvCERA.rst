@@ -1,7 +1,7 @@
-`Spaghetti contours main page <analysis_spaghetti_contour.html>`_
+`Spaghetti contours main page <spaghetti_contour.html>`_
 
-Spaghetti contours: 20CRvCERA
-=============================
+Spaghetti contours: 20CR v CERA
+===============================
 
 .. raw:: html
 
@@ -12,7 +12,7 @@ Spaghetti contours: 20CRvCERA
     </table>
     </center>
 
-Collect the data (prmsl ensemble and observations from 20CR2c, prmsl ensemble for CERA20C):
+Collect the data (prmsl ensemble and observations from 20CR2c for 1903, prmsl ensemble for CERA20C for October 1903):
 
 .. code-block:: python
 
@@ -24,5 +24,5 @@ Collect the data (prmsl ensemble and observations from 20CR2c, prmsl ensemble fo
 
 Script to make the figure:
 
-.. literalinclude:: ../analyses/spaghetti_contour/compare_contours.py
+.. literalinclude:: ../../../analyses/spaghetti_contour/compare_contours.py
 

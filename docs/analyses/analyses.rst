@@ -7,9 +7,9 @@ This appendix is just a list of all the analysis scripts produced for this proje
 .. toctree::
    :maxdepth: 2
 
-   analysis_compare_coverage 
-   analysis_spaghetti_contour
-   analysis_ensemble_at_station
-   analysis_scatter_and_contour
+   compare_coverage/compare_coverage
+   spaghetti_contour/spaghetti_contour
+   validation_scatterplot/ensemble_at_station
+   scatter+contour/scatter_and_contour
 
 
