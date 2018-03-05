@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>DWR package &#8212; Improving reanalysis with the Daily Weather Reports</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Improving reanalysis with the Daily Weather Reports" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-DWR">
+<span id="dwr-package"></span><h1>DWR package<a class="headerlink" href="#module-DWR" title="Permalink to this headline">¶</a></h1>
+<p>A package for handling DWR data from the weatherrescue.org.</p>
+<dl class="function">
+<dt id="DWR.add_one_month">
+<code class="descclassname">DWR.</code><code class="descname">add_one_month</code><span class="sig-paren">(</span><em>dt0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/DWR/load.html#add_one_month"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DWR.add_one_month" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="DWR.at_station_and_time">
+<code class="descclassname">DWR.</code><code class="descname">at_station_and_time</code><span class="sig-paren">(</span><em>obs</em>, <em>station</em>, <em>dte</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/DWR/load.html#at_station_and_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DWR.at_station_and_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="DWR.get_data_dir">
+<code class="descclassname">DWR.</code><code class="descname">get_data_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/DWR/load.html#get_data_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DWR.get_data_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="DWR.get_data_file_name">
+<code class="descclassname">DWR.</code><code class="descname">get_data_file_name</code><span class="sig-paren">(</span><em>variable</em>, <em>year</em>, <em>month</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/DWR/load.html#get_data_file_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DWR.get_data_file_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the name of the file containing data for the
+requested variable, at the specified time.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="DWR.get_obs">
+<code class="descclassname">DWR.</code><code class="descname">get_obs</code><span class="sig-paren">(</span><em>start</em>, <em>end</em>, <em>variable</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/DWR/load.html#get_obs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DWR.get_obs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve all the observations between start and end</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="DWR.get_obs_1file">
+<code class="descclassname">DWR.</code><code class="descname">get_obs_1file</code><span class="sig-paren">(</span><em>variable</em>, <em>year</em>, <em>month</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/DWR/load.html#get_obs_1file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DWR.get_obs_1file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve all the observations in a single file.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="DWR.get_station_location">
+<code class="descclassname">DWR.</code><code class="descname">get_station_location</code><span class="sig-paren">(</span><em>obs</em>, <em>station</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/DWR/load.html#get_station_location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DWR.get_station_location" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="DWR.pretty_name">
+<code class="descclassname">DWR.</code><code class="descname">pretty_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/DWR/names.html#pretty_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DWR.pretty_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert station names from DATAFORMAT to Print Format.</p>
+<p>The station names included in the DWR data files are in all caps
+and contain no spaces. This function maps them to a readable
+format - so FORTWILLIAM becomes &#8216;Fort William&#8217;.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) &#8211; Name as in data file (e.g. &#8216;CAPGRISNEZ&#8217;)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Name in readable format (e.g. &#8216;Cap Gris-Nez&#8217;)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)">str</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Daily Weather Reports</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=oldweather&repo=DWR&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../DWR.html">The Daily Weather Reports</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../analyses/analyses.html">Appendix: Analyses of the DWR data</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+      |
+      <a href="../_sources/modules/auto_DWR.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
