@@ -6,7 +6,7 @@ Assimilating the Fort William pressures
 
     <center>
     <table><tr><td>
-    <a href="https://github.com/oldweather/DWR/raw/master/analyses/assimilate_Fort_william/Add_FW_20CR_1903022706.png"><img src="https://github.com/oldweather/DWR/raw/master/analyses/assimilate_Fort_william/Add_FW_20CR_1903022706.png"></a></td></tr>
+    <a href="https://github.com/oldweather/DWR/raw/master/analyses/assimilating_Fort_William/Add_FW_20CR_1903022706.png"><img src="https://github.com/oldweather/DWR/raw/master/analyses/assimilating_Fort_William/Add_FW_20CR_1903022706.png"></a></td></tr>
     <tr><td>MSLP spaghetti-contour plot for 20CR2c (left), and after assimilating a single observation from Fort William (right) for the Ulysses storm: February 27th, 1903 (at 6am). (<a href='assimilating_fort_william_20CR2c.html'>source</a>)</td></tr>
     </table>
     </center>
