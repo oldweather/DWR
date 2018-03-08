@@ -1,9 +1,5 @@
-#!/usr/bin/env python
-
 # Show effect of assimilating Fort William observation
-# Video frame version
 
-import os
 import math
 import datetime
 import numpy
@@ -21,39 +17,20 @@ import cartopy
 import cartopy.crs as ccrs
 
 import Meteorographica.weathermap as wm
-import Meteorographica.data.twcr as twcr
+import Meteorographica.data.cera20c as cera20c
 
 import DIYA
 RANDOM_SEED = 5
 
-# Get the datetime to plot from commandline arguments
-import argparse
-parser = argparse.ArgumentParser()
-parser.add_argument("--year", help="Year",
-                    type=int,required=True)
-parser.add_argument("--month", help="Integer month",
-                    type=int,required=True)
-parser.add_argument("--day", help="Day of month",
-                    type=int,required=True)
-parser.add_argument("--hour", help="Time of day (0 to 23.99)",
-                    type=float,required=True)
-parser.add_argument("--opdir", help="Directory for output files",
-                    default="%s/images/DWR/Add_FW_20CR" % \
-                                           os.getenv('SCRATCH'),
-                    type=str,required=False)
-args = parser.parse_args()
-if not os.path.isdir(args.opdir):
-    os.makedirs(args.opdir)
+# Date to show
+year=1903
+month=2
+day=27
+hour=6
+dte=datetime.datetime(year,month,day,hour)
 
-if (args.year!=1903 or args.month!=2):
-   raise StandardError("Obs only available for Feb 1903.")
-
-dte=datetime.datetime(args.year,args.month,args.day,
-                      int(args.hour),int(args.hour%1*60))
-
-# HD video size 1920x1080
-aspect=16.0/9.0
-fig=Figure(figsize=(10.8*aspect,10.8),  # Width, Height (inches)
+# Landscape page
+fig=Figure(figsize=(22,22/math.sqrt(2)),  # Width, Height (inches)
            dpi=100,
            facecolor=(0.88,0.88,0.88,1),
            edgecolor=None,
@@ -66,7 +43,7 @@ canvas=FigureCanvas(fig)
 # UK-centred projection
 projection=ccrs.RotatedPole(pole_longitude=177.5, pole_latitude=35.5)
 scale=12
-extent=[scale*-1*aspect/2,scale*aspect/2,scale*-1,scale]
+extent=[scale*-1,scale,scale*-1*math.sqrt(2),scale*math.sqrt(2)]
 
 # Two side-by-side plots
 ax_20C=fig.add_axes([0.01,0.01,0.485,0.98],projection=projection)
@@ -84,20 +61,8 @@ wm.add_grid(ax_wFW)
 land_img_20C=ax_20C.background_img(name='GreyT', resolution='low')
 land_img_DWR=ax_wFW.background_img(name='GreyT', resolution='low')
 
-# 20CR2c data
-prmsl=twcr.load('prmsl',args.year,args.month,args.day,args.hour,
-                             version='2c')
-
-# Get the observations used in 20CR2c
-obs=twcr.load_observations(dte-datetime.timedelta(hours=24),dte,
-                                                    version='2c')
-# Filter to those assimilated and near the UK
-obs_s=obs.loc[(obs['Assimilation.indicator']==1) &
-              ((obs['Latitude']>0) & 
-                 (obs['Latitude']<90)) &
-              ((obs['Longitude']>240) | 
-                 (obs['Longitude']<100))].copy()
-wm.plot_obs(ax_20C,obs_s,radius=0.1)
+# CERA data
+prmsl=cera20c.load('prmsl',year,month,day,hour)
 
 # For each ensemble member, make a contour plot
 for m in prmsl.coord('member').points:
@@ -107,7 +72,7 @@ for m in prmsl.coord('member').points:
                    levels=numpy.arange(870,1050,10),
                    colors='blue',
                    label=False,
-                   linewidths=0.2)
+                   linewidths=0.3)
 
 # Add the ensemble mean - with labels
 prmsl_m=prmsl.collapsed('member', iris.analysis.MEAN)
@@ -119,10 +84,10 @@ prmsl_m.data[numpy.where(prmsl_s.data>3)]=numpy.nan
 CS=wm.plot_contour(ax_20C,prmsl_m,
                    levels=numpy.arange(870,1050,10),
                    colors='black',
-                   label=False,
+                   label=True,
                    linewidths=2)
 
-wm.plot_label(ax_20C,'20CR2c',
+wm.plot_label(ax_20C,'CERA-20C',
                      fontsize=16,
                      facecolor=fig.get_facecolor(),
                      x_fraction=0.02,
@@ -131,41 +96,37 @@ wm.plot_label(ax_20C,'20CR2c',
 # Get the Fort William ob
 station_lat=56.82
 station_lon= -5.1
-FW_data=pandas.read_table('../FW_pressure_Feb_1903.dat',
+FW_data=pandas.read_table('FW_pressure_Feb_1903.dat',
                           header=None,
                           delim_whitespace=True)
-i_day=args.day
-i_hour=int(args.hour)
-if i_hour==0: # 0 is 24 the previous day in table
+i_day=day
+i_hour=hour
+if hour==0:
     i_day=i_day-1
     i_hour=24
-FW_ob_p=FW_data.iloc[i_day-1,i_hour+2]*100
-i_hour=i_hour+1
-if i_hour==25:
-    i_day=i_day+1
-    i_hour=1
-FW_ob_n=FW_data.iloc[i_day-1,i_hour+2]*100
-weight_n=args.hour%1
-if weight_n==1: weight_n=0
-FW_ob=FW_ob_n*weight_n+FW_ob_p*(1-weight_n)
-obs_assimilate=pandas.DataFrame(data={'year': args.year,
-                                      'month': args.month, 
-                                      'day': args.day,
-                                      'hour': int(args.hour),
-                                      'minute': int((args.hour%1)*60),
+FW_ob=FW_data.iloc[i_day-1,i_hour+2]*100
+obs_assimilate=pandas.DataFrame(data={'year': year, 
+                                      'month': month, 
+                                      'day': day,
+                                      'hour': hour, 
+                                      'minute': 0,
                                       'latitude': station_lat,
                                       'longitude': station_lon,
-                                      'value': FW_ob, 'name': 'Fort William'},
+                                      'value': FW_ob, 
+                                      'name': 'Fort William'},
                                        index=[0])
 obs_assimilate=obs_assimilate.assign(dtm=pandas.to_datetime(
-                   obs_assimilate[['year','month','day','hour','minute']]))
+                                 obs_assimilate[['year','month',
+                                   '     day','hour','minute']]))
 
 # Update mslp by assimilating Fort William ob.
-prmsl2=DIYA.constrain_cube(prmsl,prmsl,obs=obs_assimilate,obs_error=10,
-                           random_state=RANDOM_SEED,lat_range=(20,85),lon_range=(280,60))
+prmsl2=DIYA.constrain_cube(prmsl,prmsl,
+                           obs=obs_assimilate,
+                           obs_error=10,
+                           random_state=RANDOM_SEED,
+                           lat_range=(20,85),
+                           lon_range=(280,60))
 
-# Plot the assimilated obs
-wm.plot_obs(ax_wFW,obs_s,radius=0.1)
 # Plot the Fort William ob
 wm.plot_obs(ax_wFW,obs_assimilate,lat_label='latitude',
             lon_label='longitude',radius=0.1,facecolor='red')
@@ -178,7 +139,7 @@ for m in prmsl2.coord('member').points:
                    levels=numpy.arange(870,1050,10),
                    colors='blue',
                    label=False,
-                   linewidths=0.2)
+                   linewidths=0.3)
 
 # Add the ensemble mean - with labels
 prmsl_m=prmsl2.collapsed('member', iris.analysis.MEAN)
@@ -190,7 +151,7 @@ prmsl_m.data[numpy.where(prmsl_s.data>3)]=numpy.nan
 CS=wm.plot_contour(ax_wFW,prmsl_m,
                    levels=numpy.arange(870,1050,10),
                    colors='black',
-                   label=False,
+                   label=True,
                    linewidths=2)
 
 wm.plot_label(ax_wFW,'With Fort William observation',
@@ -200,14 +161,12 @@ wm.plot_label(ax_wFW,'With Fort William observation',
                      horizontalalignment='left')
 
 wm.plot_label(ax_wFW,
-              ('%04d-%02d-%02d:%02d' % 
-                (args.year,args.month,args.day,args.hour)),
+              '%04d-%02d-%02d:%02d' % (year,month,day,hour),
               fontsize=16,
               facecolor=fig.get_facecolor(),
               x_fraction=0.98,
               horizontalalignment='right')
 
 # Output as png
-fig.savefig('%s/Add_FW_%04d%02d%02d%02d%02d.png' % 
-                      (args.opdir,args.year,args.month,args.day,
-                       int(args.hour),int(args.hour%1*60)))
+fig.savefig('Add_FW_CERA_%04d%02d%02d%02d.png' % 
+                                  (year,month,day,hour))

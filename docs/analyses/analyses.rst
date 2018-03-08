@@ -11,5 +11,6 @@ This appendix is just a list of all the analysis scripts produced for this proje
    spaghetti_contour/spaghetti_contour
    validation_scatterplot/ensemble_at_station
    scatter+contour/scatter_and_contour
+   assimilating_Fort_William/assimilating_fort_william
 
 

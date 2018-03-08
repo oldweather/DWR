@@ -17,7 +17,7 @@ import cartopy
 import cartopy.crs as ccrs
 
 import Meteorographica.weathermap as wm
-import Meteorographica.data.cera20c as cera20c
+import Meteorographica.data.twcr as twcr
 
 import DIYA
 RANDOM_SEED = 5
@@ -61,8 +61,20 @@ wm.add_grid(ax_wFW)
 land_img_20C=ax_20C.background_img(name='GreyT', resolution='low')
 land_img_DWR=ax_wFW.background_img(name='GreyT', resolution='low')
 
-# CERA data
-prmsl=cera20c.load('prmsl',year,month,day,hour)
+# 20CR2c data
+prmsl=twcr.load('prmsl',year,month,day,hour,
+                             version='2c')
+
+# Get the observations used in 20CR2c
+obs=twcr.load_observations(dte-datetime.timedelta(hours=24),dte,
+                                                    version='2c')
+# Filter to those assimilated and near the UK
+obs_s=obs.loc[(obs['Assimilation.indicator']==1) &
+              ((obs['Latitude']>0) & 
+                 (obs['Latitude']<90)) &
+              ((obs['Longitude']>240) | 
+                 (obs['Longitude']<100))].copy()
+wm.plot_obs(ax_20C,obs_s,radius=0.1)
 
 # For each ensemble member, make a contour plot
 for m in prmsl.coord('member').points:
@@ -72,7 +84,7 @@ for m in prmsl.coord('member').points:
                    levels=numpy.arange(870,1050,10),
                    colors='blue',
                    label=False,
-                   linewidths=0.3)
+                   linewidths=0.2)
 
 # Add the ensemble mean - with labels
 prmsl_m=prmsl.collapsed('member', iris.analysis.MEAN)
@@ -87,7 +99,7 @@ CS=wm.plot_contour(ax_20C,prmsl_m,
                    label=True,
                    linewidths=2)
 
-wm.plot_label(ax_20C,'CERA-20C',
+wm.plot_label(ax_20C,'20CR2c',
                      fontsize=16,
                      facecolor=fig.get_facecolor(),
                      x_fraction=0.02,
@@ -105,19 +117,30 @@ if hour==0:
     i_day=i_day-1
     i_hour=24
 FW_ob=FW_data.iloc[i_day-1,i_hour+2]*100
-obs_assimilate=pandas.DataFrame(data={'year': year, 'month': month, 'day': day,
-                                      'hour': hour, 'minute': 0,
+obs_assimilate=pandas.DataFrame(data={'year': year, 
+                                      'month': month, 
+                                      'day': day,
+                                      'hour': hour, 
+                                      'minute': 0,
                                       'latitude': station_lat,
                                       'longitude': station_lon,
-                                      'value': FW_ob, 'name': 'Fort William'},
-                                       index=[0])
+                                      'value': FW_ob, 
+                                      'name': 'Fort William'},
+                                        index=[0])
 obs_assimilate=obs_assimilate.assign(dtm=pandas.to_datetime(
-                   obs_assimilate[['year','month','day','hour','minute']]))
+                   obs_assimilate[['year','month',
+                                   'day','hour','minute']]))
 
 # Update mslp by assimilating Fort William ob.
-prmsl2=DIYA.constrain_cube(prmsl,prmsl,obs=obs_assimilate,obs_error=10,
-                           random_state=RANDOM_SEED,lat_range=(20,85),lon_range=(280,60))
+prmsl2=DIYA.constrain_cube(prmsl,prmsl,
+                           obs=obs_assimilate,
+                           obs_error=10,
+                           random_state=RANDOM_SEED,
+                           lat_range=(20,85),
+                           lon_range=(280,60))
 
+# Plot the assimilated obs
+wm.plot_obs(ax_wFW,obs_s,radius=0.1)
 # Plot the Fort William ob
 wm.plot_obs(ax_wFW,obs_assimilate,lat_label='latitude',
             lon_label='longitude',radius=0.1,facecolor='red')
@@ -130,7 +153,7 @@ for m in prmsl2.coord('member').points:
                    levels=numpy.arange(870,1050,10),
                    colors='blue',
                    label=False,
-                   linewidths=0.3)
+                   linewidths=0.2)
 
 # Add the ensemble mean - with labels
 prmsl_m=prmsl2.collapsed('member', iris.analysis.MEAN)
@@ -159,5 +182,5 @@ wm.plot_label(ax_wFW,
               horizontalalignment='right')
 
 # Output as png
-fig.savefig('Add_FW_CERA_%04d%02d%02d%02d.png' % 
+fig.savefig('Add_FW_20CR_%04d%02d%02d%02d.png' % 
                                   (year,month,day,hour))

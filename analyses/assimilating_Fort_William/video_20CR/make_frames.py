@@ -47,8 +47,8 @@ while current_day<=end_day:
         count=0
         for fraction in (0,.25/4,.5/4,.75/4):
             if is_done(current_day.year,current_day.month,
-                           current_day.day,
-                           current_day.hour+current_day.minute/60.0+fraction):
+                       current_day.day,
+                       current_day.hour+current_day.minute/60.0+fraction):
                 continue
             cmd=("./add_FW_20CR.py --year=%d --month=%d" +
                 " --day=%d --hour=%f &\n") % (
