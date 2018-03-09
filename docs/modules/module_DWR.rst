@@ -1,13 +1,10 @@
-`Modules used by the DWR project <modules>`_
+`Modules used by the DWR project <modules.html>`_
 
-A module for the DWR data
-=========================
+DWR: A module for accessing Daily Weather Report observations
+=============================================================
 
-The DWR module provides functions for accessing DWR data from `weatherrescue.org <http://weatherrescue.org>`_
-
-.. currentmodule:: DWR
-
-.. autofunction:: pretty_name
-   :noindex:
+.. automodule:: DWR
+    :members:
+    :imported-members:
 
 
