@@ -10,36 +10,46 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU Lesser General Public License for more details.
 #
-"""
-The functions in this module provide the main way to load
-DWR observations.
-"""
+
+# Functions for easy access to DWR observations.
 
 import os
 import os.path
 import datetime
 import pandas
 
-def get_data_dir():
-    scratch=os.getenv('SCRATCH')
-    if scratch is None:
-        raise StandardError("SCRATCH environment variable is undefined")
-    base_file = "%s/DWR" % scratch
-    if os.path.isdir(base_file):
-        return base_file
-    raise StandardError("Scratch directory %s does not exist" % scratch)
+def _get_data_dir():
+   base_file = "%s/../../data" % os.path.dirname(__file__)
+   if os.path.isdir(base_file):
+       return base_file
 
-def get_data_file_name(variable,year,month):
+def _get_data_file_name(variable,year,month):
     """Return the name of the file containing data for the
        requested variable, at the specified time."""
-    base_dir=get_data_dir()
+    base_dir=_get_data_dir()
     name="%s/%04d/%02d/%s.txt" % (base_dir,
                                   year,month,variable)
     return name
 
-def get_obs_1file(variable,year,month):
-    """Retrieve all the observations in a single file."""
-    of_name=get_data_file_name(variable,year,month)
+def load_observations_1file(variable,year,month):
+    """Load all observations for one calendar month (for one variable)
+
+    Data must be available in directory ../../data.
+
+    Args:
+        variable (:obj:`str`): Variable name ('prmsl','air.2m', 'prate', etc.)
+        year (:obj:`int`): Year of assimilation run.
+        month (:obj:`int`): Month of assimilation run (1-12)
+
+    Returns:
+        :obj:`pandas.DataFrame`: Dataframe of observations.
+
+    Raises:
+        IOError: No data on disc for this variable, year, and month.
+
+    |
+    """
+    of_name=_get_data_file_name(variable,year,month)
     if not os.path.isfile(of_name):
         raise IOError("No obs file for %s on %04d/%02d" % (variable,year,month))
 
@@ -61,8 +71,26 @@ def get_obs_1file(variable,year,month):
     o=o.assign(dtm=pandas.to_datetime(o[['year','month','day','hour','minute']]))
     return o
  
-def get_obs(start,end,variable):
-    """Retrieve all the observations between start and end"""
+def load_observations(variable,start,end):
+    """Load observations from disc, for the selected period
+
+    Data must be available in directory $SCRATCH/DWR. Requires a data file for all calendar months in the period start to end.
+
+    Args:
+        variable (:obj:`str`): Variable name ('prmsl','air.2m', 'prate', etc.)
+        start (:obj:`datetime.datetime`): Get observations at or after this time.
+        end (:obj:`datetime.datetime`): Get observations before this time.
+
+    Returns:
+        :obj:`pandas.DataFrame`: Dataframe of observations.
+
+
+    Raises:
+        IOError: No data on disc for this variable, for a year and month in the selected period.
+
+    |
+    """
+
     result=None
     ct=start
     while(ct<end):
@@ -77,7 +105,7 @@ def get_obs(start,end,variable):
 
 # Want to move a datetime to the next month
 #  don't care about preserving the day of month
-def add_one_month(dt0):
+def _add_one_month(dt0):
     dt1 = dt0.replace(day=1)
     dt2 = dt1 + datetime.timedelta(days=32)
     dt3 = dt2.replace(day=1)
@@ -85,6 +113,24 @@ def add_one_month(dt0):
 
 # Get the observation at the station interpolated to the desired time
 def at_station_and_time(obs,station,dte):
+    """Get, from these observations, the value at the selected station and time.
+
+    Typically there are observations from each station only twice a day (sometimes less) to get the observed value at the specified time we do linear interpolation in time (using only observations for the selected station.
+
+    Args:
+        obs (:obj:`pandas.DataFrame`): Batch of observations for the period around the desired time. Probably from :func:`load_observations`.
+        station (:obj:`str`): Name of station, as used in obs.name.
+        dte (:obj:`datetime.datetime`): Time of required observed value.
+
+    Returns:
+        :obj:`float`: Interpolated observed value from station at time.
+
+
+    Raises:
+        StandardError: obs does not contain at least two values for selected station, one before and one after specified time. So interpolation not possible.
+
+    |
+    """
     at_station=obs.loc[obs['name']==station]
     if at_station.empty:
         raise StandardError('No data for station %s' % station)
@@ -108,6 +154,17 @@ def at_station_and_time(obs,station,dte):
 
 # Get the position of a named station
 def get_station_location(obs,station):
+    """Get, from these observations, the location (lat and lon) of the named station.
+
+    Args:
+        obs (:obj:`pandas.DataFrame`): Batch of observations. Probably from :func:`load_observations`.
+        station (:obj:`str`): Name of station, as used in obs.name.
+
+    Raises:
+        StandardError: obs does not contain any observations for selected station.
+
+    |
+    """
     at_station=obs.loc[obs['name']==station]
     if at_station.empty:
         raise StandardError('No data for station %s' % station)

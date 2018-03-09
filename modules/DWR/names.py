@@ -10,9 +10,8 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU Lesser General Public License for more details.
 #
-"""
-Functions for DWR station names.
-"""
+
+# Functions for DWR station names.
 
 custom_names={'SUMBURGHHEAD'  : 'Sumburgh Head',
               'FORTWILLIAM'   : 'Fort William',
@@ -28,9 +27,7 @@ custom_names={'SUMBURGHHEAD'  : 'Sumburgh Head',
 def pretty_name(name):
     """Convert station names from DATAFORMAT to Print Format.
 
-    The station names included in the DWR data files are in all caps
-    and contain no spaces. This function maps them to a readable
-    format - so FORTWILLIAM becomes 'Fort William'. 
+    The station names included in the DWR data files are in all caps and contain no spaces. This function maps them to a readable format - so FORTWILLIAM becomes 'Fort William'. 
 
     Args:
         name (str): Name as in data file (e.g. 'CAPGRISNEZ')
