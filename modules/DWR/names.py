@@ -30,10 +30,10 @@ def pretty_name(name):
     The station names included in the DWR data files are in all caps and contain no spaces. This function maps them to a readable format - so FORTWILLIAM becomes 'Fort William'. 
 
     Args:
-        name (str): Name as in data file (e.g. 'CAPGRISNEZ')
+        name (:obj:`str`): Name as in data file (e.g. 'CAPGRISNEZ')
 
     Returns:
-        str: Name in readable format (e.g. 'Cap Gris-Nez')
+        :obj:`str`: Name in readable format (e.g. 'Cap Gris-Nez')
 
     """
     name=name.upper()
