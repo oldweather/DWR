@@ -1,0 +1,22 @@
+DIYA package
+============
+
+Submodules
+----------
+
+DIYA.assimilate module
+----------------------
+
+.. automodule:: DIYA.assimilate
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: DIYA
+    :members:
+    :undoc-members:
+    :show-inheritance:

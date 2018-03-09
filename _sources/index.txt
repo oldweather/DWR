@@ -19,4 +19,4 @@ Improving reanalysis with the Daily Weather Reports
    :maxdepth: 1
 
    analyses/analyses
-
+   modules/modules

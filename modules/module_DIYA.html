@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>DIYA: Do-it-yourself data assimilation &#8212; Improving reanalysis with the Daily Weather Reports</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Improving reanalysis with the Daily Weather Reports" href="../index.html" />
+    <link rel="up" title="Appendix: python modules" href="modules.html" />
+    <link rel="prev" title="DWR: A module for accessing Daily Weather Report observations" href="module_DWR.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p><a class="reference external" href="modules.html">Modules used by the DWR project</a></p>
+<div class="section" id="module-DIYA">
+<span id="diya-do-it-yourself-data-assimilation"></span><h1>DIYA: Do-it-yourself data assimilation<a class="headerlink" href="#module-DIYA" title="Permalink to this headline">¶</a></h1>
+<p>Suppose you have an ensemble reanalysis, like <a class="reference external" href="https://www.esrl.noaa.gov/psd/data/20thC_Rean/">20CR</a>. So you have 56 different estimates of the global mean-sea-level pressure field at a particular date (say, 1903-10-27:18). There is quite a lot of spread in this ensemble, the pressures are uncertain.</p>
+<p>But we&#8217;ve also found a previously-unused observation, a measurement of MSLP at that time a a weather station (say in Fort William). We can use that new observation to improve the reanalysis estimate, with the <a class="reference external" href="https://www.esrl.noaa.gov/psd/data/20thC_Rean/">Ensemble Kalman Filter</a> or something similar.</p>
+<p>This module does this. It takes reanalysis data and observations, and assimilates the observations into the reanalysis fields, making improved versions.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">DIYA</span>
+<span class="n">new_field</span><span class="o">=</span><span class="n">DIYA</span><span class="o">.</span><span class="n">constrain_cube</span><span class="p">(</span><span class="n">old_field</span><span class="p">,</span><span class="n">old_field</span><span class="p">,</span><span class="n">obs</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt id="DIYA.constrain_cube">
+<code class="descclassname">DIYA.</code><code class="descname">constrain_cube</code><span class="sig-paren">(</span><em>target</em>, <em>constraints</em>, <em>obs</em>, <em>obs_error=0.1</em>, <em>random_state=None</em>, <em>model=None</em>, <em>lat_range=(-90</em>, <em>90)</em>, <em>lon_range=(-180</em>, <em>360)</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/DIYA/assimilate.html#constrain_cube"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DIYA.constrain_cube" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constrain the target at each gridpoint.</p>
+<p>Generates the constraints at each observation location from the constraints cube, and then runs <a class="reference internal" href="#DIYA.constrain_point" title="DIYA.constrain_point"><code class="xref py py-func docutils literal"><span class="pre">constrain_point()</span></code></a> for each grid point in the target cube (inside the lat:lon ranges).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>target</strong> (<a class="reference external" href="http://scitools.org.uk/iris/docs/latest/iris/iris/cube.html#iris.cube.Cube" title="(in Iris v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">iris.cube.Cube</span></code></a>) &#8211; Ensemble to be constrained, must have dimensions &#8216;member&#8217;,&#8217;latitude&#8217;, and &#8216;longitude&#8217;&#8221;.</li>
+<li><strong>constraints</strong> (<a class="reference external" href="http://scitools.org.uk/iris/docs/latest/iris/iris/cube.html#iris.cube.Cube" title="(in Iris v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">iris.cube.Cube</span></code></a>) &#8211; Ensemble to constrain the target, must have dimensions (&#8216;member&#8217;,&#8217;latitude&#8217;,&#8217;longitude&#8217;)&#8221;.</li>
+<li><strong>obs</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-obj docutils literal"><span class="pre">pandas.DataFrame</span></code></a>) &#8211; Observations. Dataframe must have columns &#8216;latitude&#8217;, &#8216;longitude&#8217;, and &#8216;value&#8217;, and value should have same units as constraints.</li>
+<li><strong>obs_error</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>) &#8211; Uncertainty in each observation value (1 s.d.) . Units as obs.value.</li>
+<li><strong>random_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.random.RandomState.html#numpy.random.RandomState" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.random.RandomState</span></code></a>, optional) &#8211; Set to produce exactly reproducible results.</li>
+<li><strong>model</strong> (<a class="reference external" href="http://scikit-learn.org/stable/modules/classes.html#module-sklearn.linear_model" title="(in scikit-learn v0.19.1)"><code class="xref py py-obj docutils literal"><span class="pre">sklearn.linear_model</span></code></a>, optional) &#8211; Model to use to relate target to constraints. Defaults to <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet" title="(in scikit-learn v0.19.1)"><code class="xref py py-obj docutils literal"><span class="pre">sklearn.linear_model.ElasticNet</span></code></a> with default parameters.</li>
+<li><strong>lat_range</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code></a>, optional) &#8211; Only do constraint in this range of latitudes.</li>
+<li><strong>lon_range</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code></a>, optional) &#8211; Only do constraint in this range of longitudes.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">target, after applying constraints.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal"><span class="pre">iris.cube.cube</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="DIYA.constrain_point">
+<code class="descclassname">DIYA.</code><code class="descname">constrain_point</code><span class="sig-paren">(</span><em>target</em>, <em>constraint</em>, <em>model</em>, <em>obs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/DIYA/assimilate.html#constrain_point"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DIYA.constrain_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constrain the target at a point</p>
+<p>Fit a model to the target given the constraint (t=m(c)+r). Then make a predicted ensemble using the observations in the fitted model, and the residuals to the fit (p=m(o)+r). If nE=number of ensemble members, and nP=number of observation points:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>target</strong> (<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.array</span></code></a>) &#8211; 1d array size nE - the target ensemble at the target point.</li>
+<li><strong>constraint</strong> (<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.array</span></code></a>) &#8211; 2d array size [nE,nP] - the constraint ensemble at each of the observation points.</li>
+<li><strong>model</strong> (<a class="reference external" href="http://scikit-learn.org/stable/modules/classes.html#module-sklearn.linear_model" title="(in scikit-learn v0.19.1)"><code class="xref py py-obj docutils literal"><span class="pre">sklearn.linear_model</span></code></a>) &#8211; Model to fit.</li>
+<li><strong>obs</strong> (<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.array</span></code></a>) &#8211; 1d array size nP - the observations.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">1d array size nE - the constrained target ensemble.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.array</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Daily Weather Reports</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=oldweather&repo=DWR&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../DWR.html">The Daily Weather Reports</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../analyses/analyses.html">Appendix: Analyses of the DWR data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Appendix: python modules</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">Appendix: python modules</a><ul>
+      <li>Previous: <a href="module_DWR.html" title="previous chapter">DWR: A module for accessing Daily Weather Report observations</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+      |
+      <a href="../_sources/modules/module_DIYA.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

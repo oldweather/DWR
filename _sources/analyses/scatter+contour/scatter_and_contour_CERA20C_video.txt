@@ -1,7 +1,7 @@
 `Scatter-and-contour main page <scatter_and_contour.html>`_
 
 Visualising uncertainty: CERA20C spaghetti contours & DWR data video
-===================================================================
+====================================================================
 
 .. raw:: html
 

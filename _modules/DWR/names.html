@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>DWR.names &#8212; Improving reanalysis with the Daily Weather Reports</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="top" title="Improving reanalysis with the Daily Weather Reports" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for DWR.names</h1><div class="highlight"><pre>
+<span></span><span class="c1"># (C) British Crown Copyright 2017, Met Office</span>
+<span class="c1">#</span>
+<span class="c1"># This code is free software: you can redistribute it and/or modify it under</span>
+<span class="c1"># the terms of the GNU Lesser General Public License as published by the</span>
+<span class="c1"># Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This code is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU Lesser General Public License for more details.</span>
+<span class="c1">#</span>
+
+<span class="c1"># Functions for DWR station names.</span>
+
+<span class="n">custom_names</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;SUMBURGHHEAD&#39;</span>  <span class="p">:</span> <span class="s1">&#39;Sumburgh Head&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;FORTWILLIAM&#39;</span>   <span class="p">:</span> <span class="s1">&#39;Fort William&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;MALINHEAD&#39;</span>     <span class="p">:</span> <span class="s1">&#39;Malin Head&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;BLACKSODPOINT&#39;</span> <span class="p">:</span> <span class="s1">&#39;Blacksod Point&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;SPURNHEAD&#39;</span>     <span class="p">:</span> <span class="s1">&#39;Spurn Head&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;THEHELDER&#39;</span>     <span class="p">:</span> <span class="s1">&#39;Den Helder&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;ROCHESPOINT&#39;</span>   <span class="p">:</span> <span class="s1">&#39;Roches Point&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;CAPGRISNEZ&#39;</span>    <span class="p">:</span> <span class="s1">&#39;Cap Gris-Nez&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;PORTLANDBILL&#39;</span>  <span class="p">:</span> <span class="s1">&#39;Portland Bill&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;PORTADELGADA&#39;</span>  <span class="p">:</span> <span class="s1">&#39;Ponta Delgada&#39;</span><span class="p">}</span>
+
+<div class="viewcode-block" id="pretty_name"><a class="viewcode-back" href="../../modules/module_DWR.html#DWR.pretty_name">[docs]</a><span class="k">def</span> <span class="nf">pretty_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert station names from DATAFORMAT to Print Format.</span>
+
+<span class="sd">    The station names included in the DWR data files are in all caps and contain no spaces. This function maps them to a readable format - so FORTWILLIAM becomes &#39;Fort William&#39;. </span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        name (:obj:`str`): Name as in data file (e.g. &#39;CAPGRISNEZ&#39;)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :obj:`str`: Name in readable format (e.g. &#39;Cap Gris-Nez&#39;)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">custom_names</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">custom_names</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">name</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Daily Weather Reports</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=oldweather&repo=DWR&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../DWR.html">The Daily Weather Reports</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../analyses/analyses.html">Appendix: Analyses of the DWR data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Appendix: python modules</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

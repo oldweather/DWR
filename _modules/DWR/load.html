@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>DWR.load &#8212; Improving reanalysis with the Daily Weather Reports</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="top" title="Improving reanalysis with the Daily Weather Reports" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for DWR.load</h1><div class="highlight"><pre>
+<span></span><span class="c1"># (C) British Crown Copyright 2017, Met Office</span>
+<span class="c1">#</span>
+<span class="c1"># This code is free software: you can redistribute it and/or modify it under</span>
+<span class="c1"># the terms of the GNU Lesser General Public License as published by the</span>
+<span class="c1"># Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This code is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU Lesser General Public License for more details.</span>
+<span class="c1">#</span>
+
+<span class="c1"># Functions for easy access to DWR observations.</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+
+<span class="k">def</span> <span class="nf">_get_data_dir</span><span class="p">():</span>
+   <span class="n">base_file</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/../../data&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span>
+   <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">base_file</span><span class="p">):</span>
+       <span class="k">return</span> <span class="n">base_file</span>
+
+<span class="k">def</span> <span class="nf">_get_data_file_name</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the name of the file containing data for the</span>
+<span class="sd">       requested variable, at the specified time.&quot;&quot;&quot;</span>
+    <span class="n">base_dir</span><span class="o">=</span><span class="n">_get_data_dir</span><span class="p">()</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/</span><span class="si">%04d</span><span class="s2">/</span><span class="si">%02d</span><span class="s2">/</span><span class="si">%s</span><span class="s2">.txt&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">base_dir</span><span class="p">,</span>
+                                  <span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">,</span><span class="n">variable</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">name</span>
+
+<div class="viewcode-block" id="load_observations_1file"><a class="viewcode-back" href="../../modules/module_DWR.html#DWR.load_observations_1file">[docs]</a><span class="k">def</span> <span class="nf">load_observations_1file</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load all observations for one calendar month (for one variable)</span>
+
+<span class="sd">    Data must be available in directory ../../data.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        variable (:obj:`str`): Variable name (&#39;prmsl&#39;,&#39;air.2m&#39;, &#39;prate&#39;, etc.)</span>
+<span class="sd">        year (:obj:`int`): Year of assimilation run.</span>
+<span class="sd">        month (:obj:`int`): Month of assimilation run (1-12)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :obj:`pandas.DataFrame`: Dataframe of observations.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        IOError: No data on disc for this variable, year, and month.</span>
+
+<span class="sd">    |</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">of_name</span><span class="o">=</span><span class="n">_get_data_file_name</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">of_name</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;No obs file for </span><span class="si">%s</span><span class="s2"> on </span><span class="si">%04d</span><span class="s2">/</span><span class="si">%02d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">variable</span><span class="p">,</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">))</span>
+
+    <span class="n">o</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">of_name</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span>
+                       <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                       <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;ascii&quot;</span><span class="p">,</span>
+                       <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="s1">&#39;day&#39;</span><span class="p">,</span><span class="s1">&#39;hour&#39;</span><span class="p">,</span><span class="s1">&#39;minute&#39;</span><span class="p">,</span>
+                              <span class="s1">&#39;latitude&#39;</span><span class="p">,</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span>
+                              <span class="s1">&#39;value&#39;</span><span class="p">,</span>
+                              <span class="s1">&#39;name&#39;</span><span class="p">],</span>
+                       <span class="n">converters</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                                   <span class="s1">&#39;hour&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;minute&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                                   <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span><span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+                                   <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+                                   <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">},</span>
+                       <span class="n">na_values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;NA&#39;</span><span class="p">],</span>
+                       <span class="n">comment</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="c1"># Add the datetime</span>
+    <span class="n">o</span><span class="o">=</span><span class="n">o</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">dtm</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">o</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="s1">&#39;day&#39;</span><span class="p">,</span><span class="s1">&#39;hour&#39;</span><span class="p">,</span><span class="s1">&#39;minute&#39;</span><span class="p">]]))</span>
+    <span class="k">return</span> <span class="n">o</span></div>
+ 
+<div class="viewcode-block" id="load_observations"><a class="viewcode-back" href="../../modules/module_DWR.html#DWR.load_observations">[docs]</a><span class="k">def</span> <span class="nf">load_observations</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load observations from disc, for the selected period</span>
+
+<span class="sd">    Data must be available in directory $SCRATCH/DWR. Requires a data file for all calendar months in the period start to end.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        variable (:obj:`str`): Variable name (&#39;prmsl&#39;,&#39;air.2m&#39;, &#39;prate&#39;, etc.)</span>
+<span class="sd">        start (:obj:`datetime.datetime`): Get observations at or after this time.</span>
+<span class="sd">        end (:obj:`datetime.datetime`): Get observations before this time.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :obj:`pandas.DataFrame`: Dataframe of observations.</span>
+
+
+<span class="sd">    Raises:</span>
+<span class="sd">        IOError: No data on disc for this variable, for a year and month in the selected period.</span>
+
+<span class="sd">    |</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">result</span><span class="o">=</span><span class="kc">None</span>
+    <span class="n">ct</span><span class="o">=</span><span class="n">start</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">ct</span><span class="o">&lt;</span><span class="n">end</span><span class="p">):</span>
+        <span class="n">o</span><span class="o">=</span><span class="n">get_obs_1file</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span><span class="n">ct</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">ct</span><span class="o">.</span><span class="n">month</span><span class="p">)</span>
+        <span class="n">o2</span><span class="o">=</span><span class="n">o</span><span class="p">[(</span><span class="n">o</span><span class="o">.</span><span class="n">dtm</span><span class="o">&gt;=</span><span class="n">start</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">dtm</span><span class="o">&lt;</span><span class="n">end</span><span class="p">)]</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">result</span><span class="o">=</span><span class="n">o2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">result</span><span class="p">,</span><span class="n">o2</span><span class="p">])</span>
+        <span class="n">ct</span><span class="o">=</span><span class="n">add_one_month</span><span class="p">(</span><span class="n">ct</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span></div>
+
+<span class="c1"># Want to move a datetime to the next month</span>
+<span class="c1">#  don&#39;t care about preserving the day of month</span>
+<span class="k">def</span> <span class="nf">_add_one_month</span><span class="p">(</span><span class="n">dt0</span><span class="p">):</span>
+    <span class="n">dt1</span> <span class="o">=</span> <span class="n">dt0</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">dt2</span> <span class="o">=</span> <span class="n">dt1</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+    <span class="n">dt3</span> <span class="o">=</span> <span class="n">dt2</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dt3</span>
+
+<span class="c1"># Get the observation at the station interpolated to the desired time</span>
+<div class="viewcode-block" id="at_station_and_time"><a class="viewcode-back" href="../../modules/module_DWR.html#DWR.at_station_and_time">[docs]</a><span class="k">def</span> <span class="nf">at_station_and_time</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span><span class="n">station</span><span class="p">,</span><span class="n">dte</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get, from these observations, the value at the selected station and time.</span>
+
+<span class="sd">    Typically there are observations from each station only twice a day (sometimes less) to get the observed value at the specified time we do linear interpolation in time (using only observations for the selected station.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        obs (:obj:`pandas.DataFrame`): Batch of observations for the period around the desired time. Probably from :func:`load_observations`.</span>
+<span class="sd">        station (:obj:`str`): Name of station, as used in obs.name.</span>
+<span class="sd">        dte (:obj:`datetime.datetime`): Time of required observed value.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :obj:`float`: Interpolated observed value from station at time.</span>
+
+
+<span class="sd">    Raises:</span>
+<span class="sd">        StandardError: obs does not contain at least two values for selected station, one before and one after specified time. So interpolation not possible.</span>
+
+<span class="sd">    |</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">at_station</span><span class="o">=</span><span class="n">obs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">station</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">at_station</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">StandardError</span><span class="p">(</span><span class="s1">&#39;No data for station </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">station</span><span class="p">)</span>
+    <span class="n">at_station</span><span class="o">=</span><span class="n">at_station</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;dtm&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">hit</span><span class="o">=</span><span class="n">at_station</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">at_station</span><span class="p">[</span><span class="s1">&#39;dtm&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">dte</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">hit</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">hit</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">before</span><span class="o">=</span><span class="n">at_station</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">at_station</span><span class="p">[</span><span class="s1">&#39;dtm&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="n">dte</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">before</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">StandardError</span><span class="p">(</span><span class="s1">&#39;No data for station </span><span class="si">%s</span><span class="s1"> before </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">station</span><span class="p">,</span>
+                     <span class="n">dte</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">:%H:%M&quot;</span><span class="p">)))</span>
+    <span class="n">before</span><span class="o">=</span><span class="n">before</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># last row</span>
+    <span class="n">after</span><span class="o">=</span><span class="n">at_station</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">at_station</span><span class="p">[</span><span class="s1">&#39;dtm&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="n">dte</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">after</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">StandardError</span><span class="p">(</span><span class="s1">&#39;No data for station </span><span class="si">%s</span><span class="s1"> after </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">station</span><span class="p">,</span>
+                     <span class="n">dte</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">:%H:%M&quot;</span><span class="p">)))</span>
+    <span class="n">after</span><span class="o">=</span><span class="n">after</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># first row</span>
+    <span class="n">weight</span><span class="o">=</span><span class="p">((</span><span class="n">dte</span><span class="o">-</span><span class="n">before</span><span class="p">[</span><span class="s1">&#39;dtm&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span><span class="o">/</span>
+           <span class="p">(</span><span class="n">after</span><span class="p">[</span><span class="s1">&#39;dtm&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">before</span><span class="p">[</span><span class="s1">&#39;dtm&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">after</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">weight</span><span class="o">+</span><span class="n">before</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">weight</span><span class="p">)</span></div>
+
+<span class="c1"># Get the position of a named station</span>
+<div class="viewcode-block" id="get_station_location"><a class="viewcode-back" href="../../modules/module_DWR.html#DWR.get_station_location">[docs]</a><span class="k">def</span> <span class="nf">get_station_location</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span><span class="n">station</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get, from these observations, the location (lat and lon) of the named station.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        obs (:obj:`pandas.DataFrame`): Batch of observations. Probably from :func:`load_observations`.</span>
+<span class="sd">        station (:obj:`str`): Name of station, as used in obs.name.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        StandardError: obs does not contain any observations for selected station.</span>
+
+<span class="sd">    |</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">at_station</span><span class="o">=</span><span class="n">obs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">station</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">at_station</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">StandardError</span><span class="p">(</span><span class="s1">&#39;No data for station </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">station</span><span class="p">)</span>
+    <span class="n">result</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="n">at_station</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s1">&#39;longitude&#39;</span><span class="p">:</span><span class="n">at_station</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span>
+    <span class="k">return</span> <span class="n">result</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Daily Weather Reports</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=oldweather&repo=DWR&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../DWR.html">The Daily Weather Reports</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../analyses/analyses.html">Appendix: Analyses of the DWR data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Appendix: python modules</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

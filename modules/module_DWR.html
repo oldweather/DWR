@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>A module for the DWR data &#8212; Improving reanalysis with the Daily Weather Reports</title>
+    <title>DWR: A module for accessing Daily Weather Report observations &#8212; Improving reanalysis with the Daily Weather Reports</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -26,6 +26,9 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Improving reanalysis with the Daily Weather Reports" href="../index.html" />
+    <link rel="up" title="Appendix: python modules" href="modules.html" />
+    <link rel="next" title="DIYA: Do-it-yourself data assimilation" href="module_DIYA.html" />
+    <link rel="prev" title="Appendix: python modules" href="modules.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -41,26 +44,166 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p><a class="reference external" href="modules">Modules used by the DWR project</a></p>
-<div class="section" id="a-module-for-the-dwr-data">
-<h1>A module for the DWR data<a class="headerlink" href="#a-module-for-the-dwr-data" title="Permalink to this headline">¶</a></h1>
-<p>The DWR module provides functions for accessing DWR data from <a class="reference external" href="http://weatherrescue.org">weatherrescue.org</a></p>
+  <p><a class="reference external" href="modules.html">Modules used by the DWR project</a></p>
+<div class="section" id="module-DWR">
+<span id="dwr-a-module-for-accessing-daily-weather-report-observations"></span><h1>DWR: A module for accessing Daily Weather Report observations<a class="headerlink" href="#module-DWR" title="Permalink to this headline">¶</a></h1>
+<p>This package provides access to UK-region station observations recently digitised from the <a class="reference external" href="https://www.metoffice.gov.uk/learning/library/archive-hidden-treasures/daily-weather-reports">Daily Weather Reports</a></p>
+<p>The data included come from two sources:</p>
+<ul class="simple">
+<li>The <a class="reference external" href="http://weatherrescue.org">Weather Rescue</a> citizen science project run by Ed Hawkins.</li>
+<li>A commercial digitisation project run back in 2002 by Lisa Alexander and Rob Allan, but never published.</li>
+</ul>
+<p>The DWR provides synoptic observations, from around 50 stations in and around the UK, typically twice a day, but the list of stations providing observations, and the frequency of observation, both vary over the many years of the series.</p>
+<p>The DWR provides observations of several variables, but so far we have digitised data only from one:</p>
+<ul class="simple">
+<li>Mean-sea-level pressure: &#8216;mslp&#8217;</li>
+</ul>
+<p>Access to the data is through the <a class="reference internal" href="#DWR.load_observations" title="DWR.load_observations"><code class="xref py py-func docutils literal"><span class="pre">load_observations()</span></code></a> function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">DWR</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="n">obs</span><span class="o">=</span><span class="n">DWR</span><span class="o">.</span><span class="n">load_observations</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span>
+                          <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1903</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+                          <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1903</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">23</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Will load the mslp observations (as a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-obj docutils literal"><span class="pre">pandas.DataFrame</span></code></a>) from the whole of October 1903.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <dl class="function">
-<dt>
-<code class="descclassname">DWR.</code><code class="descname">pretty_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/DWR/names.html#pretty_name"><span class="viewcode-link">[source]</span></a></dt>
-<dd><p>Convert station names from DATAFORMAT to Print Format.</p>
-<p>The station names included in the DWR data files are in all caps
-and contain no spaces. This function maps them to a readable
-format - so FORTWILLIAM becomes &#8216;Fort William&#8217;.</p>
+<dt id="DWR.at_station_and_time">
+<code class="descclassname">DWR.</code><code class="descname">at_station_and_time</code><span class="sig-paren">(</span><em>obs</em>, <em>station</em>, <em>dte</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/DWR/load.html#at_station_and_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DWR.at_station_and_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get, from these observations, the value at the selected station and time.</p>
+<p>Typically there are observations from each station only twice a day (sometimes less) to get the observed value at the specified time we do linear interpolation in time (using only observations for the selected station.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) &#8211; Name as in data file (e.g. &#8216;CAPGRISNEZ&#8217;)</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>obs</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-obj docutils literal"><span class="pre">pandas.DataFrame</span></code></a>) &#8211; Batch of observations for the period around the desired time. Probably from <a class="reference internal" href="#DWR.load_observations" title="DWR.load_observations"><code class="xref py py-func docutils literal"><span class="pre">load_observations()</span></code></a>.</li>
+<li><strong>station</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>) &#8211; Name of station, as used in obs.name.</li>
+<li><strong>dte</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a>) &#8211; Time of required observed value.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Interpolated observed value from station at time.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">StandardError</span></code> &#8211; obs does not contain at least two values for selected station, one before and one after specified time. So interpolation not possible.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="DWR.get_station_location">
+<code class="descclassname">DWR.</code><code class="descname">get_station_location</code><span class="sig-paren">(</span><em>obs</em>, <em>station</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/DWR/load.html#get_station_location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DWR.get_station_location" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get, from these observations, the location (lat and lon) of the named station.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>obs</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-obj docutils literal"><span class="pre">pandas.DataFrame</span></code></a>) &#8211; Batch of observations. Probably from <a class="reference internal" href="#DWR.load_observations" title="DWR.load_observations"><code class="xref py py-func docutils literal"><span class="pre">load_observations()</span></code></a>.</li>
+<li><strong>station</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>) &#8211; Name of station, as used in obs.name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">StandardError</span></code> &#8211; obs does not contain any observations for selected station.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="DWR.load_observations">
+<code class="descclassname">DWR.</code><code class="descname">load_observations</code><span class="sig-paren">(</span><em>variable</em>, <em>start</em>, <em>end</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/DWR/load.html#load_observations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DWR.load_observations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load observations from disc, for the selected period</p>
+<p>Data must be available in directory $SCRATCH/DWR. Requires a data file for all calendar months in the period start to end.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>variable</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>) &#8211; Variable name (&#8216;prmsl&#8217;,&#8217;air.2m&#8217;, &#8216;prate&#8217;, etc.)</li>
+<li><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a>) &#8211; Get observations at or after this time.</li>
+<li><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a>) &#8211; Get observations before this time.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Dataframe of observations.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-obj docutils literal"><span class="pre">pandas.DataFrame</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal"><span class="pre">IOError</span></code></a> &#8211; No data on disc for this variable, for a year and month in the selected period.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="DWR.load_observations_1file">
+<code class="descclassname">DWR.</code><code class="descname">load_observations_1file</code><span class="sig-paren">(</span><em>variable</em>, <em>year</em>, <em>month</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/DWR/load.html#load_observations_1file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DWR.load_observations_1file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load all observations for one calendar month (for one variable)</p>
+<p>Data must be available in directory ../../data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>variable</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>) &#8211; Variable name (&#8216;prmsl&#8217;,&#8217;air.2m&#8217;, &#8216;prate&#8217;, etc.)</li>
+<li><strong>year</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>) &#8211; Year of assimilation run.</li>
+<li><strong>month</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>) &#8211; Month of assimilation run (1-12)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Dataframe of observations.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-obj docutils literal"><span class="pre">pandas.DataFrame</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.6)"><code class="xref py py-exc docutils literal"><span class="pre">IOError</span></code></a> &#8211; No data on disc for this variable, year, and month.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="DWR.pretty_name">
+<code class="descclassname">DWR.</code><code class="descname">pretty_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/DWR/names.html#pretty_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DWR.pretty_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert station names from DATAFORMAT to Print Format.</p>
+<p>The station names included in the DWR data files are in all caps and contain no spaces. This function maps them to a readable format - so FORTWILLIAM becomes &#8216;Fort William&#8217;.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>) &#8211; Name as in data file (e.g. &#8216;CAPGRISNEZ&#8217;)</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Name in readable format (e.g. &#8216;Cap Gris-Nez&#8217;)</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)">str</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></td>
 </tr>
 </tbody>
 </table>
@@ -94,14 +237,19 @@ format - so FORTWILLIAM becomes &#8216;Fort William&#8217;.</p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../DWR.html">The Daily Weather Reports</a></li>
 </ul>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../analyses/analyses.html">Appendix: Analyses of the DWR data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Appendix: python modules</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">Appendix: python modules</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">Appendix: python modules</a></li>
+      <li>Next: <a href="module_DIYA.html" title="next chapter">DIYA: Do-it-yourself data assimilation</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>
