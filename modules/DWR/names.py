@@ -13,16 +13,46 @@
 
 # Functions for DWR station names.
 
-custom_names={'SUMBURGHHEAD'  : 'Sumburgh Head',
-              'FORTWILLIAM'   : 'Fort William',
-              'MALINHEAD'     : 'Malin Head',
-              'BLACKSODPOINT' : 'Blacksod Point',
-              'SPURNHEAD'     : 'Spurn Head',
-              'THEHELDER'     : 'Den Helder',
-              'ROCHESPOINT'   : 'Roches Point',
-              'CAPGRISNEZ'    : 'Cap Gris-Nez',
-              'PORTLANDBILL'  : 'Portland Bill',
-              'PORTADELGADA'  : 'Ponta Delgada'}
+custom_names={
+              'BLACKSODPOINT'    : 'Blacksod Point',
+              'BOSCOMBEDOWN'     : 'Boscombe Down',
+              'BUTTOFLEWIS'      : 'Butt of Lewis',
+              'CAPEWRATH'        : 'Cape Wrath',
+              'CAPGRISNEZ'       : 'Cap Gris-Nez',
+              'CASTLEARCHDALE'   : 'Castle Archdale',
+              'CLACTONONSEA'     : 'Clacton-on-Sea',
+              'EASTFORTUNE'      : 'East Fortune',
+              'FLAMBOROUGHHEAD'  : 'Flamborough Head',
+              'FORTWILLIAM'      : 'Fort William',
+              'HARTLANDPOINT'    : 'Hartland Point',
+              'HOLMSLEYSOUTH'    : 'Holmsley South',
+              'LITTLERISSINGTON' : 'Little Rissington',
+              'LOCHRANNOCH'      : 'Loch Rannoch',
+              'LOUGHFOYLE'       : 'Lough Foyle',
+              'MALINHEAD'        : 'Malin Head',
+              'MULLOFGALOWAY'    : 'Mull of Galloway',
+              'NORTHWEALD'       : 'North Weald',
+              'PEMBROKEDOCK'     : 'Pembroke Dock',
+              'POINTAYRE'        : 'Point Ayre',
+              'PORTADELGADA'     : 'Ponta Delgada',
+              'PORTLANDBILL'     : 'Portland Bill',
+              'ROCHESPOINT'      : 'Roches Point',
+              'ROSSONWYE'        : 'Ross-on-wye',
+              'SPURNHEAD'        : 'Spurn Head',
+              'SQUIRESGATE'      : 'Squires Gate',
+              'STABBSHEAD'       : 'St. Abb''s Head',
+              'STEVAL'           : 'St. Eval',
+              'STMAWGAN'         : 'St. Mawgan',
+              'SULESKERRY'       : 'Sule Skerry',
+              'SULLOMVOE'        : 'Sullom Voe',
+              'SUMBURGHHEAD'     : 'Sumburgh Head',
+              'THEHELDER'        : 'Den Helder',
+              'THELIZARD'        : 'The Lizard',
+              'THORNEYISLAND'    : 'Thorney Island',
+              'UPPERHEYFORD'     : 'Upper Heyford',
+              'WESTFREUGH'       : 'West Freugh',
+              'WESTRAYNHAM'      : 'West Raynham'
+}
 
 def pretty_name(name):
     """Convert station names from DATAFORMAT to Print Format.
