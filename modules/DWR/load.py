@@ -94,21 +94,21 @@ def load_observations(variable,start,end):
     result=None
     ct=start
     while(ct<end):
-        o=get_obs_1file(variable,ct.year,ct.month)
+        o=load_observations_1file(variable,ct.year,ct.month)
         o2=o[(o.dtm>=start) & (o.dtm<end)]
         if(result is None):
             result=o2
         else:
             result=pandas.concat([result,o2])
-        ct=add_one_month(ct)
+        ct=_add_one_month(ct)
     return result
 
-# Want to move a datetime to the next month
-#  don't care about preserving the day of month
+# Want to move a datetime to the beginning of the next month
 def _add_one_month(dt0):
     dt1 = dt0.replace(day=1)
     dt2 = dt1 + datetime.timedelta(days=32)
     dt3 = dt2.replace(day=1)
+    dt3 = dt3.replace(hour=0)
     return dt3
 
 # Get the observation at the station interpolated to the desired time

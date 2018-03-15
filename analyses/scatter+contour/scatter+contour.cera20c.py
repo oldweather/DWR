@@ -25,10 +25,10 @@ import Meteorographica.data.cera20c as cera20c
 import DWR
  
 # Date to show - Heroy hurricane
-year=1901
+year=1953
 month=1
-day=22
-hour=18
+day=31
+hour=0
 dte=datetime.datetime(year,month,day,hour)
 
 # Landscape page
@@ -63,9 +63,9 @@ wm.add_grid(ax_map)
 land_img_20C=ax_map.background_img(name='GreyT', resolution='low')
 
 # Get the DWR observations within +- 12 hours
-obs=DWR.get_obs(dte-datetime.timedelta(hours=12.1),
-                dte+datetime.timedelta(hours=12.1),
-                'prmsl')
+obs=DWR.load_observations('prmsl',
+                          dte-datetime.timedelta(hours=12),
+                          dte+datetime.timedelta(hours=12))
 # sort them from north to south
 obs=obs.sort_values(by='latitude',ascending=True)
 # Get the list of stations - preserving order
@@ -75,7 +75,7 @@ wm.plot_obs(ax_map,obs,lat_label='latitude',
             lon_label='longitude',radius=0.15,facecolor='red')
 
 # load the pressures
-prmsl=cera20c.get_slice_at_hour('prmsl',year,month,day,hour)
+prmsl=cera20c.load('prmsl',year,month,day,hour)
 
 # For each ensemble member, make a contour plot
 #for m in prmsl.coord('member').points:
@@ -166,14 +166,17 @@ for y in range(0,len(stations)):
     latlon=DWR.get_station_location(obs,station)
     ensemble=interpolator([latlon['latitude'],
                            latlon['longitude']])
-    for m in range(0,len(ensemble.data)):
-        ax_scp.add_patch(Circle((ensemble.data[m]/100,
-                            random.uniform(y+1.25,y+1.75)),
-                            radius=0.1,
-                            facecolor='blue',
-                            edgecolor='blue',
-                            alpha=0.5,
-                            zorder=0.5))
+    ax_scp.scatter(ensemble.data/100,
+                numpy.random.uniform(low=y+1.25,
+                                     high=y+1.75,
+                                     size=len(ensemble.data)),
+                50, # Point size
+                'blue', # Color
+                marker='.',
+                edgecolors='face',
+                linewidths=0.0,
+                alpha=0.5,
+                zorder=0.5)
 
 
 # Join each station name to its location on the map

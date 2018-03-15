@@ -23,14 +23,16 @@ md=pandas.read_csv("%s/../metadata/names.csv" % sd,
 #  time offset (hours) for the given date and value, from the date given
 #  in the file (assuming times are 0,3,..,21)
 def get_time_offset(date,hours):
-   # Before 1944 - at 1,7,13,18 and off by 1/2 day
+   # Before April 1922 - at 1,7,13,18 and back by 1/2 day
     offsets=(-14,-14,-15,-15,-14,-14,-14,-14)
-   # At beginning of August 1944, switched to 0,6,12,18
+   # At beginning of April 1921, move forward by 1 day
     if date.year>1944 or (date.year==1944 and date.month>7):
-        offsets=(-15,-15,-15,-15,-15,-15,-15,-15)
+        offsets=(10,10,9,9,10,10,10,10)
+    # At beginning of August 1944, switched to 0,6,12,18
+    if date.year>1944 or (date.year==1944 and date.month>7):
+        offsets=(9,9,9,9,9,9,9,9)
     return offsets[hours/3]
    
-
 # Convert Lisa's data
 Lf=glob.glob("%s/../raw.data/*.dat" % sd)
 for stfile in Lf:
