@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Data from an earlier digitisation project &#8212; Improving reanalysis with the Daily Weather Reports</title>
+    
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Improving reanalysis with the Daily Weather Reports" href="../index.html" />
+    <link rel="up" title="The Daily Weather Reports" href="../DWR.html" />
+    <link rel="next" title="New observations from weatherescue.org" href="data_from_weatherrescue.html" />
+    <link rel="prev" title="The Daily Weather Reports" href="../DWR.html" /> 
+  </head>
+  <body role="document">
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Improving reanalysis with DWR</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../DWR.html" title="The Daily Weather Reports"
+             accesskey="P">previous</a> |
+          <a href="data_from_weatherrescue.html" title="New observations from weatherescue.org"
+             accesskey="N">next</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="data-from-an-earlier-digitisation-project">
+<h1>Data from an earlier digitisation project<a class="headerlink" href="#data-from-an-earlier-digitisation-project" title="Permalink to this headline">¶</a></h1>
+<p>As part of <a class="reference external" href="https://www.research.ed.ac.uk/portal/en/publications/fluctuations-in-autumnwinter-severe-storms-over-the-british-isles-1920-to-present(7135f643-9419-4e6a-b2e9-91bd137e13be).html">a study of severe storms across the British Isles</a>, some observations from the Daily Weather Reports were (commercially) transcribed in the early 2000&#8217;s. This transcription project covered the period 1919-1960, but only transcribed part of the observations: only pressure and pressure tendencies were transcribed, and only from stations in the British Isles reporting four times a day. Also, the &#8216;late arrivals and corrections&#8217; section of the reports was not included.</p>
+<p>The raw transcription output has not survived, but the transcriptions were processed into <a class="reference external" href="https://github.com/oldweather/DWR/tree/master/Lisa_storms/raw.data">station files</a> containing up to eight mean-sea-level-pressure observations a day (four observations and another four constructed from the 3-hour pressure tendencies).</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Aberdeen</span>                 <span class="mi">1920</span>  <span class="mi">4</span>  <span class="mi">1</span> <span class="mf">1010.3</span> <span class="mf">1008.3</span> <span class="mf">1008.4</span> <span class="mf">1007.4</span> <span class="mf">9999.9</span> <span class="mf">9999.9</span> <span class="mf">1003.3</span> <span class="mf">1005.3</span>
+<span class="n">Aberdeen</span>                 <span class="mi">1920</span>  <span class="mi">4</span>  <span class="mi">2</span> <span class="mf">1005.1</span> <span class="mf">1009.1</span> <span class="mf">1008.0</span> <span class="mf">1012.0</span> <span class="mf">9999.9</span> <span class="mf">9999.9</span> <span class="mf">1012.7</span> <span class="mf">1013.7</span>
+<span class="n">Aberdeen</span>                 <span class="mi">1920</span>  <span class="mi">4</span>  <span class="mi">3</span> <span class="mf">1013.4</span> <span class="mf">1014.4</span> <span class="mf">1014.5</span> <span class="mf">1014.5</span> <span class="mf">9999.9</span> <span class="mf">9999.9</span> <span class="mf">1013.6</span> <span class="mf">1012.6</span>
+<span class="n">Aberdeen</span>                 <span class="mi">1920</span>  <span class="mi">4</span>  <span class="mi">4</span> <span class="mf">1012.7</span> <span class="mf">1011.7</span> <span class="mf">9999.9</span> <span class="mf">9999.9</span> <span class="mf">9999.9</span> <span class="mf">9999.9</span> <span class="mf">1010.7</span> <span class="mf">1011.7</span>
+<span class="n">Aberdeen</span>                 <span class="mi">1920</span>  <span class="mi">4</span>  <span class="mi">5</span> <span class="mf">1011.9</span> <span class="mf">1011.9</span> <span class="mf">1012.5</span> <span class="mf">1012.5</span> <span class="mf">9999.9</span> <span class="mf">9999.9</span> <span class="mf">1012.2</span> <span class="mf">1012.2</span>
+<span class="n">Aberdeen</span>                 <span class="mi">1920</span>  <span class="mi">4</span>  <span class="mi">6</span> <span class="mf">1011.8</span> <span class="mf">1010.8</span> <span class="mf">1010.1</span> <span class="mf">1009.1</span> <span class="mf">9999.9</span> <span class="mf">9999.9</span> <span class="mf">1004.5</span>  <span class="mf">999.5</span>
+<span class="n">Aberdeen</span>                 <span class="mi">1920</span>  <span class="mi">4</span>  <span class="mi">7</span>  <span class="mf">995.5</span>  <span class="mf">997.5</span>  <span class="mf">995.6</span> <span class="mf">1001.6</span> <span class="mf">9999.9</span> <span class="mf">9999.9</span> <span class="mf">1004.2</span> <span class="mf">1006.2</span>
+<span class="n">Aberdeen</span>                 <span class="mi">1920</span>  <span class="mi">4</span>  <span class="mi">8</span> <span class="mf">1006.1</span> <span class="mf">1007.1</span> <span class="mf">1007.4</span> <span class="mf">1006.4</span> <span class="mf">9999.9</span> <span class="mf">9999.9</span> <span class="mf">1003.9</span> <span class="mf">1002.9</span>
+<span class="n">Aberdeen</span>                 <span class="mi">1920</span>  <span class="mi">4</span>  <span class="mi">9</span> <span class="mf">1002.3</span> <span class="mf">1002.3</span> <span class="mf">1001.6</span> <span class="mf">1004.6</span> <span class="mf">9999.9</span> <span class="mf">9999.9</span> <span class="mf">1004.1</span> <span class="mf">1005.1</span>
+<span class="n">Aberdeen</span>                 <span class="mi">1920</span>  <span class="mi">4</span> <span class="mi">10</span> <span class="mf">1004.9</span> <span class="mf">1006.9</span> <span class="mf">1006.9</span> <span class="mf">1007.9</span> <span class="mf">9999.9</span> <span class="mf">9999.9</span> <span class="mf">1006.5</span> <span class="mf">1006.5</span>
+<span class="n">Aberdeen</span>                 <span class="mi">1920</span>  <span class="mi">4</span> <span class="mi">11</span> <span class="mf">1005.7</span> <span class="mf">1004.7</span> <span class="mf">1004.2</span> <span class="mf">1003.2</span> <span class="mf">9999.9</span> <span class="mf">9999.9</span>  <span class="mf">999.7</span>  <span class="mf">998.7</span>
+<span class="n">Aberdeen</span>                 <span class="mi">1920</span>  <span class="mi">4</span> <span class="mi">12</span>  <span class="mf">998.9</span>  <span class="mf">995.9</span>  <span class="mf">995.3</span>  <span class="mf">993.3</span> <span class="mf">9999.9</span> <span class="mf">9999.9</span>  <span class="mf">989.2</span>  <span class="mf">989.2</span>
+</pre></div>
+</div>
+<p>One complication with the DWR is that exact observation locations are not given, only approximate locations (e.g. &#8216;Aberdeen&#8217;). For MSLP, observations exact locations are not vital, so <a class="reference external" href="https://github.com/oldweather/DWR/blob/master/Lisa_storms/metadata/names.csv">a nominal location</a> has been assigned for each station.</p>
+<p>Another difficulty with the station files is that they don&#8217;t give exact times for the observations (they weren&#8217;t needed by the original study). The eight values in the station files for each day are the values on the DWR page for that day, and both the format of the page and the times of observations changed over the period 1919-1960.</p>
+<p>To make the data easily useable, the station files have been conferted into the same monthly data format used for <a class="reference external" href="data_from_weatherrescue.html">weatherrescue.org data</a>; assigning latitudes, longitudes, and times in the process.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="c1"># Convert the digitised data from Lisa&#39;s files to the format Ed is</span>
+<span class="c1">#  using.</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># Get script directory</span>
+<span class="n">sd</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+
+<span class="c1"># Load the Station names and locations</span>
+<span class="n">md</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/../metadata/names.csv&quot;</span> <span class="o">%</span> <span class="n">sd</span><span class="p">,</span>
+                   <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+
+<span class="c1"># The data in Lisa&#39;s files is stored as 8 values/day, but the mapping of</span>
+<span class="c1">#  the values onto GMT times is peculiar and time varying. Return the</span>
+<span class="c1">#  time offset (hours) for the given date and value, from the date given</span>
+<span class="c1">#  in the file (assuming times are 0,3,..,21)</span>
+<span class="k">def</span> <span class="nf">get_time_offset</span><span class="p">(</span><span class="n">date</span><span class="p">,</span><span class="n">hours</span><span class="p">):</span>
+   <span class="c1"># Before April 1922 - at 1,7,13,18 and back by 1/2 day</span>
+    <span class="n">offsets</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">14</span><span class="p">,</span><span class="o">-</span><span class="mi">14</span><span class="p">,</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="o">-</span><span class="mi">14</span><span class="p">,</span><span class="o">-</span><span class="mi">14</span><span class="p">,</span><span class="o">-</span><span class="mi">14</span><span class="p">,</span><span class="o">-</span><span class="mi">14</span><span class="p">)</span>
+   <span class="c1"># At beginning of April 1921, move forward by 1 day</span>
+    <span class="k">if</span> <span class="n">date</span><span class="o">.</span><span class="n">year</span><span class="o">&gt;</span><span class="mi">1944</span> <span class="ow">or</span> <span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">year</span><span class="o">==</span><span class="mi">1944</span> <span class="ow">and</span> <span class="n">date</span><span class="o">.</span><span class="n">month</span><span class="o">&gt;</span><span class="mi">7</span><span class="p">):</span>
+        <span class="n">offsets</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+    <span class="c1"># At beginning of August 1944, switched to 0,6,12,18</span>
+    <span class="k">if</span> <span class="n">date</span><span class="o">.</span><span class="n">year</span><span class="o">&gt;</span><span class="mi">1944</span> <span class="ow">or</span> <span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">year</span><span class="o">==</span><span class="mi">1944</span> <span class="ow">and</span> <span class="n">date</span><span class="o">.</span><span class="n">month</span><span class="o">&gt;</span><span class="mi">7</span><span class="p">):</span>
+        <span class="n">offsets</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">offsets</span><span class="p">[</span><span class="n">hours</span><span class="o">/</span><span class="mi">3</span><span class="p">]</span>
+   
+<span class="c1"># Convert Lisa&#39;s data</span>
+<span class="n">Lf</span><span class="o">=</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/../raw.data/*.dat&quot;</span> <span class="o">%</span> <span class="n">sd</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">stfile</span> <span class="ow">in</span> <span class="n">Lf</span><span class="p">:</span>
+    <span class="n">std</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">read_fwf</span><span class="p">(</span><span class="n">stfile</span><span class="p">,</span>
+                        <span class="n">widths</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span>
+                        <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="c1"># Append each line to the new ouput file</span>
+    <span class="c1">#  slow - but so what.</span>
+    <span class="k">for</span> <span class="n">ln</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">std</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])):</span>
+        <span class="n">Of</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/../../data_from_Lisa/</span><span class="si">%04d</span><span class="s2">/</span><span class="si">%02d</span><span class="s2">/prmsl.txt&quot;</span> <span class="o">%</span>
+                          <span class="p">(</span><span class="n">sd</span><span class="p">,</span><span class="n">std</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ln</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">std</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ln</span><span class="p">,</span><span class="mi">2</span><span class="p">]))</span>
+        <span class="n">mdl</span><span class="o">=</span><span class="n">md</span><span class="p">[</span><span class="n">md</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="n">std</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ln</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+        <span class="k">if</span> <span class="n">mdl</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">StandardError</span><span class="p">(</span><span class="s2">&quot;No station </span><span class="si">%s</span><span class="s2"> in metadata&quot;</span> <span class="o">%</span> 
+                                                <span class="n">std</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ln</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">LastF</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+        <span class="n">Of</span><span class="o">=</span><span class="kc">None</span>
+        <span class="n">opfile</span><span class="o">=</span><span class="kc">None</span>
+        <span class="n">ob_tbase</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">std</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ln</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+                                   <span class="n">std</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ln</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
+                                   <span class="n">std</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ln</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">hri</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">):</span>
+            <span class="c1"># Skip the missing data</span>
+            <span class="k">if</span> <span class="n">std</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ln</span><span class="p">,</span><span class="n">hri</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">9000</span><span class="p">:</span> <span class="k">continue</span>
+            <span class="c1"># Ob time and date</span>
+            <span class="n">ob_time</span><span class="o">=</span><span class="n">ob_tbase</span><span class="o">+</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span>
+               <span class="p">(</span><span class="n">hri</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">3</span> <span class="o">+</span> <span class="n">get_time_offset</span><span class="p">(</span><span class="n">ob_tbase</span><span class="p">,(</span><span class="n">hri</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">3</span><span class="p">))</span>
+            <span class="c1"># Output value in Ed&#39;s format</span>
+            <span class="n">Of</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/../../data_from_Lisa/</span><span class="si">%04d</span><span class="s2">/</span><span class="si">%02d</span><span class="s2">/prmsl.txt&quot;</span> <span class="o">%</span>
+                             <span class="p">(</span><span class="n">sd</span><span class="p">,</span><span class="n">ob_time</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">ob_time</span><span class="o">.</span><span class="n">month</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">Of</span><span class="o">!=</span><span class="n">LastF</span><span class="p">:</span>
+                <span class="n">dn</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">Of</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">dn</span><span class="p">):</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dn</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">opfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">opfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">LastF</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+                        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">Of</span><span class="p">)</span>
+                        <span class="n">dn</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">LastF</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">dn</span><span class="p">):</span>
+                            <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">dn</span><span class="p">)</span>
+                <span class="n">opfile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">Of</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>
+                <span class="n">LastF</span><span class="o">=</span><span class="n">Of</span>
+
+            <span class="n">opfile</span><span class="o">.</span><span class="n">write</span><span class="p">((</span><span class="s2">&quot;</span><span class="si">%04d</span><span class="s2"> </span><span class="si">%02d</span><span class="s2"> </span><span class="si">%02d</span><span class="s2"> </span><span class="si">%02d</span><span class="s2"> </span><span class="si">%02d</span><span class="s2"> </span><span class="si">%6.2f</span><span class="s2"> &quot;</span><span class="o">+</span>
+                          <span class="s2">&quot;</span><span class="si">%7.2f</span><span class="s2"> </span><span class="si">%6.1f</span><span class="s2"> </span><span class="si">%16s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">%</span>
+                         <span class="p">(</span><span class="n">ob_time</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">ob_time</span><span class="o">.</span><span class="n">month</span><span class="p">,</span>
+                          <span class="n">ob_time</span><span class="o">.</span><span class="n">day</span><span class="p">,</span><span class="n">ob_time</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span>
+                          <span class="n">ob_time</span><span class="o">.</span><span class="n">minute</span><span class="p">,</span>
+                          <span class="n">mdl</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="n">mdl</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="c1">#latlon</span>
+                          <span class="n">std</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">ln</span><span class="p">,</span><span class="n">hri</span><span class="o">+</span><span class="mi">3</span><span class="p">],</span>          <span class="c1"># ob value</span>
+                          <span class="n">mdl</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span>              <span class="c1"># name</span>
+</pre></div>
+</div>
+<p>Both the <a class="reference external" href="https://github.com/oldweather/DWR/tree/master/Lisa_storms/raw.data">original station files</a> and the <a class="reference external" href="https://github.com/oldweather/DWR/tree/master/data_from_Lisa">final monthly files</a> are included in this repository. An API for the final monthly data is provided by <a class="reference external" href="../modules/module_DWR.html">a python module</a>.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table Of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../DWR.html">The Daily Weather Reports</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Data from an earlier digitisation project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_from_weatherrescue.html">New observations from weatherescue.org</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/module_DWR.html">DWR: A module for accessing Daily Weather Report observations</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../analyses/analyses.html">Appendix: Analyses of the DWR data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/modules.html">Appendix: python modules</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../DWR.html" title="The Daily Weather Reports"
+              >previous</a> |
+            <a href="data_from_weatherrescue.html" title="New observations from weatherescue.org"
+              >next</a> |
+            <a href="../py-modindex.html" title="Python Module Index"
+              >modules</a> |
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/data/data_from_lisa_files.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>
