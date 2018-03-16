@@ -1,5 +1,4 @@
-# UK region 20Cr2c spaghetti-contour prmsl map
-# Use Meteorographica weathermap functions
+# UK region CERA20C spaghetti-contour prmsl map
 
 import math
 import datetime
@@ -55,7 +54,7 @@ wm.add_grid(ax_20C)
 land_img_20C=ax_20C.background_img(name='GreyT', resolution='low')
 
 # load the pressures
-prmsl=cera20c.get_slice_at_hour('prmsl',year,month,day,hour)
+prmsl=cera20c.load('prmsl',year,month,day,hour)
 
 # For each ensemble member, make a contour plot
 for m in prmsl.coord('member').points:

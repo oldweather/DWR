@@ -25,8 +25,8 @@ import Meteorographica.data.cera20c as cera20c
 import DWR
  
 # Date to show - Heroy hurricane
-year=1953
-month=1
+year=1919
+month=10
 day=31
 hour=0
 dte=datetime.datetime(year,month,day,hour)

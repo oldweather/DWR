@@ -81,13 +81,17 @@ wm.add_grid(ax_C2C)
 land_img_20C=ax_20C.background_img(name='GreyT', resolution='low')
 land_img_DWR=ax_C2C.background_img(name='GreyT', resolution='low')
 
-# 20CR2c data
-obs=DWR.get_obs(dte-datetime.timedelta(hours=24),dte,'prmsl')
+# New DWR observations
+obs=DWR.load_observations('prmsl',
+                          dte-datetime.timedelta(hours=24),
+                          dte)
 wm.plot_obs(ax_20C,obs,lat_label='latitude',
             lon_label='longitude',radius=0.15,facecolor='red')
 
 # Add the observations from 20CR
-obs=twcr.get_obs(dte-datetime.timedelta(hours=24),dte,'3.5.1')
+obs=twcr.load_observations(dte-datetime.timedelta(hours=24),
+                           dte,
+                           version='2c')
 # Filter to those assimilated and near the UK
 obs_s=obs.loc[(obs['Assimilation.indicator']==1) &
               ((obs['Latitude']>0) & 
@@ -97,10 +101,9 @@ obs_s=obs.loc[(obs['Assimilation.indicator']==1) &
 wm.plot_obs(ax_20C,obs_s,radius=0.15)
 
 # load the pressures
-prmsl=twcr.get_slice_at_hour('prmsl',
-                             args.year,args.month,
-                             args.day,args.hour,
-                             version='3.5.1',type='ensemble')
+prmsl=twcr.load('prmsl',args.year,args.month,
+                        args.day,args.hour,
+                        version='2c')
 
 # For each ensemble member, make a contour plot
 #for m in prmsl.coord('member').points:
@@ -126,21 +129,22 @@ CS=wm.plot_contour(ax_20C,prmsl_m,
                    label=False,
                    linewidths=2)
 
-# 20CR2c observations
+# 20CR2c label
 wm.plot_label(ax_20C,'20CR2c (members 1-10)',
                      facecolor=fig.get_facecolor(),
                      x_fraction=0.02,
                      horizontalalignment='left')
 
 # CERA data
-obs=DWR.get_obs(dte-datetime.timedelta(hours=24),dte,'prmsl')
+obs=DWR.load_observations('prmsl',
+                          dte-datetime.timedelta(hours=24),
+                          dte)
 wm.plot_obs(ax_C2C,obs,lat_label='latitude',
             lon_label='longitude',radius=0.15,facecolor='red')
 
-# load the pressures
-prmsl=cera20c.get_slice_at_hour('prmsl',args.year,args.month,
-                                args.day,args.hour,
-                                type='ensemble')
+# load the CERA pressures
+prmsl=cera20c.load('prmsl',args.year,args.month,
+                           args.day,args.hour)
 
 # For each ensemble member, make a contour plot
 for m in prmsl.coord('member').points:

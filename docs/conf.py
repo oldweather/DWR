@@ -125,19 +125,21 @@ todo_include_todos = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = 'agogo'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
 html_theme_options = {
-    'github_user': 'oldweather',
-    'github_repo': 'DWR',
-    'show_powered_by': 'false',
-    'sidebar_collapse': 'false',
-    'page_width': '980px'
+    'documentwidth': '800px',
+    'textalign': 'left',
 }
+#    'github_user': 'oldweather',
+#    'github_repo': 'DWR',
+#    'page_width': '980px'
+#    'show_powered_by': 'false',
+#    'sidebar_collapse': 'false',
 
 # Add any paths that contain custom themes here, relative to this directory.
 # html_theme_path = []
@@ -186,14 +188,14 @@ html_static_path = ['_static']
 
 # Custom sidebar templates, maps document names to template names.
 #
-html_sidebars = {
-    '**': [
-        'about.html',
-        'navigation.html',
-        'relations.html',
-        'searchbox.html',
-    ]
-}
+#html_sidebars = {
+#    '**': [
+#        'about.html',
+#        'navigation.html',
+#        'relations.html',
+#        'searchbox.html',
+#    ]
+#}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.

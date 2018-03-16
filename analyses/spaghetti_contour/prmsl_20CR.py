@@ -55,7 +55,9 @@ wm.add_grid(ax_20C)
 land_img_20C=ax_20C.background_img(name='GreyT', resolution='low')
 
 # Add the observations from 20CR
-obs=twcr.get_obs(dte-datetime.timedelta(hours=24),dte,'3.5.1')
+obs=twcr.load_observations(dte-datetime.timedelta(hours=24),
+                           dte,
+                           version='2c')
 # Filter to those assimilated and near the UK
 obs_s=obs.loc[(obs['Assimilation.indicator']==1) &
               ((obs['Latitude']>0) & 
@@ -65,8 +67,8 @@ obs_s=obs.loc[(obs['Assimilation.indicator']==1) &
 wm.plot_obs(ax_20C,obs_s,radius=0.15)
 
 # load the pressures
-prmsl=twcr.get_slice_at_hour('prmsl',year,month,day,hour,
-                             version='3.5.1',type='ensemble')
+prmsl=twcr.load('prmsl',year,month,day,hour,
+                                version='2c')
 
 # For each ensemble member, make a contour plot
 for m in prmsl.coord('member').points:
