@@ -1,23 +1,20 @@
-`Scatter-and-contour main page <scatter_and_contour.html>`_
-
 Visualising uncertainty: CERA20C spaghetti contours & DWR data video
 ====================================================================
 
 .. raw:: html
 
     <center>
-    <table><tr><td>
-    <iframe src="https://player.vimeo.com/video/252500135?title=0&byline=0&portrait=0" width="730" height="411" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></td></tr>
+    <table><tr><td><center>
+    <iframe src="https://player.vimeo.com/video/252500135?title=0&byline=0&portrait=0" width="795" height="448" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></center></td></tr>
     <tr><td>MSLP spaghetti-contour plot for CERA20C (left), and comparison with DWR obs at the station locations (right) over October 1903.</td></tr>
     </table>
     </center>
 
+|
+
 Collect the reanalysis data (prmsl ensemble from CERA20C for October 1903):
 
-.. code-block:: python
-
-    import Meteorographica.data.cera20c as cera20c
-    cera20c.fetch_data_for_year('prmsl',1903,10)
+.. literalinclude:: ../../../analyses/scatter+contour/video_cera/get_data_CERA.py
 
 Script to make an individual frame - takes year, month, day, and hour as command-line options:
 

@@ -132,8 +132,9 @@ html_theme = 'agogo'
 # documentation.
 #
 html_theme_options = {
-    'documentwidth': '800px',
+    'documentwidth': '825px',
     'textalign': 'left',
+    'headerfont': 'serif',    # Need caps and digits same height (20CR)
 }
 #    'github_user': 'oldweather',
 #    'github_repo': 'DWR',

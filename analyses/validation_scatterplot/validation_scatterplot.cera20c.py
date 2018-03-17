@@ -27,9 +27,9 @@ hour=18
 dte=datetime.datetime(year,month,day,hour)
 
 # Get the DWR observations within +- 6 hours
-obs=DWR.get_obs(dte-datetime.timedelta(hours=12.1),
-                dte+datetime.timedelta(hours=12.1),
-                'prmsl')
+obs=DWR.load_observations('prmsl',
+                          dte-datetime.timedelta(hours=12.1),
+                          dte+datetime.timedelta(hours=12.1))
 # sort them from north to south
 obs=obs.sort_values(by='latitude',ascending=True)
 # Get the list of stations - preserving order
@@ -104,7 +104,7 @@ for y in range(0,len(stations)):
             zorder=1))
     
 # load the reanalysis pressures 
-prmsl=cera20c.get_slice_at_hour('prmsl',year,month,day,hour)
+prmsl=cera20c.load('prmsl',year,month,day,hour)
 
 # for each station, plot the reanalysis ensemble at that station
 interpolator = iris.analysis.Linear().interpolator(prmsl, 

@@ -49,9 +49,9 @@ dte=datetime.datetime(args.year,args.month,args.day,
                       int(args.hour),int(args.hour%1*60))
 
 # Get the station list and order
-obs_month=DWR.get_obs(datetime.datetime(1903,10,1,1),
-                datetime.datetime(1903,10,31,23),
-                'prmsl')
+obs_month=DWR.load_observations('prmsl',
+                                datetime.datetime(1903,10,1,1),
+                                datetime.datetime(1903,10,31,23))
 # sort them from north to south
 obs_month=obs_month.sort_values(by='latitude',
                                 ascending=True)
@@ -102,16 +102,18 @@ wm.plot_obs(ax_map,obs_month,lat_label='latitude',
             lon_label='longitude',radius=0.15,facecolor=(1,0,0,0))
 
 # Get the DWR observations within +- 15 hours
-obs=DWR.get_obs(dte-datetime.timedelta(hours=15.1),
-                dte+datetime.timedelta(hours=15.1),
-                'prmsl')
+obs=DWR.load_observations('prmsl',
+                          dte-datetime.timedelta(hours=15.1),
+                          dte+datetime.timedelta(hours=15.1))
 
 # Mark all the stations used in this day - filled circle
 wm.plot_obs(ax_map,obs,lat_label='latitude',
             lon_label='longitude',radius=0.15,facecolor='red')
 
 # Add the observations from 20CR
-obs_t=twcr.get_obs(dte-datetime.timedelta(hours=24),dte,'3.5.1')
+obs_t=twcr.load_observations(dte-datetime.timedelta(hours=24),
+                             dte,
+                             version='2c')
 # Filter to those assimilated and near the UK
 obs_s=obs_t.loc[(obs_t['Assimilation.indicator']==1) &
               ((obs_t['Latitude']>0) & 
@@ -121,9 +123,8 @@ obs_s=obs_t.loc[(obs_t['Assimilation.indicator']==1) &
 wm.plot_obs(ax_map,obs_s,radius=0.15)
 
 # load the pressures
-prmsl=twcr.get_slice_at_hour('prmsl',args.year,
-                             args.month,args.day,args.hour,
-                             version='3.5.1',type='ensemble')
+prmsl=twcr.load('prmsl',args.year,args.month,args.day,
+                        args.hour,version='2c')
 
 # For each ensemble member, make a contour plot
 for m in prmsl.coord('member').points:
