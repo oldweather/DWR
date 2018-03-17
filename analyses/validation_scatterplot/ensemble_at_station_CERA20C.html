@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Compare DWR and CERA20C reanalysis ensemble at station locations &#8212; Improving reanalysis with the Daily Weather Reports</title>
-    
     <link rel="stylesheet" href="../../_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
         VERSION:     '0.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -25,12 +23,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="top" title="Improving reanalysis with the Daily Weather Reports" href="../../index.html" />
-    <link rel="up" title="Compare DWR and reanalysis ensemble at station locations" href="ensemble_at_station.html" />
     <link rel="next" title="Visualising uncertainty: spaghetti contours &amp; DWR data" href="../scatter+contour/scatter_and_contour.html" />
     <link rel="prev" title="Compare DWR and 20CR2c reanalysis ensemble at station locations" href="ensemble_at_station_20CR2c.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
@@ -56,17 +52,19 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p><a class="reference external" href="ensemble_at_station.html">Ensemble comparison main page</a></p>
-<div class="section" id="compare-dwr-and-cera20c-reanalysis-ensemble-at-station-locations">
+  <div class="section" id="compare-dwr-and-cera20c-reanalysis-ensemble-at-station-locations">
 <h1>Compare DWR and CERA20C reanalysis ensemble at station locations<a class="headerlink" href="#compare-dwr-and-cera20c-reanalysis-ensemble-at-station-locations" title="Permalink to this headline">¶</a></h1>
 <center>
-<table><tr><td>
-<a href="https://github.com/oldweather/DWR/raw/master/analyses/validation_scatterplot/DWR_v_CERA_1901012218.png"><img src="https://github.com/oldweather/DWR/raw/master/analyses/validation_scatterplot/DWR_v_CERA_1901012218.png"></a></td></tr>
-<tr><td>MSLP as observed at each DWR station (red line), as reconstructed by the CERA20C ensemble at the station location (blue dots) for January 22nd, 1901 (at 6pm).</td></tr>
+<table><tr><td><center>
+<a href="https://github.com/oldweather/DWR/raw/master/analyses/validation_scatterplot/DWR_v_CERA_1901012218.png"><img src="https://github.com/oldweather/DWR/raw/master/analyses/validation_scatterplot/DWR_v_CERA_1901012218.png" width=500></a></center></td></tr>
+<tr><td>MSLP as observed at each DWR station (red line), and as reconstructed by the CERA20C ensemble at the station location (blue dots) for January 22nd, 1901 (at 6pm).</td></tr>
 </table>
-</center><p>Collect the data (prmsl ensemble from CERA20C for January 1901):</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Meteorographica.data.cera20c</span> <span class="kn">as</span> <span class="nn">cera20c</span>
-<span class="n">cera20c</span><span class="o">.</span><span class="n">fetch_data_for_month</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span><span class="mi">1901</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</center><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Collect the data (prmsl ensemble from CERA20C for January 1901):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Meteorographica.data.cera20c</span> <span class="k">as</span> <span class="nn">cera20c</span>
+<span class="n">cera20c</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span><span class="mi">1901</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Script to make the figure:</p>
@@ -99,9 +97,9 @@
 <span class="n">dte</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">,</span><span class="n">day</span><span class="p">,</span><span class="n">hour</span><span class="p">)</span>
 
 <span class="c1"># Get the DWR observations within +- 6 hours</span>
-<span class="n">obs</span><span class="o">=</span><span class="n">DWR</span><span class="o">.</span><span class="n">get_obs</span><span class="p">(</span><span class="n">dte</span><span class="o">-</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mf">12.1</span><span class="p">),</span>
-                <span class="n">dte</span><span class="o">+</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mf">12.1</span><span class="p">),</span>
-                <span class="s1">&#39;prmsl&#39;</span><span class="p">)</span>
+<span class="n">obs</span><span class="o">=</span><span class="n">DWR</span><span class="o">.</span><span class="n">load_observations</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span>
+                          <span class="n">dte</span><span class="o">-</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mf">12.1</span><span class="p">),</span>
+                          <span class="n">dte</span><span class="o">+</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mf">12.1</span><span class="p">))</span>
 <span class="c1"># sort them from north to south</span>
 <span class="n">obs</span><span class="o">=</span><span class="n">obs</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="c1"># Get the list of stations - preserving order</span>
@@ -176,7 +174,7 @@
             <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
     
 <span class="c1"># load the reanalysis pressures </span>
-<span class="n">prmsl</span><span class="o">=</span><span class="n">cera20c</span><span class="o">.</span><span class="n">get_slice_at_hour</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">,</span><span class="n">day</span><span class="p">,</span><span class="n">hour</span><span class="p">)</span>
+<span class="n">prmsl</span><span class="o">=</span><span class="n">cera20c</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">,</span><span class="n">day</span><span class="p">,</span><span class="n">hour</span><span class="p">)</span>
 
 <span class="c1"># for each station, plot the reanalysis ensemble at that station</span>
 <span class="n">interpolator</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">Linear</span><span class="p">()</span><span class="o">.</span><span class="n">interpolator</span><span class="p">(</span><span class="n">prmsl</span><span class="p">,</span> 
@@ -246,7 +244,7 @@
           </div>
           <div role="note" aria-label="source link">
               <br/>
-              <a href="../../_sources/analyses/validation_scatterplot/ensemble_at_station_CERA20C.txt"
+              <a href="../../_sources/analyses/validation_scatterplot/ensemble_at_station_CERA20C.rst.txt"
                 rel="nofollow">Show Source</a>
           </div>
         </div>

@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Visualising uncertainty: CERA20C spaghetti contours &amp; DWR data video &#8212; Improving reanalysis with the Daily Weather Reports</title>
-    
     <link rel="stylesheet" href="../../_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
         VERSION:     '0.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -25,12 +23,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="top" title="Improving reanalysis with the Daily Weather Reports" href="../../index.html" />
-    <link rel="up" title="Visualising uncertainty: spaghetti contours &amp; DWR data" href="scatter_and_contour.html" />
     <link rel="next" title="Assimilating the Fort William pressures" href="../assimilating_Fort_William/assimilating_fort_william.html" />
     <link rel="prev" title="Visualising uncertainty: 20CR2c spaghetti contours &amp; DWR data video" href="scatter_and_contour_20CR2c_video.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
@@ -56,17 +52,19 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p><a class="reference external" href="scatter_and_contour.html">Scatter-and-contour main page</a></p>
-<div class="section" id="visualising-uncertainty-cera20c-spaghetti-contours-dwr-data-video">
+  <div class="section" id="visualising-uncertainty-cera20c-spaghetti-contours-dwr-data-video">
 <h1>Visualising uncertainty: CERA20C spaghetti contours &amp; DWR data video<a class="headerlink" href="#visualising-uncertainty-cera20c-spaghetti-contours-dwr-data-video" title="Permalink to this headline">¶</a></h1>
 <center>
-<table><tr><td>
-<iframe src="https://player.vimeo.com/video/252500135?title=0&byline=0&portrait=0" width="730" height="411" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></td></tr>
+<table><tr><td><center>
+<iframe src="https://player.vimeo.com/video/252500135?title=0&byline=0&portrait=0" width="795" height="448" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></center></td></tr>
 <tr><td>MSLP spaghetti-contour plot for CERA20C (left), and comparison with DWR obs at the station locations (right) over October 1903.</td></tr>
 </table>
-</center><p>Collect the reanalysis data (prmsl ensemble from CERA20C for October 1903):</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Meteorographica.data.cera20c</span> <span class="kn">as</span> <span class="nn">cera20c</span>
-<span class="n">cera20c</span><span class="o">.</span><span class="n">fetch_data_for_year</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span><span class="mi">1903</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+</center><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Collect the reanalysis data (prmsl ensemble from CERA20C for October 1903):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Meteorographica.data.cera20c</span> <span class="k">as</span> <span class="nn">cera20c</span>
+<span class="n">cera20c</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span><span class="mi">1903</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Script to make an individual frame - takes year, month, day, and hour as command-line options:</p>
@@ -121,9 +119,9 @@
                       <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">hour</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">hour</span><span class="o">%</span><span class="mi">1</span><span class="o">*</span><span class="mi">60</span><span class="p">))</span>
 
 <span class="c1"># Get the station list and order</span>
-<span class="n">obs_month</span><span class="o">=</span><span class="n">DWR</span><span class="o">.</span><span class="n">get_obs</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1903</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
-                <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1903</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">23</span><span class="p">),</span>
-                <span class="s1">&#39;prmsl&#39;</span><span class="p">)</span>
+<span class="n">obs_month</span><span class="o">=</span><span class="n">DWR</span><span class="o">.</span><span class="n">load_observations</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span>
+                                <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1903</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+                                <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1903</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">23</span><span class="p">))</span>
 <span class="c1"># sort them from north to south</span>
 <span class="n">obs_month</span><span class="o">=</span><span class="n">obs_month</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span>
                                 <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -174,17 +172,16 @@
             <span class="n">lon_label</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span><span class="n">radius</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
 
 <span class="c1"># Get the DWR observations within +- 15 hours</span>
-<span class="n">obs</span><span class="o">=</span><span class="n">DWR</span><span class="o">.</span><span class="n">get_obs</span><span class="p">(</span><span class="n">dte</span><span class="o">-</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mf">15.1</span><span class="p">),</span>
-                <span class="n">dte</span><span class="o">+</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mf">15.1</span><span class="p">),</span>
-                <span class="s1">&#39;prmsl&#39;</span><span class="p">)</span>
+<span class="n">obs</span><span class="o">=</span><span class="n">DWR</span><span class="o">.</span><span class="n">load_observations</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span>
+                          <span class="n">dte</span><span class="o">-</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mf">15.1</span><span class="p">),</span>
+                          <span class="n">dte</span><span class="o">+</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mf">15.1</span><span class="p">))</span>
 
 <span class="c1"># Mark all the stations used in this day - filled circle</span>
 <span class="n">wm</span><span class="o">.</span><span class="n">plot_obs</span><span class="p">(</span><span class="n">ax_map</span><span class="p">,</span><span class="n">obs</span><span class="p">,</span><span class="n">lat_label</span><span class="o">=</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span>
             <span class="n">lon_label</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span><span class="n">radius</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 
 <span class="c1"># load the pressures</span>
-<span class="n">prmsl</span><span class="o">=</span><span class="n">cera20c</span><span class="o">.</span><span class="n">get_slice_at_hour</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span>
-                                <span class="n">args</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">args</span><span class="o">.</span><span class="n">month</span><span class="p">,</span>
+<span class="n">prmsl</span><span class="o">=</span><span class="n">cera20c</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span><span class="n">args</span><span class="o">.</span><span class="n">year</span><span class="p">,</span><span class="n">args</span><span class="o">.</span><span class="n">month</span><span class="p">,</span>
                                 <span class="n">args</span><span class="o">.</span><span class="n">day</span><span class="p">,</span><span class="n">args</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span>
 
 <span class="c1"># For each ensemble member, make a contour plot</span>
@@ -406,9 +403,9 @@
 </pre></div>
 </div>
 <p>To turn the thousands of images into a movie, use <a class="reference external" href="http://www.ffmpeg.org">ffmpeg</a></p>
-<div class="highlight-shell"><div class="highlight"><pre><span></span>ffmpeg -r <span class="m">24</span> -pattern_type glob -i scatter+contour.cera/<span class="se">\*</span>1903<span class="se">\*</span>.png <span class="se">\</span>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>ffmpeg -r <span class="m">24</span> -pattern_type glob -i scatter+contour.cera/<span class="se">\*</span><span class="m">1903</span><span class="se">\*</span>.png <span class="se">\</span>
        -c:v libx264 -threads <span class="m">16</span> -preset slow -tune animation <span class="se">\</span>
-       -profile:v high -level 4.2 -pix_fmt yuv420p -crf <span class="m">25</span> <span class="se">\</span>
+       -profile:v high -level <span class="m">4</span>.2 -pix_fmt yuv420p -crf <span class="m">25</span> <span class="se">\</span>
        -c:a copy scatter+contour.cera.mp4
 </pre></div>
 </div>
@@ -458,7 +455,7 @@
           </div>
           <div role="note" aria-label="source link">
               <br/>
-              <a href="../../_sources/analyses/scatter+contour/scatter_and_contour_CERA20C_video.txt"
+              <a href="../../_sources/analyses/scatter+contour/scatter_and_contour_CERA20C_video.rst.txt"
                 rel="nofollow">Show Source</a>
           </div>
         </div>

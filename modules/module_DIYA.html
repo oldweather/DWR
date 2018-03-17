@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>DIYA: Do-it-yourself data assimilation &#8212; Improving reanalysis with the Daily Weather Reports</title>
-    
     <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
         VERSION:     '0.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -25,11 +23,9 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="Improving reanalysis with the Daily Weather Reports" href="../index.html" />
-    <link rel="up" title="Appendix: python modules" href="modules.html" />
     <link rel="prev" title="Appendix: python modules" href="modules.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
@@ -57,7 +53,7 @@
 <div class="section" id="module-DIYA">
 <span id="diya-do-it-yourself-data-assimilation"></span><h1>DIYA: Do-it-yourself data assimilation<a class="headerlink" href="#module-DIYA" title="Permalink to this headline">¶</a></h1>
 <p>Suppose you have an ensemble reanalysis, like <a class="reference external" href="https://www.esrl.noaa.gov/psd/data/20thC_Rean/">20CR</a>. So you have 56 different estimates of the global mean-sea-level pressure field at a particular date (say, 1903-10-27:18). There is quite a lot of spread in this ensemble, the pressures are uncertain.</p>
-<p>But we&#8217;ve also found a previously-unused observation, a measurement of MSLP at that time a a weather station (say in Fort William). We can use that new observation to improve the reanalysis estimate, with the <a class="reference external" href="https://www.esrl.noaa.gov/psd/data/20thC_Rean/">Ensemble Kalman Filter</a> or something similar.</p>
+<p>But we’ve also found a previously-unused observation, a measurement of MSLP at that time a a weather station (say in Fort William). We can use that new observation to improve the reanalysis estimate, with the <a class="reference external" href="https://www.esrl.noaa.gov/psd/data/20thC_Rean/">Ensemble Kalman Filter</a> or something similar.</p>
 <p>This module does this. It takes reanalysis data and observations, and assimilates the observations into the reanalysis fields, making improved versions.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">DIYA</span>
 <span class="n">new_field</span><span class="o">=</span><span class="n">DIYA</span><span class="o">.</span><span class="n">constrain_cube</span><span class="p">(</span><span class="n">old_field</span><span class="p">,</span><span class="n">old_field</span><span class="p">,</span><span class="n">obs</span><span class="p">)</span>
@@ -76,14 +72,14 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>target</strong> (<a class="reference external" href="http://scitools.org.uk/iris/docs/latest/iris/iris/cube.html#iris.cube.Cube" title="(in Iris v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">iris.cube.Cube</span></code></a>) &#8211; Ensemble to be constrained, must have dimensions &#8216;member&#8217;,&#8217;latitude&#8217;, and &#8216;longitude&#8217;&#8221;.</li>
-<li><strong>constraints</strong> (<a class="reference external" href="http://scitools.org.uk/iris/docs/latest/iris/iris/cube.html#iris.cube.Cube" title="(in Iris v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">iris.cube.Cube</span></code></a>) &#8211; Ensemble to constrain the target, must have dimensions (&#8216;member&#8217;,&#8217;latitude&#8217;,&#8217;longitude&#8217;)&#8221;.</li>
-<li><strong>obs</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-obj docutils literal"><span class="pre">pandas.DataFrame</span></code></a>) &#8211; Observations. Dataframe must have columns &#8216;latitude&#8217;, &#8216;longitude&#8217;, and &#8216;value&#8217;, and value should have same units as constraints.</li>
-<li><strong>obs_error</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>) &#8211; Uncertainty in each observation value (1 s.d.) . Units as obs.value.</li>
-<li><strong>random_state</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.random.RandomState.html#numpy.random.RandomState" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.random.RandomState</span></code></a>, optional) &#8211; Set to produce exactly reproducible results.</li>
-<li><strong>model</strong> (<a class="reference external" href="http://scikit-learn.org/stable/modules/classes.html#module-sklearn.linear_model" title="(in scikit-learn v0.19.1)"><code class="xref py py-obj docutils literal"><span class="pre">sklearn.linear_model</span></code></a>, optional) &#8211; Model to use to relate target to constraints. Defaults to <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet" title="(in scikit-learn v0.19.1)"><code class="xref py py-obj docutils literal"><span class="pre">sklearn.linear_model.ElasticNet</span></code></a> with default parameters.</li>
-<li><strong>lat_range</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list</span></code>, optional) &#8211; Only do constraint in this range of latitudes.</li>
-<li><strong>lon_range</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list</span></code>, optional) &#8211; Only do constraint in this range of longitudes.</li>
+<li><strong>target</strong> (<a class="reference external" href="http://scitools.org.uk/iris/docs/latest/iris/iris/cube.html#iris.cube.Cube" title="(in Iris v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">iris.cube.Cube</span></code></a>) – Ensemble to be constrained, must have dimensions ‘member’,’latitude’, and ‘longitude’”.</li>
+<li><strong>constraints</strong> (<a class="reference external" href="http://scitools.org.uk/iris/docs/latest/iris/iris/cube.html#iris.cube.Cube" title="(in Iris v2.0)"><code class="xref py py-obj docutils literal"><span class="pre">iris.cube.Cube</span></code></a>) – Ensemble to constrain the target, must have dimensions (‘member’,’latitude’,’longitude’)”.</li>
+<li><strong>obs</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-obj docutils literal"><span class="pre">pandas.DataFrame</span></code></a>) – Observations. Dataframe must have columns ‘latitude’, ‘longitude’, and ‘value’, and value should have same units as constraints.</li>
+<li><strong>obs_error</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>) – Uncertainty in each observation value (1 s.d.) . Units as obs.value.</li>
+<li><strong>random_state</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.random.RandomState.html#numpy.random.RandomState" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.random.RandomState</span></code></a>, optional) – Set to produce exactly reproducible results.</li>
+<li><strong>model</strong> (<a class="reference external" href="http://scikit-learn.org/stable/modules/classes.html#module-sklearn.linear_model" title="(in scikit-learn v0.19.1)"><code class="xref py py-obj docutils literal"><span class="pre">sklearn.linear_model</span></code></a>, optional) – Model to use to relate target to constraints. Defaults to <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet" title="(in scikit-learn v0.19.1)"><code class="xref py py-obj docutils literal"><span class="pre">sklearn.linear_model.ElasticNet</span></code></a> with default parameters.</li>
+<li><strong>lat_range</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list</span></code>, optional) – Only do constraint in this range of latitudes.</li>
+<li><strong>lon_range</strong> (<code class="xref py py-obj docutils literal"><span class="pre">list</span></code>, optional) – Only do constraint in this range of longitudes.</li>
 </ul>
 </td>
 </tr>
@@ -110,10 +106,10 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>target</strong> (<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.array</span></code></a>) &#8211; 1d array size nE - the target ensemble at the target point.</li>
-<li><strong>constraint</strong> (<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.array</span></code></a>) &#8211; 2d array size [nE,nP] - the constraint ensemble at each of the observation points.</li>
-<li><strong>model</strong> (<a class="reference external" href="http://scikit-learn.org/stable/modules/classes.html#module-sklearn.linear_model" title="(in scikit-learn v0.19.1)"><code class="xref py py-obj docutils literal"><span class="pre">sklearn.linear_model</span></code></a>) &#8211; Model to fit.</li>
-<li><strong>obs</strong> (<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.array</span></code></a>) &#8211; 1d array size nP - the observations.</li>
+<li><strong>target</strong> (<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.array</span></code></a>) – 1d array size nE - the target ensemble at the target point.</li>
+<li><strong>constraint</strong> (<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.array</span></code></a>) – 2d array size [nE,nP] - the constraint ensemble at each of the observation points.</li>
+<li><strong>model</strong> (<a class="reference external" href="http://scikit-learn.org/stable/modules/classes.html#module-sklearn.linear_model" title="(in scikit-learn v0.19.1)"><code class="xref py py-obj docutils literal"><span class="pre">sklearn.linear_model</span></code></a>) – Model to fit.</li>
+<li><strong>obs</strong> (<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array" title="(in NumPy v1.14)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.array</span></code></a>) – 1d array size nP - the observations.</li>
 </ul>
 </td>
 </tr>
@@ -174,7 +170,7 @@
           </div>
           <div role="note" aria-label="source link">
               <br/>
-              <a href="../_sources/modules/module_DIYA.txt"
+              <a href="../_sources/modules/module_DIYA.rst.txt"
                 rel="nofollow">Show Source</a>
           </div>
         </div>

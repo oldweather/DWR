@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Assimilating the Fort William pressures into 20CR2c &#8212; Improving reanalysis with the Daily Weather Reports</title>
-    
     <link rel="stylesheet" href="../../_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
         VERSION:     '0.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -25,12 +23,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="top" title="Improving reanalysis with the Daily Weather Reports" href="../../index.html" />
-    <link rel="up" title="Assimilating the Fort William pressures" href="assimilating_fort_william.html" />
     <link rel="next" title="Assimilating the Fort William pressures into CERA20C" href="assimilating_fort_william_CERA20C.html" />
     <link rel="prev" title="Assimilating the Fort William pressures" href="assimilating_fort_william.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
@@ -56,18 +52,20 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p><a class="reference external" href="assimilating_fort_william.html">Assimilating Fort William main page</a></p>
-<div class="section" id="assimilating-the-fort-william-pressures-into-20cr2c">
+  <div class="section" id="assimilating-the-fort-william-pressures-into-20cr2c">
 <h1>Assimilating the Fort William pressures into 20CR2c<a class="headerlink" href="#assimilating-the-fort-william-pressures-into-20cr2c" title="Permalink to this headline">¶</a></h1>
 <center>
-<table><tr><td>
-<a href="https://github.com/oldweather/DWR/raw/master/analyses/assimilating_Fort_William/Add_FW_20CR_1903022706.png"><img src="https://github.com/oldweather/DWR/raw/master/analyses/assimilating_Fort_William/Add_FW_20CR_1903022706.png"></a></td></tr>
+<table><tr><td><center>
+<a href="https://github.com/oldweather/DWR/raw/master/analyses/assimilating_Fort_William/Add_FW_20CR_1903022706.png"><img src="https://github.com/oldweather/DWR/raw/master/analyses/assimilating_Fort_William/Add_FW_20CR_1903022706.png" width=795></a></center></td></tr>
 <tr><td>MSLP spaghetti-contour plot for 20CR2c (left), and after assimilating a single observation from Fort William (right) for the Ulysses storm: February 27th, 1903 (at 6am).</td></tr>
 </table>
-</center><p>Collect the reanalysis data (prmsl ensemble and observations from 20CR2c for 1903):</p>
+</center><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Collect the reanalysis data (prmsl ensemble and observations from 20CR2c for 1903):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Meteorographica.data.twcr</span> <span class="k">as</span> <span class="nn">twcr</span>
-<span class="n">twcr</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span><span class="mi">1901</span><span class="p">,</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;2c&#39;</span><span class="p">)</span>
-<span class="n">twcr</span><span class="o">.</span><span class="n">fetch_observations</span><span class="p">(</span><span class="mi">1901</span><span class="p">,</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;2c&#39;</span><span class="p">)</span>
+<span class="n">twcr</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span><span class="mi">1903</span><span class="p">,</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;2c&#39;</span><span class="p">)</span>
+<span class="n">twcr</span><span class="o">.</span><span class="n">fetch_observations</span><span class="p">(</span><span class="mi">1903</span><span class="p">,</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;2c&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Script to make the figure:</p>
@@ -305,7 +303,7 @@
           </div>
           <div role="note" aria-label="source link">
               <br/>
-              <a href="../../_sources/analyses/assimilating_Fort_William/assimilating_fort_william_20CR2c.txt"
+              <a href="../../_sources/analyses/assimilating_Fort_William/assimilating_fort_william_20CR2c.rst.txt"
                 rel="nofollow">Show Source</a>
           </div>
         </div>
