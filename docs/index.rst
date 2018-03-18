@@ -1,19 +1,31 @@
-
 Improving reanalysis with the Daily Weather Reports
 ===================================================
-
 
 .. toctree::
    :maxdepth: 2
 
+   preface
+   introduction
+   reanalysis_and_uncertainty
+   da_for_ds
    DWR
+   improving_with_dwr
+   conclusions
 
-.. sidebar:: `Meteorological data assimilation for data scientists <link.html>`_.
-
-    Subsequent indented lines comprise the body of the sidebar, and are interpreted as body elements.
-
+|
+   
 .. toctree::
    :maxdepth: 1
 
+   credits_and_feedback
+   replication_and_extension
+
+|
+
+.. toctree::
+   :maxdepth: 1
+   
    analyses/analyses
    modules/modules
+
+This document and the data associated with it, are crown copyright (2018) and licensed under the terms of the `Open Government Licence <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/>`_. All code included (modules and scripts) is licensed under the terms of the `GNU Lesser General Public License <https://www.gnu.org/licenses/lgpl.html>`_.
