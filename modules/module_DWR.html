@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>DWR: A module for accessing Daily Weather Report observations &#8212; Improving reanalysis with the Daily Weather Reports</title>
-    
     <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
         VERSION:     '0.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -25,12 +23,16 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+<<<<<<< HEAD
     <link rel="top" title="Improving reanalysis with the Daily Weather Reports" href="../index.html" />
     <link rel="up" title="The Daily Weather Reports" href="../DWR.html" />
     <link rel="next" title="Improving the reanalyses with DWR" href="../improving_with_dwr.html" />
+=======
+    <link rel="next" title="Appendix: Analyses of the DWR data" href="../analyses/analyses.html" />
+>>>>>>> c9fc6c872e78ba96a71529515b7a98dde71f3b0d
     <link rel="prev" title="New observations from weatherescue.org" href="../data/data_from_weatherrescue.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
@@ -68,7 +70,7 @@
 <p>The DWR provides synoptic observations, from around 50 stations in and around the UK, typically twice a day, but the list of stations providing observations, and the frequency of observation, both vary over the many years of the series.</p>
 <p>The DWR provides observations of several variables, but so far we have digitised data only from one:</p>
 <ul class="simple">
-<li>Mean-sea-level pressure: &#8216;mslp&#8217;</li>
+<li>Mean-sea-level pressure: ‘mslp’</li>
 </ul>
 <p>Access to the data is through the <a class="reference internal" href="#DWR.load_observations" title="DWR.load_observations"><code class="xref py py-func docutils literal"><span class="pre">load_observations()</span></code></a> function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">DWR</span>
@@ -92,9 +94,9 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>obs</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-obj docutils literal"><span class="pre">pandas.DataFrame</span></code></a>) &#8211; Batch of observations for the period around the desired time. Probably from <a class="reference internal" href="#DWR.load_observations" title="DWR.load_observations"><code class="xref py py-func docutils literal"><span class="pre">load_observations()</span></code></a>.</li>
-<li><strong>station</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>) &#8211; Name of station, as used in obs.name.</li>
-<li><strong>dte</strong> (<a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a>) &#8211; Time of required observed value.</li>
+<li><strong>obs</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-obj docutils literal"><span class="pre">pandas.DataFrame</span></code></a>) – Batch of observations for the period around the desired time. Probably from <a class="reference internal" href="#DWR.load_observations" title="DWR.load_observations"><code class="xref py py-func docutils literal"><span class="pre">load_observations()</span></code></a>.</li>
+<li><strong>station</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>) – Name of station, as used in obs.name.</li>
+<li><strong>dte</strong> (<a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a>) – Time of required observed value.</li>
 </ul>
 </td>
 </tr>
@@ -104,7 +106,7 @@
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a></p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">StandardError</span></code> &#8211; obs does not contain at least two values for selected station, one before and one after specified time. So interpolation not possible.</p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">StandardError</span></code> – obs does not contain at least two values for selected station, one before and one after specified time. So interpolation not possible.</p>
 </td>
 </tr>
 </tbody>
@@ -123,12 +125,12 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>obs</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-obj docutils literal"><span class="pre">pandas.DataFrame</span></code></a>) &#8211; Batch of observations. Probably from <a class="reference internal" href="#DWR.load_observations" title="DWR.load_observations"><code class="xref py py-func docutils literal"><span class="pre">load_observations()</span></code></a>.</li>
-<li><strong>station</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>) &#8211; Name of station, as used in obs.name.</li>
+<li><strong>obs</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-obj docutils literal"><span class="pre">pandas.DataFrame</span></code></a>) – Batch of observations. Probably from <a class="reference internal" href="#DWR.load_observations" title="DWR.load_observations"><code class="xref py py-func docutils literal"><span class="pre">load_observations()</span></code></a>.</li>
+<li><strong>station</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>) – Name of station, as used in obs.name.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">StandardError</span></code> &#8211; obs does not contain any observations for selected station.</p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">StandardError</span></code> – obs does not contain any observations for selected station.</p>
 </td>
 </tr>
 </tbody>
@@ -148,9 +150,9 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>variable</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>) &#8211; Variable name (&#8216;prmsl&#8217;,&#8217;air.2m&#8217;, &#8216;prate&#8217;, etc.)</li>
-<li><strong>start</strong> (<a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a>) &#8211; Get observations at or after this time.</li>
-<li><strong>end</strong> (<a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a>) &#8211; Get observations before this time.</li>
+<li><strong>variable</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>) – Variable name (‘prmsl’,’air.2m’, ‘prate’, etc.)</li>
+<li><strong>start</strong> (<a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a>) – Get observations at or after this time.</li>
+<li><strong>end</strong> (<a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime</span></code></a>) – Get observations before this time.</li>
 </ul>
 </td>
 </tr>
@@ -160,7 +162,7 @@
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-obj docutils literal"><span class="pre">pandas.DataFrame</span></code></a></p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">IOError</span></code> &#8211; No data on disc for this variable, for a year and month in the selected period.</p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">IOError</span></code> – No data on disc for this variable, for a year and month in the selected period.</p>
 </td>
 </tr>
 </tbody>
@@ -180,9 +182,9 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>variable</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>) &#8211; Variable name (&#8216;prmsl&#8217;,&#8217;air.2m&#8217;, &#8216;prate&#8217;, etc.)</li>
-<li><strong>year</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>) &#8211; Year of assimilation run.</li>
-<li><strong>month</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>) &#8211; Month of assimilation run (1-12)</li>
+<li><strong>variable</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>) – Variable name (‘prmsl’,’air.2m’, ‘prate’, etc.)</li>
+<li><strong>year</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>) – Year of assimilation run.</li>
+<li><strong>month</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>) – Month of assimilation run (1-12)</li>
 </ul>
 </td>
 </tr>
@@ -192,7 +194,7 @@
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-obj docutils literal"><span class="pre">pandas.DataFrame</span></code></a></p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">IOError</span></code> &#8211; No data on disc for this variable, year, and month.</p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">IOError</span></code> – No data on disc for this variable, year, and month.</p>
 </td>
 </tr>
 </tbody>
@@ -206,14 +208,14 @@
 <dt id="DWR.pretty_name">
 <code class="descclassname">DWR.</code><code class="descname">pretty_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/DWR/names.html#pretty_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DWR.pretty_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert station names from DATAFORMAT to Print Format.</p>
-<p>The station names included in the DWR data files are in all caps and contain no spaces. This function maps them to a readable format - so FORTWILLIAM becomes &#8216;Fort William&#8217;.</p>
+<p>The station names included in the DWR data files are in all caps and contain no spaces. This function maps them to a readable format - so FORTWILLIAM becomes ‘Fort William’.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>) &#8211; Name as in data file (e.g. &#8216;CAPGRISNEZ&#8217;)</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>) – Name as in data file (e.g. ‘CAPGRISNEZ’)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Name in readable format (e.g. &#8216;Cap Gris-Nez&#8217;)</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Name in readable format (e.g. ‘Cap Gris-Nez’)</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></td>
 </tr>
@@ -277,7 +279,7 @@
           </div>
           <div role="note" aria-label="source link">
               <br/>
-              <a href="../_sources/modules/module_DWR.txt"
+              <a href="../_sources/modules/module_DWR.rst.txt"
                 rel="nofollow">Show Source</a>
           </div>
         </div>
