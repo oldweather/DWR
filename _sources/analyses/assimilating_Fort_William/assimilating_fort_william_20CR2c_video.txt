@@ -1,16 +1,16 @@
-`Assimilating Fort William main page <assimilating_fort_william.html>`_
-
 Assimilating the Fort William pressures into 20CR2c video
 =========================================================
 
 .. raw:: html
 
     <center>
-    <table><tr><td>
-    <iframe src="https://player.vimeo.com/video/259167326?title=0&byline=0&portrait=0" width="730" height="411" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></td></tr>
+    <table><tr><td></center>
+    <iframe src="https://player.vimeo.com/video/259167326?title=0&byline=0&portrait=0" width="795" height="447" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></center></td></tr>
     <tr><td>MSLP spaghetti-contour plot for 20CR2c (left), and after assimilating a single observation from Fort William (right) for the Ulysses storm: February 27th, 1903.</td></tr>
     </table>
     </center>
+
+|
 
 Collect the reanalysis data (prmsl ensemble and observations from 20CR2c for 1903):
 

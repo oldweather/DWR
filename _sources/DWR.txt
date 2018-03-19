@@ -1,5 +1,3 @@
-`Raise issue or make comment? <https://github.com/oldweather/DWR/issues/new?label=DWR>`_
-
 The Daily Weather Reports
 =========================
 
