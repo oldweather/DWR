@@ -62,7 +62,7 @@ target_lon= -6.38
 
 # Before scatter plot
 
-ax_scp=fig.add_axes([0.05,0.05,0.39,0.89])
+ax_scp=fig.add_axes([0.05,0.07,0.43,0.89])
 
 # pressure range
 extent=[987,999]
@@ -103,7 +103,7 @@ model.fit(ens_FW.data.reshape(-1,1),ens_ST.data)
 pre=model.predict(numpy.array((extent[0]*100,extent[1]*100)).reshape(-1,1))
 ax_scp.plot(extent,pre/100,color='black',lw=3)
 
-ax_scp2=fig.add_axes([0.55,0.05,0.39,0.89])
+ax_scp2=fig.add_axes([0.55,0.07,0.43,0.89])
 
 # pressure range
 extent=[987,999]
@@ -113,10 +113,14 @@ ax_scp2.set_xlim(extent)
 ax_scp2.set_xlabel('original MSLP at Fort William (hPa)')
 # y-axis
 ax_scp2.set_ylim(extent)
-ax_scp2.set_ylabel('Adjusted MSLP at Stornoway (hPa)')
+ax_scp2.set_ylabel('MSLP at Stornoway after assimilating Fort William observation (hPa)')
 
+# Adjust the mslp by assimilating the FW ob
+ST_adjusted=DIYA.constrain_point(ens_ST.data,ens_FW.data.reshape(-1,1),
+                                   model=model,obs=fwi*100)
 
-ax_scp2.scatter(ens_FW.data/100,ens_ST.data/100,
+ax_scp2.plot((fwi,fwi),extent,color='red',lw=3)
+ax_scp2.scatter(ens_FW.data/100,ST_adjusted/100,
             500, # Point size
             'blue', # Color
             marker='.',
