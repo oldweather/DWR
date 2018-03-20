@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -12,30 +11,13 @@
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
-=======
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Meteorological Data Assimilation for Data Scientists &#8212; Improving reanalysis with the Daily Weather Reports</title>
-    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
->>>>>>> c9fc6c872e78ba96a71529515b7a98dde71f3b0d
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '0.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-<<<<<<< HEAD
         HAS_SOURCE:  true
-=======
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
->>>>>>> c9fc6c872e78ba96a71529515b7a98dde71f3b0d
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -43,18 +25,11 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-<<<<<<< HEAD
     <link rel="top" title="Improving reanalysis with the Daily Weather Reports" href="index.html" />
     <link rel="next" title="The Daily Weather Reports" href="DWR.html" />
     <link rel="prev" title="Reanalysis and uncertainty" href="reanalysis_and_uncertainty.html" /> 
   </head>
   <body role="document">
-=======
-    <link rel="next" title="The Daily Weather Reports" href="DWR.html" />
-    <link rel="prev" title="Reanalysis and uncertainty" href="reanalysis_and_uncertainty.html" /> 
-  </head>
-  <body>
->>>>>>> c9fc6c872e78ba96a71529515b7a98dde71f3b0d
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
@@ -82,7 +57,6 @@
             
   <div class="section" id="meteorological-data-assimilation-for-data-scientists">
 <h1>Meteorological Data Assimilation for Data Scientists<a class="headerlink" href="#meteorological-data-assimilation-for-data-scientists" title="Permalink to this headline">¶</a></h1>
-<<<<<<< HEAD
 <p>Suppose we have an uncertain estimate of the weather (MSLP) at some point in the past, perhaps <a class="reference external" href="reanalysis_and_uncertainty.html">from a reanalysis</a>, and then we get some new information, in the form of a station observation from that date and time. How can we use that new station observation to improve the MSLP estimate?</p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -110,9 +84,20 @@ The red dot marks Fort William, the blue Stornoway, and the black London. Scatte
 <div class="line"><br /></div>
 </div>
 <p>In the 20CR2c ensemble, at this point in time, the mslp at Stornoway is highly correlated with that at Fort William, so an observation at Fort William is telling us a lot about the mslp at Stornoway, and we should move the mslp estimates at Stornoway in response to the observation in much the same way as we move the estimates at Fort William. At London, on the other hand, the mslp is almost uncorrelated with that at Fort William, so an observation at Fort William is telling us little about the mslp at London, and we should leave the ensemble at London unchanged whatever the observation at Fort William is.</p>
-<p>We can formalise this by building a model:</p>
-=======
->>>>>>> c9fc6c872e78ba96a71529515b7a98dde71f3b0d
+<p>We can formalise this by fitting a model (<a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="(in scikit-learn v0.19.1)"><code class="xref py py-obj docutils literal"><span class="pre">sklearn.linear_model.LinearRegression</span></code></a>):</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="figure align-center" id="id3" style="width: 700px">
+<a class="reference internal image-reference" href="_images/before+after_1903102218.png"><img alt="_images/before+after_1903102218.png" src="_images/before+after_1903102218.png" style="width: 650px;" /></a>
+<p class="caption"><span class="caption-text">MSLP at Stornoway, before and after assimilating the Fort William observation.</span></p>
+<div class="legend">
+Scatter plots of 20CR2c ensemble pressures at Stornoway at 6pm on 22nd October 1903 against Fort William ensemble pressures. The Stornoway pressures are adjusted by fitting a linear regression (left plot) and then removing the fit from each value (right plot). We can do the same for the London pressures, but in that case the adjustment will make almost no difference, as the fit line has close to zero slope.</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>To assimilate the Fort William observation, we apply the same process illustrated above for Stornoway to each grid-point in the reanalyis field:</p>
 </div>
 
 
@@ -128,15 +113,12 @@ The red dot marks Fort William, the blue Stornoway, and the black London. Scatte
 <li class="toctree-l1"><a class="reference internal" href="reanalysis_and_uncertainty.html">Reanalysis and uncertainty</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Meteorological Data Assimilation for Data Scientists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DWR.html">The Daily Weather Reports</a></li>
-<<<<<<< HEAD
 <li class="toctree-l1"><a class="reference internal" href="improving_with_dwr.html">Improving the reanalyses with DWR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="credits_and_feedback.html">Who to credit, and how to give feedback</a></li>
 <li class="toctree-l1"><a class="reference internal" href="replication_and_extension.html">How to replicate and extend this</a></li>
-=======
->>>>>>> c9fc6c872e78ba96a71529515b7a98dde71f3b0d
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="analyses/analyses.html">Appendix: Analyses of the DWR data</a></li>
@@ -172,11 +154,7 @@ The red dot marks Fort William, the blue Stornoway, and the black London. Scatte
           </div>
           <div role="note" aria-label="source link">
               <br/>
-<<<<<<< HEAD
               <a href="_sources/da_for_ds.txt"
-=======
-              <a href="_sources/da_for_ds.rst.txt"
->>>>>>> c9fc6c872e78ba96a71529515b7a98dde71f3b0d
                 rel="nofollow">Show Source</a>
           </div>
         </div>
