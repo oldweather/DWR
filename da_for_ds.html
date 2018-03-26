@@ -57,15 +57,15 @@
             
   <div class="section" id="meteorological-data-assimilation-for-data-scientists">
 <h1>Meteorological Data Assimilation for Data Scientists<a class="headerlink" href="#meteorological-data-assimilation-for-data-scientists" title="Permalink to this headline">¶</a></h1>
-<p>Suppose we have an uncertain estimate of the weather (MSLP) at some point in the past, perhaps <a class="reference external" href="reanalysis_and_uncertainty.html">from a reanalysis</a>, and then we get some new information, in the form of a station observation from that date and time. How can we use that new station observation to improve the MSLP estimate?</p>
+<p>Suppose we have an uncertain estimate of the weather (MSLP) at some point in the past, perhaps <a class="reference internal" href="reanalysis_and_uncertainty.html"><span class="doc">from a reanalysis</span></a>, and then we get some new information, in the form of a station observation from that date and time. How can we use that new station observation to improve the MSLP estimate?</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <div class="figure align-center" id="id1" style="width: 700px">
-<a class="reference internal image-reference" href="_images/With_FW_1903102218.png"><img alt="_images/With_FW_1903102218.png" src="_images/With_FW_1903102218.png" style="width: 650px;" /></a>
-<p class="caption"><span class="caption-text">MSLP Contours for 20CR2c for October 22nd, 1903 (at 6pm).</span></p>
+<a class="reference internal image-reference" href="_images/With_FW_1903102206.png"><img alt="_images/With_FW_1903102206.png" src="_images/With_FW_1903102206.png" style="width: 650px;" /></a>
+<p class="caption"><span class="caption-text">MSLP Contours for 20CR2c for October 22nd, 1903 (at 6am).</span></p>
 <div class="legend">
-<a class="reference external" href="analyses/spaghetti_contour/spaghetti_contour.html">Spaghetti-contour plot</a> of mean-sea-level pressure, and the location of the Fort William station (red dot), where we have new observational data from <a class="reference external" href="http://weatherrescue.org">Weather Rescue</a></div>
+<span class="xref doc">Spaghetti-contour plot</span> of mean-sea-level pressure, and the location of the Fort William station (red dot), where we have <a class="reference internal" href="data/data_from_weatherrescue.html"><span class="doc">new observational data</span></a> (<a class="reference internal" href="analyses/DA_exposition/one_station.html"><span class="doc">Figure source</span></a>)</div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -75,10 +75,10 @@
 <div class="line"><br /></div>
 </div>
 <div class="figure align-center" id="id2" style="width: 700px">
-<a class="reference internal image-reference" href="_images/lr+contour_1903102218.png"><img alt="_images/lr+contour_1903102218.png" src="_images/lr+contour_1903102218.png" style="width: 650px;" /></a>
-<p class="caption"><span class="caption-text">MSLP at Fort William, Stornoway, and London (October 22nd, 1903 at 6pm).</span></p>
+<a class="reference internal image-reference" href="_images/lr+contour_19031022061.png"><img alt="_images/lr+contour_19031022061.png" src="_images/lr+contour_19031022061.png" style="width: 650px;" /></a>
+<p class="caption"><span class="caption-text">MSLP at Fort William, Stornoway, and London (October 22nd, 1903 at 6am).</span></p>
 <div class="legend">
-The red dot marks Fort William, the blue Stornoway, and the black London. Scatter plots show relationship between their mslp, in the 20CR2c ensemble for this particular point in time.</div>
+The red dot marks Fort William, the blue Stornoway, and the black London. Scatter plots show relationship between their mslp, in the 20CR2c ensemble for this particular point in time. (<a class="reference internal" href="analyses/DA_exposition/lr_contour.html"><span class="doc">Figure source.</span></a>)</div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -89,15 +89,31 @@ The red dot marks Fort William, the blue Stornoway, and the black London. Scatte
 <div class="line"><br /></div>
 </div>
 <div class="figure align-center" id="id3" style="width: 700px">
-<a class="reference internal image-reference" href="_images/before+after_1903102218.png"><img alt="_images/before+after_1903102218.png" src="_images/before+after_1903102218.png" style="width: 650px;" /></a>
+<a class="reference internal image-reference" href="_images/before+after_19031022061.png"><img alt="_images/before+after_19031022061.png" src="_images/before+after_19031022061.png" style="width: 650px;" /></a>
 <p class="caption"><span class="caption-text">MSLP at Stornoway, before and after assimilating the Fort William observation.</span></p>
 <div class="legend">
-Scatter plots of 20CR2c ensemble pressures at Stornoway at 6pm on 22nd October 1903 against Fort William ensemble pressures. The Stornoway pressures are adjusted by fitting a linear regression (left plot) and then removing the fit from each value (right plot). We can do the same for the London pressures, but in that case the adjustment will make almost no difference, as the fit line has close to zero slope.</div>
+Scatter plots of 20CR2c ensemble pressures at Stornoway at 6am on 22nd October 1903 against Fort William ensemble pressures. The Stornoway pressures are adjusted by fitting a linear regression (left plot) and then removing the fit from each value (right plot). We can do <a class="reference internal" href="analyses/DA_exposition/before+after_london.html"><span class="doc">the same for the London pressures</span></a>, but in that case the adjustment will make much less difference, as the fit line has a smaller slope. (<a class="reference internal" href="analyses/DA_exposition/before+after.html"><span class="doc">Figure source.</span></a>)</div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p>To assimilate the Fort William observation, we apply the same process illustrated above for Stornoway to each grid-point in the reanalyis field:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="figure align-center" id="id4" style="width: 700px">
+<a class="reference internal image-reference" href="_images/before+after_map_19031022061.png"><img alt="_images/before+after_map_19031022061.png" src="_images/before+after_map_19031022061.png" style="width: 650px;" /></a>
+<p class="caption"><span class="caption-text">Before (left) and after (right) assimilating Fort William observation (October 22nd, 1903 at 6am).</span></p>
+<div class="legend">
+The observation has pulled nearby pressures towards its value, both changing the ensemble mean and reducing the spread, while having little effect further away. (<a class="reference internal" href="analyses/DA_exposition/before+after_map.html"><span class="doc">Figure source.</span></a>)</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="assimilating-more-than-one-observation">
+<h2>Assimilating more than one observation<a class="headerlink" href="#assimilating-more-than-one-observation" title="Permalink to this headline">¶</a></h2>
+<p>We can extend this same method to assimilate multiple observations, by adding an extra variable into each linear regression for each new observation.; So if we have two observations, oner at Fort William and one at Manchester, we update the pressure at Stornoway by modelling the pressure at Stornoway as a multivariate linear regression on the Fort William and Manchester pressures.</p>
+</div>
 </div>
 
 
@@ -111,7 +127,10 @@ Scatter plots of 20CR2c ensemble pressures at Stornoway at 6pm on 22nd October 1
 <li class="toctree-l1"><a class="reference internal" href="preface.html">Preface (what this is, and why)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reanalysis_and_uncertainty.html">Reanalysis and uncertainty</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Meteorological Data Assimilation for Data Scientists</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Meteorological Data Assimilation for Data Scientists</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#assimilating-more-than-one-observation">Assimilating more than one observation</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="DWR.html">The Daily Weather Reports</a></li>
 <li class="toctree-l1"><a class="reference internal" href="improving_with_dwr.html">Improving the reanalyses with DWR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>

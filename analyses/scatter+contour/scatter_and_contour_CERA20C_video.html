@@ -1,21 +1,23 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
     <title>Visualising uncertainty: CERA20C spaghetti contours &amp; DWR data video &#8212; Improving reanalysis with the Daily Weather Reports</title>
+    
     <link rel="stylesheet" href="../../_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
         VERSION:     '0.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -23,10 +25,12 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="top" title="Improving reanalysis with the Daily Weather Reports" href="../../index.html" />
+    <link rel="up" title="Visualising uncertainty: spaghetti contours &amp; DWR data" href="scatter_and_contour.html" />
     <link rel="next" title="Assimilating the Fort William pressures" href="../assimilating_Fort_William/assimilating_fort_william.html" />
     <link rel="prev" title="Visualising uncertainty: 20CR2c spaghetti contours &amp; DWR data video" href="scatter_and_contour_20CR2c_video.html" /> 
   </head>
-  <body>
+  <body role="document">
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
@@ -403,9 +407,9 @@
 </pre></div>
 </div>
 <p>To turn the thousands of images into a movie, use <a class="reference external" href="http://www.ffmpeg.org">ffmpeg</a></p>
-<div class="highlight-shell"><div class="highlight"><pre><span></span>ffmpeg -r <span class="m">24</span> -pattern_type glob -i scatter+contour.cera/<span class="se">\*</span><span class="m">1903</span><span class="se">\*</span>.png <span class="se">\</span>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>ffmpeg -r <span class="m">24</span> -pattern_type glob -i scatter+contour.cera/<span class="se">\*</span>1903<span class="se">\*</span>.png <span class="se">\</span>
        -c:v libx264 -threads <span class="m">16</span> -preset slow -tune animation <span class="se">\</span>
-       -profile:v high -level <span class="m">4</span>.2 -pix_fmt yuv420p -crf <span class="m">25</span> <span class="se">\</span>
+       -profile:v high -level 4.2 -pix_fmt yuv420p -crf <span class="m">25</span> <span class="se">\</span>
        -c:a copy scatter+contour.cera.mp4
 </pre></div>
 </div>
@@ -465,7 +469,7 @@
           </div>
           <div role="note" aria-label="source link">
               <br/>
-              <a href="../../_sources/analyses/scatter+contour/scatter_and_contour_CERA20C_video.rst.txt"
+              <a href="../../_sources/analyses/scatter+contour/scatter_and_contour_CERA20C_video.txt"
                 rel="nofollow">Show Source</a>
           </div>
         </div>
