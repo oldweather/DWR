@@ -25,7 +25,7 @@ import DWR
 year=1903
 month=10
 day=22
-hour=18
+hour=6
 dte=datetime.datetime(year,month,day,hour)
 
 # Landscape page
@@ -75,7 +75,7 @@ for m in prmsl.coord('member').points:
     prmsl_e=prmsl.extract(iris.Constraint(member=m))
     prmsl_e.data=prmsl_e.data/100 # To hPa
     CS=wm.plot_contour(ax_20C,prmsl_e,
-                   levels=numpy.arange(870,1050,10),
+                   levels=numpy.arange(875,1050,10),
                    colors='blue',
                    label=False,
                    linewidths=0.2)
@@ -88,7 +88,7 @@ prmsl_s.data=prmsl_s.data/100
 # Mask out mean where uncertainties large
 prmsl_m.data[numpy.where(prmsl_s.data>3)]=numpy.nan
 CS=wm.plot_contour(ax_20C,prmsl_m,
-                   levels=numpy.arange(870,1050,10),
+                   levels=numpy.arange(875,1050,10),
                    colors='black',
                    label=True,
                    linewidths=2)
@@ -97,7 +97,7 @@ CS=wm.plot_contour(ax_20C,prmsl_m,
 obs=DWR.load_observations('prmsl',
                           dte-datetime.timedelta(hours=2),
                           dte+datetime.timedelta(hours=2))
-# Discard evertynig except Fort William
+# Discard everthing except Fort William
 obs=obs[obs.name=='FORTWILLIAM']
 
 # Plot the Fort William station location

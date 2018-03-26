@@ -1,5 +1,5 @@
 # UK region weather plot 
-# Relationship between Fort William and Stornoway
+# Relationship between Fort William and London
 
 import math
 import datetime
@@ -57,19 +57,22 @@ prmsl=twcr.load('prmsl',year,month,day,hour,
                              version='2c')
 
 # Compare with Stornoway
-target_lat= 58.21
-target_lon= -6.38
+target_lat= 51.51
+target_lon= -0.13
 
 # Before scatter plot
 
 ax_scp=fig.add_axes([0.05,0.07,0.43,0.89])
 
+# pressure range
+extent=[992,1002]
+
 # x-axis
-ax_scp.set_xlim([992,1002])
+ax_scp.set_xlim(extent)
 ax_scp.set_xlabel('MSLP at Fort William (hPa)')
 # y-axis
-ax_scp.set_ylim([990,1000])
-ax_scp.set_ylabel('Original MSLP at Stornoway (hPa)')
+ax_scp.set_ylim([1002,1012])
+ax_scp.set_ylabel('Original MSLP at London (hPa)')
 
 # Ensemble values at Fort William
 interpolator = iris.analysis.Linear().interpolator(prmsl, 
@@ -92,29 +95,28 @@ ax_scp.scatter(ens_FW.data/100,ens_ST.data/100,
 
 # Plot the observed FW value
 fwi=DWR.at_station_and_time(obs,'FORTWILLIAM',dte)
-ax_scp.plot((fwi,fwi),[990,1000],color='red',lw=3)
+ax_scp.plot((fwi,fwi),[1002,1012],color='red',lw=3)
 
 # Fit a linear model
 model=sklearn.linear_model.LinearRegression()
 model.fit(ens_FW.data.reshape(-1,1),ens_ST.data)
-pre=model.predict(numpy.array((992*100,1002*100)).reshape(-1,1))
-ax_scp.plot([992,1002],pre/100,color='black',lw=3)
+pre=model.predict(numpy.array((extent[0]*100,extent[1]*100)).reshape(-1,1))
+ax_scp.plot(extent,pre/100,color='black',lw=3)
 
 ax_scp2=fig.add_axes([0.55,0.07,0.43,0.89])
 
-
 # x-axis
-ax_scp2.set_xlim([992,1002])
+ax_scp2.set_xlim(extent)
 ax_scp2.set_xlabel('original MSLP at Fort William (hPa)')
 # y-axis
-ax_scp2.set_ylim([990,1000])
-ax_scp2.set_ylabel('MSLP at Stornoway after assimilating Fort William observation (hPa)')
+ax_scp2.set_ylim([1002,1012])
+ax_scp2.set_ylabel('MSLP at London after assimilating Fort William observation (hPa)')
 
 # Adjust the mslp by assimilating the FW ob
 ST_adjusted=DIYA.constrain_point(ens_ST.data,ens_FW.data.reshape(-1,1),
                                    model=model,obs=fwi*100)
 
-ax_scp2.plot((fwi,fwi),[990,1000],color='red',lw=3)
+ax_scp2.plot((fwi,fwi),[1002,1012],color='red',lw=3)
 ax_scp2.scatter(ens_FW.data/100,ST_adjusted/100,
             500, # Point size
             'blue', # Color
@@ -125,5 +127,5 @@ ax_scp2.scatter(ens_FW.data/100,ST_adjusted/100,
             zorder=5)
 
 # Output as png
-fig.savefig('before+after_%04d%02d%02d%02d.png' % 
+fig.savefig('before+after_london_%04d%02d%02d%02d.png' % 
                                     (year,month,day,hour))

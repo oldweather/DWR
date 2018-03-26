@@ -71,7 +71,7 @@ def constrain_cube(target,constraints,obs,obs_error=0.1,
                                    loc=0,scale=obs_error,
                                    size=perturbed_obs.shape[1])
     if model is None: # Default model is Elastic Net Regression
-        model=sklearn.linear_modelElasticNet(alpha=1.0, l1_ratio=0.5,
+        model=sklearn.linear_model.ElasticNet(alpha=1.0, l1_ratio=0.5,
                           fit_intercept=True,
                           normalize=False, 
                           precompute=False,

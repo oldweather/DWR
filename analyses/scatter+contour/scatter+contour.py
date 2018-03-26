@@ -25,7 +25,7 @@ import DWR
  
 # Date to show 
 year=1901
-month=01
+month=1
 day=22
 hour=18
 dte=datetime.datetime(year,month,day,hour)

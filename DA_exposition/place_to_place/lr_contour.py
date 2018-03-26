@@ -1,5 +1,5 @@
 # UK region weather plot 
-# Pressures at Fort William and oter spots
+# Pressures at Fort William and other spots
 
 import math
 import datetime
@@ -27,7 +27,7 @@ import DWR
 year=1903
 month=10
 day=22
-hour=18
+hour=6
 dte=datetime.datetime(year,month,day,hour)
 
 # Landscape page
@@ -134,14 +134,12 @@ ax_map.add_patch(matplotlib.patches.Circle((rp[:,0],rp[:,1]),
 
 ax_scp=fig.add_axes([0.55,0.55,0.39,0.39])
 
-# pressure range
-extent=[987,999]
 
 # x-axis
-ax_scp.set_xlim(extent)
+ax_scp.set_xlim([992,1002])
 ax_scp.set_xlabel('MSLP at Fort William (hPa)')
 # y-axis
-ax_scp.set_ylim(extent)
+ax_scp.set_ylim([990,1000])
 ax_scp.set_ylabel('MSLP at Stornoway (hPa)')
 
 # Ensemble values at Fort William
@@ -180,14 +178,11 @@ ax_map.add_patch(matplotlib.patches.Circle((rp[:,0],rp[:,1]),
 
 ax_scp2=fig.add_axes([0.55,0.05,0.39,0.39])
 
-# pressure range
-extent=[987,999]
-
 # x-axis
-ax_scp2.set_xlim(extent)
+ax_scp2.set_xlim([992,1002])
 ax_scp2.set_xlabel('MSLP at Fort William (hPa)')
 # y-axis
-ax_scp2.set_ylim(extent)
+ax_scp2.set_ylim([1002,1012])
 ax_scp2.set_ylabel('MSLP at London (hPa)')
 
 # Ensemble values at London
