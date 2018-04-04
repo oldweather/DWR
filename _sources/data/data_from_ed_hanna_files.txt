@@ -1,0 +1,14 @@
+Scilly time-series from Ed Hanna
+================================
+
+`Ed Hanna <http://staff.lincoln.ac.uk/ehanna>`_ has digitised 3-times-daily pressure observations from the Coast Guard Station at St Mary's, Scilly over 1875-1900. These observations did not come from the Daily Weather Reports, but from the station climatological returns in the Met Office Archives.
+
+The data were provided as `a set of Excel spreadsheets <https://github.com/oldweather/DWR/tree/master/Ed_Hanna_Scilly/scilly_pressure_ditigised_1875to1901/as_xlsx>`_ which were `converted <https://github.com/oldweather/DWR/tree/master/Ed_Hanna_Scilly/scilly_pressure_ditigised_1875to1901/to_csv.sh>`_ into `a set of csv files <https://github.com/oldweather/DWR/tree/master/Ed_Hanna_Scilly/scilly_pressure_ditigised_1875to1901/as_csv>`_ - like the one below
+
+.. literalinclude:: ../../Ed_Hanna_Scilly/scilly_pressure_ditigised_1875to1901/as_csv/scilly_pressure_ditigised1894.jul1894.csv
+
+To make the data easily useable, the station files have been conferted into the same monthly data format used for `weatherrescue.org data <data_from_weatherrescue.html>`_.
+
+.. literalinclude:: ../../Ed_Hanna_Scilly/scripts/to_DWR_format.py
+
+Both the `original station files <https://github.com/oldweather/DWR/tree/master/Ed_Hanna_Scilly/scilly_pressure_ditigised_1875to1901/as_csv>`_ and the `final monthly files <https://github.com/oldweather/DWR/tree/master/data_from_Ed_Hanna>`_ are included in this repository. An API for the final monthly data is provided by `a python module <../modules/module_DWR.html>`_.

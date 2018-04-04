@@ -28,6 +28,7 @@ The observations transcribed by those two projects are included in this reposito
 
    data/data_from_lisa_files 
    data/data_from_weatherrescue
+   data/data_from_ed_hanna_files
 
 An API for these observations is provided by a python module:
 

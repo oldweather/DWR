@@ -1,0 +1,12 @@
+Analyses demonstrating Data Assimilation for Data Scientists
+============================================================
+
+.. toctree::
+   :maxdepth: 2
+
+   one_station.rst
+   lr_contour.rst
+   before+after.rst
+   before+after_london.rst
+   before+after_map.rst
+

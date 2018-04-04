@@ -1,0 +1,22 @@
+Correlations with the observation location
+==========================================
+
+.. figure:: ../../../DA_exposition/place_to_place/lr+contour_1903102206.png
+   :width: 650px
+   :align: center
+   :figwidth: 700px
+
+   MSLP at Fort William, Stornoway, and London (October 22nd, 1903 at 6am).
+
+   The red dot marks Fort William, the blue Stornoway, and the black London. Scatter plots show relationship between their mslp, in the 20CR2c ensemble for this particular point in time.
+
+|
+
+Collect the reanalysis data (prmsl ensemble and observations from 20CR2c for 1903):
+
+.. literalinclude:: ../../../DA_exposition/place_to_place/get_data_20CR.py
+
+Script to make the figure:
+
+.. literalinclude:: ../../../DA_exposition/place_to_place/lr_contour.py
+
