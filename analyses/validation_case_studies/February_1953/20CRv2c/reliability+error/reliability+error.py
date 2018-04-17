@@ -26,8 +26,8 @@ import DWR
 # Date to show 
 year=1953
 month=2
-day=12
-hour=6
+day=10
+hour=18
 dte=datetime.datetime(year,month,day,hour)
 
 # Landscape page

@@ -1,7 +1,7 @@
 #!/bin/env python
 
 ## UK region weather plot 
-# 20CR2c pressures and validation against DWR
+# CERA20C pressures and validation against DWR
 
 import os
 import math
@@ -22,7 +22,7 @@ import cartopy
 import cartopy.crs as ccrs
 
 import Meteorographica.weathermap as wm
-import Meteorographica.data.twcr as twcr
+import Meteorographica.data.cera20c as cera20c
 
 import DWR
  
@@ -38,7 +38,7 @@ parser.add_argument("--day", help="Day of month",
 parser.add_argument("--hour", help="Time of day (0 to 23.99)",
                     type=float,required=True)
 parser.add_argument("--opdir", help="Directory for output files",
-                    default=("%s/images/DWR/vcs_20CR2c_reliability+error" % 
+                    default=("%s/images/DWR/vcs_cera20c_reliability+error" % 
                                              os.getenv('SCRATCH')),
                     type=str,required=False)
 args = parser.parse_args()
@@ -96,30 +96,18 @@ stations=collections.OrderedDict.fromkeys(obs.loc[:,'name']).keys()
 wm.plot_obs(ax_map,obs,lat_label='latitude',
             lon_label='longitude',radius=0.25,facecolor='red',edgecolor='red')
 
-# Add the observations from 20CR
-obs_t=twcr.load_observations_fortime(dte,version='2c')
-# Filter to those assimilated and near the UK
-obs_s=obs_t.loc[(obs_t['Assimilation.indicator']==1) &
-              ((obs_t['Latitude']>0) & 
-                   (obs_t['Latitude']<90)) &
-              ((obs_t['Longitude']>240) | 
-                   (obs_t['Longitude']<100))].copy()
-wm.plot_obs(ax_map,obs_s,radius=0.15)
-
 # load the pressures
-prmsl=twcr.load('prmsl',args.year,args.month,args.day,args.hour,
-                             version='2c')
+prmsl=cera20c.load('prmsl',args.year,args.month,args.day,args.hour)
 
 # For each ensemble member, make a contour plot
 for m in prmsl.coord('member').points:
-#for m in range(1, 10):   # Same number as CERA
     prmsl_e=prmsl.extract(iris.Constraint(member=m))
     prmsl_e.data=prmsl_e.data/100 # To hPa
     CS=wm.plot_contour(ax_map,prmsl_e,
                    levels=numpy.arange(870,1050,10),
                    colors='blue',
                    label=False,
-                   linewidths=0.1)
+                   linewidths=0.3)
 
 # Add the ensemble mean - with labels
 prmsl_m=prmsl.collapsed('member', iris.analysis.MEAN)

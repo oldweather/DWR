@@ -1,9 +1,6 @@
-#!/bin/env python
+# UK region weather plot 
+# CERA-20C pressures and validation against DWR
 
-## UK region weather plot 
-# 20CR2c pressures and validation against DWR
-
-import os
 import math
 import datetime
 import numpy
@@ -22,35 +19,19 @@ import cartopy
 import cartopy.crs as ccrs
 
 import Meteorographica.weathermap as wm
-import Meteorographica.data.twcr as twcr
+import Meteorographica.data.cera20c as cera20c
 
 import DWR
  
-# Get the datetime to plot from commandline arguments
-import argparse
-parser = argparse.ArgumentParser()
-parser.add_argument("--year", help="Year",
-                    type=int,required=True)
-parser.add_argument("--month", help="Integer month",
-                    type=int,required=True)
-parser.add_argument("--day", help="Day of month",
-                    type=int,required=True)
-parser.add_argument("--hour", help="Time of day (0 to 23.99)",
-                    type=float,required=True)
-parser.add_argument("--opdir", help="Directory for output files",
-                    default=("%s/images/DWR/vcs_20CR2c_reliability+error" % 
-                                             os.getenv('SCRATCH')),
-                    type=str,required=False)
-args = parser.parse_args()
-if not os.path.isdir(args.opdir):
-    os.makedirs(args.opdir)
- 
-dte=datetime.datetime(args.year,args.month,args.day,
-                      int(args.hour),int(args.hour%1*60))
+# Date to show 
+year=1953
+month=2
+day=10
+hour=18
+dte=datetime.datetime(year,month,day,hour)
 
-# HD video size 1920x1080
-aspect=16.0/9.0
-fig=Figure(figsize=(10.8*aspect,10.8),  # Width, Height (inches)
+# Landscape page
+fig=Figure(figsize=(22,22/math.sqrt(2)),  # Width, Height (inches)
            dpi=100,
            facecolor=(0.88,0.88,0.88,1),
            edgecolor=None,
@@ -62,14 +43,13 @@ canvas=FigureCanvas(fig)
 font = {'family' : 'sans-serif',
         'sans-serif' : 'Arial',
         'weight' : 'normal',
-        'size'   : 14}
+        'size'   : 16}
 matplotlib.rc('font', **font)
 
 # UK-centred projection
-projection=ccrs.RotatedPole(pole_longitude=177.5, 
-                            pole_latitude=35.5)
+projection=ccrs.RotatedPole(pole_longitude=177.5, pole_latitude=35.5)
 scale=20
-extent=[scale*-1*aspect/2-5,scale*aspect/2-5,scale*-1,scale]
+extent=[scale*-1,scale,scale*-1*math.sqrt(2),scale*math.sqrt(2)]
 
 # Contour plot on the left
 ax_map=fig.add_axes([0.01,0.01,0.485,0.98],projection=projection)
@@ -96,30 +76,18 @@ stations=collections.OrderedDict.fromkeys(obs.loc[:,'name']).keys()
 wm.plot_obs(ax_map,obs,lat_label='latitude',
             lon_label='longitude',radius=0.25,facecolor='red',edgecolor='red')
 
-# Add the observations from 20CR
-obs_t=twcr.load_observations_fortime(dte,version='2c')
-# Filter to those assimilated and near the UK
-obs_s=obs_t.loc[(obs_t['Assimilation.indicator']==1) &
-              ((obs_t['Latitude']>0) & 
-                   (obs_t['Latitude']<90)) &
-              ((obs_t['Longitude']>240) | 
-                   (obs_t['Longitude']<100))].copy()
-wm.plot_obs(ax_map,obs_s,radius=0.15)
-
 # load the pressures
-prmsl=twcr.load('prmsl',args.year,args.month,args.day,args.hour,
-                             version='2c')
+prmsl=cera20c.load('prmsl',year,month,day,hour)
 
 # For each ensemble member, make a contour plot
 for m in prmsl.coord('member').points:
-#for m in range(1, 10):   # Same number as CERA
     prmsl_e=prmsl.extract(iris.Constraint(member=m))
     prmsl_e.data=prmsl_e.data/100 # To hPa
     CS=wm.plot_contour(ax_map,prmsl_e,
                    levels=numpy.arange(870,1050,10),
                    colors='blue',
                    label=False,
-                   linewidths=0.1)
+                   linewidths=0.3)
 
 # Add the ensemble mean - with labels
 prmsl_m=prmsl.collapsed('member', iris.analysis.MEAN)
@@ -136,8 +104,7 @@ CS=wm.plot_contour(ax_map,prmsl_m,
 
 # Label with the date
 wm.plot_label(ax_map,
-              '%04d-%02d-%02d:%02d' % (args.year,args.month,
-                                          args.day,args.hour),
+              '%04d-%02d-%02d:%02d' % (year,month,day,hour),
               facecolor=fig.get_facecolor(),
               x_fraction=0.02,
               horizontalalignment='left')
@@ -162,7 +129,7 @@ for station in stations:
                                     latlon['longitude']]).data
 
 # obs_v_reanalysis scatter plot top right
-ax_ovr=fig.add_axes([0.54,0.55,0.45,0.44])
+ax_ovr=fig.add_axes([0.54,0.54,0.45,0.45])
 
 # pressure range
 extent=[965,1045]
@@ -188,14 +155,14 @@ for station in stations:
     ens_dif=[ensemble[station][i]/100.0-obs_ens[i] for i in range(len(obs_ens))]
     ax_ovr.scatter(obs_ens,
                    ens_dif,
-                   s=10,
+                   s=30,
                    marker='o',
                    c='blue',
                    linewidths=0.1,
                    edgecolors='blue')
                    
 # deviation_v_spread scatter plot bottom right
-ax_dvs=fig.add_axes([0.54,0.06,0.45,0.44])
+ax_dvs=fig.add_axes([0.54,0.04,0.45,0.45])
 
 # pressure range
 extent=[-7.5,7.5]
@@ -233,8 +200,5 @@ for station in stations:
                    edgecolors='black')
  
 # Output as png
-fig.savefig('%s/reliability+error_%04d%02d%02d%02d%02d.png' % 
-                                      (args.opdir,args.year,
-                                       args.month,args.day,
-                                      int(args.hour),
-                                      int(args.hour%1*60)))
+fig.savefig('reliability+error_%04d%02d%02d%02d.png' % 
+                                    (year,month,day,hour))
