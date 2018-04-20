@@ -108,10 +108,10 @@ wm.plot_obs(ax_map,obs_month,lat_label='latitude',
             lon_label='longitude',radius=0.25,facecolor='red',
             edgecolor='red',alpha=0.2)
 
-# Get the DWR observations within +- 12 hours
+# Get the DWR observations within +- 15 hours
 obs=DWR.load_observations('prmsl',
-                          dte-datetime.timedelta(hours=13.1),
-                          dte+datetime.timedelta(hours=13.1))
+                          dte-datetime.timedelta(hours=15),
+                          dte+datetime.timedelta(hours=15))
 # Remove stations already in ISPD
 obs=obs[~obs['name'].isin(['BODO','HAPARANDA','HERNOSAND',
                            'STOCKHOLM','WISBY','ABERDEEN',
@@ -159,7 +159,7 @@ prmsl_m.data[numpy.where(prmsl_s.data>3)]=numpy.nan
 CS=wm.plot_contour(ax_map,prmsl_m,
                    levels=numpy.arange(870,1050,10),
                    colors='black',
-                   label=True,
+                   label=False,
                    linewidths=2)
 
 # Label with the date
