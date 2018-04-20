@@ -95,7 +95,6 @@ prmsl=twcr.load('prmsl',year,month,day,hour,
 
 # For each ensemble member, make a contour plot
 for m in prmsl.coord('member').points:
-#for m in range(1, 10):   # Same number as CERA
     prmsl_e=prmsl.extract(iris.Constraint(member=m))
     prmsl_e.data=prmsl_e.data/100 # To hPa
     CS=wm.plot_contour(ax_map,prmsl_e,
@@ -124,35 +123,6 @@ wm.plot_label(ax_map,
               x_fraction=0.02,
               horizontalalignment='left')
 
-# Validation scatterplot on the right
-ax_scp=fig.add_axes([0.6,0.04,0.39,0.95])
-
-# pressure range
-extent=[945,1045]
-
-# x-axis
-ax_scp.set_xlim(extent)
-ax_scp.set_xlabel('MSLP (hPa)')
-
-# y-axis
-ax_scp.set_ylim([1,len(stations)+1])
-y_locations=[x+0.5 for x in range(1,len(stations)+1)]
-ax_scp.yaxis.set_major_locator(
-              matplotlib.ticker.FixedLocator(y_locations))
-ax_scp.yaxis.set_major_formatter(
-              matplotlib.ticker.FixedFormatter(
-                  [DWR.pretty_name(s) for s in stations]))
-ax_scp.set_xlabel('MSLP (hPa)')
-
-# Custom grid spacing
-for y in range(0,len(stations)):
-    ax_scp.add_line(matplotlib.lines.Line2D(
-            xdata=(extent[0],extent[1]), ydata=(y+1.5,y+1.5),
-            linestyle='solid',
-            linewidth=0.2,
-            color=(0.5,0.5,0.5,1),
-            zorder=0))
-
 # Get a pressure interpolated to the selected time for each station
 interpolated={}
 for station in stations:
@@ -161,85 +131,88 @@ for station in stations:
                                           obs,station,dte)
     except StandardError:
         interpolated[station]=None
+# Get the data at station locations
 
-# Plot the station pressures
-for y in range(0,len(stations)):
-    station=stations[y]
-    if interpolated[station] is None:
-        continue
-    mslp=interpolated[station]
-    ax_scp.add_line(matplotlib.lines.Line2D(
-            xdata=(mslp,mslp), ydata=(y+1.25,y+1.75),
-            linestyle='solid',
-            linewidth=4,
-            color=(1,0,0,1),
-            zorder=1))
-    
-# for each station, plot the reanalysis ensemble at that station
+# Get the reanalysis ensemble at the station locations
+ensemble={}
 interpolator = iris.analysis.Linear().interpolator(prmsl, 
                                    ['latitude', 'longitude'])
-for y in range(0,len(stations)):
-    station=stations[y]
+for station in stations:
     latlon=DWR.get_station_location(obs,station)
-    ensemble=interpolator([latlon['latitude'],
-                           latlon['longitude']])
-    ax_scp.scatter(ensemble.data/100,
-                numpy.random.uniform(low=y+1.25,
-                                     high=y+1.75,
-                                     size=len(ensemble.data)),
-                25, # Point size
-                'blue', # Color
-                marker='.',
-                edgecolors='face',
-                linewidths=0.0,
-                alpha=0.5,
-                zorder=0.5)
+    ensemble[station]=interpolator([latlon['latitude'],
+                                    latlon['longitude']]).data
 
-# Join each station name to its location on the map
-# Need another axes, filling the whole fig
-ax_full=fig.add_axes([0,0,1,1])
-ax_full.patch.set_alpha(0.0)  # Transparent background
+# obs_v_reanalysis scatter plot top right
+ax_ovr=fig.add_axes([0.54,0.54,0.45,0.45])
 
-# Map location of a station in ax_full coordinates
-def pos_left(obs,stations,idx):
-    latlon=DWR.get_station_location(obs,stations[idx])
-    rp=ax_map.projection.transform_points(ccrs.PlateCarree(),
-                              numpy.asarray(latlon['longitude']),
-                              numpy.asarray(latlon['latitude']))
-    new_lon=rp[:,0]
-    new_lat=rp[:,1]
+# pressure range
+extent=[965,1045]
 
-    result={}
-    result['x']=0.01+0.485*((new_lon-(scale*-1))/(scale*2))
-    result['y']=0.01+0.98*((new_lat-(scale*math.sqrt(2)*-1))/
-                                       (scale*2*math.sqrt(2)))
-    return result
+# x & y-axis
+ax_ovr.set_xlim(extent)
+ax_ovr.set_xlabel('Observed MSLP (hPa)')
+ax_ovr.set_ylim(-10,10)
+ax_ovr.set_ylabel('Ensemble-Observed MSLP (hPa)')
 
-# Label location of a station in ax_full coordinates
-def pos_right(obs,stations,idx):
-    result={}
-    result['x']=0.51
-    result['y']=0.04+(0.95/len(stations))*(idx+0.5)
-    return result
-
-for i in range(0,len(stations)):
-    p_left=pos_left(obs,stations,i)
-    p_right=pos_right(obs,stations,i)
-    ax_full.add_patch(Circle((p_right['x'],
-                              p_right['y']),
-                             radius=0.001,
-                             facecolor=(1,0,0,1),
-                             edgecolor=(0,0,0,1),
-                             alpha=1,
-                             zorder=1))
-    ax_full.add_line(matplotlib.lines.Line2D(
-            xdata=(p_left['x'],p_right['x']),
-            ydata=(p_left['y'],p_right['y']),
+# Background 1-to-1 line
+ax_ovr.add_line(matplotlib.lines.Line2D(
+            xdata=extent, ydata=(0,0),
             linestyle='solid',
-            linewidth=0.2,
-            color=(1,0,0,0.5),
+            linewidth=1,
+            color=(0.5,0.5,0.5,1),
             zorder=1))
 
+# Plot the ensembles
+for station in stations:
+    if interpolated[station] is None: continue
+    obs_ens=[interpolated[station]]*len(ensemble[station])
+    ens_dif=[ensemble[station][i]/100.0-obs_ens[i] for i in range(len(obs_ens))]
+    ax_ovr.scatter(obs_ens,
+                   ens_dif,
+                   s=10,
+                   marker='o',
+                   c='blue',
+                   linewidths=0.1,
+                   edgecolors='blue')
+                   
+# deviation_v_spread scatter plot bottom right
+ax_dvs=fig.add_axes([0.54,0.04,0.45,0.45])
+
+# pressure range
+extent=[-10,10]
+
+# x & y-axis
+ax_dvs.set_xlim(extent)
+ax_dvs.set_xlabel('Observation-ensemble mean (hPa)')
+ax_dvs.set_ylim(0,extent[1])
+ax_dvs.set_ylabel('Ensemble standard deviation (hPa)')
+
+# Ensemble means
+ensm={}
+for station in stations:
+    ensm[station]=numpy.mean(ensemble[station])
+
+# Expected ensemble sd assuming obs have 2hpa error
+exp_x=numpy.arange(extent[0],extent[1],0.01)
+exp_y=numpy.sqrt(numpy.maximum(exp_x**2-4,0))
+ax_dvs.add_line(matplotlib.lines.Line2D(
+            xdata=exp_x, ydata=exp_y,
+            linestyle='solid',
+            linewidth=1,
+            color=(0.5,0.5,0.5,1),
+            zorder=1))
+
+# Plot the ensembles
+for station in stations:
+    if interpolated[station] is None: continue
+    ax_dvs.scatter(ensm[station]/100.0-interpolated[station],
+                   numpy.std(ensemble[station])/100.0,
+                   s=30,
+                   marker='o',
+                   c='black',
+                   linewidths=0.1,
+                   edgecolors='black')
+ 
 # Output as png
-fig.savefig('Scatter+contour_%04d%02d%02d%02d.png' % 
+fig.savefig('reliability+error_%04d%02d%02d%02d.png' % 
                                     (year,month,day,hour))

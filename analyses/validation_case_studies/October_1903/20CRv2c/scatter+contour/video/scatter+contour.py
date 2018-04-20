@@ -38,7 +38,7 @@ parser.add_argument("--day", help="Day of month",
 parser.add_argument("--hour", help="Time of day (0 to 23.99)",
                     type=float,required=True)
 parser.add_argument("--opdir", help="Directory for output files",
-                    default=("%s/images/DWR/vcs_20CR2c_1903_scatter+contour" % 
+           default=("%s/images/DWR/vcs_20CR2c_1903_scatter+contour" % 
                                              os.getenv('SCRATCH')),
                     type=str,required=False)
 args = parser.parse_args()
