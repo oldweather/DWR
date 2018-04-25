@@ -1,7 +1,7 @@
 #!/bin/env python
 
 # UK region weather plot 
-# 20CR2c pressures and validation against DWR
+# 20CR3 pressures and validation against DWR
 
 import os
 import os.path
@@ -32,7 +32,7 @@ parser.add_argument("--day", help="Day of month",
 parser.add_argument("--hour", help="Time of day (0 to 23.99)",
                     type=float,required=True)
 parser.add_argument("--opdir", help="Directory for output files",
-           default=("%s/images/DWR/vcs_20CR2c_1903_scatter+contour" % 
+           default=("%s/images/DWR/vcs_20CR3_1903_scatter+contour" % 
                                              os.getenv('SCRATCH')),
                     type=str,required=False)
 args = parser.parse_args()
@@ -91,9 +91,9 @@ obs=obs.sort_values(by='latitude',ascending=True)
 
 # Get the reanalysis pressures and observations
 prmsl=twcr.load('prmsl',args.year,args.month,args.day,
-                             args.hour,version='2c')
+                             args.hour,version='4.5.1')
 prmsl.data=prmsl.data/100  #] convert to hPa
-obs_t=twcr.load_observations_fortime(dte,version='2c')
+obs_t=twcr.load_observations_fortime(dte,version='4.5.1')
 # Filter to those near the UK # For speed only, optional
 obs_t=obs_t.loc[((obs_t['Latitude']>0) & 
                    (obs_t['Latitude']<90)) &

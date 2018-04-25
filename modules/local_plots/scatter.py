@@ -34,6 +34,8 @@ def plot_scatter(ax,field,dwr_obs,dte,**kwargs):
         xlabel (:obj:`str`): x-axis label for scatter plot, default 'MSLP (hPa)'.
         scatter_point_size (:obj:`float`): Size of ensemble dots in scatter plot (pts), default 25.
         scatter_alpha (:obj:`float`): Alpha transparency of ensemble dots in scatter plot (pts), default 0.5.
+        stations (:obj:`list`): Names (DWR format) of stations to be included, default is stations in dwr_obs.
+        station_latlon (:obj:`dict`): Latitiudes and Longitudes of stations to be included, default is taken from dwr_obs.
 
     |
     """
@@ -43,25 +45,29 @@ def plot_scatter(ax,field,dwr_obs,dte,**kwargs):
     kwargs.setdefault('xlabel','MSLP (hPa)')
     kwargs.setdefault('scatter_point_size',25)
     kwargs.setdefault('scatter_alpha',0.5)
+    kwargs.setdefault('stations',collections.OrderedDict.fromkeys(
+                                      dwr_obs.loc[:,'name']).keys())
+    if 'station_latlon' not in kwargs:
+        latlon={}
+        for station in kwargs.get('stations'):
+           latlon[station]=DWR.get_station_location(dwr_obs,station)
+        kwargs['station_latlon']=latlon
 
     # x-axis
     ax.set_xlim(kwargs.get('pressure_range'))
     ax.set_xlabel(kwargs.get('xlabel'))
-
-    stations=collections.OrderedDict.fromkeys(
-                     dwr_obs.loc[:,'name']).keys()
  
     # y-axis
-    ax.set_ylim([1,len(stations)+1])
-    y_locations=[x+0.5 for x in range(1,len(stations)+1)]
+    ax.set_ylim([1,len( kwargs.get('stations'))+1])
+    y_locations=[x+0.5 for x in range(1,len( kwargs.get('stations'))+1)]
     ax.yaxis.set_major_locator(
                   matplotlib.ticker.FixedLocator(y_locations))
     ax.yaxis.set_major_formatter(
                   matplotlib.ticker.FixedFormatter(
-                      [DWR.pretty_name(s) for s in stations]))
+                      [DWR.pretty_name(s) for s in  kwargs.get('stations')]))
     
     # Custom grid spacing
-    for y in range(0,len(stations)):
+    for y in range(0,len(kwargs.get('stations'))):
         ax.add_line(matplotlib.lines.Line2D(
                 xdata=kwargs.get('pressure_range'),
                 ydata=(y+1.5,y+1.5),
@@ -72,14 +78,14 @@ def plot_scatter(ax,field,dwr_obs,dte,**kwargs):
 
     # Plot the station pressures
     interpolated={}
-    for station in stations:
+    for station in kwargs.get('stations'):
         try:
             interpolated[station]=DWR.at_station_and_time(
                                               dwr_obs,station,dte)
         except StandardError:
             interpolated[station]=None
-    for y in range(0,len(stations)):
-        station=stations[y]
+    for y in range(0,len(kwargs.get('stations'))):
+        station=kwargs.get('stations')[y]
         if interpolated[station] is None:
             continue
         mslp=interpolated[station]
@@ -93,11 +99,10 @@ def plot_scatter(ax,field,dwr_obs,dte,**kwargs):
     # for each station, plot the reanalysis ensemble at that station
     interpolator = iris.analysis.Linear().interpolator(field, 
                                        ['latitude', 'longitude'])
-    for y in range(0,len(stations)):
-        station=stations[y]
-        latlon=DWR.get_station_location(dwr_obs,station)
-        ensemble=interpolator([latlon['latitude'],
-                               latlon['longitude']])
+    for y in range(0,len(kwargs.get('stations'))):
+        station=kwargs.get('stations')[y]
+        ensemble=interpolator([kwargs.get('station_latlon')[station]['latitude'],
+                               kwargs.get('station_latlon')[station]['longitude']])
 
         ax.scatter(ensemble.data,
                     numpy.linspace(y+1.25,y+1.75,

@@ -1,7 +1,7 @@
 #!/bin/env python
 
 # UK region weather plot 
-# 20CR2c pressures and validation against DWR
+# CERA20C pressures and validation against DWR
 
 import os
 import os.path
@@ -14,7 +14,7 @@ from matplotlib.backends.backend_agg import \
                  FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 
-import Meteorographica.data.twcr as twcr
+import Meteorographica.data.cera20c as cera20c
 
 import DWR
 
@@ -32,7 +32,7 @@ parser.add_argument("--day", help="Day of month",
 parser.add_argument("--hour", help="Time of day (0 to 23.99)",
                     type=float,required=True)
 parser.add_argument("--opdir", help="Directory for output files",
-           default=("%s/images/DWR/vcs_20CR2c_1903_scatter+contour" % 
+           default=("%s/images/DWR/vcs_cera20c_1903_scatter+contour" % 
                                              os.getenv('SCRATCH')),
                     type=str,required=False)
 args = parser.parse_args()
@@ -90,20 +90,16 @@ obs=obs[~obs['name'].isin(['BODO','HAPARANDA','HERNOSAND',
 obs=obs.sort_values(by='latitude',ascending=True)
 
 # Get the reanalysis pressures and observations
-prmsl=twcr.load('prmsl',args.year,args.month,args.day,
-                             args.hour,version='2c')
+prmsl=cera20c.load('prmsl',args.year,args.month,args.day,
+                             args.hour)
 prmsl.data=prmsl.data/100  #] convert to hPa
-obs_t=twcr.load_observations_fortime(dte,version='2c')
-# Filter to those near the UK # For speed only, optional
-obs_t=obs_t.loc[((obs_t['Latitude']>0) & 
-                   (obs_t['Latitude']<90)) &
-                ((obs_t['Longitude']>240) | 
-                   (obs_t['Longitude']<100))].copy()
 
-local_plots.plot_scatter_contour(fig,prmsl,obs_t,obs,dte,
+local_plots.plot_scatter_contour(fig,prmsl,None,obs,dte,
                                  stations=stations,
                                  station_latlon=latlon,
-                                 label_mean_contour=False)
+                                 label_mean_contour=False,
+                                 scatter_point_size=100,
+                                 contour_width=0.3)
 
 # Output as png
 fig.savefig('%s/Scatter+contour_%04d%02d%02d%02d%02d.png' % 

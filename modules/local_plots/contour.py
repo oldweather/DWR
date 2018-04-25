@@ -20,6 +20,7 @@ import matplotlib
 import matplotlib.cm
 import cartopy.crs as ccrs
 import numpy
+import pandas
 import Meteorographica.weathermap as wm
 import collections
 
@@ -41,9 +42,12 @@ def plot_contour(ax,extent,dte,field,obs_r,dwr_obs,**kwargs):
         contour_width (:obj:`float`): Width of member contour lines, default 0.1.
         contour_mask (:obj:`float`): Plot mean contours where spread < this, default 3.
         n_contours (:obj:`int`): Max. number of member contour to plot, default None - all members.
+        label_mean_contour (:obj:`bool`): Label the mean contour lines? Default=True.
         dwr_color (:obj:`str`): Either a color name, or the string 'anomaly' (default) to color by pressure anomaly.
         dwr_anomaly_range (:obj:`float`): Anomaly color scale factor, default 20.
         dwr_radius (:obj:`float`): DWR obs plot size, default 0.25.
+        stations (:obj:`list`): Names (DWR format) of stations to be included, default is stations in dwr_obs.
+        station_latlon (:obj:`dict`): Latitiudes and Longitudes of stations to be included, default is taken from dwr_obs.
 
     |
     """
@@ -56,9 +60,18 @@ def plot_contour(ax,extent,dte,field,obs_r,dwr_obs,**kwargs):
     kwargs.setdefault('contour_width',0.1)
     kwargs.setdefault('contour_mask',3.0)
     kwargs.setdefault('n_contours',None)
-    kwargs.setdefault('dwr_color','anomaly')
-    kwargs.setdefault('dwr_anomaly_range',20.0)
-    kwargs.setdefault('dwr_radius',0.25)
+    kwargs.setdefault('label_mean_contour',True)
+    if dwr_obs is not None:
+        kwargs.setdefault('dwr_color','anomaly')
+        kwargs.setdefault('dwr_anomaly_range',20.0)
+        kwargs.setdefault('dwr_radius',0.25)
+        kwargs.setdefault('stations',collections.OrderedDict.fromkeys(
+                                          dwr_obs.loc[:,'name']).keys())
+        if 'station_latlon' not in kwargs:
+            latlon={}
+            for station in kwargs.get('stations'):
+               latlon[station]=DWR.get_station_location(dwr_obs,station)
+            kwargs['station_latlon']=latlon
 
     ax.set_axis_off()
     ax.set_extent(extent,crs=kwargs.get('projection'))
@@ -81,27 +94,27 @@ def plot_contour(ax,extent,dte,field,obs_r,dwr_obs,**kwargs):
             if not obs_r.empty:
                 wm.plot_obs(ax,obs_r,radius=kwargs.get('obs_radius'))
         
-
     # Plot the DWR obs
     if dwr_obs is not None:
-        stations=collections.OrderedDict.fromkeys(
-                         dwr_obs.loc[:,'name']).keys()
         if kwargs.get('dwr_color')=='anomaly':
             cmap = matplotlib.cm.get_cmap('coolwarm')
             interpolator = iris.analysis.Linear().interpolator(field, 
                                        ['latitude', 'longitude'])
             interpolated={}
-            for station in stations:
+            for station in kwargs.get('stations'):
                 try:
                     interpolated[station]=DWR.at_station_and_time(
                                                       dwr_obs,station,dte)
                 except StandardError:
                     interpolated[station]=None
-                latlon=DWR.get_station_location(dwr_obs,station)
-                ensemble=interpolator([latlon['latitude'],
-                                       latlon['longitude']])
+                ensemble=interpolator([kwargs.get('station_latlon')[station]['latitude'],
+                                       kwargs.get('station_latlon')[station]['longitude']])
                 if interpolated[station] is None:
-                    wm.plot_obs(ax,dwr_obs[dwr_obs['name']==station],
+                    spoof=pandas.DataFrame(data={
+                          'latitude' : kwargs.get('station_latlon')[station]['latitude'],
+                          'longitude': kwargs.get('station_latlon')[station]['longitude'],
+                          'values'   : 0},index=[0])
+                    wm.plot_obs(ax,spoof,
                          lat_label='latitude',lon_label='longitude',
                          radius=kwargs.get('dwr_radius'),
                          facecolor='grey',edgecolor='black')
@@ -115,7 +128,7 @@ def plot_contour(ax,extent,dte,field,obs_r,dwr_obs,**kwargs):
                          radius=kwargs.get('dwr_radius'),
                          facecolor=stn_color,edgecolor='black')
         else:
-            for station in stations:
+            for station in kwargs.get('stations'):
                 wm.plot_obs(ax,dwr_obs[dwr_obs['name']==station],
                      lat_label='latitude',lon_label='longitude',
                      radius=kwargs.get('dwr_radius'),
@@ -146,6 +159,6 @@ def plot_contour(ax,extent,dte,field,obs_r,dwr_obs,**kwargs):
     CS=wm.plot_contour(ax,prmsl_m,
                        levels=kwargs.get('contour_levels'),
                        colors='black',
-                       label=True,
+                       label=kwargs.get('label_mean_contour'),
                        linewidths=2,
                        zorder=50)
