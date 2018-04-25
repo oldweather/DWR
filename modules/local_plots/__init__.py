@@ -19,4 +19,5 @@ This is a collection of plotting routines used repeatedly in the DWR work.
 from contour import *
 from scatter import *
 from scatter_contour import *
+from reliability import *
 
