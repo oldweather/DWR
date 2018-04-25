@@ -26,12 +26,8 @@ import Meteorographica.weathermap as wm
 from scatter import plot_scatter
 from contour import plot_contour
 
-def plot_scatter_contour(fig,field,obs_r,dwr_obs,dte,
-                         projection=ccrs.RotatedPole(pole_longitude=177.5,
-                                         pole_latitude=35.5),
-                         scale=20,
-                         pressure_range=[945,1045]):
-    """Make a combined contour -plot and scatter plot
+def plot_scatter_contour(fig,field,obs_r,dwr_obs,dte,**kwargs):
+    """Make a combined contour-plot and scatter plot
 
     Args:
         fig (:`matplotlib.figure`): Figure to hold the plot
@@ -40,16 +36,39 @@ def plot_scatter_contour(fig,field,obs_r,dwr_obs,dte,
         dwr_obs (:obj:`pandas.DataFrame`): DWR observations.
         dte (:obj:`datetime.datetime`): Time of data to plot
 
+    Kwargs:
+        projection (:obj:`cartopy.crs`): Map projection to use, default UKV.
+        scale (:obj:`float`): Map scale - latitude range, default 20.
+        pressure_range (:obj:`list`): (min,max) pressure for scatterplot, default [945,1045].
+        obs_radius (:obj:`float`): Reanalysis obs plot size, default 0.15.
+        contour_levels (:obj:`list`): Values to plot contours at, default numpy.arange(870,1050,10).
+        contour_width (:obj:`float`): Width of member contour lines, default 0.1.
+        contour_mask (:obj:`float`): Plot mean contours where spread < this, default 3.
+        n_contours (:obj:`int`): Max. number of member contour to plot, default None - all members.
+        dwr_color (:obj:`str`): Either a color name, or the string 'anomaly' (default) to color by pressure anomaly.
+        dwr_anomaly_range (:obj:`float`): Anomaly color scale factor, default 20.
+        dwr_radius (:obj:`float`): DWR obs plot size, default 0.25.
+        xlabel (:obj:`str`): x-axis label for scatter plot, default 'MSLP (hPa)'.
+        scatter_point_size (:obj:`float`): Size of ensemble dots in scatter plot (pts), default 25.
+        scatter_alpha (:obj:`float`): Alpha transparency of ensemble dots in scatter plot (pts), default 0.5.
     |
     """
 
-    ax_map=fig.add_axes([0.01,0.01,0.485,0.98],projection=projection)
+    # Set keyword argument defaults
+    kwargs.setdefault('projection',ccrs.RotatedPole(pole_longitude=177.5,
+                                                          pole_latitude=35.5))
+    kwargs.setdefault('scale',20.0)
+
+
+    ax_map=fig.add_axes([0.01,0.01,0.485,0.98],
+                           projection=kwargs.get('projection'))
     aspect=fig.get_size_inches()[1]/(fig.get_size_inches()[0]/2.0)
-    extent=[scale*-1,scale,scale*-1*aspect,scale*aspect]
+    extent=[kwargs.get('scale')*-1,kwargs.get('scale'),
+            kwargs.get('scale')*-1*aspect,kwargs.get('scale')*aspect]
     stations=collections.OrderedDict.fromkeys(
                      dwr_obs.loc[:,'name']).keys()
 
-    plot_contour(ax_map,extent,dte,field,obs_r,dwr_obs)
+    plot_contour(ax_map,extent,dte,field,obs_r,dwr_obs,**kwargs)
 
     # Label with the date
     wm.plot_label(ax_map,
@@ -61,7 +80,7 @@ def plot_scatter_contour(fig,field,obs_r,dwr_obs,dte,
     
     ax_scp=fig.add_axes([0.6,0.04,0.39,0.95])
 
-    plot_scatter(ax_scp,field,dwr_obs,dte,pressure_range)
+    plot_scatter(ax_scp,field,dwr_obs,dte,**kwargs)
 
     # Join each station name to its location on the map
     # Need another axes, filling the whole fig
@@ -78,6 +97,7 @@ def plot_scatter_contour(fig,field,obs_r,dwr_obs,dte,
         new_lat=rp[:,1]
 
         result={}
+        scale=kwargs.get('scale')
         result['x']=0.01+0.485*((new_lon-(scale*-1))/(scale*2))
         result['y']=0.01+0.98*((new_lat-(scale*aspect*-1))/
                                            (scale*2*aspect))

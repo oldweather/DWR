@@ -19,8 +19,7 @@ import numpy
 import collections
 import matplotlib
 
-def plot_scatter(ax,field,dwr_obs,dte,extent,
-                 xlabel='MSLP (hPa)'):
+def plot_scatter(ax,field,dwr_obs,dte,**kwargs):
     """Make a mslp contour plot with DWR observations
 
     Args:
@@ -30,12 +29,24 @@ def plot_scatter(ax,field,dwr_obs,dte,extent,
         extent (:obj:`list`) Plot extent (lon.min,lon.max,lat.min,lat.max)
         xlabel (:obj:`str`): 'x-axis title'
 
+    Kwargs:
+        pressure_range (:obj:`list`): (min,max) pressure for scatterplot, default [945,1045].
+        xlabel (:obj:`str`): x-axis label for scatter plot, default 'MSLP (hPa)'.
+        scatter_point_size (:obj:`float`): Size of ensemble dots in scatter plot (pts), default 25.
+        scatter_alpha (:obj:`float`): Alpha transparency of ensemble dots in scatter plot (pts), default 0.5.
+
     |
     """
 
+    # Set keyword argument defaults
+    kwargs.setdefault('pressure_range',[945,1045])
+    kwargs.setdefault('xlabel','MSLP (hPa)')
+    kwargs.setdefault('scatter_point_size',25)
+    kwargs.setdefault('scatter_alpha',0.5)
+
     # x-axis
-    ax.set_xlim(extent)
-    ax.set_xlabel('MSLP (hPa)')
+    ax.set_xlim(kwargs.get('pressure_range'))
+    ax.set_xlabel(kwargs.get('xlabel'))
 
     stations=collections.OrderedDict.fromkeys(
                      dwr_obs.loc[:,'name']).keys()
@@ -48,12 +59,12 @@ def plot_scatter(ax,field,dwr_obs,dte,extent,
     ax.yaxis.set_major_formatter(
                   matplotlib.ticker.FixedFormatter(
                       [DWR.pretty_name(s) for s in stations]))
-    ax.set_xlabel(xlabel)
     
     # Custom grid spacing
     for y in range(0,len(stations)):
         ax.add_line(matplotlib.lines.Line2D(
-                xdata=(extent[0],extent[1]), ydata=(y+1.5,y+1.5),
+                xdata=kwargs.get('pressure_range'),
+                ydata=(y+1.5,y+1.5),
                 linestyle='solid',
                 linewidth=0.2,
                 color=(0.5,0.5,0.5,1),
@@ -91,11 +102,11 @@ def plot_scatter(ax,field,dwr_obs,dte,extent,
         ax.scatter(ensemble.data,
                     numpy.linspace(y+1.25,y+1.75,
                                   num=len(ensemble.data)),
-                    25, # Point size
+                    kwargs.get('scatter_point_size'),
                     'blue', # Color
                     marker='.',
                     edgecolors='face',
                     linewidths=0.0,
-                    alpha=0.5,
+                    alpha=kwargs.get('scatter_alpha'),
                     zorder=0.5)
 
