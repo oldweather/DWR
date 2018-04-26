@@ -1,5 +1,5 @@
 # UK region weather plot 
-# 20CR2c pressures and validation against DWR
+# 20CR3 pressures and validation against DWR
 
 import math
 import datetime
@@ -60,7 +60,7 @@ obs=obs[~obs['name'].isin(['BODO','HAPARANDA','HERNOSAND',
                            'BERLIN'])]
 
 # Get the observations from 20CR
-obs_t=twcr.load_observations_fortime(dte,version='2c')
+obs_t=twcr.load_observations_fortime(dte,version='4.5.1')
 # Filter to those near the UK
 obs_s=obs_t.loc[((obs_t['Latitude']>0) & 
                    (obs_t['Latitude']<90)) &
@@ -68,7 +68,7 @@ obs_s=obs_t.loc[((obs_t['Latitude']>0) &
                    (obs_t['Longitude']<100))].copy()
 # load the pressures
 prmsl=twcr.load('prmsl',year,month,day,hour,
-                             version='2c')
+                             version='4.5.1')
 prmsl.data=prmsl.data/100.0 # To hPa
 
 # Contour plot on the left

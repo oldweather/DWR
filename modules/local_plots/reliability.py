@@ -32,9 +32,9 @@ def plot_rotated_scatter(ax,field,obs,dte,**kwargs):
         dte (:obj:`datetime.datetime`): Time of plot
 
     Kwargs:
-        x_range (:obj:`list`): x range in scatterplot, default is (965.0,1045.0).
+        x_range (:obj:`list`): x range in scatterplot, default is (945.0,1045.0).
         x_label (:obj:`str`): x label, default is 'Observed MSLP (hPa)'.
-        y_range (:obj:`list`): y range in scatterplot, default is (-10.0,10.0).
+        y_range (:obj:`list`): y range in scatterplot, default is (-20.0,20.0).
         y_label (:obj:`str`): y label, default is 'Ensemble-Observed MSLP (hPa)'.
         point_size (:obj:`float`): Plot plot size, default 10.0.
         point_size (:obj:`str`): Plot plot color, default 'blue'.
@@ -43,9 +43,9 @@ def plot_rotated_scatter(ax,field,obs,dte,**kwargs):
     """
 
     # Set keyword argument defaults
-    kwargs.setdefault('x_range',(965.0,1045.0))
+    kwargs.setdefault('x_range',(945.0,1045.0))
     kwargs.setdefault('x_label','Observed MSLP (hPa)')
-    kwargs.setdefault('y_range',(-10.0,10.0))
+    kwargs.setdefault('y_range',(-20.0,20.0))
     kwargs.setdefault('y_label','Ensemble-Observed MSLP (hPa)')
     kwargs.setdefault('point_size',10.0)
     kwargs.setdefault('point_color','blue')
@@ -88,7 +88,7 @@ def plot_rotated_scatter(ax,field,obs,dte,**kwargs):
     for station in stations:
         if interpolated[station] is None: continue
         obs_ens=[interpolated[station]]*len(ensemble[station])
-        ens_dif=[ensemble[station][i]/100.0-obs_ens[i] 
+        ens_dif=[ensemble[station][i]-obs_ens[i] 
                              for i in range(len(obs_ens))]
         ax.scatter(obs_ens,
                    ens_dif,
@@ -109,7 +109,7 @@ def plot_deviation_spread(ax,field,obs,dte,**kwargs):
         dte (:obj:`datetime.datetime`): Time of plot
 
     Kwargs:
-        x_range (:obj:`list`): x range in plot, default is (-10,10.0).
+        x_range (:obj:`list`): x range in plot, default is (-20,20.0).
         x_label (:obj:`str`): x label, default is 'Observation-ensemble mean (hPa)'.
         y_range (:obj:`list`): y range in scatterplot, default is (0.0,10.0).
         y_label (:obj:`str`): y label, default is 'Ensemble standard deviation (hPa)'.
@@ -121,7 +121,7 @@ def plot_deviation_spread(ax,field,obs,dte,**kwargs):
     """
 
     # Set keyword argument defaults
-    kwargs.setdefault('x_range',(-10.0,10.0))
+    kwargs.setdefault('x_range',(-20.0,20.0))
     kwargs.setdefault('x_label','Observation-ensemble mean (hPa)')
     kwargs.setdefault('y_range',(0.0,10.0))
     kwargs.setdefault('y_label','Ensemble standard deviation (hPa)')
@@ -155,7 +155,8 @@ def plot_deviation_spread(ax,field,obs,dte,**kwargs):
                                         latlon['longitude']]).data
 
     # Expected ensemble sd
-    exp_x=numpy.arange(extent[0],extent[1],0.01)
+    exp_x=numpy.arange(kwargs.get('x_range')[0],
+                       kwargs.get('x_range')[1],0.01)
     exp_y=numpy.sqrt(numpy.maximum(exp_x**2-kwargs.get('obs_error')**2,0))
     ax.add_line(matplotlib.lines.Line2D(
                 xdata=exp_x, ydata=exp_y,
@@ -167,7 +168,7 @@ def plot_deviation_spread(ax,field,obs,dte,**kwargs):
     # Plot the ensembles
     for station in stations:
         if interpolated[station] is None: continue
-        ax.scatter(ensm[station]-interpolated[station],
+        ax.scatter(numpy.mean(ensemble[station])-interpolated[station],
                        numpy.std(ensemble[station]),
                        s=kwargs.get('point_size'),
                        marker='o',

@@ -1,7 +1,7 @@
 #!/bin/env python
 
-## UK region weather plot 
-# 20CR2c pressures and validation against DWR
+# UK region weather plot 
+# CERA20C pressures and validation against DWR
 
 import os
 import math
@@ -18,7 +18,7 @@ import cartopy
 import cartopy.crs as ccrs
 
 import Meteorographica.weathermap as wm
-import Meteorographica.data.twcr as twcr
+import Meteorographica.data.cera20c as cera20c
 
 import DWR
  
@@ -36,7 +36,7 @@ parser.add_argument("--day", help="Day of month",
 parser.add_argument("--hour", help="Time of day (0 to 23.99)",
                     type=float,required=True)
 parser.add_argument("--opdir", help="Directory for output files",
-         default=("%s/images/DWR/vcs_20CR2c_1903_reliability+error" % 
+         default=("%s/images/DWR/vcs_cera20c_1903_reliability+error" % 
                                              os.getenv('SCRATCH')),
                     type=str,required=False)
 args = parser.parse_args()
@@ -79,17 +79,8 @@ obs=obs.sort_values(by='latitude',ascending=True)
 # Get the list of stations - preserving order
 stations=collections.OrderedDict.fromkeys(obs.loc[:,'name']).keys()
 
-# Add the observations from 20CR
-obs_t=twcr.load_observations_fortime(dte,version='2c')
-# Filter to those near the UK
-obs_s=obs_t.loc[((obs_t['Latitude']>0) & 
-                   (obs_t['Latitude']<90)) &
-              ((obs_t['Longitude']>240) | 
-                   (obs_t['Longitude']<100))].copy()
-
 # load the pressures
-prmsl=twcr.load('prmsl',args.year,args.month,args.day,args.hour,
-                             version='2c')
+prmsl=cera20c.load('prmsl',args.year,args.month,args.day,args.hour)
 prmsl.data=prmsl.data/100.0
 
 # UK-centred projection
@@ -101,9 +92,10 @@ extent=[scale*-1*aspect/2-5,scale*aspect/2-5,scale*-1,scale]
 # Contour plot on the left
 ax_map=fig.add_axes([0.01,0.01,0.485,0.98],projection=projection)
 
-local_plots.plot_contour(ax_map,extent,dte,prmsl,obs_t,obs,
+local_plots.plot_contour(ax_map,extent,dte,prmsl,None,obs,
                          projection=projection,
-                         stations=stations)
+                         stations=stations,
+                         contour_width=0.3)
 
 # Label with the date
 wm.plot_label(ax_map,
