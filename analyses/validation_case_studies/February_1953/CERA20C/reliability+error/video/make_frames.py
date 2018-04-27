@@ -18,7 +18,7 @@ end_day  =datetime.datetime(1953, 2, 28, 11)
 
 # Function to check if the job is already done for this timepoint
 def is_done(year,month,day,hour):
-    op_file_name=("%s/images/DWR/vcs_cera20c_reliability+error/"+
+    op_file_name=("%s/images/DWR/vcs_cera20c_1953_reliability+error/"+
                   "reliability+error_%04d%02d%02d%02d%02d.png") % (
                              os.getenv('SCRATCH'),year,month,day,
                                          int(hour),int(hour%1*60))

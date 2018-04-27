@@ -18,7 +18,7 @@ end_day  =datetime.datetime(1953, 2, 28, 11)
 
 # Function to check if the job is already done for this timepoint
 def is_done(year,month,day,hour):
-    op_file_name=("%s/images/DWR/vcs_cera20c_scatter+contour/"+
+    op_file_name=("%s/images/DWR/vcs_cera20c_1953_scatter+contour/"+
                   "Scatter+contour_%04d%02d%02d%02d%02d.png") % (
                              os.getenv('SCRATCH'),year,month,day,
                                          int(hour),int(hour%1*60))
@@ -34,7 +34,7 @@ while current_day<=end_day:
     while max_new_jobs>0 and current_day<=end_day:
         f=open("multirun.slm","w+")
         f.write('#!/bin/ksh -l\n')
-        f.write(("#SBATCH --output=%s/sc_frame_"+
+        f.write(("#SBATCH --output=%s/sc_cera20c_frame_"+
                  "%04d%02d%02d%02d.out\n") %
                    (opdir,
                     current_day.year,current_day.month,

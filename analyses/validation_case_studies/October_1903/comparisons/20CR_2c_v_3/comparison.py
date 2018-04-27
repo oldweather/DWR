@@ -1,5 +1,5 @@
 # UK region weather plot 
-# 20CR3 pressures and validation against DWR
+# 20CR2c and 3 DWR validation
 
 import math
 import datetime
@@ -26,9 +26,9 @@ import DWR
 import local_plots
  
 # Date to show 
-year=1953
-month=2
-day=10
+year=1903
+month=10
+day=25
 hour=18
 dte=datetime.datetime(year,month,day,hour)
 
@@ -53,11 +53,14 @@ obs=DWR.load_observations('prmsl',
                           dte-datetime.timedelta(hours=15),
                           dte+datetime.timedelta(hours=15))
 # Remove stations already in ISPD
-obs=obs[~obs['name'].isin(['LERWICK','STORNOWAY','VALENTIA',
-                           'CULDROSE','GORLESTON','LEUCHARS'])]
+obs=obs[~obs['name'].isin(['BODO','HAPARANDA','HERNOSAND',
+                           'STOCKHOLM','WISBY','ABERDEEN',
+                           'VALENCIA','FANO','SCILLY','JERSEY',
+                           'LISBON','DUNGENESS','THEHELDER',
+                           'BERLIN'])]
 
-# Get the observations from 20CR
-obs_t=twcr.load_observations_fortime(dte,version='4.5.1')
+# Get the observations from 20CR2c
+obs_t=twcr.load_observations_fortime(dte,version='2c')
 # Filter to those near the UK
 obs_s=obs_t.loc[((obs_t['Latitude']>0) & 
                    (obs_t['Latitude']<90)) &
@@ -65,7 +68,7 @@ obs_s=obs_t.loc[((obs_t['Latitude']>0) &
                    (obs_t['Longitude']<100))].copy()
 # load the pressures
 prmsl=twcr.load('prmsl',year,month,day,hour,
-                             version='4.5.1')
+                             version='2c')
 prmsl.data=prmsl.data/100.0 # To hPa
 
 # Contour plot on the left
@@ -78,23 +81,58 @@ local_plots.plot_contour(ax_map,extent,dte,prmsl,obs_t,obs,
                          projection=projection)
 
 # Label with the date
-wm.plot_label(ax_map,
-              '%04d-%02d-%02d:%02d' % (year,month,day,hour),
+wm.plot_label(ax_map,'v2c',
               facecolor=fig.get_facecolor(),
               x_fraction=0.02,
+              fontsize=16,
               horizontalalignment='left')
 
-# obs_v_reanalysis scatter plot top right
-ax_ovr=fig.add_axes([0.54,0.54,0.45,0.45])
+# overlay obs_v_reanalysis scatter plot top left
+ax_ovr=fig.add_axes([0.05,0.79,0.25,0.16])
 
 local_plots.plot_rotated_scatter(ax_ovr,prmsl,obs,dte)
 
-                  
-# deviation_v_spread scatter plot bottom right
-ax_dvs=fig.add_axes([0.54,0.04,0.45,0.45])
+# Get the observations from 20CR3
+obs_t=twcr.load_observations_fortime(dte,version='4.5.1')
+# Filter to those near the UK
+obs_s=obs_t.loc[((obs_t['Latitude']>0) & 
+                   (obs_t['Latitude']<90)) &
+                ((obs_t['Longitude']>240) | 
+                   (obs_t['Longitude']<100))].copy()
+# load the pressures
+prmsl=twcr.load('prmsl',year,month,day,hour,
+                             version='4.5.1')
+prmsl.data=prmsl.data/100.0 # To hPa
 
-local_plots.plot_deviation_spread(ax_dvs,prmsl,obs,dte)
+# Contour plot on the right
+ax_map3=fig.add_axes([0.51,0.01,0.485,0.98],projection=projection)
+scale=20
+extent=[scale*-1,scale,scale*-1*math.sqrt(2),scale*math.sqrt(2)]
+
+local_plots.plot_contour(ax_map3,extent,dte,prmsl,obs_t,obs,
+                         projection=projection,
+                         n_contours=56)
+
+# Label with the version
+wm.plot_label(ax_map3,'v3',
+              facecolor=fig.get_facecolor(),
+              x_fraction=0.02,
+              fontsize=16,
+              horizontalalignment='left')
+# Label with the date
+wm.plot_label(ax_map3,
+              '%04d-%02d-%02d:%02d' % (year,month,day,hour),
+              facecolor=fig.get_facecolor(),
+              x_fraction=0.98,
+              fontsize=16,
+              horizontalalignment='right')
+
+# overlay obs_v_reanalysis scatter plot top left
+ax_ovr3=fig.add_axes([0.55,0.79,0.25,0.16])
+
+local_plots.plot_rotated_scatter(ax_ovr3,prmsl,obs,dte)
+                 
  
 # Output as png
-fig.savefig('reliability+error_%04d%02d%02d%02d.png' % 
+fig.savefig('comparison_%04d%02d%02d%02d.png' % 
                                     (year,month,day,hour))
