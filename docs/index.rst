@@ -1,10 +1,11 @@
 Improving reanalysis with the Daily Weather Reports
 ===================================================
 
+..   preface
+
 .. toctree::
    :maxdepth: 2
 
-   preface
    introduction
    reanalysis_and_uncertainty
    da_for_ds
@@ -17,8 +18,8 @@ Improving reanalysis with the Daily Weather Reports
 .. toctree::
    :maxdepth: 1
 
-   credits_and_feedback
-   replication_and_extension
+..   credits_and_feedback
+..   replication_and_extension
 
 |
 

@@ -13,4 +13,4 @@ This appendix is just a list of all the analysis scripts produced for this proje
    scatter+contour/scatter_and_contour
    assimilating_Fort_William/assimilating_fort_william
    DA_exposition/DA_exposition
-
+   validation_case_studies/case_studies 
