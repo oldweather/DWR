@@ -2,6 +2,7 @@ Validating 20CR3 against DWR data: October 1903 monthly scatterplot
 ===================================================================
 
 .. seealso:: 
+    * :doc:`Error-error plot <error_v_error>`
     * :doc:`Breakdown by time <scatter_and_contour>`
     * :doc:`Same diagnostic but for CERA20C <../CERA20C/scatter_month>`
     * :doc:`Same diagnostic but for 20CR version 2c <../20CR2c/scatter_month>`
