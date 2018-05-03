@@ -17,8 +17,20 @@ Validating reanalyses against DWR data
 
    October_1903/20CR2c/scatter_and_contour
    October_1903/20CR2c/reliability_and_error
+   October_1903/20CR2c/scatter_month
    October_1903/20CR3/scatter_and_contour
    October_1903/20CR3/reliability_and_error
+   October_1903/20CR3/scatter_month
    October_1903/CERA20C/scatter_and_contour
    October_1903/CERA20C/reliability_and_error
+   October_1903/CERA20C/scatter_month
+   February_1953/20CR2c/scatter_and_contour
+   February_1953/20CR2c/reliability_and_error
+   February_1953/20CR2c/scatter_month
+   February_1953/20CR3/scatter_and_contour
+   February_1953/20CR3/reliability_and_error
+   February_1953/20CR3/scatter_month
+   February_1953/CERA20C/scatter_and_contour
+   February_1953/CERA20C/reliability_and_error
+   February_1953/CERA20C/scatter_month
 

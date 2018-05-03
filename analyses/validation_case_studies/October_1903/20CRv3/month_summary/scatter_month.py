@@ -27,7 +27,7 @@ font = {'family' : 'sans-serif',
 matplotlib.rc('font', **font)
 
 # load the pre-prepared data
-ipfile=("%s/images/DWR/vcs_20CR2c_1903_month_comparison.pkl" %
+ipfile=("%s/images/DWR/vcs_20CR3_1903_month_comparison.pkl" %
                 os.getenv('SCRATCH'))
 d_file = open(ipfile, 'rb')
 dmonth = pickle.load(d_file)

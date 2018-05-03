@@ -13,18 +13,15 @@ import Meteorographica.data.cera20c as cera20c
 import DWR
 
 # Set output file
-opfile=("%s/images/DWR/vcs_cera20c_1903_month_comparison.pkl" % 
+opfile=("%s/images/DWR/vcs_cera20c_1953_month_comparison.pkl" % 
                 os.getenv('SCRATCH'))
 
 obs=DWR.load_observations('prmsl',
-                          datetime.datetime(1903,10,1,6),
-                          datetime.datetime(1903,10,31,18))
+                          datetime.datetime(1953,2,1,6),
+                          datetime.datetime(1953,2,28,18))
 # Remove stations already in ISPD
-obs=obs[~obs['name'].isin(['BODO','HAPARANDA','HERNOSAND',
-                           'STOCKHOLM','WISBY','ABERDEEN',
-                           'VALENCIA','FANO','SCILLY','JERSEY',
-                           'LISBON','DUNGENESS','THEHELDER',
-                           'BERLIN'])]
+obs=obs[~obs['name'].isin(['LERWICK','STORNOWAY','VALENTIA',
+                           'CULDROSE','GORLESTON','LEUCHARS'])]
 
 # Get a list of all the times where there is at least 1 observation.
 ob_times=obs['dtm'].unique()

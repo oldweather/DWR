@@ -27,7 +27,7 @@ font = {'family' : 'sans-serif',
 matplotlib.rc('font', **font)
 
 # load the pre-prepared data
-ipfile=("%s/images/DWR/vcs_20CR2c_1903_month_comparison.pkl" %
+ipfile=("%s/images/DWR/vcs_cera20c_1953_month_comparison.pkl" %
                 os.getenv('SCRATCH'))
 d_file = open(ipfile, 'rb')
 dmonth = pickle.load(d_file)
@@ -60,7 +60,7 @@ for idx in range(len(dmonth['observations'])):
     obs_ens=[dmonth['observations'][idx]]*len(dmonth['ensembles'][idx][0])
     ax.scatter(obs_ens+jitter,
                dmonth['ensembles'][idx][0],
-               s=5,
+               s=10,
                marker='.',
                alpha=0.25,
                linewidths=0.01,

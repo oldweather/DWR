@@ -1,18 +1,18 @@
-Validating CERA20C against DWR data: October 1903 station scatterplot video
-===========================================================================
+Validating CERA20C against DWR data: February 1953 station scatterplot video
+============================================================================
 
 .. seealso:: 
     * :doc:`Static version <scatter_and_contour>`
     * :doc:`Error plot <reliability_and_error_video>`
     * :doc:`Same diagnostic but for 20CR version 2c <../20CR2c/scatter_and_contour_video>`
     * :doc:`Same diagnostic but for 20CR version 3 <../20CR3/scatter_and_contour_video>`
-    * :doc:`Same diagnostic but in February 1953 <../../February_1953/CERA20C/scatter_and_contour_video>`.
+    * :doc:`Same diagnostic but in October 1903 <../../October_1903/CERA20C/scatter_and_contour_video>`.
 
 .. raw:: html
 
     <center>
     <table><tr><td><center>
-    <iframe src="https://player.vimeo.com/video/267422150?title=0&byline=0&portrait=0" width="795" height="448" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></center></td></tr>
+    <iframe src="https://player.vimeo.com/video/267427106?title=0&byline=0&portrait=0" width="795" height="448" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></center></td></tr>
     <tr><td>On the left: MSLP Contours for CERA20C, DWR observations not assimilated (circles, coloured by deviation from reanalysis: blue - observation lower, red - observation higher).<p> On the right: MSLP observation (red line), and ensemble values (blue dots) at the location of each DWR station.</center></td></tr>
     </table>
     </center>
@@ -21,11 +21,11 @@ Validating CERA20C against DWR data: October 1903 station scatterplot video
 
 Collect the reanalysis data:
 
-.. literalinclude:: ../../../../../analyses/validation_case_studies/October_1903/CERA20C/get_data.py
+.. literalinclude:: ../../../../../analyses/validation_case_studies/February_1953/CERA20C/get_data.py
 
 Script to make an individual frame - takes year, month, day, and hour as command-line options:
 
-.. literalinclude:: ../../../../../analyses/validation_case_studies/October_1903/CERA20C/scatter+contour/video/scatter+contour.py
+.. literalinclude:: ../../../../../analyses/validation_case_studies/February_1953/CERA20C/scatter+contour/video/scatter+contour.py
 
 To turn the thousands of images into a movie, use `ffmpeg <http://www.ffmpeg.org>`_
 

@@ -1,12 +1,12 @@
-Validating 20CR2c against DWR data: October 1903 station scatterplot video
-==========================================================================
+Validating 20CR2c against DWR data: February 1953 station scatterplot video
+===========================================================================
 
 .. seealso:: 
     * :doc:`Static version <scatter_and_contour>`
     * :doc:`Error plot <reliability_and_error_video>`
     * :doc:`Same diagnostic but for 20CR version 3 <../20CR3/scatter_and_contour_video>`
     * :doc:`Same diagnostic but for CERA20C <../CERA20C/scatter_and_contour_video>`
-    * :doc:`Same diagnostic but for February 1953 <../../February_1953/20CR2c/scatter_and_contour_video>`
+    * :doc:`Same diagnostic but for October 1903 <../../October_1903/20CR2c/scatter_and_contour_video>`
 
 .. raw:: html
 
@@ -22,11 +22,11 @@ Validating 20CR2c against DWR data: October 1903 station scatterplot video
 
 Collect the reanalysis data:
 
-.. literalinclude:: ../../../../../analyses/validation_case_studies/October_1903/20CRv2c/get_data.py
+.. literalinclude:: ../../../../../analyses/validation_case_studies/February_1953/20CRv2c/get_data.py
 
 Script to make an individual frame - takes year, month, day, and hour as command-line options:
 
-.. literalinclude:: ../../../../../analyses/validation_case_studies/October_1903/20CRv2c/scatter+contour/video/scatter+contour.py
+.. literalinclude:: ../../../../../analyses/validation_case_studies/February_1953/20CRv2c/scatter+contour/video/scatter+contour.py
 
 To turn the thousands of images into a movie, use `ffmpeg <http://www.ffmpeg.org>`_
 

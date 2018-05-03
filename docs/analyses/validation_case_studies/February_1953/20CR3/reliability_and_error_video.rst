@@ -1,12 +1,12 @@
-Validating 20CR3 against DWR data: October 1903 station error video
-===================================================================
+Validating 20CR3 against DWR data: February 1953 station error video
+====================================================================
 
 .. seealso:: 
     * :doc:`Static version <reliability_and_error>`
     * :doc:`Scatter plot <scatter_and_contour_video>`
     * :doc:`Same diagnostic but for 20CR version 2c <../20CR2c/reliability_and_error_video>`
     * :doc:`Same diagnostic but for CERA20C <../CERA20C/reliability_and_error_video>`
-    * :doc:`Same diagnostic but for February 1953 <../../February_1953/20CR3/reliability_and_error_video>`
+    * :doc:`Same diagnostic but for October 1903 <../../October_1903/20CR3/reliability_and_error_video>`
 
 .. raw:: html
 
@@ -21,11 +21,11 @@ Validating 20CR3 against DWR data: October 1903 station error video
 
 Collect the reanalysis data:
 
-.. literalinclude:: ../../../../../analyses/validation_case_studies/October_1903/20CRv3/get_data.py
+.. literalinclude:: ../../../../../analyses/validation_case_studies/February_1953/20CRv3/get_data.py
 
 Script to make an individual frame - takes year, month, day, and hour as command-line options:
 
-.. literalinclude:: ../../../../../analyses/validation_case_studies/October_1903/20CRv3/reliability+error/video/reliability+error.py
+.. literalinclude:: ../../../../../analyses/validation_case_studies/February_1953/20CRv3/reliability+error/video/reliability+error.py
 
 To turn the thousands of images into a movie, use `ffmpeg <http://www.ffmpeg.org>`_
 

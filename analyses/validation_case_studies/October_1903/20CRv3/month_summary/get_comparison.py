@@ -8,12 +8,12 @@ import pandas
 import iris
 import pickle
 
-import Meteorographica.data.cera20c as cera20c
+import Meteorographica.data.twcr as twcr
 
 import DWR
 
 # Set output file
-opfile=("%s/images/DWR/vcs_cera20c_1903_month_comparison.pkl" % 
+opfile=("%s/images/DWR/vcs_20CR3_1903_month_comparison.pkl" % 
                 os.getenv('SCRATCH'))
 
 obs=DWR.load_observations('prmsl',
@@ -35,8 +35,9 @@ observations=[]
 for ob_time in ob_times:
     ob_time=pandas.to_datetime(ob_time)
     print ob_time
-    prmsl=cera20c.load('prmsl',ob_time.year,ob_time.month,ob_time.day,
-                            ob_time.hour+ob_time.minute/60.0)
+    prmsl=twcr.load('prmsl',ob_time.year,ob_time.month,ob_time.day,
+                            ob_time.hour+ob_time.minute/60.0,
+                                                       version='4.5.1')
     prmsl.data=prmsl.data/100.0 # to hPa
     interpolator = iris.analysis.Linear().interpolator(prmsl, 
                                    ['latitude', 'longitude'])

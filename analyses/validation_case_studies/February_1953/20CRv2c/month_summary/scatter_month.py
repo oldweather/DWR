@@ -2,7 +2,6 @@
 # 20CR2c pressures and validation against DWR
 
 import os
-import math
 import pickle
 import numpy
 
@@ -12,7 +11,7 @@ from matplotlib.backends.backend_agg import \
 from matplotlib.figure import Figure
 
 # Landscape page
-fig=Figure(figsize=(22,22/math.sqrt(2)),  # Width, Height (inches)
+fig=Figure(figsize=(11,11),  # Width, Height (inches)
            dpi=100,
            facecolor=(0.88,0.88,0.88,1),
            edgecolor=None,
@@ -35,7 +34,7 @@ dmonth = pickle.load(d_file)
 d_file.close()
 
 # Fill the frame with an axes
-ax=fig.add_axes([0.05,0.05,0.93,0.93])
+ax=fig.add_axes([0.08,0.08,0.89,0.89])
 
 d_range=[960,1045]
 
@@ -61,7 +60,7 @@ for idx in range(len(dmonth['observations'])):
     obs_ens=[dmonth['observations'][idx]]*len(dmonth['ensembles'][idx][0])
     ax.scatter(obs_ens+jitter,
                dmonth['ensembles'][idx][0],
-               s=25,
+               s=10,
                marker='.',
                alpha=0.25,
                linewidths=0.01,
