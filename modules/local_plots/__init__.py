@@ -20,4 +20,5 @@ from contour import *
 from scatter import *
 from scatter_contour import *
 from reliability import *
+from error_v_error import *
 

@@ -18,6 +18,8 @@ Improving reanalysis with the Daily Weather Reports
 .. toctree::
    :maxdepth: 1
 
+   replication_and_extension
+
 ..   credits_and_feedback
 ..   replication_and_extension
 

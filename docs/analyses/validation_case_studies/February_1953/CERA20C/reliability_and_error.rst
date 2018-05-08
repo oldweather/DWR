@@ -3,6 +3,7 @@ Validating CERA20C against DWR data: February 1953 station error plot
 
 .. seealso:: 
     * :doc:`Video version <reliability_and_error_video>`
+    * :doc:`Full month error plot <error_v_error>`
     * :doc:`Scatter plot <scatter_and_contour>`
     * :doc:`Same diagnostic but for 20CR version 2c <../20CR2c/reliability_and_error>`
     * :doc:`Same diagnostic but for 20CR version 3 <../20CR3/reliability_and_error>`
