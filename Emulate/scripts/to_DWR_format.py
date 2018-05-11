@@ -14,6 +14,10 @@ import sys
 # Get script directory
 sd=os.path.dirname(os.path.abspath(__file__))
 
+# Load the Station names and locations
+md=pandas.read_csv("%s/../../Lisa_storms/metadata/names.csv" % sd,
+                   header=None)
+
 # Get station name from file name
 def get_station_name(file_name):
     sn=os.path.basename(file_name).split('.')
@@ -156,6 +160,43 @@ def load_from_file_tpd(file_name):
         return {'dates':dates,'pressures':pressures}
     
 
+# Add a station's data to the output files
+def output_station(name,sdata):
+    LastF=''
+    Of=None
+    mdl=md[md.iloc[:,0].str.lower()==name.lower()]
+    if mdl.empty:
+        raise StandardError("No station %s in metadata" % 
+                                            std.iloc[ln,0])
+    for idx in range(len(sdata['dates'])):
+        Of=("%s/../../data_from_Emulate/%04d/%02d/prmsl.txt" %
+                         (sd,sdata['dates'][idx].year,
+                             sdata['dates'][idx].month))
+        if Of!=LastF:
+            dn=os.path.dirname(Of)
+            if not os.path.isdir(dn):
+                os.makedirs(dn)
+            if opfile is not None:
+                opfile.close()
+                if os.path.getsize(LastF)==0:
+                    os.remove(Of)
+                    dn=os.path.dirname(LastF)
+                    if not os.listdir(dn):
+                        os.rmdir(dn)
+            opfile=open(Of, "a")
+            LastF=Of
+
+            opfile.write(("%04d %02d %02d %02d %02d %6.2f "+
+                          "%7.2f %6.1f %16s\n") %
+                         (sdata['dates'][idx].year,
+                          sdata['dates'][idx].month,
+                          sdata['dates'][idx].day,
+                          sdata['dates'][idx].hour,
+                          sdata['dates'][idx].minute,
+                          mdl.iloc[0,2],mdl.iloc[0,3], #latlon
+                          sdata['pressures'][idx],     # ob value
+                          mdl.iloc[0,1]))              # name
+     
 
 # Load all the data
 emulate_data={}

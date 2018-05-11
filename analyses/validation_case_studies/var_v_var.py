@@ -33,14 +33,15 @@ ipfile=("%s/images/DWR/vcs_cera20c_1903_month_comparison.pkl" %
 d_file = open(ipfile, 'rb')
 dmonth = pickle.load(d_file)
 d_file.close()
-local_plots.plot_vvv(ax,dmonth)
+local_plots.plot_vvv(ax,dmonth,range=(0,10))
 
 ipfile=("%s/images/DWR/vcs_cera20c_1953_month_comparison.pkl" %
                 os.getenv('SCRATCH'))
 d_file = open(ipfile, 'rb')
 dmonth = pickle.load(d_file)
 d_file.close()
-local_plots.plot_vvv(ax,dmonth,obs_errors=None,point_color=(.5,.5,1))
+local_plots.plot_vvv(ax,dmonth,obs_errors=None,point_color=(.5,.5,1),
+                     range=(0,10))
 
 ipfile=("%s/images/DWR/vcs_20CR2c_1903_month_comparison.pkl" %
                 os.getenv('SCRATCH'))
@@ -54,21 +55,24 @@ ipfile=("%s/images/DWR/vcs_20CR2c_1953_month_comparison.pkl" %
 d_file = open(ipfile, 'rb')
 dmonth = pickle.load(d_file)
 d_file.close()
-local_plots.plot_vvv(ax,dmonth,obs_errors=None,point_color=(.5,.5,.5))
+local_plots.plot_vvv(ax,dmonth,obs_errors=None,point_color=(.5,.5,.5),
+                     range=(0,10))
 
 ipfile=("%s/images/DWR/vcs_20CR3_1903_month_comparison.pkl" %
                 os.getenv('SCRATCH'))
 d_file = open(ipfile, 'rb')
 dmonth = pickle.load(d_file)
 d_file.close()
-local_plots.plot_vvv(ax,dmonth,obs_errors=None,point_color='red')
+local_plots.plot_vvv(ax,dmonth,obs_errors=None,point_color='red',
+                     range=(0,10))
 
 ipfile=("%s/images/DWR/vcs_20CR3_1953_month_comparison.pkl" %
                 os.getenv('SCRATCH'))
 d_file = open(ipfile, 'rb')
 dmonth = pickle.load(d_file)
 d_file.close()
-local_plots.plot_vvv(ax,dmonth,obs_errors=None,point_color=(1,.5,.5))
+local_plots.plot_vvv(ax,dmonth,obs_errors=None,point_color=(1,.5,.5),
+                     range=(0,10))
 
 # Output as png
 fig.savefig('V_v_V.png')

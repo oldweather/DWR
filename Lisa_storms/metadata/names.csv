@@ -4,9 +4,12 @@ Aberporth,ABERPORTH,52.13,-4.54
 Acklington,ACKLINGTON,55.31,-1.64
 Aldegrove,ALDERGROVE,54.65,-6.21
 Aldergrove,ALDERGROVE,54.65,-6.21
+Alexandria,ALEXANDRIA,31.20,29.91
+Algiers,ALGIERS,36.75,3.06
 Alness,ALNESS,57.7,-4.26
 Andover,ANDOVER,51.21,-1.49
 Anglesey,HOLYHEAD,53.31,-4.63
+Angra,ANGRA,38.66,-27.23
 Arbroath,ARBROATH,56.56,-2.59
 Ashbourne,ASHBOURNE,53.02,-1.73
 Baldonnel,BALDONNEL,53.31,-6.44
@@ -21,10 +24,12 @@ Birmingham,BIRMINGHAM,52.49,-1.9
 Birmingham(Edgebaston),BIRMINGHAM,52.49,-1.9
 Birr,BIRR,53.1,-7.91
 Birr Castle,BIRR,53.1,-7.91
+Biskra,BISKRA,34.84,5.75
 Blacksod Point,BLACKSODPOINT,54.1,-10.06
 Boscombe Down,BOSCOMBEDOWN,51.15,-1.75
 Bournemouth(Hurn),BOURNEMOUTH,50.72,-1.88
 Boxted,BOXTED,51.96,0.91
+Brest,BREST,48.39,-4.49
 Bristol,BRISTOL,51.45,-2.59
 Butt of Lewis,BUTTOFLEWIS,58.52,-6.27
 Calshot,CALSHOT,50.81,-1.32
@@ -80,9 +85,12 @@ Finningley,FINNINGLEY,53.49,-0.98
 Flamborough Head,FLAMBOROUGHHEAD,54.12,-0.08
 Foynes,FOYNES,52.61,-9.11
 Fraserburgh,FRASERBURGH,57.69,-2.01
+Funchal,FUNCHAL,32.67,-16.92
+Galway,GALWAY,53.27,-9.06
 Gatwick,GATWICK,51.15,-0.18
 Gorleston,GORLESTON,52.57,1.73
 Grain,GRAIN,51.43,0.7
+Greencastle,GREENCASTLE,
 Guernsey,GUERNSEY,49.47,-2.59
 Harrogate,HARROGATE,53.99,-1.54
 Hartland Point,HARTLANDPOINT,51.02,-4.52
@@ -103,12 +111,15 @@ Jersey Guernsey,JERSEY,49.19,-2.17
 Jurby Isle of Man,JURBY,54.36,-4.52
 Kew,KEW,51.46,-0.12
 L'pool(Bidston),LIVERPOOL,53.4,-3.08
+La Coruna,LACORUNA,43.36,-8.41
 Langham,LANGHAM,,
 Leafield,LEAFIELD,51.84,-1.54
 Leeming,LEEMING,54.3,-1.55
 Leith,LEITH,55.95,-3.17
 Lerwick,LERWICK,60.15,-1.15
 Leuchars,LEUCHARS,56.38,-2.88
+Lesina,LESINA,41.86,15.35
+Lisbon,LISBON,38.72,-9.14
 Lindholme,LINDHOLME,53.54,-0.96
 Little Rissington,LITTLERISSINGTON,51.88,-1.72
 Liverpool,LIVERPOOL,53.4,-3.08
@@ -123,6 +134,7 @@ Lossiemouth,LOSSIEMOUTH,57.72,-3.28
 Lough Foyle,LOUGHFOYLE,55.12,-7.08
 Lympne,LYMPNE,51.08,1.03
 Lympner(Folkstone),FOLKSTONE,51.08,1.17
+Lyons,LYONS,45.76,4.84
 Machrihanish,MACHRIHANISH,55.42,-5.74
 Madley,MADLEY,52.04,-2.85
 Malin Head,MALINHEAD,55.4,-7.3
@@ -130,6 +142,7 @@ Manchester,MANCHESTER,53.48,-2.24
 Manston,MANSTON,51.35,1.37
 Midleton,MIDLETON,51.91,-8.17
 Mildenhall,MILDENHALL,52.36,0.48
+Mogador,MOGADOR,31.51,-9.76
 Montrose,MONTROSE,56.7,-2.45
 Mull of Galloway,MULLOFGALLOWAY,54.63,-4.85
 Nairn,NAIRN,57.59,-3.87
@@ -140,11 +153,13 @@ Pembrey,PEMBREY,51.69,-4.29
 Pembroke,PEMBROKE,51.68,-5.18
 Pembroke Dock,PEMBROKEDOCK,51.69,-4.94
 Penrhos,PENRHOS,51.8,-2.83
+Penzance,PENZANCE,50.12,-5.54
 Peterhead,PETERHEAD,57.51,-1.78
 Plymouth,PLYMOUTH,50.38,-4.14
 Point Ayre,POINTAYRE,54.42,-4.37
 Point of Ayre,POINTAYRE,54.42,-4.37
 Portland Bill,PORTLANDBILL,50.51,-2.46
+Portsmouth,PORTSMOUTH,50.82,-1.09
 Predannack,PREDANNACK,50,-5.23
 Prestwick,PRESTWICK,55.5,-4.61
 Pulham,PULHAM,50.83,-2.39
@@ -153,7 +168,10 @@ Renfrew,RENFREW,55.87,-4.39
 "Renfrew, Abbots I",RENFREW,55.87,-4.39
 Rhoose,RHOOSE,51.39,-3.35
 Rineanna,RINEANNA,52.68,-8.95
+Rochefort,ROCHEFORT,45.94,-0.96
 Roches Point,ROCHESPOINT,51.8,-8.3
+Roches Pt,ROCHESPOINT,51.8,-8.3
+Rome,ROME,41.90,12.50
 Ronaldsway,RONALDSWAY,54.24,-4.55
 Ross On Wye,ROSSONWYE,51.91,-2.58
 Ross on Wye,ROSSONWYE,51.91,-2.58
@@ -163,6 +181,7 @@ S. Farnborough,FARNBOROUGH,51.29,-0.75
 S.Farnborough,FARNBOROUGH,51.29,-0.75
 SFarnborough,FARNBOROUGH,51.29,-0.75
 Scilly,SCILLY,49.92,-6.3
+Scilly Islands,SCILLY,49.92,-6.3
 Scilly (St. Mary's),SCILLY,49.92,-6.3
 Scilly (St.Mary's),SCILLY,49.92,-6.3
 Scilly(St.Mary's,SCILLY,49.92,-6.3
@@ -170,6 +189,7 @@ Scilly(St.Mary's),SCILLY,49.92,-6.3
 "Scilly, St. Mary's",SCILLY,49.92,-6.3
 "Scilly, St. Marys",SCILLY,49.92,-6.3
 Sealand,CHESTER,53.19,-2.89
+Scarborough,SCARBOROUGH,54.28,-0.40
 Shawbury,SHAWBURY,52.79,-2.65
 Shobden,SHOBDEN,52.25,-2.88
 Shoeburyness,SHOEBURYNESS,51.54,0.79
@@ -192,9 +212,12 @@ Sule Skerry,SULESKERRY,59.08,-4.43
 Sullom Voe,SULLOMVOE,60.47,-1.27
 Sumburgh,SUMBURGHHEAD,59.85,-1.27
 Tangmere,TANGMERE,50.85,-0.72
+Teneriffe,TENERIFE,28.29,-16.63
+Tenerife,TENERIFE,28.29,-16.63
 The Lizard,THELIZARD,50.03,-5.18
 Thorney Island,THORNEYISLAND,50.82,-0.92
 Tiree,TIREE,56.49,-6.91
+Toulon,TOULON,43.12,5.93
 Twatt,TWATT,60.27,-3.27
 Tynemouth,TYNEMOUTH,55.02,-1.43
 Upper Heyford,UPPERHEYFORD,51.93,-1.28
