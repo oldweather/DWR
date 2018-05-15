@@ -186,7 +186,6 @@ def load_from_file_tpd(file_name):
 
 # Specific functions for custom formats
 def load_from_file_teneriffe(file_name):
-    station=get_station_name(file_name)
     csv=pandas.read_csv(file_name,header=None)
     file_data={}
     dc=csv[csv.iloc[:,0].str.contains('\d\d\d\d',na=False,regex=True)].index.values
@@ -212,8 +211,7 @@ def load_from_file_teneriffe(file_name):
             file_data["%04d" % year]['pressures']=[]
         file_data["%04d" % year]['dates'].append(
                    datetime.datetime(year,month,day,hour))
-        file_data["%04d" % year]['pressures'].append(
-                   datetime.datetime(year,month,day,hour))
+        file_data["%04d" % year]['pressures'].append(pre)
     return file_data
 
 def load_from_file_middle_east(file_name,column):
@@ -242,8 +240,7 @@ def load_from_file_middle_east(file_name,column):
             file_data["%04d" % year]['pressures']=[]
         file_data["%04d" % year]['dates'].append(
                    datetime.datetime(year,month,day,hour))
-        file_data["%04d" % year]['pressures'].append(
-                   datetime.datetime(year,month,day,hour))
+        file_data["%04d" % year]['pressures'].append(pre)
     return file_data
 
 # Add a station's data to the output files
@@ -254,7 +251,7 @@ def output_station(name,sdata):
     mdl=md[md.iloc[:,0].str.lower()==name.lower()]
     if mdl.empty:
         raise StandardError("No station %s in metadata" % 
-                                            std.iloc[ln,0])
+                                                      name)
     for syr in sdata.keys():
         for idx in range(len(sdata[syr]['dates'])):
             Of=("%s/../../data_from_Emulate/%04d/%02d/prmsl.txt" %
@@ -295,10 +292,10 @@ Files=os.listdir("%s/../original_data_csv" % sd)
 if True:
     for file_name in Files:
         station_name=get_station_name(file_name)
-        print station_name
 
         # Once-per-day data
         if file_name in Files_opd:
+            print station_name
             if station_name not in emulate_data:
                 emulate_data[station_name]={}
             emulate_data[station_name].update(load_from_file_opd(
@@ -306,28 +303,29 @@ if True:
 
         # Twice_per_day data
         if file_name in Files_tpd:
+            print station_name
             if station_name not in emulate_data:
                 emulate_data[station_name]={}
             emulate_data[station_name].update(load_from_file_tpd(
                          "%s/../original_data_csv/%s" % (sd,file_name)))
 
     # Special cases
-    print 'Tenerife'
-    emulate_data['Teneriffe']=load_from_file_teneriffe(
-                     "%s/../original_data_csv/Teneriffe.Teneriffe.csv" % sd)
-    print 'Baghdad'
-    emulate_data['Baghdad']=load_from_file_middle_east(
+    print 'TENERIFE'
+    emulate_data['TENERIFE']=load_from_file_teneriffe(
+                     "%s/../original_data_csv/Tenerife.Tenerife.csv" % sd)
+    print 'BAGHDAD'
+    emulate_data['BAGHDAD']=load_from_file_middle_east(
                      "%s/../original_data_csv/ME_daily_pressure.ME_daily_pressure.csv" % sd,3)
-    print 'Basrah'
-    emulate_data['Basrah']=load_from_file_middle_east(
+    print 'BASRA'
+    emulate_data['BASRA']=load_from_file_middle_east(
                      "%s/../original_data_csv/ME_daily_pressure.ME_daily_pressure.csv" % sd,4)
-    print 'Diarbekir'
-    emulate_data['Diarbekir']=load_from_file_middle_east(
+    print 'DIYARBAKIR'
+    emulate_data['DIYARBAKIR']=load_from_file_middle_east(
                      "%s/../original_data_csv/ME_daily_pressure.ME_daily_pressure.csv" % sd,5)
-    print 'Beiruit'
-    emulate_data['Beiruit']=load_from_file_middle_east(
+    print 'BEIRUT'
+    emulate_data['BEIRUT']=load_from_file_middle_east(
                      "%s/../original_data_csv/ME_daily_pressure.ME_daily_pressure.csv" % sd,6)
 
     # Output the data in new format
-    #for station in emulate_data.keys():
-    #    output_station(station,emulate_data[station])
+    for station in emulate_data.keys():
+        output_station(station,emulate_data[station])
