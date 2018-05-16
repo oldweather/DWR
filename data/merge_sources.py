@@ -12,7 +12,7 @@ sources=("%s/../data_from_Ed" % sd,
          "%s/../data_from_Lisa" % sd,
          "%s/../data_from_Emulate" % sd)
 
-for year in range(1856,1960):
+for year in range(1856,1961):
     for month in range (1,13):
         target_file="%s/%04d/%02d/prmsl.txt" % (sd,year,month)
         if os.path.isfile(target_file):
