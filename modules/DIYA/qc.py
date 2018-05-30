@@ -91,7 +91,7 @@ def qc_first_guess(obs,nsd=3,osd=2,comparison=None,variable='prmsl',version='2c'
 
     results=[None]*len(obs)
 
-    if comparison==None:
+    if comparison is None:
         comparison=qc_compare_reanalysis(obs,variable=variable,version=version)
 
     for idx in range(len(obs)):
@@ -107,4 +107,56 @@ def qc_first_guess(obs,nsd=3,osd=2,comparison=None,variable='prmsl',version='2c'
     return pandas.Series(results,index=obs.index)
     
         
+# Analagous to DWR.at_station_and_time, but gets QC status instead of value
+def qc_at_station_and_time(obs,station,dte):
+    """Get, from these observations, the quality of value at the selected station and time.
+
+    This is analagous to :func:`DWR.at_station_and_time` except it gets the QC status of the observation instead of its value. If the value is interpolated, it will fail QC if either of the values it's interpolated from fails.
+
+    Args:
+        obs (:obj:`pandas.DataFrame`): Batch of observations for the period around the desired time. Should have extra columns 'plausible' and 'first_guess' giving results of those QC checks.
+        station (:obj:`str`): Name of station, as used in obs.name.
+        dte (:obj:`datetime.datetime`): Time of required observed value.
+
+    Returns:
+        :obj:`bool`: True if this selected data has passed QC checks.
+
+
+    Raises:
+        StandardError: obs does not contain at least two values for selected station, one before and one after specified time. So interpolation not possible.
+
+    |
+    """
+    quality=True
+    at_station=obs.loc[obs['name']==station]
+    if at_station.empty:
+        raise StandardError('No data for station %s' % station)
+    at_station=at_station.sort_values(by='dtm',ascending=True)
+    hit=at_station.loc[at_station['dtm']==dte]
+    if not hit.empty:
+        hit=hit.iloc[0]
+        if 'plausible' in hit: 
+            quality=quality & hit['plausible']
+        if 'first_guess' in hit: 
+            quality=quality & hit['first_guess']
+        return quality
+    before=at_station.loc[at_station['dtm']<dte]
+    if before.empty:
+        raise StandardError('No data for station %s before %s' % (station,
+                     dte.strftime("%Y-%m-%d:%H:%M")))
+    before=before.iloc[-1] # last row
+    if 'plausible' in before: 
+        quality=quality & before['plausible']
+    if 'first_guess' in before: 
+        quality=quality & before['first_guess']
+    after=at_station.loc[at_station['dtm']>dte]
+    if after.empty:
+        raise StandardError('No data for station %s after %s' % (station,
+                     dte.strftime("%Y-%m-%d:%H:%M")))
+    after=after.iloc[0] # first row
+    if 'plausible' in after: 
+        quality=quality & after['plausible']
+    if 'first_guess' in after: 
+        quality=quality & after['first_guess']
+    return quality
 
