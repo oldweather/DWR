@@ -312,7 +312,7 @@ if True:
     # Special cases
     print 'TENERIFE'
     emulate_data['TENERIFE']=load_from_file_teneriffe(
-                     "%s/../original_data_csv/Tenerife.Tenerife.csv" % sd)
+                     "%s/../original_data_csv/Tenerife.Teneriffe.csv" % sd)
     print 'BAGHDAD'
     emulate_data['BAGHDAD']=load_from_file_middle_east(
                      "%s/../original_data_csv/ME_daily_pressure.ME_daily_pressure.csv" % sd,3)

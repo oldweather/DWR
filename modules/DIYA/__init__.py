@@ -26,3 +26,4 @@ This module does this. It takes reanalysis data and observations, and assimilate
 """
 
 from assimilate import *
+from qc import *

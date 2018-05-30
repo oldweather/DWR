@@ -2,6 +2,7 @@
 
 # Merge the data from the different sources into a single file.
 
+import os
 import os.path
 
 # Get script directory
