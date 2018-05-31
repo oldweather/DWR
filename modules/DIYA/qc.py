@@ -13,6 +13,7 @@
 
 # Replicate the 20CR2c observations quality control
 
+import math
 import iris
 import numpy
 import pandas
@@ -39,12 +40,12 @@ def qc_compare_reanalysis(obs,variable='prmsl',version='2c'):
     """Get 20CR ensemble values at the time and place of each observation.
 
     Args:
-        obs (:obj:`pandas.DataFrame`): Observations. Dataframe must have columns 'latitude, 'longitude, and 'dtm' - the last a datetime.datetime.
+        obs (:obj:`pandas.DataFrame`): Observations. Dataframe must have columns 'latitude', 'longitude', and 'dtm' - the last a datetime.datetime.
         variable (:obj:`str`): Which 20CR variable to compare to. Defaults to 'prmsl'
         version (:obj:`str`): Which 20CR version to load data from. Defaults to '2c'
 
     Returns
-        :obj:`pandas.Series`): Reanalyis ensemble associated with each observation.
+        :obj:`pandas.Series`: Reanalyis ensemble associated with each observation.
 
     |
     """
@@ -74,7 +75,7 @@ def qc_first_guess(obs,nsd=3,osd=2,comparison=None,variable='prmsl',version='2c'
     """Checks the obs value against the 20CR ensemble.
 
     Args:
-        obs (:obj:`pandas.DataFrame`): Observations. Dataframe must have columns 'latitude, 'longitude, 'value', and 'dtm' - the last a datetime.datetime.
+        obs (:obj:`pandas.DataFrame`): Observations. Dataframe must have columns 'latitude', 'longitude', 'value', and 'dtm' - the last a datetime.datetime.
         nsd (:obj:`float`): Number of standard deviations for rejection threshold. Defaults to 3.
         osd (:obj:`float`): Observation standard deviation. Defaults to 2.
         comparison (:obj:`pandas.Series`): Reanalysis ensemble values at the time and place of each observation. Defaults to None - calculate them.
@@ -114,7 +115,7 @@ def qc_at_station_and_time(obs,station,dte):
     This is analagous to :func:`DWR.at_station_and_time` except it gets the QC status of the observation instead of its value. If the value is interpolated, it will fail QC if either of the values it's interpolated from fails.
 
     Args:
-        obs (:obj:`pandas.DataFrame`): Batch of observations for the period around the desired time. Should have extra columns 'plausible' and 'first_guess' giving results of those QC checks.
+        obs (:obj:`pandas.DataFrame`): Batch of observations for the period around the desired time. Should have extra columns 'plausible' and 'first_guess', giving results of those QC checks.
         station (:obj:`str`): Name of station, as used in obs.name.
         dte (:obj:`datetime.datetime`): Time of required observed value.
 
@@ -159,4 +160,49 @@ def qc_at_station_and_time(obs,station,dte):
     if 'first_guess' in after: 
         quality=quality & after['first_guess']
     return quality
+
+
+def haversine(origin, destination):
+    """Calculate distance between two observations.
+
+    Args:
+        origin (:obj:`pandas.DataFrame`): 1 row from an observations dataframe. Must have columns 'latitude' and 'longitude'.
+        destination (:obj:`pandas.DataFrame`): 1 row from an observations dataframe. Must have columns 'latitude' and 'longitude'.
+
+    Returns:
+        :obj:`float`: Distance between origin and destination in km.
+
+    |
+    """
+
+    dlat = math.radians(origin.latitude-destination.latitude)
+    dlon = math.radians(origin.longitude-destination.longitude)
+    a = math.sin(dlat/2) * math.sin(dlat/2) + \
+              math.cos(math.radians(origin.latitude)) \
+        * math.cos(math.radians(destination.latitude)) \
+        * math.sin(dlon/2) * math.sin(dlon/2)
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+    d = 6371 * c # Earth radius in km
+
+    return d
+
+def nearby_observations(observations,target,distance):
+    """Find the subset of observations within a given distance of a target.
+
+    Args:
+        observations (:obj:`pandas.DataFrame`): Observations dataframe. Must have columns 'latitude' and 'longitude'.
+        target (:obj:`pandas.DataFrame`): 1 row from an observations dataframe. Must have columns 'latitude' and 'longitude'.
+        distance (:obj:`float`): Maximum distance (km).
+
+    Returns:
+        (:obj:`pandas.DataFrame`): Observations dataframe. Same as 'observations' input except that it only contains rows less than 'distance' from 'target'.
+
+    |
+    """
+
+    selected=[]
+    for idx in range(len(observations)):
+        if haversine(target,observations.iloc[idx])<distance:
+            selected.append(idx)
+    return observations.iloc[selected]
 
