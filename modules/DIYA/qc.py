@@ -206,3 +206,51 @@ def nearby_observations(observations,target,distance):
             selected.append(idx)
     return observations.iloc[selected]
 
+def buddy_check(obs,field,obs_error=0.1,
+                   random_state=None,model=None,
+                   lat_range=(-90,90),lon_range=(-180,360)):
+    """Checks the influence of assimilating each ob on its neighbours.
+
+    Args:
+        obs (:obj:`pandas.DataFrame`): Observations. Dataframe must have columns 'latitude', 'longitude', 'value', and 'dtm' - the last a datetime.datetime.
+       field (:obj:`iris.Cube.cube`): Reanalysis ensemble field to assimilate to - dimensions lat, lon, ensemble.
+
+    For each observation, assimilate into the field provided, then compare all the other observations to the field both before and after assimilation. For each ob, return the ratio of this mean difference with::without assimilation (<1 is good, observation improves fit to buddies, >1 is bad, degrades fit).
+
+    Returns:
+        (:obj:`pandas.Series`):  Mean difference ratio from assimilating each observation.
+
+    |
+    """
+
+    results=[None]*len(obs)
+
+    # Mean difference for each ob without assimilation
+    e_o=[None]*len(obs)
+    interpolator = iris.analysis.Linear().interpolator(field, 
+                                   ['latitude', 'longitude'])
+    for idx in range(len(obs)):
+        ensemble=interpolator([obs.latitude[idx],obs.longitude[idx]])
+        e_o[idx]=obs.value[idx]-numpy.mean(ensemble.data)
+
+    # Effect of assimilating each ob
+    for idx in range(len(obs)):
+        new_field=DIYA.constrain_cube(field,field,obs.iloc[idx],
+                                      obs_error=obs_error,
+                                      random_state=random_state,
+                                      model=model,
+                                      lat_range=lat_range,
+                                      lon_range=lon_range)
+
+        interpolator = iris.analysis.Linear().interpolator(new_field, 
+                                       ['latitude', 'longitude'])
+        ms_o=0
+        ms_n=0
+        for id2 in range(len(obs)):
+            if id2==idx: continue
+            ms_o = ms_o + e_o[id2]**2
+            ensemble=interpolator([obs.latitude[id2],obs.longitude[id2]])
+            ms_n = ms_n + (obs.value[id2]-numpy.mean(ensemble.data))**2
+        results[idx] = ms_n/ms_o
+
+    return pandas.Series(results,index=obs.index)
