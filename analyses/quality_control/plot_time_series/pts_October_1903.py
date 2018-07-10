@@ -22,7 +22,7 @@ dte=datetime.datetime(year,month,1,0)
 
 # Get the DWR observations within +- 15 hours
 obs=DWR.load_observations('prmsl',dte,
-       dte+relativedelta(months=1)-relativedelta(minutes=1))
+       dte+relativedelta(days=1)-relativedelta(minutes=1))
 # sort them from north to south
 obs=obs.sort_values(by='latitude',ascending=True)
 # Get the list of stations - preserving order

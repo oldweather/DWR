@@ -17,18 +17,13 @@ import os
 import os.path
 import datetime
 import pandas
-
-def _get_data_dir():
-   base_file = "%s/../../data" % os.path.dirname(__file__)
-   if os.path.isdir(base_file):
-       return base_file
+import pkg_resources
 
 def _get_data_file_name(variable,year,month):
     """Return the name of the file containing data for the
        requested variable, at the specified time."""
-    base_dir=_get_data_dir()
-    name="%s/%04d/%02d/%s.txt" % (base_dir,
-                                  year,month,variable)
+    fname="data/%04d/%02d/%s.txt" % (year,month,variable)
+    name=pkg_resources.resource_filename(__name__, fname) 
     return name
 
 def load_observations_1file(variable,year,month):

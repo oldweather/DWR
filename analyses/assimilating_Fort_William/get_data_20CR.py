@@ -1,3 +1,6 @@
-import Meteorographica.data.twcr as twcr
-twcr.fetch('prmsl',1903,version='2c')
-twcr.fetch_observations(1903,version='2c')
+import IRData.twcr as twcr
+import datetime
+
+dte=datetime.datetime(1903,1,1)
+twcr.fetch('prmsl',dte,version='2c')
+twcr.fetch_observations(dte,version='2c')

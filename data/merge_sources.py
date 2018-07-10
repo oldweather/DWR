@@ -9,7 +9,6 @@ import os.path
 sd=os.path.dirname(os.path.abspath(__file__))
 
 sources=("%s/../data_from_Ed" % sd,
-         "%s/../data_from_Ed_Hanna" % sd,
          "%s/../data_from_Lisa" % sd,
          "%s/../data_from_Emulate" % sd)
 

@@ -16,8 +16,8 @@ from matplotlib.figure import Figure
 import cartopy
 import cartopy.crs as ccrs
 
-import Meteorographica.weathermap as wm
-import Meteorographica.data.twcr as twcr
+import Meteorographica as mg
+import IRData.twcr as twcr
 
 import DIYA
 RANDOM_SEED = 5
@@ -56,50 +56,45 @@ ax_wFW.set_extent(extent, crs=projection)
 # Background, grid and land for both
 ax_20C.background_patch.set_facecolor((0.88,0.88,0.88,1))
 ax_wFW.background_patch.set_facecolor((0.88,0.88,0.88,1))
-wm.add_grid(ax_20C)
-wm.add_grid(ax_wFW)
+mg.background.add_grid(ax_20C)
+mg.background.add_grid(ax_wFW)
 land_img_20C=ax_20C.background_img(name='GreyT', resolution='low')
 land_img_DWR=ax_wFW.background_img(name='GreyT', resolution='low')
 
 # 20CR2c data
-prmsl=twcr.load('prmsl',year,month,day,hour,
-                             version='2c')
+prmsl=twcr.load('prmsl',dteversion='2c')
 
 # Get the observations used in 20CR2c
-obs=twcr.load_observations(dte-datetime.timedelta(hours=24),dte,
-                                                    version='2c')
+obs=twcr.load_observations_fortime(dte,version='2c')
 # Filter to those assimilated and near the UK
 obs_s=obs.loc[(obs['Assimilation.indicator']==1) &
               ((obs['Latitude']>0) & 
                  (obs['Latitude']<90)) &
               ((obs['Longitude']>240) | 
                  (obs['Longitude']<100))].copy()
-wm.plot_obs(ax_20C,obs_s,radius=0.1)
+mg.observations.plot(ax_20C,obs,radius=0.1)
 
-# For each ensemble member, make a contour plot
-for m in prmsl.coord('member').points:
-    prmsl_e=prmsl.extract(iris.Constraint(member=m))
-    prmsl_e.data=prmsl_e.data/100 # To hPa
-    CS=wm.plot_contour(ax_20C,prmsl_e,
+# Contour spaghetti plot of ensemble members
+mg.pressure.plot(ax_20C,prmsl,scale=0.01,type='spaghetti',
+                   resolution=0.25,
                    levels=numpy.arange(870,1050,10),
                    colors='blue',
                    label=False,
-                   linewidths=0.2)
+                   linewidths=0.1)
 
 # Add the ensemble mean - with labels
-prmsl_m=prmsl.collapsed('member', iris.analysis.MEAN)
-prmsl_m.data=prmsl_m.data/100 # To hPa
-prmsl_s=prmsl.collapsed('member', iris.analysis.STD_DEV)
-prmsl_s.data=prmsl_s.data/100
 # Mask out mean where uncertainties large
+prmsl_m=prmsl.collapsed('member', iris.analysis.MEAN)
+prmsl_s=prmsl.collapsed('member', iris.analysis.STD_DEV)
 prmsl_m.data[numpy.where(prmsl_s.data>3)]=numpy.nan
-CS=wm.plot_contour(ax_20C,prmsl_m,
+mg.pressure.plot(ax_20C,prmsl_m,scale=0.01,
+                   resolution=0.25,
                    levels=numpy.arange(870,1050,10),
                    colors='black',
                    label=True,
                    linewidths=2)
 
-wm.plot_label(ax_20C,'20CR2c',
+mg.utils.plot_label(ax_20C,'20CR2c',
                      fontsize=16,
                      facecolor=fig.get_facecolor(),
                      x_fraction=0.02,
@@ -140,41 +135,39 @@ prmsl2=DIYA.constrain_cube(prmsl,prmsl,
                            lon_range=(280,60))
 
 # Plot the assimilated obs
-wm.plot_obs(ax_wFW,obs_s,radius=0.1)
+mg.observations.plot(ax_wFW,obs_s,radius=0.1)
 # Plot the Fort William ob
-wm.plot_obs(ax_wFW,obs_assimilate,lat_label='latitude',
-            lon_label='longitude',radius=0.1,facecolor='red')
+mg.observations.plot(ax_wFW,obs_assimilate,lat_label='latitude',
+                     lon_label='longitude',radius=0.1,
+                     facecolor='red')
 
-# For each ensemble member, make a contour plot
-for m in prmsl2.coord('member').points:
-    prmsl_e=prmsl2.extract(iris.Constraint(member=m))
-    prmsl_e.data=prmsl_e.data/100 # To hPa
-    CS=wm.plot_contour(ax_wFW,prmsl_e,
+# Contour spaghetti plot of ensemble members
+mg.pressure.plot(ax_wFW,prmsl2,scale=0.01,type='spaghetti',
+                   resolution=0.25,
                    levels=numpy.arange(870,1050,10),
                    colors='blue',
                    label=False,
-                   linewidths=0.2)
+                   linewidths=0.1)
 
 # Add the ensemble mean - with labels
-prmsl_m=prmsl2.collapsed('member', iris.analysis.MEAN)
-prmsl_m.data=prmsl_m.data/100 # To hPa
-prmsl_s=prmsl2.collapsed('member', iris.analysis.STD_DEV)
-prmsl_s.data=prmsl_s.data/100
 # Mask out mean where uncertainties large
+prmsl_m=prmsl2.collapsed('member', iris.analysis.MEAN)
+prmsl_s=prmsl2.collapsed('member', iris.analysis.STD_DEV)
 prmsl_m.data[numpy.where(prmsl_s.data>3)]=numpy.nan
-CS=wm.plot_contour(ax_wFW,prmsl_m,
+mg.pressure.plot(wFW,prmsl_m,scale=0.01,
+                   resolution=0.25,
                    levels=numpy.arange(870,1050,10),
                    colors='black',
                    label=True,
                    linewidths=2)
 
-wm.plot_label(ax_wFW,'With Fort William observation',
+mg.utils.plot_label(ax_wFW,'With Fort William observation',
                      fontsize=16,
                      facecolor=fig.get_facecolor(),
                      x_fraction=0.02,
                      horizontalalignment='left')
 
-wm.plot_label(ax_wFW,
+mg.utils.plot_label(ax_wFW,
               '%04d-%02d-%02d:%02d' % (year,month,day,hour),
               fontsize=16,
               facecolor=fig.get_facecolor(),
