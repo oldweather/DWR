@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # UK region weather plot 
 # Relationship between Fort William and London
 
@@ -15,7 +17,7 @@ from matplotlib.backends.backend_agg import \
 from matplotlib.figure import Figure
 from matplotlib.patches import Circle
 
-import Meteorographica.data.twcr as twcr
+import IRData.twcr as twcr
 
 import DWR
 import DIYA
@@ -53,8 +55,7 @@ obs=DWR.load_observations('prmsl',
 obs=obs[obs.name=='FORTWILLIAM']
 
 # load the pressures
-prmsl=twcr.load('prmsl',year,month,day,hour,
-                             version='2c')
+prmsl=twcr.load('prmsl',dte,version='2c')
 
 # Compare with Stornoway
 target_lat= 51.51

@@ -21,7 +21,7 @@ import matplotlib
 from matplotlib.patches import Circle
 import cartopy
 import cartopy.crs as ccrs
-import Meteorographica.weathermap as wm
+import Meteorographica as mg
 
 from scatter import plot_scatter
 from contour import plot_contour
@@ -71,7 +71,7 @@ def plot_scatter_contour(fig,field,obs_r,dwr_obs,dte,**kwargs):
     plot_contour(ax_map,extent,dte,field,obs_r,dwr_obs,**kwargs)
 
     # Label with the date
-    wm.plot_label(ax_map,
+    mg.utils.plot_label(ax_map,
                   '%04d-%02d-%02d:%02d' % (dte.year,dte.month,
                                            dte.day,dte.hour),
                   facecolor=fig.get_facecolor(),

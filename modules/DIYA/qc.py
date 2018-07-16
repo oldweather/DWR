@@ -17,7 +17,8 @@ import math
 import iris
 import numpy
 import pandas
-import Meteorographica.data.twcr as twcr
+import datetime
+import IRData.twcr as twcr
 
 def qc_plausible_range(obs,min=880.0,max=1060.0):
     """Checks the obs value for plausibility.
@@ -56,9 +57,7 @@ def qc_compare_reanalysis(obs,variable='prmsl',version='2c'):
     results=[None]*len(obs)
     for ob_time in ob_times:
         ot=pandas.to_datetime(ob_time)
-        ensemble=twcr.load(variable,ot.year,ot.month,ot.day,
-                                ot.hour+ot.minute/60.0,
-                                                version=version)
+        ensemble=twcr.load(variable,ot,version=version)
         # Units hack - assumes obs in hPa (if prmsl)
         if variable=='prmsl': 
             ensemble.data=ensemble.data/100.0 # to hPa

@@ -17,7 +17,7 @@ import iris
 import numpy
 import sklearn.linear_model
 import sklearn.utils
-import Meteorographica.utils
+import IRData.utils
 
 # X-matrix for the model is a numpy array of dimension
 #  (n.ensemble.members,n.stations)
@@ -28,7 +28,7 @@ def _build_X_matrix_from_cube(cube,latitudes,longitudes):
                  ('latitude',  numpy.array(latitudes))]
     interpolated=cube.interpolate(locations,iris.analysis.Linear())
     if len(latitudes)>1:
-        interpolated=Meteorographica.utils.cube_order_dimensions(
+        interpolated=IRData.utils.cube_order_dimensions(
                                              interpolated,('member',
                                             'latitude','longitude'))
     # This interpolates at each lat,lon pair - we only want the ith lat and ith lon
@@ -61,7 +61,7 @@ def constrain_cube(target,constraints,obs,obs_error=0.1,
     """
     X=_build_X_matrix_from_cube(constraints,obs.latitude,
                                             obs.longitude)
-    Y=Meteorographica.utils.cube_order_dimensions(
+    Y=IRData.utils.cube_order_dimensions(
                  target,('member','latitude','longitude'))
     # Make a different set of perturbed obs for each ensemble member
     perturbed_obs=numpy.zeros([X.shape[0],len(obs.latitude)])

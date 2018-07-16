@@ -16,8 +16,8 @@ from matplotlib.figure import Figure
 import cartopy
 import cartopy.crs as ccrs
 
-import Meteorographica.weathermap as wm
-import Meteorographica.data.twcr as twcr
+import Meteorographica as mg
+import IRData.twcr as twcr
 
 import DWR
 
@@ -51,30 +51,26 @@ ax_20C.set_extent(extent, crs=projection)
 
 # Background, grid, and land
 ax_20C.background_patch.set_facecolor((0.88,0.88,0.88,1))
-wm.add_grid(ax_20C)
+mg.background.add_grid(ax_20C)
 land_img_20C=ax_20C.background_img(name='GreyT', resolution='low')
 
 # Add the observations from 20CR
-obs=twcr.load_observations(dte-datetime.timedelta(hours=24),
-                           dte,
-                           version='2c')
+obs=twcr.load_observations_fortime(dte,version='2c')
 # Filter to those assimilated and near the UK
 obs_s=obs.loc[(obs['Assimilation.indicator']==1) &
               ((obs['Latitude']>0) & 
                   (obs['Latitude']<90)) &
               ((obs['Longitude']>240) | 
                   (obs['Longitude']<100))].copy()
-wm.plot_obs(ax_20C,obs_s,radius=0.15)
+mg.observations.plot(ax_20C,obs_s,radius=0.15)
 
 # load the pressures
-prmsl=twcr.load('prmsl',year,month,day,hour,
-                                version='2c')
+prmsl=twcr.load('prmsl',dte,version='2c')
 
 # For each ensemble member, make a contour plot
-for m in prmsl.coord('member').points:
-    prmsl_e=prmsl.extract(iris.Constraint(member=m))
-    prmsl_e.data=prmsl_e.data/100 # To hPa
-    CS=wm.plot_contour(ax_20C,prmsl_e,
+CS=mg.pressure.plot(ax_20C,prmsl,
+                   resolution=0.25,
+                   type='spaghetti',scale=0.01,
                    levels=numpy.arange(875,1050,10),
                    colors='blue',
                    label=False,
@@ -87,7 +83,8 @@ prmsl_s=prmsl.collapsed('member', iris.analysis.STD_DEV)
 prmsl_s.data=prmsl_s.data/100
 # Mask out mean where uncertainties large
 prmsl_m.data[numpy.where(prmsl_s.data>3)]=numpy.nan
-CS=wm.plot_contour(ax_20C,prmsl_m,
+CS=mg.pressure.plot(ax_20C,prmsl_m,
+                   resolution=0.25,
                    levels=numpy.arange(875,1050,10),
                    colors='black',
                    label=True,
@@ -101,10 +98,10 @@ obs=DWR.load_observations('prmsl',
 obs=obs[obs.name=='FORTWILLIAM']
 
 # Plot the Fort William station location
-wm.plot_obs(ax_20C,obs,lat_label='latitude',
+mg.observations.plot(ax_20C,obs,lat_label='latitude',
             lon_label='longitude',radius=0.15,facecolor='red')
 
-wm.plot_label(ax_20C,
+mg.utils.plot_label(ax_20C,
               '%04d-%02d-%02d:%02d' % (year,month,day,hour),
               facecolor=fig.get_facecolor())
 # Output as png
