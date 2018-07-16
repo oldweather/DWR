@@ -54,9 +54,12 @@
 <div class="line"><br /></div>
 </div>
 <p>Collect the reanalysis data (prmsl ensemble and observations from 20CR2c for 1903):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Meteorographica.data.twcr</span> <span class="k">as</span> <span class="nn">twcr</span>
-<span class="n">twcr</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span><span class="mi">1903</span><span class="p">,</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;2c&#39;</span><span class="p">)</span>
-<span class="n">twcr</span><span class="o">.</span><span class="n">fetch_observations</span><span class="p">(</span><span class="mi">1903</span><span class="p">,</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;2c&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">IRData.twcr</span> <span class="k">as</span> <span class="nn">twcr</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="n">dte</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1903</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">twcr</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span><span class="n">dte</span><span class="p">,</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;2c&#39;</span><span class="p">)</span>
+<span class="n">twcr</span><span class="o">.</span><span class="n">fetch_observations</span><span class="p">(</span><span class="n">dte</span><span class="p">,</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;2c&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Script to make the figure:</p>
@@ -78,8 +81,8 @@
 <span class="kn">import</span> <span class="nn">cartopy</span>
 <span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
 
-<span class="kn">import</span> <span class="nn">Meteorographica.weathermap</span> <span class="k">as</span> <span class="nn">wm</span>
-<span class="kn">import</span> <span class="nn">Meteorographica.data.twcr</span> <span class="k">as</span> <span class="nn">twcr</span>
+<span class="kn">import</span> <span class="nn">Meteorographica</span> <span class="k">as</span> <span class="nn">mg</span>
+<span class="kn">import</span> <span class="nn">IRData.twcr</span> <span class="k">as</span> <span class="nn">twcr</span>
 
 <span class="kn">import</span> <span class="nn">DIYA</span>
 <span class="n">RANDOM_SEED</span> <span class="o">=</span> <span class="mi">5</span>
@@ -118,50 +121,45 @@
 <span class="c1"># Background, grid and land for both</span>
 <span class="n">ax_20C</span><span class="o">.</span><span class="n">background_patch</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">((</span><span class="mf">0.88</span><span class="p">,</span><span class="mf">0.88</span><span class="p">,</span><span class="mf">0.88</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">ax_wFW</span><span class="o">.</span><span class="n">background_patch</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">((</span><span class="mf">0.88</span><span class="p">,</span><span class="mf">0.88</span><span class="p">,</span><span class="mf">0.88</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">wm</span><span class="o">.</span><span class="n">add_grid</span><span class="p">(</span><span class="n">ax_20C</span><span class="p">)</span>
-<span class="n">wm</span><span class="o">.</span><span class="n">add_grid</span><span class="p">(</span><span class="n">ax_wFW</span><span class="p">)</span>
+<span class="n">mg</span><span class="o">.</span><span class="n">background</span><span class="o">.</span><span class="n">add_grid</span><span class="p">(</span><span class="n">ax_20C</span><span class="p">)</span>
+<span class="n">mg</span><span class="o">.</span><span class="n">background</span><span class="o">.</span><span class="n">add_grid</span><span class="p">(</span><span class="n">ax_wFW</span><span class="p">)</span>
 <span class="n">land_img_20C</span><span class="o">=</span><span class="n">ax_20C</span><span class="o">.</span><span class="n">background_img</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;GreyT&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;low&#39;</span><span class="p">)</span>
 <span class="n">land_img_DWR</span><span class="o">=</span><span class="n">ax_wFW</span><span class="o">.</span><span class="n">background_img</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;GreyT&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;low&#39;</span><span class="p">)</span>
 
 <span class="c1"># 20CR2c data</span>
-<span class="n">prmsl</span><span class="o">=</span><span class="n">twcr</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">,</span><span class="n">day</span><span class="p">,</span><span class="n">hour</span><span class="p">,</span>
-                             <span class="n">version</span><span class="o">=</span><span class="s1">&#39;2c&#39;</span><span class="p">)</span>
+<span class="n">prmsl</span><span class="o">=</span><span class="n">twcr</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;prmsl&#39;</span><span class="p">,</span><span class="n">dteversion</span><span class="o">=</span><span class="s1">&#39;2c&#39;</span><span class="p">)</span>
 
 <span class="c1"># Get the observations used in 20CR2c</span>
-<span class="n">obs</span><span class="o">=</span><span class="n">twcr</span><span class="o">.</span><span class="n">load_observations</span><span class="p">(</span><span class="n">dte</span><span class="o">-</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">24</span><span class="p">),</span><span class="n">dte</span><span class="p">,</span>
-                                                    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;2c&#39;</span><span class="p">)</span>
+<span class="n">obs</span><span class="o">=</span><span class="n">twcr</span><span class="o">.</span><span class="n">load_observations_fortime</span><span class="p">(</span><span class="n">dte</span><span class="p">,</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;2c&#39;</span><span class="p">)</span>
 <span class="c1"># Filter to those assimilated and near the UK</span>
 <span class="n">obs_s</span><span class="o">=</span><span class="n">obs</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Assimilation.indicator&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span>
               <span class="p">((</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Latitude&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> 
                  <span class="p">(</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Latitude&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">90</span><span class="p">))</span> <span class="o">&amp;</span>
               <span class="p">((</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Longitude&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">240</span><span class="p">)</span> <span class="o">|</span> 
                  <span class="p">(</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;Longitude&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">))]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">wm</span><span class="o">.</span><span class="n">plot_obs</span><span class="p">(</span><span class="n">ax_20C</span><span class="p">,</span><span class="n">obs_s</span><span class="p">,</span><span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">mg</span><span class="o">.</span><span class="n">observations</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax_20C</span><span class="p">,</span><span class="n">obs</span><span class="p">,</span><span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 
-<span class="c1"># For each ensemble member, make a contour plot</span>
-<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">prmsl</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;member&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">points</span><span class="p">:</span>
-    <span class="n">prmsl_e</span><span class="o">=</span><span class="n">prmsl</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="n">m</span><span class="p">))</span>
-    <span class="n">prmsl_e</span><span class="o">.</span><span class="n">data</span><span class="o">=</span><span class="n">prmsl_e</span><span class="o">.</span><span class="n">data</span><span class="o">/</span><span class="mi">100</span> <span class="c1"># To hPa</span>
-    <span class="n">CS</span><span class="o">=</span><span class="n">wm</span><span class="o">.</span><span class="n">plot_contour</span><span class="p">(</span><span class="n">ax_20C</span><span class="p">,</span><span class="n">prmsl_e</span><span class="p">,</span>
+<span class="c1"># Contour spaghetti plot of ensemble members</span>
+<span class="n">mg</span><span class="o">.</span><span class="n">pressure</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax_20C</span><span class="p">,</span><span class="n">prmsl</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;spaghetti&#39;</span><span class="p">,</span>
+                   <span class="n">resolution</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
                    <span class="n">levels</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">870</span><span class="p">,</span><span class="mi">1050</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span>
                    <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
                    <span class="n">label</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                   <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+                   <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 
 <span class="c1"># Add the ensemble mean - with labels</span>
-<span class="n">prmsl_m</span><span class="o">=</span><span class="n">prmsl</span><span class="o">.</span><span class="n">collapsed</span><span class="p">(</span><span class="s1">&#39;member&#39;</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">MEAN</span><span class="p">)</span>
-<span class="n">prmsl_m</span><span class="o">.</span><span class="n">data</span><span class="o">=</span><span class="n">prmsl_m</span><span class="o">.</span><span class="n">data</span><span class="o">/</span><span class="mi">100</span> <span class="c1"># To hPa</span>
-<span class="n">prmsl_s</span><span class="o">=</span><span class="n">prmsl</span><span class="o">.</span><span class="n">collapsed</span><span class="p">(</span><span class="s1">&#39;member&#39;</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">STD_DEV</span><span class="p">)</span>
-<span class="n">prmsl_s</span><span class="o">.</span><span class="n">data</span><span class="o">=</span><span class="n">prmsl_s</span><span class="o">.</span><span class="n">data</span><span class="o">/</span><span class="mi">100</span>
 <span class="c1"># Mask out mean where uncertainties large</span>
+<span class="n">prmsl_m</span><span class="o">=</span><span class="n">prmsl</span><span class="o">.</span><span class="n">collapsed</span><span class="p">(</span><span class="s1">&#39;member&#39;</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">MEAN</span><span class="p">)</span>
+<span class="n">prmsl_s</span><span class="o">=</span><span class="n">prmsl</span><span class="o">.</span><span class="n">collapsed</span><span class="p">(</span><span class="s1">&#39;member&#39;</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">STD_DEV</span><span class="p">)</span>
 <span class="n">prmsl_m</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">prmsl_s</span><span class="o">.</span><span class="n">data</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">)]</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">nan</span>
-<span class="n">CS</span><span class="o">=</span><span class="n">wm</span><span class="o">.</span><span class="n">plot_contour</span><span class="p">(</span><span class="n">ax_20C</span><span class="p">,</span><span class="n">prmsl_m</span><span class="p">,</span>
+<span class="n">mg</span><span class="o">.</span><span class="n">pressure</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax_20C</span><span class="p">,</span><span class="n">prmsl_m</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+                   <span class="n">resolution</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
                    <span class="n">levels</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">870</span><span class="p">,</span><span class="mi">1050</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span>
                    <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
                    <span class="n">label</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                    <span class="n">linewidths</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="n">wm</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax_20C</span><span class="p">,</span><span class="s1">&#39;20CR2c&#39;</span><span class="p">,</span>
+<span class="n">mg</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax_20C</span><span class="p">,</span><span class="s1">&#39;20CR2c&#39;</span><span class="p">,</span>
                      <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
                      <span class="n">facecolor</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">get_facecolor</span><span class="p">(),</span>
                      <span class="n">x_fraction</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span>
@@ -202,41 +200,39 @@
                            <span class="n">lon_range</span><span class="o">=</span><span class="p">(</span><span class="mi">280</span><span class="p">,</span><span class="mi">60</span><span class="p">))</span>
 
 <span class="c1"># Plot the assimilated obs</span>
-<span class="n">wm</span><span class="o">.</span><span class="n">plot_obs</span><span class="p">(</span><span class="n">ax_wFW</span><span class="p">,</span><span class="n">obs_s</span><span class="p">,</span><span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">mg</span><span class="o">.</span><span class="n">observations</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax_wFW</span><span class="p">,</span><span class="n">obs_s</span><span class="p">,</span><span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="c1"># Plot the Fort William ob</span>
-<span class="n">wm</span><span class="o">.</span><span class="n">plot_obs</span><span class="p">(</span><span class="n">ax_wFW</span><span class="p">,</span><span class="n">obs_assimilate</span><span class="p">,</span><span class="n">lat_label</span><span class="o">=</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span>
-            <span class="n">lon_label</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span><span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">mg</span><span class="o">.</span><span class="n">observations</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax_wFW</span><span class="p">,</span><span class="n">obs_assimilate</span><span class="p">,</span><span class="n">lat_label</span><span class="o">=</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span>
+                     <span class="n">lon_label</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span><span class="n">radius</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                     <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 
-<span class="c1"># For each ensemble member, make a contour plot</span>
-<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">prmsl2</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;member&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">points</span><span class="p">:</span>
-    <span class="n">prmsl_e</span><span class="o">=</span><span class="n">prmsl2</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="n">m</span><span class="p">))</span>
-    <span class="n">prmsl_e</span><span class="o">.</span><span class="n">data</span><span class="o">=</span><span class="n">prmsl_e</span><span class="o">.</span><span class="n">data</span><span class="o">/</span><span class="mi">100</span> <span class="c1"># To hPa</span>
-    <span class="n">CS</span><span class="o">=</span><span class="n">wm</span><span class="o">.</span><span class="n">plot_contour</span><span class="p">(</span><span class="n">ax_wFW</span><span class="p">,</span><span class="n">prmsl_e</span><span class="p">,</span>
+<span class="c1"># Contour spaghetti plot of ensemble members</span>
+<span class="n">mg</span><span class="o">.</span><span class="n">pressure</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax_wFW</span><span class="p">,</span><span class="n">prmsl2</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;spaghetti&#39;</span><span class="p">,</span>
+                   <span class="n">resolution</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
                    <span class="n">levels</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">870</span><span class="p">,</span><span class="mi">1050</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span>
                    <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
                    <span class="n">label</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                   <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+                   <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 
 <span class="c1"># Add the ensemble mean - with labels</span>
-<span class="n">prmsl_m</span><span class="o">=</span><span class="n">prmsl2</span><span class="o">.</span><span class="n">collapsed</span><span class="p">(</span><span class="s1">&#39;member&#39;</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">MEAN</span><span class="p">)</span>
-<span class="n">prmsl_m</span><span class="o">.</span><span class="n">data</span><span class="o">=</span><span class="n">prmsl_m</span><span class="o">.</span><span class="n">data</span><span class="o">/</span><span class="mi">100</span> <span class="c1"># To hPa</span>
-<span class="n">prmsl_s</span><span class="o">=</span><span class="n">prmsl2</span><span class="o">.</span><span class="n">collapsed</span><span class="p">(</span><span class="s1">&#39;member&#39;</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">STD_DEV</span><span class="p">)</span>
-<span class="n">prmsl_s</span><span class="o">.</span><span class="n">data</span><span class="o">=</span><span class="n">prmsl_s</span><span class="o">.</span><span class="n">data</span><span class="o">/</span><span class="mi">100</span>
 <span class="c1"># Mask out mean where uncertainties large</span>
+<span class="n">prmsl_m</span><span class="o">=</span><span class="n">prmsl2</span><span class="o">.</span><span class="n">collapsed</span><span class="p">(</span><span class="s1">&#39;member&#39;</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">MEAN</span><span class="p">)</span>
+<span class="n">prmsl_s</span><span class="o">=</span><span class="n">prmsl2</span><span class="o">.</span><span class="n">collapsed</span><span class="p">(</span><span class="s1">&#39;member&#39;</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">STD_DEV</span><span class="p">)</span>
 <span class="n">prmsl_m</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">prmsl_s</span><span class="o">.</span><span class="n">data</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">)]</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">nan</span>
-<span class="n">CS</span><span class="o">=</span><span class="n">wm</span><span class="o">.</span><span class="n">plot_contour</span><span class="p">(</span><span class="n">ax_wFW</span><span class="p">,</span><span class="n">prmsl_m</span><span class="p">,</span>
+<span class="n">mg</span><span class="o">.</span><span class="n">pressure</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wFW</span><span class="p">,</span><span class="n">prmsl_m</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+                   <span class="n">resolution</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
                    <span class="n">levels</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">870</span><span class="p">,</span><span class="mi">1050</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span>
                    <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
                    <span class="n">label</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                    <span class="n">linewidths</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="n">wm</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax_wFW</span><span class="p">,</span><span class="s1">&#39;With Fort William observation&#39;</span><span class="p">,</span>
+<span class="n">mg</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax_wFW</span><span class="p">,</span><span class="s1">&#39;With Fort William observation&#39;</span><span class="p">,</span>
                      <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
                      <span class="n">facecolor</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">get_facecolor</span><span class="p">(),</span>
                      <span class="n">x_fraction</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span>
                      <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
 
-<span class="n">wm</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax_wFW</span><span class="p">,</span>
+<span class="n">mg</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_label</span><span class="p">(</span><span class="n">ax_wFW</span><span class="p">,</span>
               <span class="s1">&#39;</span><span class="si">%04d</span><span class="s1">-</span><span class="si">%02d</span><span class="s1">-</span><span class="si">%02d</span><span class="s1">:</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">,</span><span class="n">day</span><span class="p">,</span><span class="n">hour</span><span class="p">),</span>
               <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
               <span class="n">facecolor</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">get_facecolor</span><span class="p">(),</span>
@@ -257,7 +253,18 @@
         </div>
         <div class="sidebar">
           <h3>Table Of Contents</h3>
-          <ul class="current">
+          <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reanalysis_and_uncertainty.html">Reanalysis and uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../da_for_ds.html">Meteorological Data Assimilation for Data Scientists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../DWR.html">The Daily Weather Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../improving_with_dwr.html">Improving the reanalyses with DWR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conclusions.html">Conclusions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../replication_and_extension.html">How to replicate and extend this</a></li>
+</ul>
+<ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../analyses.html">Appendix: Analyses of the DWR data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html">Appendix: python modules</a></li>
 </ul>
