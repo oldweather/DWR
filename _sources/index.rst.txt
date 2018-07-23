@@ -1,34 +1,20 @@
-Improving reanalysis with the Daily Weather Reports
-===================================================
+New observations from the Daily Weather Reports
+===============================================
 
-..   preface
+This is a collection of newly-transcribed historical mean-sea-level pressure observations, from stations around the British Isles, for the years 1856-1960. The aim is to provide better source data for building historical climate datasets, and particularly for reanalyses.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-   introduction
-   reanalysis_and_uncertainty
-   da_for_ds
+   Introduction <introduction>
    DWR
-   improving_with_dwr
-   conclusions
-
-|
-   
-.. toctree::
-   :maxdepth: 1
-
-   replication_and_extension
-
-..   credits_and_feedback
-..   replication_and_extension
-
-|
+   View the data <view_by_month/months>
+   The python API <modules/module_DWR.rst>
+   How to use this dataset <instructions>
 
 .. toctree::
    :maxdepth: 1
-   
-   analyses/analyses
-   modules/modules
+
+   Authors and acknowledgements <credits>
 
 This document and the data associated with it, are crown copyright (2018) and licensed under the terms of the `Open Government Licence <https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/>`_. All code included (modules and scripts) is licensed under the terms of the `GNU Lesser General Public License <https://www.gnu.org/licenses/lgpl.html>`_.

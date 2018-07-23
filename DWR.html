@@ -6,8 +6,8 @@
   <head>
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>The Daily Weather Reports &#8212; Improving reanalysis with the Daily Weather Reports</title>
-    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <title>The Daily Weather Reports &#8212; New observations from the Daily Weather Reports</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -15,30 +15,59 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Data from an earlier digitisation project" href="data/data_from_lisa_files.html" />
-    <link rel="prev" title="Meteorological Data Assimilation for Data Scientists" href="da_for_ds.html" /> 
+    <link rel="next" title="Data from EMULATE" href="data/data_from_emulate.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
   </head><body>
-    <div class="header-wrapper" role="banner">
-      <div class="header">
-        <div class="headertitle"><a
-          href="index.html">Improving reanalysis with DWR</a></div>
-        <div class="rel" role="navigation" aria-label="related navigation">
-          <a href="da_for_ds.html" title="Meteorological Data Assimilation for Data Scientists"
-             accesskey="P">previous</a> |
-          <a href="data/data_from_lisa_files.html" title="Data from an earlier digitisation project"
-             accesskey="N">next</a> |
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-       </div>
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="data/data_from_emulate.html" title="Data from EMULATE"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">DWR observations</a> &#187;</li> 
+      </ul>
     </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/DWR_chart_19031003.png" alt="Logo"/>
+            </a></p>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Daily Weather Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="view_by_month/months.html">View the data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/module_DWR.html">The python API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">How to use this dataset</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Authors and acknowledgements</a></li>
+</ul>
+<h3><a href="https://github.com/oldweather/DWR">Get the data</a></h3>
 
-    <div class="content-wrapper">
-      <div class="content">
-        <div class="document">
-            
+<ul>
+<li><a href="https://github.com/oldweather/DWR"
+           rel="nofollow">Github repository</a></li>
+<li><a href="https://github.com/oldweather/DWR/archive/master.zip"
+           rel="nofollow">Zip file</a></li>
+</ul>
+
+<h3>Found a bug, or have a suggestion?</h3>
+
+Please <a href="https://github.com/oldweather/DWR/issues/new">raise an issue</a>.
+        </div>
+      </div>
+
+    <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
@@ -57,92 +86,43 @@
 <p>To meet this need, Fitzroy created the <a class="reference external" href="https://www.metoffice.gov.uk/learning/library/archive-hidden-treasures/daily-weather-reports">Daily Weather Reports</a> (DWR). Starting on 3rd September 1860, and running up to the present day, these contain synoptic observations from weather stations in and around the British Isles, sent to the Met Office by telegraph. The stations included, and frequency of observations, vary through the period of the reports, but typically they contain data from about 50 stations, reported twice or four times daily.</p>
 <p><a class="reference external" href="https://digital.nmla.metoffice.gov.uk/archive/sdb%3Acollection|86058de1-8d55-4bc5-8305-5698d0bd7e13/">Digital images of the entire DWR series</a> are available online courtesy of the <a class="reference external" href="https://www.metoffice.gov.uk/learning/library">National Meteorological Library and Archive</a>.</p>
 <p>From about 1957, the observations reported in the DWR <a class="reference external" href="https://www.research.ed.ac.uk/portal/en/publications/recent-observed-changes-in-severe-storms-over-the-united-kingdom-and-iceland(4362d146-ef64-4b18-b5df-14378b25c4e5).html">are included in Met Office and international databases</a>. The first hundred years of records, however, are only available on paper, and so are inaccessible to science.</p>
-<p>Two projects have transcribed some of the earlier DWR reports: <a class="reference external" href="https://www.research.ed.ac.uk/portal/en/publications/fluctuations-in-autumnwinter-severe-storms-over-the-british-isles-1920-to-present(7135f643-9419-4e6a-b2e9-91bd137e13be).html">A study of severe storms across the British Isles</a>, transcribed a subset of the pressure observations over the period 1919-1960, and the citizen science project <a class="reference external" href="http://weatherrescue.org">weatherrescue.org</a> is making a more comprehensive transcription.</p>
-<p>The observations transcribed by those two projects are included in this repository.</p>
+<p>This dataset provides some of these so-far-missing observations. Three projects have transcribed some of the earlier DWR reports: The <a class="reference external" href="https://www.metoffice.gov.uk/hadobs/emslp/">EMULATE team</a> transcribed pressure observations from some stations for the years 18856-1881, <a class="reference external" href="https://www.research.ed.ac.uk/portal/en/publications/fluctuations-in-autumnwinter-severe-storms-over-the-british-isles-1920-to-present(7135f643-9419-4e6a-b2e9-91bd137e13be).html">A study of severe storms across the British Isles</a>, transcribed a subset of the pressure observations over the period 1919-1960, and the citizen science project <a class="reference external" href="http://weatherrescue.org">weatherrescue.org</a> is making a more comprehensive transcription for the years 1900-1910.</p>
+<p>The bulk of these new observations are from the Daily Weather Reports, but they also include some data from other sources: the EMULATE data includes some stations from the French Daily Weather Reports; the weatherrescue.org data includes both observations from the <a class="reference external" href="https://weatherrescue.wordpress.com/2017/09/05/weathermen-of-ben-nevis">1898-1904 Ben Nevis project</a>, and early pressure observations (1875-1899)from the station climatological returns for Scilly, in the UK Met Archive (Provided by <a class="reference external" href="http://staff.lincoln.ac.uk/ehanna">Ed Hanna - University of Lincon</a>).</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="data/data_from_lisa_files.html">Data from an earlier digitisation project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data/data_from_emulate.html">Data from EMULATE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data/data_from_lisa_files.html">Data from the UK storms project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data/data_from_weatherrescue.html">New observations from weatherescue.org</a></li>
 </ul>
 </div>
-<p>An API for these observations is provided by a python module:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="modules/module_DWR.html">DWR: A module for accessing Daily Weather Report observations</a></li>
-</ul>
-</div>
+<p>Together, these projects provide about 3.7 million new observations - all included in this dataset. This is a vast improvement in the observations coverage for the British Isles in the late nineteenth and early twentieth centuries, but it is only about 20% of the data we could get from a comprehensive digitisation of the UK DWRs, so we are a long way from completion even of this one data source (other countries had DWRs of their own too).</p>
 </div>
 
 
           </div>
         </div>
       </div>
-        </div>
-        <div class="sidebar">
-          <h3>Table Of Contents</h3>
-          <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reanalysis_and_uncertainty.html">Reanalysis and uncertainty</a></li>
-<li class="toctree-l1"><a class="reference internal" href="da_for_ds.html">Meteorological Data Assimilation for Data Scientists</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">The Daily Weather Reports</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="data/data_from_lisa_files.html">Data from an earlier digitisation project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data/data_from_weatherrescue.html">New observations from weatherescue.org</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/module_DWR.html">DWR: A module for accessing Daily Weather Report observations</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="improving_with_dwr.html">Improving the reanalyses with DWR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="replication_and_extension.html">How to replicate and extend this</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="analyses/analyses.html">Appendix: Analyses of the DWR data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules/modules.html">Appendix: python modules</a></li>
-</ul>
-
-          <div role="search">
-            <h3 style="margin-top: 1.5em;">Search</h3>
-            <form class="search" action="search.html" method="get">
-                <input type="text" name="q" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-            </form>
-          </div>
-        </div>
-        <div class="clearer"></div>
-      </div>
+      <div class="clearer"></div>
     </div>
-
-    <div class="footer-wrapper">
-      <div class="footer">
-        <div class="left">
-          <div role="navigation" aria-label="related navigaton">
-            <a href="da_for_ds.html" title="Meteorological Data Assimilation for Data Scientists"
-              >previous</a> |
-            <a href="data/data_from_lisa_files.html" title="Data from an earlier digitisation project"
-              >next</a> |
-            <a href="py-modindex.html" title="Python Module Index"
-              >modules</a> |
-            <a href="genindex.html" title="General Index"
-              >index</a>
-          </div>
-          <div role="note" aria-label="source link">
-              <br/>
-              <a href="_sources/DWR.rst.txt"
-                rel="nofollow">Show Source</a>
-          </div>
-        </div>
-
-        <div class="right">
-          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="data/data_from_emulate.html" title="Data from EMULATE"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Introduction"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">DWR observations</a> &#187;</li> 
+      </ul>
+    </div>
     <div class="footer" role="contentinfo">
     </div>
-        </div>
-        <div class="clearer"></div>
-      </div>
-    </div>
-
   </body>
 </html>

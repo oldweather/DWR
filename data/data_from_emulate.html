@@ -1,0 +1,483 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Data from EMULATE &#8212; New observations from the Daily Weather Reports</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data from the UK storms project" href="data_from_lisa_files.html" />
+    <link rel="prev" title="The Daily Weather Reports" href="../DWR.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="data_from_lisa_files.html" title="Data from the UK storms project"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../DWR.html" title="The Daily Weather Reports"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">DWR observations</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../DWR.html" accesskey="U">The Daily Weather Reports</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/DWR_chart_19031003.png" alt="Logo"/>
+            </a></p>
+<h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../DWR.html">The Daily Weather Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../view_by_month/months.html">View the data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/module_DWR.html">The python API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../instructions.html">How to use this dataset</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../credits.html">Authors and acknowledgements</a></li>
+</ul>
+<h3><a href="https://github.com/oldweather/DWR">Get the data</a></h3>
+
+<ul>
+<li><a href="https://github.com/oldweather/DWR"
+           rel="nofollow">Github repository</a></li>
+<li><a href="https://github.com/oldweather/DWR/archive/master.zip"
+           rel="nofollow">Zip file</a></li>
+</ul>
+
+<h3>Found a bug, or have a suggestion?</h3>
+
+Please <a href="https://github.com/oldweather/DWR/issues/new">raise an issue</a>.
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="data-from-emulate">
+<h1>Data from EMULATE<a class="headerlink" href="#data-from-emulate" title="Permalink to this headline">¶</a></h1>
+<p>As part of the work to make the <a class="reference external" href="https://www.metoffice.gov.uk/hadobs/emslp/">EMULATE mean-sea-level pressure dataset</a>, some observations from the Daily Weather Reports were (commercially) transcribed in the early 2000’s. This transcription project covered the period 1856-1881, but only transcribed part of the observations: only pressure and pressure tendencies were transcribed, and only from selected stations. These data were not actually used in EMULATE, and this is the first time they have been released.</p>
+<p>The transcriptions were collected into <a class="reference external" href="https://github.com/oldweather/DWR/tree/master/Emulate">spreadsheet files</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;DAILY WEATHER REPORTS  (1861-1881)&quot;</span><span class="p">,,,,,,,,,,,,,,,</span>
+<span class="p">,,,,,,,,,,,,,,,</span>
+<span class="mi">1861</span><span class="p">,</span><span class="n">January</span><span class="p">,</span><span class="n">February</span><span class="p">,</span><span class="n">March</span><span class="p">,</span><span class="n">April</span><span class="p">,</span><span class="n">May</span><span class="p">,</span><span class="n">June</span><span class="p">,</span><span class="n">July</span><span class="p">,</span><span class="n">August</span><span class="p">,</span><span class="n">September</span><span class="p">,</span><span class="n">October</span><span class="p">,</span><span class="n">November</span><span class="p">,</span><span class="n">December</span><span class="p">,,,</span>
+<span class="p">,,,,,,,,,,,,,,,</span>
+<span class="mi">1</span><span class="p">,</span><span class="mf">29.59</span><span class="p">,</span><span class="mf">29.73</span><span class="p">,</span><span class="mf">29.25</span><span class="p">,</span><span class="mf">29.94</span><span class="p">,</span><span class="mf">30.16</span><span class="p">,</span><span class="mf">29.75</span><span class="p">,</span><span class="mf">30.03</span><span class="p">,</span><span class="mf">29.82</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.51</span><span class="p">,</span><span class="mf">29.3</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="s2">&quot;1 August 1861 - The first &quot;&quot;forecast&quot;&quot; for the general public  Reputedly Robert Fitzroy coined the word &quot;&quot;forecast&quot;&quot;.&quot;</span><span class="p">,,</span>
+<span class="mi">2</span><span class="p">,</span><span class="mf">30.23</span><span class="p">,</span><span class="mf">30.37</span><span class="p">,</span><span class="mf">29.54</span><span class="p">,</span><span class="mf">29.92</span><span class="p">,</span><span class="mf">30.35</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.73</span><span class="p">,</span><span class="mf">29.73</span><span class="p">,</span><span class="mf">29.71</span><span class="p">,</span><span class="mf">29.64</span><span class="p">,</span><span class="mf">29.35</span><span class="p">,</span><span class="mf">30.28</span><span class="p">,</span><span class="s2">&quot;The first storm warning had been issued in February 1861.&quot;</span><span class="p">,,</span>
+<span class="mi">3</span><span class="p">,</span><span class="mf">30.33</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.86</span><span class="p">,</span><span class="mf">29.99</span><span class="p">,</span><span class="mf">30.1</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.32</span><span class="p">,</span><span class="mf">29.49</span><span class="p">,</span><span class="mf">30.12</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.99</span><span class="p">,,,</span>
+<span class="mi">4</span><span class="p">,</span><span class="mf">30.21</span><span class="p">,</span><span class="mf">29.24</span><span class="p">,</span><span class="mf">29.67</span><span class="p">,</span><span class="mf">29.85</span><span class="p">,</span><span class="mf">30.3</span><span class="p">,</span><span class="mf">30.09</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.53</span><span class="p">,</span><span class="mf">30.22</span><span class="p">,</span><span class="mf">29.61</span><span class="p">,</span><span class="mi">30</span><span class="p">,,,</span>
+<span class="mi">5</span><span class="p">,</span><span class="mf">30.15</span><span class="p">,</span><span class="mf">29.35</span><span class="p">,</span><span class="mf">29.76</span><span class="p">,</span><span class="mf">29.9</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">30.04</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.53</span><span class="p">,</span><span class="mf">29.83</span><span class="p">,</span><span class="mf">29.91</span><span class="p">,</span><span class="mf">29.35</span><span class="p">,</span><span class="mf">29.55</span><span class="p">,,,</span>
+<span class="mi">6</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">20.04</span><span class="p">,</span><span class="mf">28.99</span><span class="p">,</span><span class="mf">30.16</span><span class="p">,</span><span class="mf">30.13</span><span class="p">,</span><span class="mf">30.18</span><span class="p">,</span><span class="mf">29.37</span><span class="p">,</span><span class="mf">29.65</span><span class="p">,</span><span class="mf">29.53</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.38</span><span class="p">,</span><span class="mf">29.56</span><span class="p">,,,</span>
+<span class="mi">7</span><span class="p">,</span><span class="mf">30.19</span><span class="p">,</span><span class="mf">28.92</span><span class="p">,</span><span class="mf">29.71</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">30.08</span><span class="p">,</span><span class="mf">30.13</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.72</span><span class="p">,</span><span class="mf">29.63</span><span class="p">,</span><span class="mf">29.96</span><span class="p">,</span><span class="mf">29.19</span><span class="p">,</span><span class="mf">28.99</span><span class="p">,,,</span>
+<span class="mi">8</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.69</span><span class="p">,</span><span class="mf">29.5</span><span class="p">,</span><span class="mf">30.48</span><span class="p">,</span><span class="mf">29.92</span><span class="p">,</span><span class="mf">30.04</span><span class="p">,</span><span class="mf">29.73</span><span class="p">,</span><span class="mf">29.27</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.65</span><span class="p">,</span><span class="mf">29.41</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,,,</span>
+<span class="mi">9</span><span class="p">,</span><span class="mf">29.99</span><span class="p">,</span><span class="mf">30.12</span><span class="p">,</span><span class="mf">30.012</span><span class="p">,</span><span class="mf">30.53</span><span class="p">,</span><span class="mf">29.61</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.77</span><span class="p">,</span><span class="mf">29.6</span><span class="p">,</span><span class="mf">29.75</span><span class="p">,</span><span class="mf">29.68</span><span class="p">,</span><span class="mf">29.51</span><span class="p">,</span><span class="mf">29.44</span><span class="p">,,,</span>
+<span class="mi">10</span><span class="p">,</span><span class="mf">30.27</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">30.29</span><span class="p">,</span><span class="mf">29.81</span><span class="p">,</span><span class="mf">29.79</span><span class="p">,</span><span class="mf">29.68</span><span class="p">,</span><span class="mf">29.87</span><span class="p">,</span><span class="mf">29.93</span><span class="p">,</span><span class="mf">29.95</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.65</span><span class="p">,,,</span>
+<span class="mi">11</span><span class="p">,</span><span class="mf">30.05</span><span class="p">,</span><span class="mf">30.27</span><span class="p">,</span><span class="mf">28.92</span><span class="p">,</span><span class="mf">30.36</span><span class="p">,</span><span class="mf">29.89</span><span class="p">,</span><span class="mf">29.84</span><span class="p">,</span><span class="mf">29.59</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.93</span><span class="p">,</span><span class="mf">29.33</span><span class="p">,</span><span class="mf">29.11</span><span class="p">,</span><span class="mf">29.65</span><span class="p">,,,</span>
+<span class="mi">12</span><span class="p">,</span><span class="mf">29.69</span><span class="p">,</span><span class="mf">29.75</span><span class="p">,</span><span class="mf">29.11</span><span class="p">,</span><span class="mf">30.5</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.73</span><span class="p">,</span><span class="mf">29.58</span><span class="p">,</span><span class="mf">29.45</span><span class="p">,</span><span class="mf">29.98</span><span class="p">,</span><span class="mf">29.39</span><span class="p">,</span><span class="mf">29.46</span><span class="p">,</span><span class="mf">29.36</span><span class="p">,,,</span>
+<span class="mi">13</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.62</span><span class="p">,</span><span class="mf">29.81</span><span class="p">,</span><span class="mf">30.39</span><span class="p">,</span><span class="mf">30.16</span><span class="p">,</span><span class="mf">30.09</span><span class="p">,</span><span class="mf">29.78</span><span class="p">,</span><span class="mf">29.71</span><span class="p">,</span><span class="mf">29.78</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.71</span><span class="p">,</span><span class="mf">29.19</span><span class="p">,,,</span>
+<span class="mi">14</span><span class="p">,</span><span class="mf">29.06</span><span class="p">,</span><span class="mf">29.89</span><span class="p">,</span><span class="mf">29.93</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">30.31</span><span class="p">,</span><span class="mf">30.25</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.98</span><span class="p">,</span><span class="mf">29.15</span><span class="p">,</span><span class="mf">29.79</span><span class="p">,</span><span class="mf">29.41</span><span class="p">,</span><span class="mf">29.47</span><span class="p">,,,</span>
+<span class="mi">15</span><span class="p">,</span><span class="mf">30.31</span><span class="p">,</span><span class="mf">29.54</span><span class="p">,</span><span class="mf">29.62</span><span class="p">,</span><span class="mf">30.43</span><span class="p">,</span><span class="mf">30.25</span><span class="p">,</span><span class="mf">30.25</span><span class="p">,</span><span class="mf">29.68</span><span class="p">,</span><span class="mf">29.48</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">30.18</span><span class="p">,</span><span class="mf">29.51</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,,,</span>
+<span class="mi">16</span><span class="p">,</span><span class="mf">30.39</span><span class="p">,</span><span class="mf">29.44</span><span class="p">,</span><span class="mf">29.56</span><span class="p">,</span><span class="mf">30.44</span><span class="p">,</span><span class="mf">30.14</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.53</span><span class="p">,</span><span class="mf">29.62</span><span class="p">,</span><span class="mf">29.9</span><span class="p">,</span><span class="mf">30.29</span><span class="p">,</span><span class="mf">29.75</span><span class="p">,</span><span class="mf">30.11</span><span class="p">,,,</span>
+<span class="mi">17</span><span class="p">,</span><span class="mf">30.39</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">30.42</span><span class="p">,</span><span class="mf">30.19</span><span class="p">,</span><span class="mf">30.19</span><span class="p">,</span><span class="mf">29.58</span><span class="p">,</span><span class="mf">29.71</span><span class="p">,</span><span class="mf">30.08</span><span class="p">,</span><span class="mf">30.33</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.98</span><span class="p">,,,</span>
+<span class="mi">18</span><span class="p">,</span><span class="mf">30.21</span><span class="p">,</span><span class="mf">29.69</span><span class="p">,</span><span class="mf">28.8</span><span class="p">,</span><span class="mf">30.26</span><span class="p">,</span><span class="mf">30.3</span><span class="p">,</span><span class="mf">30.14</span><span class="p">,</span><span class="mf">29.33</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">30.1</span><span class="p">,</span><span class="mf">30.22</span><span class="p">,</span><span class="mf">30.22</span><span class="p">,</span><span class="mf">30.06</span><span class="p">,,,</span>
+<span class="mi">19</span><span class="p">,</span><span class="mf">30.01</span><span class="p">,</span><span class="mf">29.6</span><span class="p">,</span><span class="mf">28.79</span><span class="p">,</span><span class="mf">30.32</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">30.1</span><span class="p">,</span><span class="mf">29.38</span><span class="p">,</span><span class="mf">29.54</span><span class="p">,</span><span class="mf">30.08</span><span class="p">,</span><span class="mf">29.93</span><span class="p">,</span><span class="mf">29.89</span><span class="p">,</span><span class="mf">30.5</span><span class="p">,,,</span>
+<span class="mi">20</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.46</span><span class="p">,</span><span class="mf">29.34</span><span class="p">,</span><span class="mf">30.23</span><span class="p">,</span><span class="mf">30.24</span><span class="p">,</span><span class="mf">29.94</span><span class="p">,</span><span class="mf">29.53</span><span class="p">,</span><span class="mf">29.63</span><span class="p">,</span><span class="mf">29.61</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.77</span><span class="p">,</span><span class="mf">30.46</span><span class="p">,,,</span>
+<span class="mi">21</span><span class="p">,</span><span class="mf">30.09</span><span class="p">,</span><span class="mf">28.97</span><span class="p">,</span><span class="mf">28.87</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">30.17</span><span class="p">,</span><span class="mf">29.96</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.99</span><span class="p">,</span><span class="mf">29.66</span><span class="p">,</span><span class="mf">29.84</span><span class="p">,</span><span class="mf">29.41</span><span class="p">,</span><span class="mf">30.36</span><span class="p">,,,</span>
+<span class="mi">22</span><span class="p">,</span><span class="mf">30.16</span><span class="p">,</span><span class="mf">29.01</span><span class="p">,</span><span class="mf">29.35</span><span class="p">,</span><span class="mf">29.86</span><span class="p">,</span><span class="mf">30.06</span><span class="p">,</span><span class="mf">29.94</span><span class="p">,</span><span class="mf">29.58</span><span class="p">,</span><span class="mf">30.07</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.81</span><span class="p">,</span><span class="mf">29.08</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,,,</span>
+<span class="mi">23</span><span class="p">,</span><span class="mf">29.99</span><span class="p">,</span><span class="mf">29.52</span><span class="p">,</span><span class="mf">29.36</span><span class="p">,</span><span class="mf">29.85</span><span class="p">,</span><span class="mf">29.88</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.33</span><span class="p">,</span><span class="mf">29.73</span><span class="p">,</span><span class="mf">28.93</span><span class="p">,</span><span class="mf">29.87</span><span class="p">,</span><span class="mf">29.25</span><span class="p">,</span><span class="mf">30.48</span><span class="p">,,,</span>
+<span class="mi">24</span><span class="p">,</span><span class="mf">29.69</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.91</span><span class="p">,</span><span class="mf">29.84</span><span class="p">,</span><span class="mf">29.65</span><span class="p">,</span><span class="mf">29.63</span><span class="p">,</span><span class="mf">29.64</span><span class="p">,</span><span class="mf">29.09</span><span class="p">,</span><span class="mf">29.79</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">30.43</span><span class="p">,,,</span>
+<span class="mi">25</span><span class="p">,</span><span class="mf">29.43</span><span class="p">,</span><span class="mf">30.31</span><span class="p">,</span><span class="mf">29.7</span><span class="p">,</span><span class="mf">29.79</span><span class="p">,</span><span class="mf">29.42</span><span class="p">,</span><span class="mf">29.69</span><span class="p">,</span><span class="mf">29.33</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.37</span><span class="p">,</span><span class="mf">30.1</span><span class="p">,</span><span class="mf">29.09</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,,,</span>
+<span class="mi">26</span><span class="p">,</span><span class="mf">29.79</span><span class="p">,</span><span class="mf">30.03</span><span class="p">,</span><span class="mf">29.45</span><span class="p">,</span><span class="mf">30.06</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.63</span><span class="p">,</span><span class="mf">29.5</span><span class="p">,</span><span class="mf">29.99</span><span class="p">,</span><span class="mf">29.61</span><span class="p">,</span><span class="mf">30.38</span><span class="p">,</span><span class="mf">29.14</span><span class="p">,</span><span class="mf">30.32</span><span class="p">,,,</span>
+<span class="mi">27</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.72</span><span class="p">,</span><span class="mf">29.43</span><span class="p">,</span><span class="mf">30.19</span><span class="p">,</span><span class="mf">29.81</span><span class="p">,</span><span class="mf">29.78</span><span class="p">,</span><span class="mf">29.58</span><span class="p">,</span><span class="mf">30.02</span><span class="p">,</span><span class="mf">29.83</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.47</span><span class="p">,</span><span class="mf">30.59</span><span class="p">,,,</span>
+<span class="mi">28</span><span class="p">,</span><span class="mf">29.95</span><span class="p">,</span><span class="mf">29.49</span><span class="p">,</span><span class="mf">29.45</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">30.14</span><span class="p">,</span><span class="mf">29.78</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">29.88</span><span class="p">,</span><span class="mf">29.53</span><span class="p">,</span><span class="mf">30.36</span><span class="p">,</span><span class="mf">29.66</span><span class="p">,</span><span class="mf">30.54</span><span class="p">,,,</span>
+<span class="mi">29</span><span class="p">,</span><span class="mf">29.97</span><span class="p">,,</span><span class="mf">29.51</span><span class="p">,</span><span class="mf">30.12</span><span class="p">,</span><span class="mf">29.92</span><span class="p">,</span><span class="mf">29.67</span><span class="p">,</span><span class="mf">29.83</span><span class="p">,</span><span class="mf">29.63</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span><span class="mf">30.2</span><span class="p">,</span><span class="mf">29.35</span><span class="p">,</span><span class="o">-</span><span class="mi">9999</span><span class="p">,,,</span>
+<span class="mi">30</span><span class="p">,</span><span class="mf">29.82</span><span class="p">,,</span><span class="mf">29.45</span><span class="p">,</span><span class="mf">30.15</span><span class="p">,</span><span class="mf">29.88</span><span class="p">,,</span><span class="mf">29.43</span><span class="p">,</span><span class="mf">29.68</span><span class="p">,</span><span class="mf">29.95</span><span class="p">,</span><span class="mf">29.94</span><span class="p">,</span><span class="mf">29.32</span><span class="p">,</span><span class="mf">30.56</span><span class="p">,,,</span>
+<span class="mi">31</span><span class="p">,</span><span class="mf">29.76</span><span class="p">,,,,</span><span class="mf">29.93</span><span class="p">,,</span><span class="mf">29.6</span><span class="p">,</span><span class="mf">30.12</span><span class="p">,,</span><span class="mf">29.63</span><span class="p">,,</span><span class="mf">30.41</span><span class="p">,,,</span>
+<span class="p">,,,,,,,,,,,,,,,</span>
+</pre></div>
+</div>
+<p>One complication with the DWR is that exact observation locations are not given, only approximate locations (e.g. ‘Aberdeen’). For MSLP, observations exact locations are not vital, so <a class="reference external" href="https://github.com/oldweather/DWR/blob/master/Lisa_storms/metadata/names.csv">a nominal location</a> has been assigned for each station.</p>
+<p>To make the data easily useable, the station files have been converted into the same monthly data format used for <a class="reference external" href="data_from_weatherrescue.html">weatherrescue.org data</a>; assigning latitudes, longitudes, and times in the process.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="c1"># Convert the digitised data from Rob&#39;s Emulate files to the format</span>
+<span class="c1">#  Ed Hawkins is using.</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">calendar</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="c1"># Get script directory</span>
+<span class="n">sd</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+
+<span class="c1"># Load the Station names and locations</span>
+<span class="n">md</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/../../Lisa_storms/metadata/names.csv&quot;</span> <span class="o">%</span> <span class="n">sd</span><span class="p">,</span>
+                   <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># Get station name from file name</span>
+<span class="k">def</span> <span class="nf">get_station_name</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+    <span class="n">sn</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sn</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;DWR_stations&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sn</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">sn</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+
+<span class="c1"># The old Emulate data is in several different formats.</span>
+<span class="c1"># These files are in one-ob-per-day format</span>
+<span class="n">Files_opd</span><span class="o">=</span><span class="p">(</span>
+    <span class="s1">&#39;Alexandria.Alexandria.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Aberdeen.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Algiers.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Angra.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Biskra.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Brest.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Funchal.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Galway.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Greencastle.csv&#39;</span><span class="p">,</span>    <span class="c1"># Changes to TPD in 1868</span>
+    <span class="s1">&#39;DWR_stations.Holyhead.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.La Coruna.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Liverpool.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Mogador.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Nairn.csv&#39;</span><span class="p">,</span>         <span class="c1"># Changes from TPD in 1871</span>
+    <span class="s1">&#39;DWR_stations.Pembroke.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Plymouth.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Portsmouth.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Rochefort.csv&#39;</span><span class="p">,</span>      <span class="c1"># Changes to TPD in 1871</span>
+    <span class="s1">&#39;DWR_stations.Roches Pt.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Scilly Islands.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Toulon.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Valentia.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Lesina_Split.Sheet1.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Lisbon.Lisbon.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Lyons.Lyons.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Rome.Rome.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Sibiu.Funchal.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Stornaway.Stornaway.csv&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># These files are in two-ob-per-day format</span>
+<span class="n">Files_tpd</span><span class="o">=</span><span class="p">(</span>
+    <span class="s1">&#39;DWR_stations.Nairn.csv&#39;</span><span class="p">,</span>          <span class="c1"># Changes to OPD in 1871</span>
+    <span class="s1">&#39;DWR_stations.Penzance.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Scarborough.csv&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DWR_stations.Greencastle.csv&#39;</span><span class="p">,</span>    <span class="c1"># Changes from OPD in 1868</span>
+    <span class="s1">&#39;DWR_stations.Rochefort.csv&#39;</span><span class="p">,</span>      <span class="c1"># Changes from OPD in 1871</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">load_from_file_opd</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+    <span class="n">station</span><span class="o">=</span><span class="n">get_station_name</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+    <span class="n">csv</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="n">Hours</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;Lyons&#39;</span><span class="p">:</span>      <span class="mi">9</span><span class="p">,</span>
+        <span class="s1">&#39;Alexandria&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+        <span class="s1">&#39;Sibu&#39;</span><span class="p">:</span>       <span class="mi">8</span><span class="p">,</span>
+        <span class="s1">&#39;Stornoway&#39;</span><span class="p">:</span>  <span class="mi">9</span><span class="p">,</span>
+        <span class="s1">&#39;Brest&#39;</span><span class="p">:</span>      <span class="mi">8</span><span class="p">,</span> <span class="c1"># Change to 18 previous day on 1875-04-01</span>
+        <span class="s1">&#39;Rochefort&#39;</span><span class="p">:</span>  <span class="mi">8</span><span class="p">,</span>
+        <span class="s1">&#39;Mogador&#39;</span><span class="p">:</span>    <span class="mi">7</span><span class="p">,</span>
+        <span class="s1">&#39;Biskra&#39;</span><span class="p">:</span>     <span class="mi">7</span><span class="p">,</span>
+    <span class="p">}</span>    
+
+    <span class="c1"># Hour (gmt) of the daily ob.</span>
+    <span class="k">def</span> <span class="nf">obs_hour</span><span class="p">(</span><span class="n">station</span><span class="p">,</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">station</span><span class="o">==</span><span class="s1">&#39;Brest&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">year</span><span class="o">&gt;</span><span class="mi">1875</span> <span class="ow">or</span> <span class="p">(</span><span class="n">year</span><span class="o">==</span><span class="mi">1875</span> <span class="ow">and</span> <span class="n">month</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">):</span>
+                <span class="k">return</span> <span class="o">-</span><span class="mi">6</span>
+        <span class="k">return</span> <span class="n">Hours</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">station</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+
+    <span class="c1"># Find the index numbers starting the data for a year</span>
+    <span class="c1">#  (Lines with &#39;January&#39; in the second column)</span>
+    <span class="k">def</span> <span class="nf">find_year_starts</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">tab</span><span class="p">[</span><span class="n">tab</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;January&#39;</span><span class="p">,</span><span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="c1"># Extract a year&#39;s worth of data given the start location</span>
+    <span class="k">def</span> <span class="nf">get_data_for_year</span><span class="p">(</span><span class="n">station</span><span class="p">,</span><span class="n">tab</span><span class="p">,</span><span class="n">istart</span><span class="p">):</span>
+        <span class="n">dates</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">pressures</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">year</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">tab</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">istart</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">13</span><span class="p">):</span>
+            <span class="n">hour</span><span class="o">=</span><span class="n">obs_hour</span><span class="p">(</span><span class="n">station</span><span class="p">,</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">)</span>
+            <span class="n">lastday</span><span class="o">=</span><span class="n">calendar</span><span class="o">.</span><span class="n">monthrange</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">lastday</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">pre</span><span class="o">=</span><span class="n">tab</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">istart</span><span class="o">+</span><span class="n">day</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">month</span><span class="p">]</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">pre</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">pre</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">pre</span><span class="p">):</span> <span class="k">continue</span>
+                    <span class="k">if</span> <span class="n">pre</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span> <span class="k">continue</span>         <span class="c1"># -9999 - missing</span>
+                    <span class="k">if</span> <span class="n">pre</span><span class="o">&lt;</span><span class="mi">35</span><span class="p">:</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre</span><span class="o">*</span><span class="mf">33.8639</span> <span class="c1"># InHg</span>
+                    <span class="k">if</span> <span class="n">pre</span><span class="o">&lt;</span><span class="mi">800</span><span class="p">:</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre</span><span class="o">*</span><span class="mf">1.33</span>   <span class="c1"># mmHg</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">,</span><span class="n">day</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">+</span>
+                             <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="n">hour</span><span class="p">))</span>
+                <span class="n">pressures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pre</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;dates&#39;</span><span class="p">:</span><span class="n">dates</span><span class="p">,</span><span class="s1">&#39;pressures&#39;</span><span class="p">:</span><span class="n">pressures</span><span class="p">}</span>
+
+    <span class="n">year_i</span><span class="o">=</span><span class="n">find_year_starts</span><span class="p">(</span><span class="n">csv</span><span class="p">)</span>
+    <span class="n">file_data</span><span class="o">=</span><span class="p">{}</span>
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">year_i</span><span class="p">:</span>
+         <span class="n">year</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+         <span class="n">file_data</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">%04d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">year</span><span class="p">]</span><span class="o">=</span><span class="n">get_data_for_year</span><span class="p">(</span><span class="n">station</span><span class="p">,</span><span class="n">csv</span><span class="p">,</span><span class="n">idx</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">file_data</span>
+
+<span class="k">def</span> <span class="nf">load_from_file_tpd</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+    <span class="n">station</span><span class="o">=</span><span class="n">get_station_name</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+    <span class="n">csv</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="c1"># Find the index numbers starting the data for a year</span>
+    <span class="c1">#  (Lines with &#39;January&#39; in the third column)</span>
+    <span class="k">def</span> <span class="nf">find_year_starts</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">tab</span><span class="p">[</span><span class="n">tab</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;January&#39;</span><span class="p">,</span><span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="c1"># Convert &#39;2pm&#39; into 14&#39;</span>
+    <span class="k">def</span> <span class="nf">hour_from_string</span><span class="p">(</span><span class="n">hrst</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">hour</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;[0-9]+&#39;</span><span class="p">,</span> <span class="n">hrst</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;pm&#39;</span><span class="p">,</span> <span class="n">hrst</span><span class="o">.</span><span class="n">lower</span><span class="p">()))</span> <span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">hour</span><span class="o">=</span><span class="n">hour</span><span class="o">+</span><span class="mi">12</span>
+        <span class="k">if</span> <span class="n">hour</span><span class="o">==</span><span class="mi">24</span><span class="p">:</span> <span class="n">hour</span><span class="o">=</span><span class="mi">12</span>
+        <span class="k">return</span> <span class="n">hour</span>
+
+
+    <span class="c1"># Extract a year&#39;s worth of data given the start location</span>
+    <span class="k">def</span> <span class="nf">get_data_for_year</span><span class="p">(</span><span class="n">station</span><span class="p">,</span><span class="n">tab</span><span class="p">,</span><span class="n">istart</span><span class="p">):</span>
+        <span class="n">dates</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">pressures</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">year</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">tab</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">istart</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">13</span><span class="p">):</span>
+            <span class="n">lastday</span><span class="o">=</span><span class="n">calendar</span><span class="o">.</span><span class="n">monthrange</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">lastday</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">hri</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">hri</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+                        <span class="n">pre</span><span class="o">=</span><span class="n">tab</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">istart</span><span class="o">+</span><span class="n">day</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span><span class="n">month</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">pre</span><span class="o">=</span><span class="n">tab</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">istart</span><span class="o">+</span><span class="n">day</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">month</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">pre</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">pre</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">pre</span><span class="p">):</span> <span class="k">continue</span>
+                        <span class="k">if</span> <span class="n">pre</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span> <span class="k">continue</span>         <span class="c1"># -9999 - missing</span>
+                        <span class="k">if</span> <span class="n">pre</span><span class="o">&lt;</span><span class="mi">35</span><span class="p">:</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre</span><span class="o">*</span><span class="mf">33.8639</span> <span class="c1"># InHg</span>
+                        <span class="k">if</span> <span class="n">pre</span><span class="o">&lt;</span><span class="mi">800</span><span class="p">:</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre</span><span class="o">*</span><span class="mf">1.33</span>   <span class="c1"># mmHg</span>
+                    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                        <span class="k">continue</span>
+                    <span class="k">if</span> <span class="n">hri</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+                        <span class="n">hour</span><span class="o">=</span><span class="n">hour_from_string</span><span class="p">(</span><span class="n">tab</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">istart</span><span class="o">+</span><span class="n">day</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+                        <span class="k">if</span> <span class="n">hour</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">continue</span>
+                        <span class="n">dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">,</span><span class="n">day</span><span class="p">,</span><span class="n">hour</span><span class="p">))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">hour</span><span class="o">=</span><span class="n">hour_from_string</span><span class="p">(</span><span class="n">tab</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">istart</span><span class="o">+</span><span class="n">day</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+                        <span class="k">if</span> <span class="n">hour</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">continue</span>
+                        <span class="n">dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">,</span><span class="n">day</span><span class="p">,</span><span class="n">hour</span><span class="p">))</span>
+                    <span class="n">pressures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pre</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;dates&#39;</span><span class="p">:</span><span class="n">dates</span><span class="p">,</span><span class="s1">&#39;pressures&#39;</span><span class="p">:</span><span class="n">pressures</span><span class="p">}</span>
+    
+    <span class="n">year_i</span><span class="o">=</span><span class="n">find_year_starts</span><span class="p">(</span><span class="n">csv</span><span class="p">)</span>
+    <span class="n">file_data</span><span class="o">=</span><span class="p">{}</span>
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">year_i</span><span class="p">:</span>
+         <span class="n">year</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+         <span class="n">file_data</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">%04d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">year</span><span class="p">]</span><span class="o">=</span><span class="n">get_data_for_year</span><span class="p">(</span><span class="n">station</span><span class="p">,</span><span class="n">csv</span><span class="p">,</span><span class="n">idx</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">file_data</span>
+
+<span class="c1"># Specific functions for custom formats</span>
+<span class="k">def</span> <span class="nf">load_from_file_teneriffe</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+    <span class="n">csv</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">file_data</span><span class="o">=</span><span class="p">{}</span>
+    <span class="n">dc</span><span class="o">=</span><span class="n">csv</span><span class="p">[</span><span class="n">csv</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;\d\d\d\d&#39;</span><span class="p">,</span><span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">dc</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">year</span>   <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">month</span>  <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">day</span>    <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+            <span class="n">hour</span>   <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+            <span class="n">minute</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># Missing date</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">pre</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">pre</span><span class="p">):</span> <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">pre</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span> <span class="k">continue</span>         <span class="c1"># -9999 - missing</span>
+            <span class="k">if</span> <span class="n">pre</span><span class="o">&lt;</span><span class="mi">35</span><span class="p">:</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre</span><span class="o">*</span><span class="mf">33.8639</span> <span class="c1"># InHg</span>
+            <span class="k">if</span> <span class="n">pre</span><span class="o">&lt;</span><span class="mi">800</span><span class="p">:</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre</span><span class="o">*</span><span class="mf">1.33</span>   <span class="c1"># mmHg</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># Missing pressure</span>
+        <span class="k">if</span> <span class="s2">&quot;</span><span class="si">%04d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">year</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">file_data</span><span class="p">:</span>
+            <span class="n">file_data</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">%04d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">year</span><span class="p">]</span><span class="o">=</span><span class="p">{}</span>
+        <span class="k">if</span> <span class="s1">&#39;dates&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">file_data</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">%04d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">year</span><span class="p">]:</span>
+            <span class="n">file_data</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">%04d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">year</span><span class="p">][</span><span class="s1">&#39;dates&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[]</span>
+            <span class="n">file_data</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">%04d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">year</span><span class="p">][</span><span class="s1">&#39;pressures&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">file_data</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">%04d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">year</span><span class="p">][</span><span class="s1">&#39;dates&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                   <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">,</span><span class="n">day</span><span class="p">,</span><span class="n">hour</span><span class="p">))</span>
+        <span class="n">file_data</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">%04d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">year</span><span class="p">][</span><span class="s1">&#39;pressures&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pre</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">file_data</span>
+
+<span class="k">def</span> <span class="nf">load_from_file_middle_east</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span><span class="n">column</span><span class="p">):</span>
+    <span class="n">csv</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">file_data</span><span class="o">=</span><span class="p">{}</span>
+    <span class="n">dc</span><span class="o">=</span><span class="n">csv</span><span class="p">[</span><span class="n">csv</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;\d\d\d\d&#39;</span><span class="p">,</span><span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">dc</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">year</span>   <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">month</span>  <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">day</span>    <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+            <span class="n">hour</span>   <span class="o">=</span> <span class="mi">8</span>
+            <span class="n">minute</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># Missing date</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">pre</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="n">column</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">pre</span><span class="p">):</span> <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">pre</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span> <span class="k">continue</span>         <span class="c1"># -9999 - missing</span>
+            <span class="k">if</span> <span class="n">pre</span><span class="o">&lt;</span><span class="mi">35</span><span class="p">:</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre</span><span class="o">*</span><span class="mf">33.8639</span> <span class="c1"># InHg</span>
+            <span class="k">if</span> <span class="n">pre</span><span class="o">&lt;</span><span class="mi">800</span><span class="p">:</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre</span><span class="o">*</span><span class="mf">1.33</span>   <span class="c1"># mmHg</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span> <span class="k">continue</span> <span class="c1"># Missing pressure</span>
+        <span class="k">if</span> <span class="s2">&quot;</span><span class="si">%04d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">year</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">file_data</span><span class="p">:</span>
+            <span class="n">file_data</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">%04d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">year</span><span class="p">]</span><span class="o">=</span><span class="p">{}</span>
+        <span class="k">if</span> <span class="s1">&#39;dates&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">file_data</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">%04d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">year</span><span class="p">]:</span>
+            <span class="n">file_data</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">%04d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">year</span><span class="p">][</span><span class="s1">&#39;dates&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[]</span>
+            <span class="n">file_data</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">%04d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">year</span><span class="p">][</span><span class="s1">&#39;pressures&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">file_data</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">%04d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">year</span><span class="p">][</span><span class="s1">&#39;dates&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                   <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">,</span><span class="n">day</span><span class="p">,</span><span class="n">hour</span><span class="p">))</span>
+        <span class="n">file_data</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">%04d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">year</span><span class="p">][</span><span class="s1">&#39;pressures&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pre</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">file_data</span>
+
+<span class="c1"># Add a station&#39;s data to the output files</span>
+<span class="k">def</span> <span class="nf">output_station</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">sdata</span><span class="p">):</span>
+    <span class="n">LastF</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+    <span class="n">Of</span><span class="o">=</span><span class="kc">None</span>
+    <span class="n">opfile</span><span class="o">=</span><span class="kc">None</span>
+    <span class="n">mdl</span><span class="o">=</span><span class="n">md</span><span class="p">[</span><span class="n">md</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">==</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+    <span class="k">if</span> <span class="n">mdl</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">StandardError</span><span class="p">(</span><span class="s2">&quot;No station </span><span class="si">%s</span><span class="s2"> in metadata&quot;</span> <span class="o">%</span> 
+                                                      <span class="n">name</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">syr</span> <span class="ow">in</span> <span class="n">sdata</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sdata</span><span class="p">[</span><span class="n">syr</span><span class="p">][</span><span class="s1">&#39;dates&#39;</span><span class="p">])):</span>
+            <span class="n">Of</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/../../data_from_Emulate/</span><span class="si">%04d</span><span class="s2">/</span><span class="si">%02d</span><span class="s2">/prmsl.txt&quot;</span> <span class="o">%</span>
+                             <span class="p">(</span><span class="n">sd</span><span class="p">,</span><span class="n">sdata</span><span class="p">[</span><span class="n">syr</span><span class="p">][</span><span class="s1">&#39;dates&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">year</span><span class="p">,</span>
+                                 <span class="n">sdata</span><span class="p">[</span><span class="n">syr</span><span class="p">][</span><span class="s1">&#39;dates&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">month</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">Of</span><span class="o">!=</span><span class="n">LastF</span><span class="p">:</span>
+                <span class="n">dn</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">Of</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">dn</span><span class="p">):</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dn</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">opfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">opfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">LastF</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+                        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">Of</span><span class="p">)</span>
+                        <span class="n">dn</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">LastF</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">dn</span><span class="p">):</span>
+                            <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">dn</span><span class="p">)</span>
+                <span class="n">opfile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">Of</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>
+                <span class="n">LastF</span><span class="o">=</span><span class="n">Of</span>
+
+            <span class="n">opfile</span><span class="o">.</span><span class="n">write</span><span class="p">((</span><span class="s2">&quot;</span><span class="si">%04d</span><span class="s2"> </span><span class="si">%02d</span><span class="s2"> </span><span class="si">%02d</span><span class="s2"> </span><span class="si">%02d</span><span class="s2"> </span><span class="si">%02d</span><span class="s2"> </span><span class="si">%6.2f</span><span class="s2"> &quot;</span><span class="o">+</span>
+                          <span class="s2">&quot;</span><span class="si">%7.2f</span><span class="s2"> </span><span class="si">%6.1f</span><span class="s2"> </span><span class="si">%16s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">%</span>
+                         <span class="p">(</span><span class="n">sdata</span><span class="p">[</span><span class="n">syr</span><span class="p">][</span><span class="s1">&#39;dates&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">year</span><span class="p">,</span>
+                          <span class="n">sdata</span><span class="p">[</span><span class="n">syr</span><span class="p">][</span><span class="s1">&#39;dates&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">month</span><span class="p">,</span>
+                          <span class="n">sdata</span><span class="p">[</span><span class="n">syr</span><span class="p">][</span><span class="s1">&#39;dates&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">day</span><span class="p">,</span>
+                          <span class="n">sdata</span><span class="p">[</span><span class="n">syr</span><span class="p">][</span><span class="s1">&#39;dates&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span>
+                          <span class="n">sdata</span><span class="p">[</span><span class="n">syr</span><span class="p">][</span><span class="s1">&#39;dates&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">minute</span><span class="p">,</span>
+                          <span class="n">mdl</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="n">mdl</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="c1">#latlon</span>
+                          <span class="n">sdata</span><span class="p">[</span><span class="n">syr</span><span class="p">][</span><span class="s1">&#39;pressures&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span>     <span class="c1"># ob value</span>
+                          <span class="n">mdl</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span>              <span class="c1"># name</span>
+
+    <span class="k">if</span> <span class="n">opfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">opfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+     
+
+<span class="c1"># Load all the data</span>
+<span class="n">emulate_data</span><span class="o">=</span><span class="p">{}</span>
+<span class="n">Files</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/../original_data_csv&quot;</span> <span class="o">%</span> <span class="n">sd</span><span class="p">)</span>
+<span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">Files</span><span class="p">:</span>
+        <span class="n">station_name</span><span class="o">=</span><span class="n">get_station_name</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+
+        <span class="c1"># Once-per-day data</span>
+        <span class="k">if</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">Files_opd</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="n">station_name</span>
+            <span class="k">if</span> <span class="n">station_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">emulate_data</span><span class="p">:</span>
+                <span class="n">emulate_data</span><span class="p">[</span><span class="n">station_name</span><span class="p">]</span><span class="o">=</span><span class="p">{}</span>
+            <span class="n">emulate_data</span><span class="p">[</span><span class="n">station_name</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">load_from_file_opd</span><span class="p">(</span>
+                         <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/../original_data_csv/</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sd</span><span class="p">,</span><span class="n">file_name</span><span class="p">)))</span>
+
+        <span class="c1"># Twice_per_day data</span>
+        <span class="k">if</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">Files_tpd</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="n">station_name</span>
+            <span class="k">if</span> <span class="n">station_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">emulate_data</span><span class="p">:</span>
+                <span class="n">emulate_data</span><span class="p">[</span><span class="n">station_name</span><span class="p">]</span><span class="o">=</span><span class="p">{}</span>
+            <span class="n">emulate_data</span><span class="p">[</span><span class="n">station_name</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">load_from_file_tpd</span><span class="p">(</span>
+                         <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/../original_data_csv/</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sd</span><span class="p">,</span><span class="n">file_name</span><span class="p">)))</span>
+
+    <span class="c1"># Special cases</span>
+    <span class="nb">print</span> <span class="s1">&#39;TENERIFE&#39;</span>
+    <span class="n">emulate_data</span><span class="p">[</span><span class="s1">&#39;TENERIFE&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">load_from_file_teneriffe</span><span class="p">(</span>
+                     <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/../original_data_csv/Tenerife.Teneriffe.csv&quot;</span> <span class="o">%</span> <span class="n">sd</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s1">&#39;BAGHDAD&#39;</span>
+    <span class="n">emulate_data</span><span class="p">[</span><span class="s1">&#39;BAGHDAD&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">load_from_file_middle_east</span><span class="p">(</span>
+                     <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/../original_data_csv/ME_daily_pressure.ME_daily_pressure.csv&quot;</span> <span class="o">%</span> <span class="n">sd</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s1">&#39;BASRA&#39;</span>
+    <span class="n">emulate_data</span><span class="p">[</span><span class="s1">&#39;BASRA&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">load_from_file_middle_east</span><span class="p">(</span>
+                     <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/../original_data_csv/ME_daily_pressure.ME_daily_pressure.csv&quot;</span> <span class="o">%</span> <span class="n">sd</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s1">&#39;DIYARBAKIR&#39;</span>
+    <span class="n">emulate_data</span><span class="p">[</span><span class="s1">&#39;DIYARBAKIR&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">load_from_file_middle_east</span><span class="p">(</span>
+                     <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/../original_data_csv/ME_daily_pressure.ME_daily_pressure.csv&quot;</span> <span class="o">%</span> <span class="n">sd</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s1">&#39;BEIRUT&#39;</span>
+    <span class="n">emulate_data</span><span class="p">[</span><span class="s1">&#39;BEIRUT&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">load_from_file_middle_east</span><span class="p">(</span>
+                     <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/../original_data_csv/ME_daily_pressure.ME_daily_pressure.csv&quot;</span> <span class="o">%</span> <span class="n">sd</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+
+    <span class="c1"># Output the data in new format</span>
+    <span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="n">emulate_data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">output_station</span><span class="p">(</span><span class="n">station</span><span class="p">,</span><span class="n">emulate_data</span><span class="p">[</span><span class="n">station</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="data_from_lisa_files.html" title="Data from the UK storms project"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../DWR.html" title="The Daily Weather Reports"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">DWR observations</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../DWR.html" >The Daily Weather Reports</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    </div>
+  </body>
+</html>

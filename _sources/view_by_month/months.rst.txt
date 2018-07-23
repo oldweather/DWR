@@ -1,0 +1,1387 @@
+Data month-by-month
+===================
+
+.. include:: file_header.rst
+
+.. list-table:: 
+   :widths: 15 10 10 10 10 10 10 10 10 10 10 10 10
+   :header-rows: 1
+
+   * - Year 
+     - Jan 
+     - Feb
+     - Mar
+     - Apr
+     - May
+     - Jun
+     - Jul
+     - Aug
+     - Sep
+     - Oct
+     - Nov
+     - Dec
+   * - 1856 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1856/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1856/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1856/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1856/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1856/12/prmsl.txt>`_
+   * - 1857 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1857/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1857/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1857/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1857/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1857/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1857/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1857/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1857/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1857/09/prmsl.txt>`_
+     - 
+     - 
+     - 
+   * - 1858 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - 1859 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - 1860 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - 1861 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1861/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1861/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1861/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1861/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1861/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1861/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1861/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1861/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1861/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1861/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1861/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1861/12/prmsl.txt>`_
+   * - 1862 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1862/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1862/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1862/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1862/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1862/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1862/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1862/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1862/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1862/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1862/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1862/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1862/12/prmsl.txt>`_
+   * - 1863 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1863/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1863/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1863/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1863/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1863/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1863/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1863/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1863/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1863/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1863/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1863/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1863/12/prmsl.txt>`_
+   * - 1864 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1864/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1864/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1864/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1864/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1864/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1864/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1864/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1864/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1864/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1864/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1864/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1864/12/prmsl.txt>`_
+   * - 1865 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1865/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1865/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1865/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1865/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1865/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1865/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1865/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1865/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1865/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1865/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1865/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1865/12/prmsl.txt>`_
+   * - 1866 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1866/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1866/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1866/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1866/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1866/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1866/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1866/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1866/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1866/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1866/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1866/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1866/12/prmsl.txt>`_
+   * - 1867 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1867/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1867/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1867/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1867/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1867/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1867/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1867/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1867/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1867/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1867/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1867/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1867/12/prmsl.txt>`_
+   * - 1868 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1868/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1868/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1868/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1868/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1868/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1868/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1868/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1868/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1868/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1868/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1868/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1868/12/prmsl.txt>`_
+   * - 1869 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1869/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1869/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1869/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1869/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1869/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1869/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1869/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1869/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1869/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1869/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1869/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1869/12/prmsl.txt>`_
+   * - 1870 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1870/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1870/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1870/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1870/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1870/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1870/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1870/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1870/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1870/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1870/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1870/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1870/12/prmsl.txt>`_
+   * - 1871 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1871/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1871/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1871/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1871/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1871/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1871/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1871/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1871/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1871/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1871/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1871/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1871/12/prmsl.txt>`_
+   * - 1872 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1872/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1872/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1872/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1872/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1872/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1872/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1872/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1872/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1872/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1872/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1872/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1872/12/prmsl.txt>`_
+   * - 1873 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1873/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1873/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1873/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1873/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1873/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1873/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1873/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1873/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1873/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1873/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1873/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1873/12/prmsl.txt>`_
+   * - 1874 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1874/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1874/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1874/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1874/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1874/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1874/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1874/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1874/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1874/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1874/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1874/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1874/12/prmsl.txt>`_
+   * - 1875 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1875/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1875/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1875/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1875/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1875/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1875/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1875/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1875/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1875/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1875/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1875/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1875/12/prmsl.txt>`_
+   * - 1876 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1876/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1876/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1876/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1876/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1876/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1876/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1876/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1876/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1876/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1876/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1876/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1876/12/prmsl.txt>`_
+   * - 1877 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1877/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1877/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1877/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1877/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1877/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1877/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1877/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1877/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1877/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1877/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1877/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1877/12/prmsl.txt>`_
+   * - 1878 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1878/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1878/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1878/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1878/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1878/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1878/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1878/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1878/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1878/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1878/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1878/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1878/12/prmsl.txt>`_
+   * - 1879 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1879/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1879/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1879/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1879/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1879/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1879/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1879/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1879/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1879/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1879/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1879/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1879/12/prmsl.txt>`_
+   * - 1880 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1880/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1880/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1880/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1880/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1880/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1880/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1880/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1880/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1880/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1880/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1880/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1880/12/prmsl.txt>`_
+   * - 1881 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1881/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1881/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1881/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1881/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1881/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1881/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1881/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1881/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1881/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1881/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1881/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1881/12/prmsl.txt>`_
+   * - 1882 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1882/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1882/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1882/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1882/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1882/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1882/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1882/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1882/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1882/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1882/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1882/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1882/12/prmsl.txt>`_
+   * - 1883 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1883/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1883/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1883/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1883/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1883/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1883/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1883/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1883/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1883/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1883/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1883/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1883/12/prmsl.txt>`_
+   * - 1884 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1884/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1884/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1884/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1884/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1884/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1884/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1884/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1884/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1884/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1884/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1884/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1884/12/prmsl.txt>`_
+   * - 1885 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1885/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1885/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1885/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1885/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1885/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1885/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1885/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1885/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1885/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1885/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1885/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1885/12/prmsl.txt>`_
+   * - 1886 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1886/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1886/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1886/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1886/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1886/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1886/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1886/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1886/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1886/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1886/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1886/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1886/12/prmsl.txt>`_
+   * - 1887 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1887/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1887/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1887/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1887/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1887/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1887/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1887/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1887/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1887/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1887/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1887/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1887/12/prmsl.txt>`_
+   * - 1888 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1888/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1888/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1888/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1888/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1888/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1888/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1888/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1888/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1888/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1888/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1888/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1888/12/prmsl.txt>`_
+   * - 1889 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1889/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1889/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1889/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1889/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1889/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1889/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1889/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1889/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1889/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1889/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1889/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1889/12/prmsl.txt>`_
+   * - 1890 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1890/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1890/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1890/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1890/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1890/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1890/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1890/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1890/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1890/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1890/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1890/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1890/12/prmsl.txt>`_
+   * - 1891 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1891/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1891/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1891/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1891/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1891/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1891/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1891/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1891/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1891/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1891/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1891/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1891/12/prmsl.txt>`_
+   * - 1892 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1892/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1892/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1892/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1892/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1892/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1892/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1892/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1892/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1892/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1892/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1892/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1892/12/prmsl.txt>`_
+   * - 1893 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1893/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1893/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1893/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1893/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1893/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1893/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1893/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1893/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1893/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1893/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1893/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1893/12/prmsl.txt>`_
+   * - 1894 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1894/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1894/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1894/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1894/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1894/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1894/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1894/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1894/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1894/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1894/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1894/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1894/12/prmsl.txt>`_
+   * - 1895 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1895/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1895/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1895/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1895/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1895/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1895/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1895/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1895/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1895/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1895/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1895/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1895/12/prmsl.txt>`_
+   * - 1896 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1896/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1896/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1896/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1896/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1896/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1896/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1896/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1896/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1896/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1896/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1896/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1896/12/prmsl.txt>`_
+   * - 1897 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1897/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1897/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1897/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1897/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1897/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1897/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1897/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1897/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1897/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1897/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1897/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1897/12/prmsl.txt>`_
+   * - 1898 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1898/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1898/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1898/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1898/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1898/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1898/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1898/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1898/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1898/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1898/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1898/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1898/12/prmsl.txt>`_
+   * - 1899 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1899/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1899/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1899/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1899/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1899/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1899/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1899/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1899/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1899/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1899/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1899/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1899/12/prmsl.txt>`_
+   * - 1900 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1900/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1900/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1900/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1900/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1900/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1900/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1900/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1900/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1900/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1900/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1900/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1900/12/prmsl.txt>`_
+   * - 1901 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1901/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1901/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1901/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1901/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1901/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1901/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1901/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1901/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1901/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1901/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1901/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1901/12/prmsl.txt>`_
+   * - 1902 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1902/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1902/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1902/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1902/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1902/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1902/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1902/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1902/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1902/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1902/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1902/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1902/12/prmsl.txt>`_
+   * - 1903 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1903/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1903/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1903/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1903/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1903/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1903/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1903/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1903/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1903/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1903/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1903/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1903/12/prmsl.txt>`_
+   * - 1904 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1904/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1904/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1904/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1904/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1904/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1904/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1904/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1904/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1904/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1904/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1904/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1904/12/prmsl.txt>`_
+   * - 1905 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1905/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1905/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1905/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1905/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1905/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1905/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1905/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1905/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1905/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1905/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1905/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1905/12/prmsl.txt>`_
+   * - 1906 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1906/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1906/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1906/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1906/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1906/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1906/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1906/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1906/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1906/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1906/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1906/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1906/12/prmsl.txt>`_
+   * - 1907 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1907/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1907/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1907/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1907/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1907/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1907/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1907/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1907/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1907/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1907/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1907/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1907/12/prmsl.txt>`_
+   * - 1908 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1908/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1908/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1908/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1908/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1908/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1908/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1908/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1908/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1908/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1908/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1908/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1908/12/prmsl.txt>`_
+   * - 1909 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1909/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1909/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1909/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1909/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1909/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1909/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1909/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1909/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1909/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1909/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1909/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1909/12/prmsl.txt>`_
+   * - 1910 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - 1911 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - 1912 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - 1913 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - 1914 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - 1915 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - 1916 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - 1917 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - 1918 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - 1919 
+     - 
+     - 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1919/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1919/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1919/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1919/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1919/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1919/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1919/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1919/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1919/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1919/12/prmsl.txt>`_
+   * - 1920 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1920/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1920/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1920/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1920/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1920/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1920/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1920/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1920/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1920/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1920/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1920/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1920/12/prmsl.txt>`_
+   * - 1921 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1921/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1921/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1921/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1921/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1921/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1921/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1921/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1921/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1921/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1921/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1921/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1921/12/prmsl.txt>`_
+   * - 1922 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1922/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1922/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1922/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1922/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1922/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1922/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1922/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1922/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1922/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1922/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1922/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1922/12/prmsl.txt>`_
+   * - 1923 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1923/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1923/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1923/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1923/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1923/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1923/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1923/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1923/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1923/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1923/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1923/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1923/12/prmsl.txt>`_
+   * - 1924 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1924/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1924/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1924/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1924/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1924/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1924/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1924/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1924/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1924/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1924/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1924/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1924/12/prmsl.txt>`_
+   * - 1925 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1925/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1925/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1925/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1925/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1925/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1925/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1925/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1925/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1925/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1925/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1925/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1925/12/prmsl.txt>`_
+   * - 1926 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1926/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1926/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1926/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1926/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1926/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1926/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1926/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1926/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1926/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1926/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1926/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1926/12/prmsl.txt>`_
+   * - 1927 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1927/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1927/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1927/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1927/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1927/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1927/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1927/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1927/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1927/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1927/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1927/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1927/12/prmsl.txt>`_
+   * - 1928 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1928/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1928/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1928/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1928/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1928/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1928/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1928/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1928/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1928/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1928/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1928/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1928/12/prmsl.txt>`_
+   * - 1929 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1929/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1929/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1929/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1929/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1929/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1929/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1929/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1929/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1929/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1929/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1929/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1929/12/prmsl.txt>`_
+   * - 1930 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1930/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1930/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1930/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1930/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1930/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1930/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1930/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1930/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1930/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1930/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1930/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1930/12/prmsl.txt>`_
+   * - 1931 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1931/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1931/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1931/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1931/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1931/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1931/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1931/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1931/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1931/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1931/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1931/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1931/12/prmsl.txt>`_
+   * - 1932 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1932/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1932/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1932/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1932/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1932/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1932/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1932/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1932/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1932/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1932/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1932/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1932/12/prmsl.txt>`_
+   * - 1933 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1933/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1933/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1933/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1933/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1933/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1933/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1933/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1933/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1933/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1933/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1933/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1933/12/prmsl.txt>`_
+   * - 1934 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1934/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1934/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1934/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1934/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1934/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1934/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1934/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1934/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1934/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1934/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1934/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1934/12/prmsl.txt>`_
+   * - 1935 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1935/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1935/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1935/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1935/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1935/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1935/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1935/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1935/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1935/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1935/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1935/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1935/12/prmsl.txt>`_
+   * - 1936 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1936/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1936/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1936/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1936/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1936/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1936/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1936/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1936/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1936/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1936/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1936/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1936/12/prmsl.txt>`_
+   * - 1937 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1937/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1937/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1937/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1937/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1937/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1937/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1937/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1937/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1937/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1937/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1937/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1937/12/prmsl.txt>`_
+   * - 1938 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1938/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1938/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1938/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1938/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1938/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1938/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1938/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1938/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1938/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1938/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1938/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1938/12/prmsl.txt>`_
+   * - 1939 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1939/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1939/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1939/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1939/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1939/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1939/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1939/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1939/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1939/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1939/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1939/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1939/12/prmsl.txt>`_
+   * - 1940 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1940/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1940/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1940/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1940/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1940/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1940/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1940/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1940/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1940/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1940/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1940/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1940/12/prmsl.txt>`_
+   * - 1941 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1941/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1941/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1941/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1941/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1941/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1941/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1941/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1941/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1941/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1941/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1941/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1941/12/prmsl.txt>`_
+   * - 1942 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1942/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1942/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1942/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1942/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1942/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1942/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1942/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1942/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1942/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1942/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1942/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1942/12/prmsl.txt>`_
+   * - 1943 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1943/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1943/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1943/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1943/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1943/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1943/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1943/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1943/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1943/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1943/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1943/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1943/12/prmsl.txt>`_
+   * - 1944 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1944/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1944/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1944/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1944/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1944/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1944/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1944/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1944/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1944/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1944/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1944/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1944/12/prmsl.txt>`_
+   * - 1945 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1945/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1945/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1945/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1945/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1945/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1945/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1945/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1945/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1945/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1945/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1945/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1945/12/prmsl.txt>`_
+   * - 1946 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1946/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1946/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1946/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1946/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1946/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1946/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1946/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1946/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1946/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1946/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1946/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1946/12/prmsl.txt>`_
+   * - 1947 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1947/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1947/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1947/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1947/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1947/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1947/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1947/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1947/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1947/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1947/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1947/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1947/12/prmsl.txt>`_
+   * - 1948 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1948/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1948/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1948/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1948/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1948/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1948/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1948/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1948/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1948/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1948/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1948/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1948/12/prmsl.txt>`_
+   * - 1949 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1949/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1949/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1949/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1949/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1949/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1949/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1949/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1949/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1949/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1949/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1949/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1949/12/prmsl.txt>`_
+   * - 1950 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1950/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1950/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1950/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1950/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1950/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1950/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1950/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1950/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1950/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1950/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1950/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1950/12/prmsl.txt>`_
+   * - 1951 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1951/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1951/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1951/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1951/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1951/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1951/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1951/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1951/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1951/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1951/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1951/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1951/12/prmsl.txt>`_
+   * - 1952 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1952/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1952/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1952/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1952/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1952/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1952/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1952/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1952/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1952/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1952/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1952/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1952/12/prmsl.txt>`_
+   * - 1953 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1953/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1953/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1953/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1953/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1953/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1953/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1953/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1953/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1953/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1953/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1953/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1953/12/prmsl.txt>`_
+   * - 1954 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1954/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1954/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1954/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1954/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1954/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1954/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1954/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1954/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1954/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1954/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1954/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1954/12/prmsl.txt>`_
+   * - 1955 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1955/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1955/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1955/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1955/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1955/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1955/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1955/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1955/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1955/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1955/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1955/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1955/12/prmsl.txt>`_
+   * - 1956 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1956/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1956/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1956/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1956/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1956/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1956/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1956/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1956/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1956/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1956/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1956/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1956/12/prmsl.txt>`_
+   * - 1957 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1957/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1957/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1957/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1957/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1957/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1957/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1957/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1957/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1957/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1957/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1957/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1957/12/prmsl.txt>`_
+   * - 1958 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1958/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1958/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1958/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1958/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1958/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1958/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1958/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1958/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1958/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1958/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1958/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1958/12/prmsl.txt>`_
+   * - 1959 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1959/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1959/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1959/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1959/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1959/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1959/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1959/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1959/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1959/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1959/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1959/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1959/12/prmsl.txt>`_
+   * - 1960 
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1960/01/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1960/02/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1960/03/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1960/04/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1960/05/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1960/06/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1960/07/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1960/08/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1960/09/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1960/10/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1960/11/prmsl.txt>`_
+     - `prmsl <https://github.com/oldweather/DWR/blob/master/data/1960/12/prmsl.txt>`_
