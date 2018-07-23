@@ -125,17 +125,17 @@ todo_include_todos = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'agogo'
+html_theme = 'sphinxdoc'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-html_theme_options = {
-    'documentwidth': '825px',
-    'textalign': 'left',
-    'headerfont': 'serif',    # Need caps and digits same height (20CR)
-}
+#html_theme_options = {
+#    'documentwidth': '825px',
+#    'textalign': 'left',
+#    'headerfont': 'serif',    # Need caps and digits same height (20CR)
+#}
 #    'github_user': 'oldweather',
 #    'github_repo': 'DWR',
 #    'page_width': '980px'
@@ -148,16 +148,16 @@ html_theme_options = {
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
 #
-html_title = u'Improving reanalysis with the Daily Weather Reports'
+html_title = u'New observations from the Daily Weather Reports'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #
-html_short_title = 'Improving reanalysis with DWR'
+html_short_title = 'DWR observations'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 #
-# html_logo = None
+html_logo = 'logo/DWR_chart_19031003.png'
 
 # The name of an image file (relative to this directory) to use as a favicon of
 # the docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -189,14 +189,7 @@ html_static_path = ['_static']
 
 # Custom sidebar templates, maps document names to template names.
 #
-#html_sidebars = {
-#    '**': [
-#        'about.html',
-#        'navigation.html',
-#        'relations.html',
-#        'searchbox.html',
-#    ]
-#}
+html_sidebars = {'**': ['globaltoc.html','sourcelink.html']}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.

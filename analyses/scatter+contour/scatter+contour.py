@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # UK region weather plot 
 # 20CR pressures and validation against DWR
 
@@ -18,8 +20,8 @@ from matplotlib.patches import Circle
 import cartopy
 import cartopy.crs as ccrs
 
-import Meteorographica.weathermap as wm
-import Meteorographica.data.twcr as twcr
+import Meteorographica as mg
+import IRData.twcr as twcr
 
 import DWR
  
@@ -58,7 +60,7 @@ ax_map.set_extent(extent, crs=projection)
 
 # Background, grid and land 
 ax_map.background_patch.set_facecolor((0.88,0.88,0.88,1))
-wm.add_grid(ax_map)
+mg.background.add_grid(ax_map)
 land_img_20C=ax_map.background_img(name='GreyT', resolution='low')
 
 # Get the DWR observations within +- 15 hours
@@ -70,30 +72,24 @@ obs=obs.sort_values(by='latitude',ascending=True)
 # Get the list of stations - preserving order
 stations=collections.OrderedDict.fromkeys(obs.loc[:,'name']).keys()
 
-wm.plot_obs(ax_map,obs,lat_label='latitude',
+mg.observations.plot(ax_map,obs,lat_label='latitude',
             lon_label='longitude',radius=0.15,facecolor='red')
 
 # Add the observations from 20CR
-obs_t=twcr.load_observations(dte-datetime.timedelta(hours=21),
-                             dte+datetime.timedelta(hours=3),'2c')
+obs_t=twcr.load_observations_fortime(dte,version='2c')
 # Filter to those assimilated and near the UK
 obs_s=obs_t.loc[(obs_t['Assimilation.indicator']==1) &
               ((obs_t['Latitude']>0) & 
                    (obs_t['Latitude']<90)) &
               ((obs_t['Longitude']>240) | 
                    (obs_t['Longitude']<100))].copy()
-wm.plot_obs(ax_map,obs_s,radius=0.15)
+mg.observations.plot(ax_map,obs_s,radius=0.15)
 
 # load the pressures
-prmsl=twcr.load('prmsl',year,month,day,hour,
-                             version='2c')
+prmsl=twcr.load('prmsl',dte,version='2c')
 
-# For each ensemble member, make a contour plot
-for m in prmsl.coord('member').points:
-#for m in range(1, 10):   # Same number as CERA
-    prmsl_e=prmsl.extract(iris.Constraint(member=m))
-    prmsl_e.data=prmsl_e.data/100 # To hPa
-    CS=wm.plot_contour(ax_map,prmsl_e,
+CS=mg.pressure.plot(ax_map,prmsl_e,type='spaghetti',
+                   resolution=0.25,scale=0.01,
                    levels=numpy.arange(870,1050,10),
                    colors='blue',
                    label=False,
@@ -101,19 +97,18 @@ for m in prmsl.coord('member').points:
 
 # Add the ensemble mean - with labels
 prmsl_m=prmsl.collapsed('member', iris.analysis.MEAN)
-prmsl_m.data=prmsl_m.data/100 # To hPa
 prmsl_s=prmsl.collapsed('member', iris.analysis.STD_DEV)
-prmsl_s.data=prmsl_s.data/100
 # Mask out mean where uncertainties large
-prmsl_m.data[numpy.where(prmsl_s.data>3)]=numpy.nan
-CS=wm.plot_contour(ax_map,prmsl_m,
+prmsl_m.data[numpy.where(prmsl_s.data>300)]=numpy.nan
+CS=mg.pressure.plot(ax_map,prmsl_m,
+                   resolution=0.25,scale=0.01,
                    levels=numpy.arange(870,1050,10),
                    colors='black',
                    label=True,
                    linewidths=2)
 
 # Label with the date
-wm.plot_label(ax_map,
+mg.utils.plot_label(ax_map,
               '%04d-%02d-%02d:%02d' % (year,month,day,hour),
               facecolor=fig.get_facecolor(),
               x_fraction=0.02,

@@ -1,4 +1,3 @@
-
 New observations from weatherescue.org
 =======================================
 
@@ -9,4 +8,4 @@ Weather rescue is providing the data as `monthly files <https://github.com/oldwe
 .. literalinclude:: ../../data_from_Ed/1901/01/prmsl.txt
     :lines: 12-25
 
-The `monthly files <https://github.com/oldweather/DWR/tree/master/data_from_Ed>`_ are included in this repository. An API for the final monthly data is provided by `a python module <../modules/module_DWR.html>`_.
+

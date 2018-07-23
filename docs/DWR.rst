@@ -19,19 +19,15 @@ To meet this need, Fitzroy created the `Daily Weather Reports <https://www.metof
 
 From about 1957, the observations reported in the DWR `are included in Met Office and international databases <https://www.research.ed.ac.uk/portal/en/publications/recent-observed-changes-in-severe-storms-over-the-united-kingdom-and-iceland(4362d146-ef64-4b18-b5df-14378b25c4e5).html>`_. The first hundred years of records, however, are only available on paper, and so are inaccessible to science.
 
-Two projects have transcribed some of the earlier DWR reports: `A study of severe storms across the British Isles <https://www.research.ed.ac.uk/portal/en/publications/fluctuations-in-autumnwinter-severe-storms-over-the-british-isles-1920-to-present(7135f643-9419-4e6a-b2e9-91bd137e13be).html>`_, transcribed a subset of the pressure observations over the period 1919-1960, and the citizen science project `weatherrescue.org <http://weatherrescue.org>`_ is making a more comprehensive transcription. 
+This dataset provides some of these so-far-missing observations. Three projects have transcribed some of the earlier DWR reports: The `EMULATE team <https://www.metoffice.gov.uk/hadobs/emslp/>`_ transcribed pressure observations from some stations for the years 18856-1881, `A study of severe storms across the British Isles <https://www.research.ed.ac.uk/portal/en/publications/fluctuations-in-autumnwinter-severe-storms-over-the-british-isles-1920-to-present(7135f643-9419-4e6a-b2e9-91bd137e13be).html>`_, transcribed a subset of the pressure observations over the period 1919-1960, and the citizen science project `weatherrescue.org <http://weatherrescue.org>`_ is making a more comprehensive transcription for the years 1900-1910. 
 
-The observations transcribed by those two projects are included in this repository.
+The bulk of these new observations are from the Daily Weather Reports, but they also include some data from other sources: the EMULATE data includes some stations from the French Daily Weather Reports; the weatherrescue.org data includes both observations from the `1898-1904 Ben Nevis project <https://weatherrescue.wordpress.com/2017/09/05/weathermen-of-ben-nevis>`_, and early pressure observations (1875-1899)from the station climatological returns for Scilly, in the UK Met Archive (Provided by `Ed Hanna - University of Lincon <http://staff.lincoln.ac.uk/ehanna>`_).
 
 .. toctree::
    :maxdepth: 2
 
+   data/data_from_emulate
    data/data_from_lisa_files 
    data/data_from_weatherrescue
 
-An API for these observations is provided by a python module:
-
-.. toctree::
-   :maxdepth: 2
-
-   modules/module_DWR.rst 
+Together, these projects provide about 3.7 million new observations - all included in this dataset. This is a vast improvement in the observations coverage for the British Isles in the late nineteenth and early twentieth centuries, but it is only about 20% of the data we could get from a comprehensive digitisation of the UK DWRs, so we are a long way from completion even of this one data source (other countries had DWRs of their own too).

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # UK region weather plot from 20CR2C
 # Use Meteorographica weathermap functions
 
@@ -13,8 +15,8 @@ from matplotlib.figure import Figure
 import cartopy
 import cartopy.crs as ccrs
 
-import Meteorographica.weathermap as wm
-import Meteorographica.data.twcr as twcr
+import Meteorographica as mg
+import IRData.twcr as twcr
 
 import DWR
  
@@ -52,29 +54,29 @@ ax_DWR.set_extent(extent, crs=projection)
 # Background, grid and land for both
 ax_20C.background_patch.set_facecolor((0.88,0.88,0.88,1))
 ax_DWR.background_patch.set_facecolor((0.88,0.88,0.88,1))
-wm.add_grid(ax_20C)
-wm.add_grid(ax_DWR)
+mg.background.add_grid(ax_20C)
+mg.background.add_grid(ax_DWR)
 land_img_20C=ax_20C.background_img(name='GreyT', resolution='low')
 land_img_DWR=ax_DWR.background_img(name='GreyT', resolution='low')
 
 # 20CR2c data
-wm.plot_label(ax_20C,'Observations in 20CR 2c',
+mg.utils.plot_label(ax_20C,'Observations in 20CR 2c',
                      facecolor=fig.get_facecolor())
 # Add the observations
-obs=twcr.get_obs(dte-datetime.timedelta(hours=24),dte,'3.5.1')
+obs=twcr.load_observations_fortime(dte,'2c')
 # Filter to those assimilated and near the UK
 obs_s=obs.loc[(obs['Assimilation.indicator']==1) &
               ((obs['Latitude']>0) & 
                   (obs['Latitude']<90)) &
               ((obs['Longitude']>240) | 
                  (obs['Longitude']<100))].copy()
-wm.plot_obs(ax_20C,obs_s,radius=0.15)
+mg.observations.plot(ax_20C,obs_s,radius=0.15)
 
 # DWR data
-obs=DWR.get_obs(dte-datetime.timedelta(hours=24),dte,'prmsl')
-wm.plot_obs(ax_DWR,obs,lat_label='latitude',
+obs=DWR.load_observations('prmsl',dte-datetime.timedelta(hours=24),dte,)
+mg.observations.plot(ax_DWR,obs,lat_label='latitude',
             lon_label='longitude',radius=0.15)
-wm.plot_label(ax_DWR,'Observations in DWR',
+mg.utils.plot_label(ax_DWR,'Observations in DWR',
                      facecolor=fig.get_facecolor())
 
 # Output as png
