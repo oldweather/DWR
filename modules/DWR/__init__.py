@@ -12,18 +12,7 @@
 #
 
 """
-This package provides access to UK-region station observations recently digitised from the `Daily Weather Reports <https://www.metoffice.gov.uk/learning/library/archive-hidden-treasures/daily-weather-reports>`_
-
-The data included come from two sources:
-
-* The `Weather Rescue <http://weatherrescue.org>`_ citizen science project run by Ed Hawkins.
-* A commercial digitisation project run back in 2002 by Lisa Alexander and Rob Allan, but never published.
-
-The DWR provides synoptic observations, from around 50 stations in and around the UK, typically twice a day, but the list of stations providing observations, and the frequency of observation, both vary over the many years of the series.
-
-The DWR provides observations of several variables, but so far we have digitised data only from one:
-
-* Mean-sea-level pressure: 'mslp'
+This module provides a python API to :doc:`the data recently digitised from the UK Daily Weather Reports <../../docs/DWR>`.
 
 Access to the data is through the :func:`load_observations` function:
 
@@ -36,6 +25,31 @@ Access to the data is through the :func:`load_observations` function:
                               datetime.datetime(1903,10,31,23))
 
 Will load the mslp observations (as a :obj:`pandas.DataFrame`) from the whole of October 1903.
+
+Observations are typically made twice a day. It's often useful to estimate the observed value at other times of day. :func:`at_station_and_time` does this :
+
+.. code-block:: python
+
+    value=DWR.at_station_and_time(obs,'ABERDEEN',
+                                  datetime.datetime(1903,10,12,13,30))
+
+estimates the Aberdeen observation at 1:30pm on 12 October 1903 by linear interpolation between the nearest previous and subsequent observations. obs is the :obj:`pandas.DataFrame` loaded above.
+
+It's nice to have easy access to station locations:
+
+.. code-block:: python
+
+   posn=DWR.get_station_location(obs,'ABERDEEN')
+
+gets the position (posn['latitude'] and posn['longitude']) of the Aberdeen station. Note that these positions have low accuracy: the DWR has poor station metadata and we often don't know which station was in use at which time. This call returns the location of Aberdeen, rather than the location of the weather station in Aberdeen.
+
+The station names are stored in ALLCAPS with no spaces; for pretty output we want correctly capitalised and spaced strings
+
+.. code-block:: python
+
+   DWR.pretty_name('FORTWILLIAM')
+
+returns 'Fort William'.
 
 |
 """

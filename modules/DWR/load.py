@@ -155,6 +155,9 @@ def get_station_location(obs,station):
         obs (:obj:`pandas.DataFrame`): Batch of observations. Probably from :func:`load_observations`.
         station (:obj:`str`): Name of station, as used in obs.name.
 
+    Returns:
+        :obj:`dict`: Dictionary with keys 'latitude' and 'longitude'.
+
     Raises:
         StandardError: obs does not contain any observations for selected station.
 
