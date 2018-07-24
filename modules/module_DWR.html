@@ -72,20 +72,9 @@ Please <a href="https://github.com/oldweather/DWR/issues/new">raise an issue</a>
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p><a class="reference external" href="modules.html">Modules used by the DWR project</a></p>
-<div class="section" id="module-DWR">
+  <div class="section" id="module-DWR">
 <span id="dwr-a-module-for-accessing-daily-weather-report-observations"></span><h1>DWR: A module for accessing Daily Weather Report observations<a class="headerlink" href="#module-DWR" title="Permalink to this headline">¶</a></h1>
-<p>This package provides access to UK-region station observations recently digitised from the <a class="reference external" href="https://www.metoffice.gov.uk/learning/library/archive-hidden-treasures/daily-weather-reports">Daily Weather Reports</a></p>
-<p>The data included come from two sources:</p>
-<ul class="simple">
-<li>The <a class="reference external" href="http://weatherrescue.org">Weather Rescue</a> citizen science project run by Ed Hawkins.</li>
-<li>A commercial digitisation project run back in 2002 by Lisa Alexander and Rob Allan, but never published.</li>
-</ul>
-<p>The DWR provides synoptic observations, from around 50 stations in and around the UK, typically twice a day, but the list of stations providing observations, and the frequency of observation, both vary over the many years of the series.</p>
-<p>The DWR provides observations of several variables, but so far we have digitised data only from one:</p>
-<ul class="simple">
-<li>Mean-sea-level pressure: ‘mslp’</li>
-</ul>
+<p>This module provides a python API to <span class="xref std std-doc">the data recently digitised from the UK Daily Weather Reports</span>.</p>
 <p>Access to the data is through the <a class="reference internal" href="#DWR.load_observations" title="DWR.load_observations"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_observations()</span></code></a> function:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">DWR</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
@@ -95,6 +84,22 @@ Please <a href="https://github.com/oldweather/DWR/issues/new">raise an issue</a>
 </pre></div>
 </div>
 <p>Will load the mslp observations (as a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>) from the whole of October 1903.</p>
+<p>Observations are typically made twice a day. It’s often useful to estimate the observed value at other times of day. <a class="reference internal" href="#DWR.at_station_and_time" title="DWR.at_station_and_time"><code class="xref py py-func docutils literal notranslate"><span class="pre">at_station_and_time()</span></code></a> does this :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">value</span><span class="o">=</span><span class="n">DWR</span><span class="o">.</span><span class="n">at_station_and_time</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span><span class="s1">&#39;ABERDEEN&#39;</span><span class="p">,</span>
+                              <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1903</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">30</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>estimates the Aberdeen observation at 1:30pm on 12 October 1903 by linear interpolation between the nearest previous and subsequent observations. obs is the <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> loaded above.</p>
+<p>It’s nice to have easy access to station locations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">posn</span><span class="o">=</span><span class="n">DWR</span><span class="o">.</span><span class="n">get_station_location</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span><span class="s1">&#39;ABERDEEN&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>gets the position (posn[‘latitude’] and posn[‘longitude’]) of the Aberdeen station. Note that these positions have low accuracy: the DWR has poor station metadata and we often don’t know which station was in use at which time. This call returns the location of Aberdeen, rather than the location of the weather station in Aberdeen.</p>
+<p>The station names are stored in ALLCAPS with no spaces; for pretty output we want correctly capitalised and spaced strings</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DWR</span><span class="o">.</span><span class="n">pretty_name</span><span class="p">(</span><span class="s1">&#39;FORTWILLIAM&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>returns ‘Fort William’.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -142,6 +147,12 @@ Please <a href="https://github.com/oldweather/DWR/issues/new">raise an issue</a>
 <li><strong>obs</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>) – Batch of observations. Probably from <a class="reference internal" href="#DWR.load_observations" title="DWR.load_observations"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_observations()</span></code></a>.</li>
 <li><strong>station</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of station, as used in obs.name.</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Dictionary with keys ‘latitude’ and ‘longitude’.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a></p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StandardError</span></code> – obs does not contain any observations for selected station.</p>
