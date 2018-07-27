@@ -48,6 +48,9 @@ setup(
     package_data={
         'DWR': ['data/*/*/prmsl.txt']
     },
+    # Dont pack the installed data - causes race conditions
+    #  when accessing in parallel.
+    zip_safe = False,
 
     # Other packages that your project depends on.
     install_requires=[
