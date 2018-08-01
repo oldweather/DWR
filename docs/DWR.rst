@@ -25,7 +25,7 @@ This dataset provides some of these so-far-missing observations. Three projects 
 * `A study of severe storms across the British Isles <https://www.research.ed.ac.uk/portal/en/publications/fluctuations-in-autumnwinter-severe-storms-over-the-british-isles-1920-to-present(7135f643-9419-4e6a-b2e9-91bd137e13be).html>`_, transcribed a subset of the pressure observations over the period 1919-1960
 * The citizen science project `weatherrescue.org <http://weatherrescue.org>`_ is making a more comprehensive transcription for the years 1900-1910. 
 
-The bulk of these new observations are from the Daily Weather Reports, but they also include some data from other sources: the EMULATE data includes some stations from the French Daily Weather Reports; the weatherrescue.org data includes both observations from the `1898-1904 Ben Nevis project <https://weatherrescue.wordpress.com/2017/09/05/weathermen-of-ben-nevis>`_, and early pressure observations (1875-1899)from the station climatological returns for Scilly, in the UK Met Archive (Provided by `Ed Hanna - University of Lincon <http://staff.lincoln.ac.uk/ehanna>`_).
+The bulk of these new observations are from the Daily Weather Reports, but they also include some data from other sources: the EMULATE data includes some stations from the French Daily Weather Reports; the weatherrescue.org data includes both observations from the `1898-1904 Ben Nevis project <https://weatherrescue.wordpress.com/2017/09/05/weathermen-of-ben-nevis>`_, and early pressure observations (1875-1899) from the station climatological returns for Scilly, in the UK Met Archive (Provided by `Ed Hanna - University of Lincoln <http://staff.lincoln.ac.uk/ehanna>`_).
 
 .. toctree::
    :maxdepth: 2
