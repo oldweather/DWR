@@ -147,6 +147,50 @@ def at_station_and_time(obs,station,dte):
            (after['dtm']-before['dtm']).total_seconds())
     return after['value']*weight+before['value']*(1-weight)
 
+# Interpolation can introduce some big errors - add an indicator of 
+#  how far in time this is from a real observation
+def at_station_and_time_with_distance(obs,station,dte):
+    """Get, from these observations, the value at the selected station and time, along with the time gap (in seconds) between the given interpolated value and a real observation.
+
+    Typically there are observations from each station only twice a day (sometimes less) to get the observed value at the specified time we do linear interpolation in time (using only observations for the selected station.
+
+    Args:
+        obs (:obj:`pandas.DataFrame`): Batch of observations for the period around the desired time. Probably from :func:`load_observations`.
+        station (:obj:`str`): Name of station, as used in obs.name.
+        dte (:obj:`datetime.datetime`): Time of required observed value.
+
+    Returns:
+        :obj:`float`: Interpolated observed value from station at time.
+
+
+    Raises:
+        StandardError: obs does not contain at least two values for selected station, one before and one after specified time. So interpolation not possible.
+
+    |
+    """
+    at_station=obs.loc[obs['name']==station]
+    if at_station.empty:
+        raise StandardError('No data for station %s' % station)
+    at_station=at_station.sort_values(by='dtm',ascending=True)
+    hit=at_station.loc[at_station['dtm']==dte]
+    if not hit.empty:
+        return [hit['value'].values[0],0]
+    before=at_station.loc[at_station['dtm']<dte]
+    if before.empty:
+        raise StandardError('No data for station %s before %s' % (station,
+                     dte.strftime("%Y-%m-%d:%H:%M")))
+    before=before.iloc[-1] # last row
+    after=at_station.loc[at_station['dtm']>dte]
+    if after.empty:
+        raise StandardError('No data for station %s after %s' % (station,
+                     dte.strftime("%Y-%m-%d:%H:%M")))
+    after=after.iloc[0] # first row
+    weight=((dte-before['dtm']).total_seconds()/
+           (after['dtm']-before['dtm']).total_seconds())
+    gap=min((dte-before['dtm']).total_seconds(),
+            (after['dtm']-dte).total_seconds())
+    return [after['value']*weight+before['value']*(1-weight),gap]
+
 # Get the position of a named station
 def get_station_location(obs,station):
     """Get, from these observations, the location (lat and lon) of the named station.
