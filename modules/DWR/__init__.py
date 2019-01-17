@@ -55,6 +55,6 @@ returns 'Fort William'.
 """
 
 
-from load import *
-from names import *
+from .load import *
+from .names import *
 

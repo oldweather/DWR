@@ -128,19 +128,19 @@ def at_station_and_time(obs,station,dte):
     """
     at_station=obs.loc[obs['name']==station]
     if at_station.empty:
-        raise StandardError('No data for station %s' % station)
+        raise Exception('No data for station %s' % station)
     at_station=at_station.sort_values(by='dtm',ascending=True)
     hit=at_station.loc[at_station['dtm']==dte]
     if not hit.empty:
         return hit['value'].values[0]
     before=at_station.loc[at_station['dtm']<dte]
     if before.empty:
-        raise StandardError('No data for station %s before %s' % (station,
+        raise Exception('No data for station %s before %s' % (station,
                      dte.strftime("%Y-%m-%d:%H:%M")))
     before=before.iloc[-1] # last row
     after=at_station.loc[at_station['dtm']>dte]
     if after.empty:
-        raise StandardError('No data for station %s after %s' % (station,
+        raise Exception('No data for station %s after %s' % (station,
                      dte.strftime("%Y-%m-%d:%H:%M")))
     after=after.iloc[0] # first row
     weight=((dte-before['dtm']).total_seconds()/
@@ -170,19 +170,19 @@ def at_station_and_time_with_distance(obs,station,dte):
     """
     at_station=obs.loc[obs['name']==station]
     if at_station.empty:
-        raise StandardError('No data for station %s' % station)
+        raise Exception('No data for station %s' % station)
     at_station=at_station.sort_values(by='dtm',ascending=True)
     hit=at_station.loc[at_station['dtm']==dte]
     if not hit.empty:
         return [hit['value'].values[0],0]
     before=at_station.loc[at_station['dtm']<dte]
     if before.empty:
-        raise StandardError('No data for station %s before %s' % (station,
+        raise Exception('No data for station %s before %s' % (station,
                      dte.strftime("%Y-%m-%d:%H:%M")))
     before=before.iloc[-1] # last row
     after=at_station.loc[at_station['dtm']>dte]
     if after.empty:
-        raise StandardError('No data for station %s after %s' % (station,
+        raise Exception('No data for station %s after %s' % (station,
                      dte.strftime("%Y-%m-%d:%H:%M")))
     after=after.iloc[0] # first row
     weight=((dte-before['dtm']).total_seconds()/
@@ -209,7 +209,7 @@ def get_station_location(obs,station):
     """
     at_station=obs.loc[obs['name']==station]
     if at_station.empty:
-        raise StandardError('No data for station %s' % station)
+        raise Exception('No data for station %s' % station)
     result={'latitude': at_station['latitude'].values[0],
             'longitude':at_station['longitude'].values[0]}
     return result

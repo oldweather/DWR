@@ -250,9 +250,9 @@ def output_station(name,sdata):
     opfile=None
     mdl=md[md.iloc[:,0].str.lower()==name.lower()]
     if mdl.empty:
-        raise StandardError("No station %s in metadata" % 
+        raise Exception("No station %s in metadata" % 
                                                       name)
-    for syr in sdata.keys():
+    for syr in list(sdata.keys()):
         for idx in range(len(sdata[syr]['dates'])):
             Of=("%s/../../data_from_Emulate/%04d/%02d/prmsl.txt" %
                              (sd,sdata[syr]['dates'][idx].year,
@@ -295,7 +295,7 @@ if True:
 
         # Once-per-day data
         if file_name in Files_opd:
-            print station_name
+            print(station_name)
             if station_name not in emulate_data:
                 emulate_data[station_name]={}
             emulate_data[station_name].update(load_from_file_opd(
@@ -303,29 +303,29 @@ if True:
 
         # Twice_per_day data
         if file_name in Files_tpd:
-            print station_name
+            print(station_name)
             if station_name not in emulate_data:
                 emulate_data[station_name]={}
             emulate_data[station_name].update(load_from_file_tpd(
                          "%s/../original_data_csv/%s" % (sd,file_name)))
 
     # Special cases
-    print 'TENERIFE'
+    print('TENERIFE')
     emulate_data['TENERIFE']=load_from_file_teneriffe(
                      "%s/../original_data_csv/Tenerife.Teneriffe.csv" % sd)
-    print 'BAGHDAD'
+    print('BAGHDAD')
     emulate_data['BAGHDAD']=load_from_file_middle_east(
                      "%s/../original_data_csv/ME_daily_pressure.ME_daily_pressure.csv" % sd,3)
-    print 'BASRA'
+    print('BASRA')
     emulate_data['BASRA']=load_from_file_middle_east(
                      "%s/../original_data_csv/ME_daily_pressure.ME_daily_pressure.csv" % sd,4)
-    print 'DIYARBAKIR'
+    print('DIYARBAKIR')
     emulate_data['DIYARBAKIR']=load_from_file_middle_east(
                      "%s/../original_data_csv/ME_daily_pressure.ME_daily_pressure.csv" % sd,5)
-    print 'BEIRUT'
+    print('BEIRUT')
     emulate_data['BEIRUT']=load_from_file_middle_east(
                      "%s/../original_data_csv/ME_daily_pressure.ME_daily_pressure.csv" % sd,6)
 
     # Output the data in new format
-    for station in emulate_data.keys():
+    for station in list(emulate_data.keys()):
         output_station(station,emulate_data[station])

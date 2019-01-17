@@ -5,7 +5,6 @@
 # Always prefer setuptools over distutils
 from setuptools import setup, find_packages
 from os import path
-from io import open  # 2.7 only
 import glob
 
 # Get the long description from the README file
@@ -34,7 +33,7 @@ setup(
         'Topic :: Scientific/Engineering :: Atmospheric Science',
         'License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)',
         'Operating System :: POSIX',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.6',
     ],
 
     # Keywords for your project. What does your project relate to?
@@ -48,20 +47,14 @@ setup(
     package_data={
         'DWR': ['data/*/*/prmsl.txt']
     },
-    # Dont pack the installed data - causes race conditions
+    # Don't pack the installed data - causes race conditions
     #  when accessing in parallel.
     zip_safe = False,
 
     # Other packages that your project depends on.
     install_requires=[
-        'IRData>0.0',
-        'Meteorographica>0.0',
         'numpy>=1.15.2',
         'scipy>=1.1.0',
         'pandas>=0.23.4',
-        'scikit-learn>0.19',
-        'matplotlib>=2.2.3',
     ],
-
-
 )

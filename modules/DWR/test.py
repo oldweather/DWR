@@ -27,7 +27,7 @@ class TestUM(unittest.TestCase):
     def test_get_data_dir(self):
         scratch=os.getenv('SCRATCH')
         del os.environ['SCRATCH']
-        with self.assertRaises(StandardError) as cm:
+        with self.assertRaises(Exception) as cm:
             DWR.get_data_dir()
         self.assertIn('SCRATCH environment variable is undefined',
                       cm.exception)

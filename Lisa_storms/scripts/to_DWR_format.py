@@ -46,7 +46,7 @@ for stfile in Lf:
                           (sd,std.iloc[ln,1],std.iloc[ln,2]))
         mdl=md[md.iloc[:,0].str.lower()==std.iloc[ln,0].lower()]
         if mdl.empty:
-            raise StandardError("No station %s in metadata" % 
+            raise Exception("No station %s in metadata" % 
                                                 std.iloc[ln,0])
         LastF=''
         Of=None
