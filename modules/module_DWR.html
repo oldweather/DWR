@@ -4,12 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>DWR: A module for accessing Daily Weather Report observations &#8212; New observations from the Daily Weather Reports</title>
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -83,13 +83,13 @@ Please <a href="https://github.com/oldweather/DWR/issues/new">raise an issue</a>
                           <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1903</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">23</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Will load the mslp observations (as a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>) from the whole of October 1903.</p>
+<p>Will load the mslp observations (as a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>) from the whole of October 1903.</p>
 <p>Observations are typically made twice a day. It’s often useful to estimate the observed value at other times of day. <a class="reference internal" href="#DWR.at_station_and_time" title="DWR.at_station_and_time"><code class="xref py py-func docutils literal notranslate"><span class="pre">at_station_and_time()</span></code></a> does this :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">value</span><span class="o">=</span><span class="n">DWR</span><span class="o">.</span><span class="n">at_station_and_time</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span><span class="s1">&#39;ABERDEEN&#39;</span><span class="p">,</span>
                               <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1903</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">30</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>estimates the Aberdeen observation at 1:30pm on 12 October 1903 by linear interpolation between the nearest previous and subsequent observations. obs is the <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> loaded above.</p>
+<p>estimates the Aberdeen observation at 1:30pm on 12 October 1903 by linear interpolation between the nearest previous and subsequent observations. obs is the <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> loaded above.</p>
 <p>It’s nice to have easy access to station locations:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">posn</span><span class="o">=</span><span class="n">DWR</span><span class="o">.</span><span class="n">get_station_location</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span><span class="s1">&#39;ABERDEEN&#39;</span><span class="p">)</span>
 </pre></div>
@@ -113,7 +113,39 @@ Please <a href="https://github.com/oldweather/DWR/issues/new">raise an issue</a>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>obs</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>) – Batch of observations for the period around the desired time. Probably from <a class="reference internal" href="#DWR.load_observations" title="DWR.load_observations"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_observations()</span></code></a>.</li>
+<li><strong>obs</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>) – Batch of observations for the period around the desired time. Probably from <a class="reference internal" href="#DWR.load_observations" title="DWR.load_observations"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_observations()</span></code></a>.</li>
+<li><strong>station</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of station, as used in obs.name.</li>
+<li><strong>dte</strong> (<a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a>) – Time of required observed value.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Interpolated observed value from station at time.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StandardError</span></code> – obs does not contain at least two values for selected station, one before and one after specified time. So interpolation not possible.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="DWR.at_station_and_time_with_distance">
+<code class="descclassname">DWR.</code><code class="descname">at_station_and_time_with_distance</code><span class="sig-paren">(</span><em>obs</em>, <em>station</em>, <em>dte</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/DWR/load.html#at_station_and_time_with_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DWR.at_station_and_time_with_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get, from these observations, the value at the selected station and time, along with the time gap (in seconds) between the given interpolated value and a real observation.</p>
+<p>Typically there are observations from each station only twice a day (sometimes less) to get the observed value at the specified time we do linear interpolation in time (using only observations for the selected station.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>obs</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>) – Batch of observations for the period around the desired time. Probably from <a class="reference internal" href="#DWR.load_observations" title="DWR.load_observations"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_observations()</span></code></a>.</li>
 <li><strong>station</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of station, as used in obs.name.</li>
 <li><strong>dte</strong> (<a class="reference external" href="https://docs.python.org/2/library/datetime.html#datetime.datetime" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a>) – Time of required observed value.</li>
 </ul>
@@ -144,7 +176,7 @@ Please <a href="https://github.com/oldweather/DWR/issues/new">raise an issue</a>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>obs</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>) – Batch of observations. Probably from <a class="reference internal" href="#DWR.load_observations" title="DWR.load_observations"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_observations()</span></code></a>.</li>
+<li><strong>obs</strong> (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>) – Batch of observations. Probably from <a class="reference internal" href="#DWR.load_observations" title="DWR.load_observations"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_observations()</span></code></a>.</li>
 <li><strong>station</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – Name of station, as used in obs.name.</li>
 </ul>
 </td>
@@ -184,7 +216,7 @@ Please <a href="https://github.com/oldweather/DWR/issues/new">raise an issue</a>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Dataframe of observations.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IOError</span></code> – No data on disc for this variable, for a year and month in the selected period.</p>
@@ -216,7 +248,7 @@ Please <a href="https://github.com/oldweather/DWR/issues/new">raise an issue</a>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Dataframe of observations.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a></p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IOError</span></code> – No data on disc for this variable, year, and month.</p>
